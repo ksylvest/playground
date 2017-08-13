@@ -5,4 +5,9 @@ class Address < ApplicationRecord
   validates :state, presence: true
   validates :country, presence: true
   validates :postal, presence: true
+
+  def as_json(_options = nil)
+    { id: id, street: street, city: city, state: state, country: country, postal: postal }
+  end
+
 end
