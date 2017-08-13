@@ -12,7 +12,6 @@ gem 'uglifier'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
-gem 'rspec-rails'
 
 gem 'bootstrap', '~> 4.0.0.beta'
 
@@ -21,6 +20,11 @@ gem 'bourbon'
 gem 'fabrication'
 gem 'jbuilder'
 gem 'turbolinks'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+end
 
 group :development do
   gem 'web-console'
