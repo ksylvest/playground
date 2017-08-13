@@ -40,7 +40,6 @@ jobs:
 
             bundle exec rspec \
               --format progress \
-              --format RspecJunitFormatter \
               --out /tmp/results/rspec.xm \
               "${FILES}"
 
