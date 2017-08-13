@@ -19,14 +19,20 @@ jobs:
 
       -
         type: cache-restore
-        key: dependencies-{{ checksum "Gemfile.lock" }}
+        keys:
+          - dependencies-{{ checksum "Gemfile.lock" }}
+          - dependencies-{{ checksum "Gemfile" }}
+          - dependencies
 
       -
         run: bundle install --jobs=4 --retry=4 --path vendor/bundle
 
       -
         type: cache-save
-        key: dependencies-{{ checksum "Gemfile.lock" }}
+        keys:
+          - dependencies-{{ checksum "Gemfile.lock" }}
+          - dependencies-{{ checksum "Gemfile" }}
+          - dependencies
         paths:
           - vendor/bundle
 
