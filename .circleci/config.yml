@@ -1,60 +1,44 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
       -
         image: circleci/ruby:2.4.1-node-browsers
-        environment:
-          RAILS_ENV: test
       -
         image: circleci/postgres:9.6.2
-
-    working_directory: ~/repo
-
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      -
+        type: cache-restore
+        key: dependencies-{{ checksum "Gemfile.lock" }}
+
+      -
+        run: bundle install --jobs=4 --retry=4 --path vendor/bundle
+
+      -
+        type: cache-save
+        key: dependencies-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      -
+        run: bundle exec rake db:setup
 
       - run:
-          name: install dependencies
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            mkdir /tmp/tests
+            FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/results/rspec.xm \
+              "${FILES}"
 
-      # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
-      # run tests!
-      - run:
-          name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-
-            bundle exec rspec --format progress \
-                            --format RspecJunitFormatter \
-                            --out /tmp/test-results/rspec.xml \
-                            --format progress \
-                            "${TEST_FILES}"
-
-      # collect reports
       - store_test_results:
-          path: /tmp/test-results
+          path: /tmp/results
+
       - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+          path: /tmp/results
+          destination: results
