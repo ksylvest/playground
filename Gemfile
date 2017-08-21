@@ -24,6 +24,10 @@ gem 'turbolinks'
 group :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
+  gem 'capybara'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
 
 group :development do
