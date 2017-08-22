@@ -46,7 +46,7 @@ jobs:
       -
         run:
           command:
-            bundle exec codeclimate-test-reporter format-coverage coverage/codeclimate.$(CIRCLE_NODE_INDEX).json
+            bundle exec codeclimate-test-reporter format-coverage coverage/codeclimate.$($CIRCLE_NODE_INDEX).json
 
       -
         store_test_results:
