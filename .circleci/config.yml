@@ -12,19 +12,15 @@ defaults: &defaults
         POSTGRES_USER: circleci
         POSTGRES_DB: playground_test
 
-setup: &setup
-  - checkout
-  - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - run: chmod +x ./cc-test-reporter
-
-
 version: 2
 jobs:
   build:
     parallelism: 4
     <<: *defaults
     steps:
-      <<: *setup
+      - checkout
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
       -
         type: cache-restore
         key: dependencies-{{ checksum "Gemfile.lock" }}
@@ -75,7 +71,9 @@ jobs:
   report:
     <<: *defaults
     steps:
-      <<: *setup
+      - checkout
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
 
       -
         attach_workspace:
