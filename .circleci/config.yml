@@ -77,7 +77,7 @@ jobs:
 
       -
         attach_workspace:
-          at: /home/circleci/project
+          at: ~/project
 
       -
         run:
@@ -87,7 +87,7 @@ jobs:
       -
         run:
           command:
-            ./cc-test-reporter sum-coverage codeclimate/*.json | ./cc-test-reporter upload-coverage
+            ./cc-test-reporter sum-coverage --output - --parts 4 codeclimate/*.json | ./cc-test-reporter upload-coverage --input -
 
 workflows:
   version: 2
