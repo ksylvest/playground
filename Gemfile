@@ -29,6 +29,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do

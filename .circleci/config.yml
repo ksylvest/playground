@@ -46,6 +46,11 @@ jobs:
               "${FILES}"
 
       -
+        run:
+          command:
+            bundle exec codeclimate-test
+
+      -
         store_test_results:
           path: /tmp/results
 
