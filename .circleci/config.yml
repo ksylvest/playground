@@ -36,7 +36,7 @@ jobs:
       -
         run:
           command: |
-            mkdir /tmp/tests
+            mkdir /tmp/results
             FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
             bundle exec rspec \
@@ -54,4 +54,4 @@ jobs:
           path: /tmp/results
 
       - store_artifacts:
-          path: /tmp/capybara
+          path: tmp/capybara
