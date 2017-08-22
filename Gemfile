@@ -30,6 +30,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter'
+  gem 'shoulda-matchers'
 end
 
 group :development do
