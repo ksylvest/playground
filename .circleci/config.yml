@@ -68,8 +68,6 @@ jobs:
 
   report:
     <<: *defaults
-    requires:
-      - build
     steps:
       - checkout
       -
@@ -97,4 +95,7 @@ workflows:
   execute:
     jobs:
       - build
-      - report
+      -
+        report:
+          requires:
+            - build
