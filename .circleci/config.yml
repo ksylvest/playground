@@ -77,12 +77,15 @@ jobs:
 
       -
         attach_workspace:
-          at: ~/project
+          at: *workspace_root
 
       -
         run:
           command:
             ls codeclimate
+
+      -
+        run:
           command:
             ./cc-test-reporter sum-coverage codeclimate/*.json | ./cc-test-reporter upload-coverage
 
