@@ -29,7 +29,6 @@ group :test do
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
-  gem 'codeclimate-test-reporter'
   gem 'shoulda-matchers'
 end
 

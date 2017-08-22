@@ -12,13 +12,19 @@ defaults: &defaults
         POSTGRES_USER: circleci
         POSTGRES_DB: playground_test
 
+setup: &setup
+  - checkout
+  - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - run: chmod +x ./cc-test-reporter
+
+
 version: 2
 jobs:
   build:
     parallelism: 4
     <<: *defaults
     steps:
-      - checkout
+      <<: *setup
       -
         type: cache-restore
         key: dependencies-{{ checksum "Gemfile.lock" }}
@@ -46,7 +52,7 @@ jobs:
       -
         run:
           command:
-            bundle exec codeclimate-test-reporter format-coverage "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
+            ./cc-test-reporter format-coverage --output "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
 
       -
         store_test_results:
@@ -69,17 +75,7 @@ jobs:
   report:
     <<: *defaults
     steps:
-      - checkout
-      -
-        type: cache-restore
-        key: dependencies-{{ checksum "Gemfile.lock" }}
-      -
-        run: bundle install --jobs=4 --retry=4 --path vendor/bundle
-      -
-        type: cache-save
-        key: dependencies-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      <<: *setup
 
       -
         attach_workspace:
@@ -88,7 +84,7 @@ jobs:
       -
         run:
           command:
-            bundle exec codeclimate-test-reporter sum-coverage /tmp/workspace/coverage/codeclimate.*.json | bundle exec codeclimate-test-reporter upload-coverage
+            ./cc-test-reporter sum-coverage /tmp/workspace/coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
 
 workflows:
   version: 2
