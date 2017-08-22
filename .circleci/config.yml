@@ -33,7 +33,8 @@ jobs:
       -
         run: bundle exec rake db:setup
 
-      - run:
+      -
+        run:
           command: |
             mkdir /tmp/tests
             FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
@@ -44,9 +45,15 @@ jobs:
               --out /tmp/results/rspec.xm \
               "${FILES}"
 
-      - store_test_results:
+      -
+        store_test_results:
           path: /tmp/results
 
-      - store_artifacts:
+      -
+        store_artifacts:
           path: /tmp/results
           destination: results
+
+      - store_artifacts:
+          path: /tmp/capybara
+          destination: capybara
