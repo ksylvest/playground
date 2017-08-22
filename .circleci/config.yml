@@ -73,7 +73,7 @@ jobs:
   report:
     docker:
       -
-        image: circleci/ruby:2.4.1-node-browsers
+        image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
