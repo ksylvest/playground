@@ -48,7 +48,7 @@ jobs:
       -
         run:
           command:
-            bundle exec codeclimate-test
+            bundle exec codeclimate-test-reporter
 
       -
         store_test_results:
