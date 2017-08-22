@@ -33,7 +33,7 @@ jobs:
           - vendor/bundle
 
       -
-        run: bundle exec rake db:setup
+        run: bundle exec rake db:test:prepare
 
       -
         type: shell
@@ -77,7 +77,7 @@ jobs:
 
       -
         attach_workspace:
-          at: ~
+          at: ~/
 
       -
         run:
