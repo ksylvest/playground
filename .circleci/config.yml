@@ -36,13 +36,12 @@ jobs:
       -
         type: shell
         command: |
-          FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-          echo $FILES
           bundle exec rspec \
-            --format progress \
+            --profile \
             --format RspecJunitFormatter \
             --out tmp/results/rspec.xml \
-            "${FILES}"
+            --format progress \
+            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       -
         run:
