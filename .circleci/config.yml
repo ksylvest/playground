@@ -52,8 +52,6 @@ jobs:
       -
         store_artifacts:
           path: /tmp/results
-          destination: results
 
       - store_artifacts:
           path: /tmp/capybara
-          destination: capybara
