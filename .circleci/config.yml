@@ -77,7 +77,7 @@ jobs:
 
       -
         attach_workspace:
-          at: ~/
+          at: /home/circleci/project
 
       -
         run:
