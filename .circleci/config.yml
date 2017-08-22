@@ -1,26 +1,28 @@
-defaults: &defaults
-  docker:
-    -
-      image: circleci/ruby:2.4.1-node-browsers
-      environment:
-        RAILS_ENV: test
-        RACK_ENV: test
-        PGHOST: localhost
-    -
-      image: circleci/postgres:9.6.2
-      environment:
-        POSTGRES_USER: circleci
-        POSTGRES_DB: playground_test
-
 version: 2
 jobs:
   build:
     parallelism: 4
-    <<: *defaults
+    docker:
+      -
+        image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          PGHOST: localhost
+      -
+        image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: playground_test
     steps:
       - checkout
+      -
+        type: cache-restore
+        key: cc-test-reporter
+
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - run: chmod +x ./cc-test-reporter
+
       -
         type: cache-restore
         key: dependencies-{{ checksum "Gemfile.lock" }}
@@ -69,7 +71,6 @@ jobs:
             - codeclimate
 
   report:
-    <<: *defaults
     steps:
       - checkout
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
