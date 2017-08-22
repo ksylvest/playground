@@ -58,5 +58,5 @@ jobs:
           path: tmp/capybara
 
       -
-        store_artificats:
+        store_artifacts:
           path: coverage
