@@ -48,7 +48,7 @@ jobs:
       -
         run:
           command:
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.$CIRCLE_NODE_INDEX.json
+            ./cc-test-reporter format-coverage --output codeclimate/$CIRCLE_NODE_INDEX.json
 
       -
         store_test_results:
@@ -82,8 +82,9 @@ jobs:
       -
         run:
           command:
-            ls coverage
-            ./cc-test-reporter sum-coverage coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
+            ls codeclimate
+          command:
+            ./cc-test-reporter sum-coverage codeclimate/*.json | ./cc-test-reporter upload-coverage
 
 workflows:
   version: 2
