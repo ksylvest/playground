@@ -64,7 +64,7 @@ jobs:
 
       -
         persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - coverage
 
@@ -77,12 +77,12 @@ jobs:
 
       -
         attach_workspace:
-          at: /tmp/workspace
+          at: ~/project
 
       -
         run:
           command:
-            ./cc-test-reporter sum-coverage /tmp/workspace/coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
+            ./cc-test-reporter sum-coverage coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
 
 workflows:
   version: 2
