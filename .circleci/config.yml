@@ -83,8 +83,9 @@ jobs:
         paths:
           - vendor/bundle
 
-      - attach_workspace:
-        at: /tmp/workspace
+      -
+        attach_workspace:
+          at: /tmp/workspace
 
       -
         run:
