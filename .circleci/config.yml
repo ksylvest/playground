@@ -34,16 +34,15 @@ jobs:
         run: bundle exec rake db:setup
 
       -
-        run:
-          command: |
-            mkdir /tmp/results
-            FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+        type: shell
+        command: |
+          FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/results/rspec.xm \
-              "${FILES}"
+          bundle exec rspec \
+            --format progress \
+            --format RspecJunitFormatter \
+            --out tmp/results/rspec.xml \
+            "${FILES}"
 
       -
         run:
@@ -52,11 +51,11 @@ jobs:
 
       -
         store_test_results:
-          path: /tmp/results
+          path: tmp/results
 
       -
         store_artifacts:
-          path: /tmp/results
+          path: tmp/results
 
       -
         store_artifacts:
