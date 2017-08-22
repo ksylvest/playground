@@ -77,7 +77,7 @@ jobs:
 
       -
         attach_workspace:
-          at: *workspace_root
+          at: ~
 
       -
         run:
