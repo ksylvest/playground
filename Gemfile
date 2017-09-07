@@ -4,10 +4,9 @@ gem 'rails'
 gem 'foreman'
 gem 'pg'
 gem 'puma'
-
 gem 'sidekiq'
-
 gem 'uglifier'
+gem 'webpacker'
 
 gem 'sass-rails'
 gem 'coffee-rails'
