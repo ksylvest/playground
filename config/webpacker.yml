@@ -1,0 +1,45 @@
+default: &default
+  source_path: app/webpack
+  source_entry_path: packs
+  public_output_path: packs
+  cache_path: tmp/cache/webpacker
+  resolved_paths: []
+
+  extensions:
+    - .coffee
+    - .erb
+    - .js
+    - .jsx
+    - .ts
+    - .vue
+    - .sass
+    - .scss
+    - .css
+    - .png
+    - .svg
+    - .gif
+    - .jpeg
+    - .jpg
+
+development:
+  <<: *default
+  compile: true
+  cache_manifest: false
+
+  dev_server:
+    host: localhost
+    port: 3035
+    hmr: false
+    https: false
+
+test:
+  <<: *default
+  compile: true
+  cache_manifest: false
+
+  public_output_path: packs-test
+
+production:
+  <<: *default
+  compile: false
+  cache_manifest: true

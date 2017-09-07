@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "latest",
+    "pug": "latest",
+    "ts-loader": "latest",
+    "typescript": "latest",
+    "vue": "latest",
+    "vue-loader": "latest",
+    "vue-template-compiler": "latest"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "latest"
+  }
+}
