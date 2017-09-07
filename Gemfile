@@ -18,7 +18,6 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'byebug'
 gem 'bourbon'
 gem 'fabrication'
-gem 'jbuilder'
 gem 'turbolinks'
 
 group :test do
