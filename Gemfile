@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.4.1'
+ruby '2.4.2'
 
 gem 'rails'
+gem 'bcrypt'
 gem 'foreman'
+gem 'jbuilder'
+gem 'jwt'
 gem 'pg'
 gem 'puma'
 gem 'sidekiq'
@@ -13,8 +16,6 @@ gem 'webpacker'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
-
-gem 'bootstrap', '~> 4.0.0.beta'
 
 gem 'byebug'
 gem 'bourbon'

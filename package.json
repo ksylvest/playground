@@ -1,14 +1,17 @@
 {
+  "name": "playground",
   "dependencies": {
-    "@rails/webpacker": "latest",
-    "pug": "latest",
-    "ts-loader": "latest",
-    "typescript": "latest",
-    "vue": "latest",
-    "vue-loader": "latest",
-    "vue-template-compiler": "latest"
+    "@rails/webpacker": "3.0.1",
+    "axios": "^0.16.2",
+    "bulma": "^0.5.3",
+    "lodash": "^4.17.4",
+    "pug": "^2.0.0-rc.4",
+    "ts-loader": "2.3.7",
+    "typescript": "^2.5.3",
+    "vue": "2.4.4",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "2.4.4",
+    "webpack-dev-server": "^2.9.0"
   },
-  "devDependencies": {
-    "webpack-dev-server": "latest"
-  }
+  "devDependencies": {}
 }

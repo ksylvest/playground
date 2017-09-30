@@ -1,0 +1,12 @@
+.authenticator
+  .tabs
+    ul
+      li(v-bind:class="{ 'is-active': mode == 'login' }")
+        a(v-on:click="login" href='#') Login
+      li(v-bind:class="{ 'is-active': mode == 'signup' }")
+        a(v-on:click="signup" href='#') Signup
+
+  social
+
+  login(v-if="mode === 'login'")
+  signup(v-if="mode === 'signup'")

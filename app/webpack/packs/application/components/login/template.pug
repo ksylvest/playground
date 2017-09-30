@@ -1,0 +1,11 @@
+.login
+  form(v-on:submit.prevent="submit")
+    .field
+      label.label Email
+      input.input(type="email" placeholder="Email" v-model="email")
+      p.help.is-danger(v-if="errors.email") {{ errors.email | sentence }}
+    .field
+      label.label Password
+      input.input(type="password" placeholder="Password" v-model="password")
+      p.help.is-danger(v-if="errors.password") {{ errors.password | sentence }}
+    button.button Login

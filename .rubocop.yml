@@ -4,9 +4,10 @@ AllCops:
     - Gemfile
     - Gemfile.lock
     - db/schema.rb
-    - bin/yarn
-    - bin/setup
+    - bin/**
     - config/environments/*
+    - node_modules/**/*
+    - spec/spec_helper.rb
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
