@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'foreman'
 gem 'graphql'
 gem 'graphql-batch'
+gem 'graphiql-rails'
 gem 'jbuilder'
 gem 'jwt'
 gem 'kaminari'
@@ -38,7 +39,6 @@ group :test do
 end
 
 group :development do
-  gem 'graphiql-rails'
   gem 'web-console'
   gem 'listen'
   gem 'spring'
