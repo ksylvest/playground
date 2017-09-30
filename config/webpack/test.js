@@ -1,3 +1,5 @@
-const environment = require('./environment')
+const merge = require('webpack-merge');
+const environment = require('./environment');
+const custom = require('./custom');
 
-module.exports = environment.toWebpackConfig()
+module.exports = merge(environment.toWebpackConfig(), custom);

@@ -1,10 +1,20 @@
 doctype html
 html
   head
-    = render 'layouts/head'
-  body#application
-    = render 'layouts/header'
-    = render 'layouts/flashes'
-    = render 'layouts/content'
-    = render 'layouts/footer'
-    = render 'layouts/analytics'
+    title Playground
+    meta charset='UTF-8'
+
+    meta name='description' content=yield(:description)
+    meta name='keywords' content=yield(:keywords)
+    meta name='viewport' content=viewport
+
+    = favicon_link_tag 'favicon.ico'
+
+    = action_cable_meta_tag
+    = csrf_meta_tags
+  body
+    == yield
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'application'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Lato:100,300,400,700'
+    = javascript_include_tag 'https://use.fontawesome.com/9f7da716f6.js'

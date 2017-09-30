@@ -1,4 +1,4 @@
-import Vue, { ComponentOptions } from 'vue'
+import Vue, { ComponentOptions } from 'vue';
 
 interface Component extends Vue {
 }

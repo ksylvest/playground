@@ -1,5 +1,5 @@
-import Vue, { ComponentOptions } from 'vue'
-import User from '../../models/user'
+import Vue, { ComponentOptions } from 'vue';
+import User from '../../models/user';
 import sentence from '../../filters/sentence';
 
 interface Component extends Vue {

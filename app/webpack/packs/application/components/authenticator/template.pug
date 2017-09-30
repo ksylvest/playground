@@ -1,12 +1,11 @@
-div
+.section
   .tabs
     ul
-      li(v-bind:class="{ 'is-active': mode == 'login' }")
-        a(v-on:click="login" href='#') Login
-      li(v-bind:class="{ 'is-active': mode == 'signup' }")
-        a(v-on:click="signup" href='#') Signup
+      router-link(:to="{ name: 'login' }" tag="li" active-class="is-active" exact) 
+        a Login
+      router-link(:to="{ name: 'signup' }" tag="li" active-class="is-active" exact) 
+        a Signup
 
   social
 
-  login(v-if="mode === 'login'")
-  signup(v-if="mode === 'signup'")
+  router-view
