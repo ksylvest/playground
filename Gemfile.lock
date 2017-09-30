@@ -85,6 +85,12 @@ GEM
       thor (~> 0.19.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.5)
+      rails
+    graphql (1.7.3)
+    graphql-batch (0.3.5)
+      graphql (>= 0.8, < 2)
+      promise.rb (~> 0.7.2)
     i18n (0.8.6)
     io-like (0.3.0)
     jbuilder (2.7.0)
@@ -92,6 +98,18 @@ GEM
       multi_json (>= 1.2)
     json (2.1.0)
     jwt (2.0.0)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -115,8 +133,11 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
+    promise.rb (0.7.4)
     public_suffix (3.0.0)
     puma (3.10.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -257,11 +278,16 @@ DEPENDENCIES
   coffee-rails
   fabrication
   foreman
+  graphiql-rails
+  graphql
+  graphql-batch
   jbuilder
   jwt
+  kaminari
   listen
   pg
   puma
+  pundit
   rails
   rspec-rails
   rspec_junit_formatter

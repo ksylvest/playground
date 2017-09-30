@@ -5,10 +5,14 @@ ruby '2.4.2'
 gem 'rails'
 gem 'bcrypt'
 gem 'foreman'
+gem 'graphql'
+gem 'graphql-batch'
 gem 'jbuilder'
 gem 'jwt'
+gem 'kaminari'
 gem 'pg'
 gem 'puma'
+gem 'pundit'
 gem 'sidekiq'
 gem 'uglifier'
 gem 'webpacker'
@@ -34,6 +38,7 @@ group :test do
 end
 
 group :development do
+  gem 'graphiql-rails'
   gem 'web-console'
   gem 'listen'
   gem 'spring'
