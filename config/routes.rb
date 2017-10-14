@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/graphql', to: 'graphql#execute'
 
   root to: 'main#index'
-  %w[login signup].each do |path|
+  %w[login signup checkout].each do |path|
     get path, to: 'main#index'
   end
 
