@@ -15,6 +15,7 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'sidekiq'
+gem 'stripe'
 gem 'uglifier'
 gem 'webpacker'
 
@@ -39,6 +40,8 @@ group :test do
 end
 
 group :development do
+  gem 'brakeman'
+  gem 'rubocop'
   gem 'web-console'
   gem 'listen'
   gem 'spring'
