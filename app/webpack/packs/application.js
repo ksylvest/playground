@@ -1,2 +1,2 @@
-require('./application/vendor/assets.sass');
+require('./application');
 import './application/index';
