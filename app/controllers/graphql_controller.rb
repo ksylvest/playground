@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     render json: result
   end
 
-  private
+private
 
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)
