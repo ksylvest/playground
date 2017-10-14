@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+include FileUtils
+
+ROOT = Pathname.new File.expand_path('../../', __FILE__)
+
+def system!(*args)
+  system(*args) || abort("#{args} [FAILED]")
+end
+
+chdir ROOT do
+  system! 'bundle exec rubocop --parallel --format simple --out ./tmp/rubocop.txt'
+  system! 'bundle exec brakeman -z --quiet --output ./tmp/brakeman.txt'
+  system! 'yarn run tslint app/webpack/**/*.ts --format prose --out ./tmp/tslint.txt'
+end
