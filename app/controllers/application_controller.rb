@@ -19,18 +19,20 @@ private
 public
 
   def user
-    User.joins(:sessions).find_by(sessions: { token: token }) if token
+    payload = Session.decode(cookies[:jwt]) if cookies[:jwt]
+    User.joins(:sessions).find_by(sessions: { token: payload['token'] }) if payload
   end
 
   def authenticate(user)
     session = user.sessions.find_or_initialize_by(ip: request.ip)
     session.save!
 
-    cookies.permanent.signed[:token] = session.token
+    payload = { id: user.id, name: user.name, token: session.token }
+    cookies.permanent[:jwt] = JWT.encode(payload)
   end
 
   def deauthenticate
-    cookies.delete(:token)
+    cookies.delete(:jwt)
   end
 
   def authenticated?
@@ -56,6 +58,7 @@ public
 protected
 
   def token
+    JWT.decode(cookies[:token], Rails.application.secrets.secret_key_base)
     cookies.permanent.signed[:token]
   end
 
