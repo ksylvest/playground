@@ -1,5 +1,4 @@
 form(v-on:submit.prevent="submit" noform.validate)
-  p {{ form.errors.data }}
   p.help.is-danger(v-if="form.errors.has('base')") {{ form.errors.get('base') | sentence }}
   .field
     label.label Email

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
+
+import sentence from '../../filters/sentence';
 
 class Errors {
   any() {
@@ -8,11 +10,12 @@ class Errors {
   }
 
   seed(data) {
+    Vue.set(this, 'data', data);
     this.data = data;
   }
 
   reset() {
-    delete this.data;
+    Vue.delete(this, 'data');
   }
 
   has(field) {
@@ -64,6 +67,10 @@ export default {
         password: null,
       }),
     };
+  },
+
+  filters: {
+    sentence,
   },
 
   methods: {
