@@ -1,0 +1,14 @@
+form(v-on:submit.prevent="submit")
+  .field
+    label.label Name
+    input.input(mame="signup[name]" type="text" placeholder="Name" v-model="fields.name")
+    p.help.is-danger(v-if="errors.name") {{ errors.name | sentence }}
+  .field
+    label.label Email
+    input.input(name="signup[email]" type="email" placeholder="Email" v-model="fields.email")
+    p.help.is-danger(v-if="errors.email") {{ errors.email | sentence }}
+  .field 
+    label.label Password
+    input.input(name="signup[password]" type="password" placeholder="Password" v-model="fields.password")
+    p.help.is-danger(v-if="errors.password") {{ errors.password | sentence }}
+  button.button Signup

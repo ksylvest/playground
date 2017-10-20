@@ -1,2 +1,2 @@
-require('./application');
-import './application/index';
+import '../application';
+import './application.css';

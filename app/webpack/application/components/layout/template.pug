@@ -1,0 +1,21 @@
+.template
+  header
+    nav.navbar
+      .navbar-brand.nav-start
+        router-link.navbar-item(:to="{ name: 'home' }" active-class="is-active" exact) Playground
+        .navbar-burger.button
+          span
+          span
+          span
+      .navbar-menu
+        router-link.navbar-item(:to="{ name: 'home' }" active-class="is-active" exact) Home
+        router-link.navbar-item(:to="{ name: 'login' }" active-class="is-active" exact) Login
+        router-link.navbar-item(:to="{ name: 'signup' }" active-class="is-active" exact) Signup
+
+  router-view
+
+  footer.footer
+    .container
+      .content.has-text-centered
+        span by 
+        a(href="https://ksylvest.com") Kevin Sylvestre
