@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: Validation::EMAIL, message: 'should be an email' }
-  validates :password, length: { in: 4..64 }, presence: true, unless: -> { password? }
+  validates :email, presence: true, uniqueness: true, format: { with: Validation::EMAIL, message: 'is invalid' }
+  validates :password, presence: true, length: { in: 8..64 }, unless: -> { password? }
 
   scope :ordered, -> { order(:id) }
 

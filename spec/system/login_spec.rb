@@ -1,14 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature 'login' do
+RSpec.feature 'login', type: :system do
   let(:user) { Fabricate(:user) }
 
   scenario 'submitting with valid credentials' do
-    visit root_path
-    within('.tabs') do
-      click_link('Login')
-    end
-    within('.login') do
+    visit login_path
+
+    within('form') do
       fill_in('Email', with: user.email)
       fill_in('Password', with: user.password)
       click_button('Login')
@@ -16,12 +14,12 @@ RSpec.feature 'login' do
   end
 
   scenario 'submitting with invalid credentials' do
-    visit root_path
-    within('.tabs') do
-      click_link('Login')
-    end
+    visit login_path
     within('form') do
       click_button('Login')
+
+      expect(page).to have_content("Email can't be blank")
+      expect(page).to have_content("Password can't be blank")
     end
   end
 end

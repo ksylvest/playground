@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'main#index'
   %w[login signup checkout].each do |path|
-    get path, to: 'main#index'
+    get path, to: 'main#index', as: path
   end
 
   resource :user, only: %i[create]

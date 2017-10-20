@@ -1,14 +1,41 @@
-form(v-on:submit.prevent="submit")
+form(v-on:submit.prevent="submit" noform.validate)
+  p.help.is-danger(v-if="form.errors.has('base')") {{ form.errors.get('base') | sentence }}
   .field
     label.label Name
-    input.input(mame="signup[name]" type="text" placeholder="Name" v-model="fields.name")
-    p.help.is-danger(v-if="errors.name") {{ errors.name | sentence }}
+    p.control.has-icons-left.has-icons-right
+      input.input(name="signup[name]" type="email" placeholder="Name" 
+        v-model="form.name" 
+        v-bind:class="{ 'is-success': form.valid('name'), 'is-danger': form.invalid('name') }")
+      span.icon.is-small.is-left
+        i.fa.fa-info
+      span.icon.is-small.is-right
+        i.fa.fa-check(v-if="form.valid('name')")
+        i.fa.fa-warning(v-if="form.invalid('name')")
+    p.help.is-danger(v-if="form.errors.has('name')") {{ form.errors.get('name') | sentence }}
   .field
     label.label Email
-    input.input(name="signup[email]" type="email" placeholder="Email" v-model="fields.email")
-    p.help.is-danger(v-if="errors.email") {{ errors.email | sentence }}
-  .field 
+    p.control.has-icons-left.has-icons-right
+      input.input(name="signup[email]" type="email" placeholder="Email" 
+        v-model="form.email" 
+        v-bind:class="{ 'is-success': form.valid('email'), 'is-danger': form.invalid('email') }")
+      span.icon.is-small.is-left
+        i.fa.fa-envelope
+      span.icon.is-small.is-right
+        i.fa.fa-check(v-if="form.valid('email')")
+        i.fa.fa-warning(v-if="form.invalid('email')")
+    p.help.is-danger(v-if="form.errors.has('email')") {{ form.errors.get('email') | sentence }}
+  .field
     label.label Password
-    input.input(name="signup[password]" type="password" placeholder="Password" v-model="fields.password")
-    p.help.is-danger(v-if="errors.password") {{ errors.password | sentence }}
-  button.button Signup
+    p.control.has-icons-left.has-icons-right
+      input.input(name="signup[password]" type="password" placeholder="Password" 
+        v-model="form.password" 
+        v-bind:class="{ 'is-success': form.valid('password'), 'is-danger': form.invalid('password') }")
+      span.icon.is-small.is-left
+        i.fa.fa-lock
+      span.icon.is-small.is-right
+        i.fa.fa-check(v-if="form.valid('password')")
+        i.fa.fa-warning(v-if="form.invalid('password')")
+    p.help.is-danger(v-if="form.errors.has('password')") {{ form.errors.get('password') | sentence }}
+  .field
+    .control
+      button.button.is-primary Signup

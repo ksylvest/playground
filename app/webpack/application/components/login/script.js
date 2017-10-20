@@ -1,33 +1,7 @@
 import axios from 'axios';
-
 import Vue from 'vue';
-
 import sentence from '../../filters/sentence';
-
-class Errors {
-  any() {
-    return !!this.data;
-  }
-
-  seed(data) {
-    Vue.set(this, 'data', data);
-    this.data = data;
-  }
-
-  reset() {
-    Vue.delete(this, 'data');
-  }
-
-  has(field) {
-    return this.data && !!this.data[field];
-  }
-
-  get(field) {
-    if (this.data) {
-      return this.data[field];
-    }
-  }
-}
+import Errors from '../../utilities/errors';
 
 class Form {
   constructor(attributes) {

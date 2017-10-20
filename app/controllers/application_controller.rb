@@ -28,7 +28,7 @@ public
     session.save!
 
     payload = { id: user.id, name: user.name, token: session.token }
-    cookies.permanent[:jwt] = JWT.encode(payload)
+    cookies.permanent[:jwt] = Session.encode(payload)
   end
 
   def deauthenticate

@@ -12,6 +12,11 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.around(type: :system) do |example|
+    driven_by :selenium_chrome_headless
+    example.run
+  end
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true
