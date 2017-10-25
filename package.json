@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.0.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
+    "mapbox-gl": "^0.41.0",
     "pug": "^2.0.0-rc.4",
     "pug-lint": "^2.5.0",
     "sass-loader": "^6.0.6",
