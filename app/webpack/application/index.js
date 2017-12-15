@@ -1,4 +1,5 @@
-import './config/frameworks';
+import './assets';
+import './config';
 
 import Vue from 'vue';
 

@@ -19,8 +19,6 @@ gem 'stripe'
 gem 'uglifier'
 gem 'webpacker'
 
-gem 'sass-rails'
-gem 'coffee-rails'
 gem 'slim-rails'
 
 gem 'byebug'

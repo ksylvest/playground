@@ -1,3 +1,5 @@
+import { CSRF_TOKEN } from './constants';
+
 import axios from 'axios';
 import _ from 'lodash';
 
@@ -10,7 +12,4 @@ _.each(defaults, (value, key) => {
   axios.defaults.headers.common[key] = value;
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const token = _.head(document.getElementsByName('csrf-token')).getAttribute('content');
-  axios.defaults.headers.common['X-CSRF-Token'] = token;
-});
+axios.defaults.headers.common['X-CSRF-Token'] = CSRF_TOKEN;
