@@ -10,7 +10,6 @@ export default class Errors {
   }
 
   clear(field) {
-    debugger
     Vue.delete(this.data, field);
   }
 
