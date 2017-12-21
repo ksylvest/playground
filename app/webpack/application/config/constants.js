@@ -1,7 +1,11 @@
 import _ from 'lodash';
 
-const parse = (name, attribute = 'content') =>
-  _.head(document.getElementsByName(name)).getAttribute(attribute);
+const fetchMetaAttributeByName = (name, attribute = 'content') => {
+  const element = _.head(document.getElementsByName(name));
+  if (element) {
+    return element.getAttribute(attribute);
+  }
+};
 
-export const ACTION_CABLE_URL = parse('action-cable-url');
-export const CSRF_TOKEN = parse('csrf-token');
+export const ACTION_CABLE_URL = fetchMetaAttributeByName('action-cable-url');
+export const CSRF_TOKEN = fetchMetaAttributeByName('csrf-token');
