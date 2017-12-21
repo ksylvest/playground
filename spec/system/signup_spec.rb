@@ -12,6 +12,8 @@ RSpec.feature 'signup', type: :system do
       fill_in('Password', with: user.password)
       click_button('Signup')
     end
+
+    expect(page).to have_content('Logout')
   end
 
   scenario 'submitting with invalid credentials' do
