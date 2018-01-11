@@ -1,3 +1,5 @@
+import './fontawesome';
+
 import { CSRF_TOKEN } from './constants';
 
 import axios from 'axios';

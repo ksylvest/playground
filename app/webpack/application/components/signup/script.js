@@ -3,6 +3,8 @@ import Vue from 'vue';
 import sentence from '../../filters/sentence';
 import Errors from '../../utilities/errors';
 
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+
 class Form {
   constructor(attributes) {
     this.errors = new Errors();
@@ -43,6 +45,10 @@ export default {
         password: null,
       }),
     };
+  },
+
+  components: {
+    FontAwesomeIcon,
   },
 
   filters: {

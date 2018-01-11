@@ -7,10 +7,10 @@ form(v-on:submit.prevent="submit" noform.validate)
         v-model="form.email" 
         v-bind:class="{ 'is-success': form.valid('email'), 'is-danger': form.invalid('email') }")
       span.icon.is-small.is-left
-        i.fa.fa-envelope
+        font-awesome-icon(icon="envelope")
       span.icon.is-small.is-right
-        i.fa.fa-check(v-if="form.valid('email')")
-        i.fa.fa-warning(v-if="form.invalid('email')")
+        font-awesome-icon(icon="check-square" v-if="form.valid('email')")
+        font-awesome-icon(icon="exclamation-circle" v-if="form.invalid('email')")
     p.help.is-danger(v-if="form.errors.has('email')") {{ form.errors.get('email') | sentence }}
   .field
     label.label Password
@@ -19,10 +19,10 @@ form(v-on:submit.prevent="submit" noform.validate)
         v-model="form.password" 
         v-bind:class="{ 'is-success': form.valid('password'), 'is-danger': form.invalid('password') }")
       span.icon.is-small.is-left
-        i.fa.fa-lock
+        font-awesome-icon(icon="lock")
       span.icon.is-small.is-right
-        i.fa.fa-check(v-if="form.valid('password')")
-        i.fa.fa-warning(v-if="form.invalid('password')")
+        font-awesome-icon(icon="check-square" v-if="form.valid('password')")
+        font-awesome-icon(icon="exclamation-circle" v-if="form.invalid('password')")
     p.help.is-danger(v-if="form.errors.has('password')") {{ form.errors.get('password') | sentence }}
   .field
     .control
