@@ -22,7 +22,6 @@ gem 'webpacker'
 gem 'slim-rails'
 
 gem 'byebug'
-gem 'bourbon'
 gem 'fabrication'
 gem 'turbolinks'
 
