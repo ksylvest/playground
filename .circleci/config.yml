@@ -1,5 +1,41 @@
 version: 2
 jobs:
+  rubocop:
+    docker:
+      -
+        image: circleci/ruby:2.5.0
+        environment:
+          BUNDLE_JOBS: 4
+          BUNDLE_RETRY: 4
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+
+      # bundler
+      -
+        type: cache-restore
+        key: bundle-{{ checksum "Gemfile.lock" }}
+      -
+        run: bundle check || bundle install
+      -
+        type: cache-save
+        key: bundle-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # rubocop
+      -
+        type: shell
+        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
+
+      # artifacts
+      -
+        type: artifacts-store
+        path: tmp/rubocop.html
+        destination: rubocop.html
+
+  brakeman:
+
   build:
     docker:
       -
@@ -50,11 +86,6 @@ jobs:
       -
         run: bundle exec rake db:test:prepare
 
-      # rubocop
-      -
-        type: shell
-        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
-
       # brakeman
       -
         type: shell
@@ -81,12 +112,6 @@ jobs:
         type: artifacts-store
         path: coverage
         destination: coverage
-
-      # artifacts
-      -
-        type: artifacts-store
-        path: tmp/rubocop.html
-        destination: rubocop.html
 
       # artifacts
       -
