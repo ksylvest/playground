@@ -110,7 +110,7 @@ workflows:
           - build
       - brakeman:
         requires:
-          -build
+          - build
       - rspec:
         requires:
           - build
