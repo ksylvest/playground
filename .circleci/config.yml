@@ -1,4 +1,5 @@
-version: 2
+version: 2.0
+
 jobs:
   build:
     docker:
@@ -11,12 +12,6 @@ jobs:
           YARN_CACHE_FOLDER: 'tmp/yarn'
           RAILS_ENV: test
           RACK_ENV: test
-          PGHOST: localhost
-      -
-        image: circleci/postgres:9.6.2
-        environment:
-          POSTGRES_USER: circleci
-          POSTGRES_DB: playground_test
     steps:
       - checkout
       -
@@ -39,12 +34,11 @@ jobs:
         key: yarn-{{ checksum "yarn.lock" }}
         paths:
           - tmp/yarn
-      -
-        run: dockerize -wait tcp://localhost:5432
-      -
-        run: bundle exec rake db:test:prepare
 
   rubocop:
+    docker:
+      -
+        image: circleci/ruby:2.5.0
     steps:
       -
         type: shell
@@ -55,6 +49,9 @@ jobs:
         destination: rubocop.html
 
   brakeman:
+    docker:
+      -
+        image: circleci/ruby:2.5.0
     steps:
       -
         type: shell
@@ -65,7 +62,27 @@ jobs:
         destination: brakeman.html
 
   rspec:
+    docker:
+      -
+        image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          BUNDLE_JOBS: 4
+          BUNDLE_RETRY: 4
+          BUNDLE_PATH: vendor/bundle
+          YARN_CACHE_FOLDER: 'tmp/yarn'
+          RAILS_ENV: test
+          RACK_ENV: test
+          PGHOST: localhost
+      -
+        image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: playground_test
     steps:
+      -
+        run: dockerize -wait tcp://localhost:5432
+      -
+        run: bundle exec rake db:test:prepare
       -
         type: shell
         command: |
@@ -85,7 +102,7 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  execute:
     jobs:
       - build
       - rubocop:
