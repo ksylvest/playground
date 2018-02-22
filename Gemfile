@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
-gem 'rails'
+gem 'rails', '5.1.5'
+gem 'pg', '0.21.0'
+
 gem 'bcrypt'
 gem 'foreman'
 gem 'graphql'
@@ -11,7 +13,6 @@ gem 'graphiql-rails'
 gem 'jbuilder'
 gem 'jwt'
 gem 'kaminari'
-gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'sidekiq'
