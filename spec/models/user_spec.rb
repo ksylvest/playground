@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
 
   describe '.system' do
     it 'finds a system user if exists' do
-      user = Fabricate(:user, email: 'system@playground.com')
+      user = Fabricate(:user, email: 'system@playground.dev')
       expect(User.system).to eql(user)
     end
 

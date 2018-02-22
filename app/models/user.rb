@@ -11,7 +11,7 @@ class User < ApplicationRecord
   scope :ordered, -> { order(:id) }
 
   def self.system
-    find_or_initialize_by(email: 'system@playground.com') do |user|
+    find_or_initialize_by(email: 'system@playground.dev') do |user|
       user.name = 'System'
       user.password = SecureRandom.hex
     end
