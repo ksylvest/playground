@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    parallelism: 4
     docker:
       -
         image: circleci/ruby:2.5.0-node-browsers
@@ -94,15 +93,3 @@ jobs:
         type: artifacts-store
         path: tmp/brakeman.html
         destination: brakeman.html
-
-      -
-        persist_to_workspace:
-          root: .
-          paths:
-            - codeclimate
-
-workflows:
-  version: 2
-  execute:
-    jobs:
-      - build
