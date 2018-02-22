@@ -11,15 +11,10 @@ class User < ApplicationRecord
   scope :ordered, -> { order(:id) }
 
   def self.system
-    find_or_create_by!(email: 'info@playground.com') do |user|
-      user.name = 'LSSN'
-      user.password = 'secret'
+    find_or_initialize_by(email: 'system@playground.com') do |user|
+      user.name = 'System'
+      user.password = SecureRandom.hex
     end
-  end
-
-  def self.authenticate(params)
-    user = find_by(email: params[:email])
-    return user if user.authenticate(params[:password])
   end
 
 private

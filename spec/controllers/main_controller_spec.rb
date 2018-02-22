@@ -1,12 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe MainController, type: :controller do
-
+RSpec.describe MainController, type: :request do
   describe 'GET #index' do
     it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
+      get root_path
+      expect(response).to have_http_status(200)
     end
   end
-
 end

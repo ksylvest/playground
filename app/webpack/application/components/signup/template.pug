@@ -3,7 +3,7 @@ form(v-on:submit.prevent="submit" noform.validate)
   .field
     label.label Name
     p.control.has-icons-left.has-icons-right
-      input.input(name="signup[name]" type="email" placeholder="Name" 
+      input.input(name="signup[name]" type="text" placeholder="Name" 
         v-model="form.name" 
         v-bind:class="{ 'is-success': form.valid('name'), 'is-danger': form.invalid('name') }")
       span.icon.is-small.is-left

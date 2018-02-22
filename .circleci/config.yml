@@ -4,7 +4,7 @@ jobs:
     parallelism: 4
     docker:
       -
-        image: circleci/ruby:2.4.2-node-browsers
+        image: circleci/ruby:2.5.0-node-browsers
         environment:
           BUNDLE_JOBS: 4
           BUNDLE_RETRY: 4
@@ -47,9 +47,19 @@ jobs:
 
       # postgres
       -
-        run: dockerize -wait tcp://localhost:5432 -timeout 2ms
+        run: dockerize -wait tcp://localhost:5432
       -
         run: bundle exec rake db:test:prepare
+
+      # rubocop
+      -
+        type: shell
+        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
+
+      # brakeman
+      -
+        type: shell
+        command: bundle exec brakeman -z --format html --output tmp/brakeman.html
 
       # rspec
       -
@@ -60,19 +70,30 @@ jobs:
             --format RspecJunitFormatter \
             --out tmp/results/rspec.xml \
             --format progress \
-            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
 
+      # results
       -
-        store_test_results:
-          path: tmp/results
+        type: test-results-store
+        path: tmp/results
 
+      # artifacts
       -
-        store_artifacts:
-          path: tmp/results
+        type: artifacts-store
+        path: coverage
+        destination: coverage
 
+      # artifacts
       -
-        store_artifacts:
-          path: tmp/capybara
+        type: artifacts-store
+        path: tmp/rubocop.html
+        destination: rubocop.html
+
+      # artifacts
+      -
+        type: artifacts-store
+        path: tmp/brakeman.html
+        destination: brakeman.html
 
       -
         persist_to_workspace:

@@ -9,8 +9,11 @@
           span
       .navbar-menu
         router-link.navbar-item(:to="{ name: 'home' }" active-class="is-active" exact) Home
-        router-link.navbar-item(:to="{ name: 'login' }" active-class="is-active" exact) Login
-        router-link.navbar-item(:to="{ name: 'signup' }" active-class="is-active" exact) Signup
+        template(v-if="!authenticated")
+          router-link.navbar-item(:to="{ name: 'login' }" active-class="is-active" exact) Login
+          router-link.navbar-item(:to="{ name: 'signup' }" active-class="is-active" exact) Signup
+        template(v-if="authenticated")
+          a.navbar-item(v-on:click.stop.prevent="logout()") Logout
 
   router-view
 

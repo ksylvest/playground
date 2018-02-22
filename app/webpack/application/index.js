@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import './assets';
 import './config';
 

@@ -1,7 +1,9 @@
 class MainController < ApplicationController
+
+  # GET /
+  # GET /login
+  # GET /signup
   def index
-    respond_to do |format|
-      format.html
-    end
   end
+
 end

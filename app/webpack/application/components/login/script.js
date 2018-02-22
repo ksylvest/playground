@@ -27,12 +27,6 @@ class Form {
   invalid(field) {
     return this.errors.any() && this.errors.has(field);
   }
-
-  save() {
-    return axios.post('/auth', this.params)
-      .then(() => { this.errors.reset(); })
-      .catch((error) => { this.errors.seed(error.response.data); });
-  }
 }
 
 export default {
@@ -54,8 +48,13 @@ export default {
   },
 
   methods: {
-    submit() {
-      this.form.save();
+    async submit() {
+      try {
+        await this.$store.dispatch('login', this.form.params);
+        this.$router.push({ name: 'home' });
+      } catch (error) {
+        this.form.errors.seed(error.response.data);
+      }
     },
   },
 };

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-
   etag { user&.id }
 
   protect_from_forgery with: :exception
@@ -8,19 +6,13 @@ class ApplicationController < ActionController::Base
   helper_method :user
   helper_method :authenticated?
 
-  force_ssl if: :ssl?
+  force_ssl if: -> { Rails.env.production? }
 
-private
-
-  def ssl?
-    Rails.env.production?
-  end
-
-public
+protected
 
   def user
     payload = Session.decode(cookies[:jwt]) if cookies[:jwt]
-    User.joins(:sessions).find_by(sessions: { token: payload['token'] }) if payload
+    Session.find_by(token: payload['token'])&.user if payload
   end
 
   def authenticate(user)
@@ -37,37 +29,6 @@ public
 
   def authenticated?
     user
-  end
-
-  def authenticate!
-    return if authenticated?
-    store
-    respond_to do |format|
-      format.html { redirect_to root_path, alert: t('flash.authenticate') }
-    end
-  end
-
-  def deauthenticate!
-    return unless authenticated?
-    store
-    respond_to do |format|
-      format.html { redirect_to root_path, alert: t('flash.deauthenticate') }
-    end
-  end
-
-protected
-
-  def token
-    JWT.decode(cookies[:token], Rails.application.secrets.secret_key_base)
-    cookies.permanent.signed[:token]
-  end
-
-  def store
-    session[:location] = request.fullpath
-  end
-
-  def restore(default:)
-    session.delete(:location) || default
   end
 
 end

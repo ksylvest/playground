@@ -1,19 +1,15 @@
 class UsersController < ApplicationController
-
-  before_action :authenticate!, only: %i[edit update]
-  before_action :deauthenticate!, only: %i[new create]
+  wrap_parameters :user, include: %i[name email password]
 
   # POST /user
   def create
     @user = User.new(attributes)
 
-    respond_to do |format|
-      if @user.save
-        authenticate(@user)
-        format.json { head :ok }
-      else
-        format.json { render partial: 'shared/errors', locals: { resource: @user }, status: 422 }
-      end
+    if @user.save
+      authenticate(@user)
+      head :ok
+    else
+      render partial: 'shared/errors', locals: { resource: @user }, status: 422
     end
   end
 

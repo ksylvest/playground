@@ -3,6 +3,8 @@ class Session < ApplicationRecord
 
   belongs_to :user
 
+  validates :ip, presence: true
+
   after_initialize do
     self.token = SecureRandom.hex
   end
