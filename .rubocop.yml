@@ -3,9 +3,11 @@ AllCops:
   Exclude:
     - Gemfile
     - Gemfile.lock
-    - db/schema.rb
-    - bin/**
     - config/environments/*
+    - db/schema.rb
+    - bin/**/*
+    - tmp/**/*
+    - vendor/**/*
     - node_modules/**/*
     - spec/spec_helper.rb
 
