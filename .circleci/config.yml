@@ -22,6 +22,7 @@ jobs:
   rubocop:
     <<: *defaults
     steps:
+      - checkout
       -
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
@@ -43,6 +44,7 @@ jobs:
   brakeman:
     <<: *defaults
     steps:
+      - checkout
       -
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
@@ -64,6 +66,7 @@ jobs:
   rspec:
     <<: *defaults
     steps:
+      - checkout
       -
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
