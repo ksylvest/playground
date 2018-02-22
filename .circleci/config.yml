@@ -1,41 +1,5 @@
 version: 2
 jobs:
-  rubocop:
-    docker:
-      -
-        image: circleci/ruby:2.5.0
-        environment:
-          BUNDLE_JOBS: 4
-          BUNDLE_RETRY: 4
-          BUNDLE_PATH: vendor/bundle
-    steps:
-      - checkout
-
-      # bundler
-      -
-        type: cache-restore
-        key: bundle-{{ checksum "Gemfile.lock" }}
-      -
-        run: bundle check || bundle install
-      -
-        type: cache-save
-        key: bundle-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      # rubocop
-      -
-        type: shell
-        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
-
-      # artifacts
-      -
-        type: artifacts-store
-        path: tmp/rubocop.html
-        destination: rubocop.html
-
-  brakeman:
-
   build:
     docker:
       -
@@ -55,8 +19,6 @@ jobs:
           POSTGRES_DB: playground_test
     steps:
       - checkout
-
-      # bundler
       -
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
@@ -67,8 +29,6 @@ jobs:
         key: bundle-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-
-      # yarn
       -
         type: cache-restore
         key: yarn-{{ checksum "yarn.lock" }}
@@ -79,19 +39,33 @@ jobs:
         key: yarn-{{ checksum "yarn.lock" }}
         paths:
           - tmp/yarn
-
-      # postgres
       -
         run: dockerize -wait tcp://localhost:5432
       -
         run: bundle exec rake db:test:prepare
 
-      # brakeman
+  rubocop:
+    steps:
+      -
+        type: shell
+        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
+      -
+        type: artifacts-store
+        path: tmp/rubocop.html
+        destination: rubocop.html
+
+  brakeman:
+    steps:
       -
         type: shell
         command: bundle exec brakeman -z --format html --output tmp/brakeman.html
+      -
+        type: artifacts-store
+        path: tmp/brakeman.html
+        destination: brakeman.html
 
-      # rspec
+  rspec:
+    steps:
       -
         type: shell
         command: |
@@ -101,20 +75,25 @@ jobs:
             --out tmp/results/rspec.xml \
             --format progress \
             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-
-      # results
       -
         type: test-results-store
         path: tmp/results
-
-      # artifacts
       -
         type: artifacts-store
         path: coverage
         destination: coverage
 
-      # artifacts
-      -
-        type: artifacts-store
-        path: tmp/brakeman.html
-        destination: brakeman.html
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - rubocop:
+        requires:
+          - build
+      - brakeman:
+        requires:
+          -build
+      - rspec:
+        requires:
+          - build
