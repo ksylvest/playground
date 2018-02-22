@@ -64,6 +64,7 @@ jobs:
         destination: brakeman.html
 
   rspec:
+    parallelism: 2
     <<: *defaults
     steps:
       - checkout
