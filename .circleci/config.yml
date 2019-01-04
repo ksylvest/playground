@@ -9,7 +9,7 @@ executors:
         image: circleci/postgres:11.1-alpine-ram
         environment:
           POSTGRES_USER: circleci
-          POSTGRES_DB: personal_test
+          POSTGRES_DB: playground_test
       -
         image: circleci/redis:5.0.3-alpine
     environment:
