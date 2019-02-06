@@ -28,7 +28,7 @@
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.10",
-    "react": "^16.7.0",
+    "react": "^16.8.0",
     "react-dom": "^16.4.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
