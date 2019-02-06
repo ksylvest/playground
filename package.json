@@ -11,7 +11,6 @@
     "@types/jwt-decode": "^2.2.1",
     "@types/lodash": "^4.14.120",
     "@types/react": "^16.8.2",
-    "@types/react-dom": "^16.0.6",
     "@types/react-dom": "^16.8.0",
     "@types/react-fontawesome": "^1.6.3",
     "@types/react-redux": "^7.0.1",
