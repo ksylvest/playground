@@ -241,7 +241,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (4.7.0)
+    stripe (4.8.0)
       faraday (~> 0.13)
       net-http-persistent (~> 3.0)
     temple (0.8.0)
@@ -308,7 +308,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.6.0p0
+   ruby 2.6.1p33
 
 BUNDLED WITH
    1.17.2
