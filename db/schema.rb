@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2017_09_19_040648) do
     t.uuid "user_id", null: false
     t.string "token", null: false
     t.inet "ip", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_sessions_on_token"
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2017_09_19_040648) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
