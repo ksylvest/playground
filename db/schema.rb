@@ -13,10 +13,11 @@
 ActiveRecord::Schema.define(version: 2017_09_19_040648) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
     t.string "token", null: false
     t.inet "ip", null: false
     t.datetime "created_at", null: false
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 2017_09_19_040648) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest"
