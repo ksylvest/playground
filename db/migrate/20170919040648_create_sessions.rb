@@ -5,6 +5,7 @@ class CreateSessions < ActiveRecord::Migration[5.1]
       t.string :token, null: false, index: true
       t.inet :ip, null: false
 
+      t.timestamp :deleted_at
       t.timestamps
     end
 
