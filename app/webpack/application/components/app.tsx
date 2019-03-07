@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
+import * as React from "react";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
 
-import { IAppState } from '../store/states';
+import { IAppState } from "../store/states";
 
-import { Types } from '../store/actions';
+import { Types } from "../store/actions";
 
-import { Authenticator } from './authenticator';
-import { Home } from './home';
+import { Authenticator } from "./authenticator";
+import { Home } from "./home";
 
-import { Auth } from '../resources';
+import { Auth } from "../resources";
 
 interface IAuthProps {
   authed: boolean;
@@ -17,7 +17,7 @@ interface IAuthProps {
 }
 
 const AppNavLink = (props: { to: string, text: string }) =>
-  <NavLink exact to={props.to} className="navbar-item" activeClassName="is-active">{props.text}</NavLink>;
+  <NavLink exact={true} to={props.to} className="navbar-item" activeClassName="is-active">{props.text}</NavLink>;
 
 class App extends React.Component<IAuthProps> {
   public render() {
@@ -45,15 +45,15 @@ class App extends React.Component<IAuthProps> {
           </header>
 
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Authenticator} />
-            <Route exact path="/signup" component={Authenticator} />
+            <Route exact={true} path="/" component={Home} />
+            <Route exact={true} path="/login" component={Authenticator} />
+            <Route exact={true} path="/signup" component={Authenticator} />
           </Switch>
 
           <footer>
             <div className="container">
               <div className="content has-text-centered">
-                <span>by</span> {' '} <a href="https://kvn.app" target="_blank">Kevin Sylvestre</a>
+                <span>by</span> {" "} <a href="https://kvn.app" target="_blank">Kevin Sylvestre</a>
               </div>
             </div>
           </footer>

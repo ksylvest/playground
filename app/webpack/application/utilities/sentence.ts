@@ -1,8 +1,8 @@
-import { capitalize, initial, last } from 'lodash';
+import { capitalize, initial, last } from "lodash";
 
-const MULTI_SEPARATOR = ', ';
-const FINAL_SEPARATOR = ' and ';
-const TERMINATOR = '.';
+const MULTI_SEPARATOR = ", ";
+const FINAL_SEPARATOR = " and ";
+const TERMINATOR = ".";
 
 const sentence = (phrases: string[]): string => {
   const phrase = (() => {

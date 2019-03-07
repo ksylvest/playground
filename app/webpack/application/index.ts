@@ -1,6 +1,6 @@
-import '@babel/polyfill';
+import "@babel/polyfill";
 
-import './initializers';
+import "./initializers";
 
-import './assets';
-import './components';
+import "./assets";
+import "./components";

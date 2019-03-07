@@ -1,19 +1,19 @@
-import * as Cookies from 'js-cookie';
-import * as jwt from 'jwt-decode';
-import { Reducer } from 'redux';
+import * as Cookies from "js-cookie";
+import * as jwt from "jwt-decode";
+import { Reducer } from "redux";
 
 import {
   IAppState,
   ISessionState,
-} from '../states';
+} from "../states";
 
 import {
   Actions,
   Types,
-} from '../actions';
+} from "../actions";
 
 const session = (): ISessionState | undefined => {
-  const cookie = Cookies.get('jwt');
+  const cookie = Cookies.get("jwt");
   if (!cookie) { return; }
   return jwt(cookie) as ISessionState;
 };

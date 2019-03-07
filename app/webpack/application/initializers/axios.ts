@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { each } from 'lodash';
+import axios from "axios";
+import { each } from "lodash";
 
-import { CSRF_TOKEN } from '../config/constants';
+import { CSRF_TOKEN } from "../config/constants";
 
 const DEFAULTS = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-  'X-CSRF-Token': CSRF_TOKEN,
+  "Accept": "application/json",
+  "Content-Type": "application/json",
+  "X-CSRF-Token": CSRF_TOKEN,
 };
 
 each(DEFAULTS, (value, key) => {

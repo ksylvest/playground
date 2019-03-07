@@ -1,1 +1,1 @@
-declare module '@fortawesome/*';
+declare module "@fortawesome/*";

@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const PATH = '/api/user';
+const PATH = "/api/user";
 
 export default class User {
   private name?: string;
@@ -15,9 +15,9 @@ export default class User {
 
   public save() {
     return axios.post(PATH, {
-      name: this.name || '',
-      email: this.email || '',
-      password: this.password || '',
+      email: this.email || "",
+      name: this.name || "",
+      password: this.password || "",
     });
   }
 }

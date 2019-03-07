@@ -1,8 +1,3 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
-  "rules": {
-    "jsx-boolean-value": [true, "never"],
-    "object-literal-sort-keys": false,
-    "quotemark": [true, "single", "jsx-double"]
-  }
+  "extends": ["tslint:recommended", "tslint-react"]
 }

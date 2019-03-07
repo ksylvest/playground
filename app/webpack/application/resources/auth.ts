@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const PATH = '/api/auth';
+const PATH = "/api/auth";
 
 export default class Auth {
   public static destroy() {
@@ -17,8 +17,8 @@ export default class Auth {
 
   public save() {
     return axios.post(PATH, {
-      email: this.email || '',
-      password: this.password || '',
+      email: this.email || "",
+      password: this.password || "",
     });
   }
 }

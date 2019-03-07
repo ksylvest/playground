@@ -1,15 +1,15 @@
-import * as classnames from 'classnames';
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as classnames from "classnames";
+import * as React from "react";
+import { connect } from "react-redux";
 
-import { Field } from './field';
+import { Field } from "./field";
 
-import { User } from '../resources';
-import { sentence } from '../utilities';
+import { User } from "../resources";
+import { sentence } from "../utilities";
 
-import { Types } from '../store/actions';
+import { Types } from "../store/actions";
 
-const DEFAULT_EXCEPTION = { base: ['an unknown error occurred while trying to signup'] };
+const DEFAULT_EXCEPTION = { base: ["an unknown error occurred while trying to signup"] };
 
 interface ISignupProps {
   onAuthenticate(): void;
@@ -39,7 +39,7 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
           icon="info"
           type="text"
           field="name"
-          value={name || ''}
+          value={name || ""}
           label="Name"
           placeholder="Name"
           errors={errors}
@@ -49,7 +49,7 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
           icon="envelope"
           type="email"
           field="email"
-          value={email || ''}
+          value={email || ""}
           label="Email"
           placeholder="Email"
           errors={errors}
@@ -59,7 +59,7 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
           icon="lock"
           type="password"
           field="password"
-          value={password || ''}
+          value={password || ""}
           label="Password"
           placeholder="Password"
           errors={errors}
@@ -68,7 +68,7 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
         <div className="field">
           <div className="control">
             <button
-              className={classnames('button', 'is-primary', { 'is-loading': !!syncing })}
+              className={classnames("button", "is-primary", { "is-loading": !!syncing })}
               disabled={!!syncing}
             >
               Signup
@@ -91,8 +91,8 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
       this.props.onAuthenticate();
     } catch (exception) {
       this.setState({
-        syncing: undefined,
         errors: exception.response ? exception.response.data : DEFAULT_EXCEPTION,
+        syncing: undefined,
       });
     }
   }

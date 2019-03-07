@@ -1,5 +1,5 @@
-import { Action } from 'redux';
-import { Types } from './types';
+import { Action } from "redux";
+import { Types } from "./types";
 
 interface IAuthResetAction extends Action {
   type: Types.AUTH_RESET;
