@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
   faCheckSquare,
@@ -6,7 +6,7 @@ import {
   faExclamationCircle,
   faInfo,
   faLock,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faCheckSquare,

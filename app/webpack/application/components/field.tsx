@@ -1,16 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as classnames from 'classnames';
-import * as React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as classnames from "classnames";
+import * as React from "react";
 
-import { sentence } from '../utilities';
+import { sentence } from "../utilities";
 
 interface IFieldErrors {
   [key: string]: string[];
 }
 
 interface IFieldProps {
-  icon: 'envelope' | 'lock' | 'info';
-  type: 'email' | 'password' | 'text';
+  icon: "envelope" | "lock" | "info";
+  type: "email" | "password" | "text";
   field: string;
   value: string;
   label: string;
@@ -32,7 +32,7 @@ class Field extends React.Component<IFieldProps> {
         <label className="label">{label}</label>
         <div className="control has-icons-left has-icons-right">
           <input
-            className={classnames('input', { 'is-success': this.valid, 'is-danger': this.invalid })}
+            className={classnames("input", { "is-success": this.valid, "is-danger": this.invalid })}
             type={type}
             value={value}
             placeholder={placeholder}

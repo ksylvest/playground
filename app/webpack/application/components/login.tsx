@@ -1,15 +1,15 @@
-import * as classnames from 'classnames';
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as classnames from "classnames";
+import * as React from "react";
+import { connect } from "react-redux";
 
-import { Field } from './field';
+import { Field } from "./field";
 
-import { Auth } from '../resources';
-import { sentence } from '../utilities';
+import { Auth } from "../resources";
+import { sentence } from "../utilities";
 
-import { Types } from '../store/actions';
+import { Types } from "../store/actions";
 
-const DEFAULT_EXCEPTION = { base: ['an unknown error occurred while trying to login'] };
+const DEFAULT_EXCEPTION = { base: ["an unknown error occurred while trying to login"] };
 
 interface ILoginProps {
   onAuthenticate(): void;
@@ -38,7 +38,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
           icon="envelope"
           type="email"
           field="email"
-          value={email || ''}
+          value={email || ""}
           label="Email"
           placeholder="Email"
           errors={errors}
@@ -48,7 +48,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
           icon="lock"
           type="password"
           field="password"
-          value={password || ''}
+          value={password || ""}
           label="Password"
           placeholder="Password"
           errors={errors}
@@ -57,7 +57,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
         <div className="field">
           <div className="control">
             <button
-              className={classnames('button', 'is-primary', { 'is-loading': !!syncing })}
+              className={classnames("button", "is-primary", { "is-loading": !!syncing })}
               disabled={!!syncing}
             >
               Login
@@ -80,8 +80,8 @@ class Login extends React.Component<ILoginProps, ILoginState> {
       this.props.onAuthenticate();
     } catch (exception) {
       this.setState({
-        syncing: undefined,
         errors: exception.response ? exception.response.data : DEFAULT_EXCEPTION,
+        syncing: undefined,
       });
     }
   }

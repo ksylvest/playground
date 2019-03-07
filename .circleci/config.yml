@@ -63,7 +63,7 @@ jobs:
       - checkout
       - yarn
       - run:
-          command: yarn run tslint ./app/**/*.ts
+          command: yarn run tslint ./app/**/*.ts*
 
   rubocop:
     executor: default
