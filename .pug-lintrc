@@ -1,9 +1,0 @@
-{
-  "disallowDuplicateAttributes": true,
-  "disallowMultipleLineBreaks": true,
-  "requireSpecificAttributes": [
-    { "html": "lang" },
-    { "img": "alt" },
-    { "input": "type" }
-  ]
-}
