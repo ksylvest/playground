@@ -41,7 +41,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.3.4000",
     "webfontloader": "^1.6.28",
     "webpack": "^4.29.6"
   },
