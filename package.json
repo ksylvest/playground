@@ -9,7 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@rails/webpacker": "^4.0.2",
     "@types/classnames": "^2.2.7",
-    "@types/js-cookie": "^2.2.1",
+    "@types/js-cookie": "^2.2.2",
     "@types/jwt-decode": "^2.2.1",
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.10",
