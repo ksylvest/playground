@@ -44,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.12)
@@ -66,9 +64,6 @@ GEM
       launchy
     childprocess (1.0.1)
       rake (< 13.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
@@ -86,7 +81,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.0)
     jaro_winkler (1.5.2)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -259,6 +253,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdriver (0.1.0)
     webpacker (4.0.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -278,7 +273,6 @@ DEPENDENCIES
   byebug
   capybara
   capybara-screenshot
-  chromedriver-helper
   fabrication
   foreman
   jbuilder
@@ -303,6 +297,7 @@ DEPENDENCIES
   turbolinks
   uglifier
   web-console
+  webdriver
   webpacker
 
 RUBY VERSION

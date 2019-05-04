@@ -27,10 +27,10 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
+  gem 'webdriver'
 end
 
 group :development do
