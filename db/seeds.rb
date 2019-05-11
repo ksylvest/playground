@@ -7,6 +7,6 @@ end
 
 Session.transaction do
   User.all.each do |user|
-    Session.new(user: user, ip: "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}").save!
+    Session.new(user: user, ip: '0.0.0.0').save!
   end
 end

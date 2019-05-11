@@ -12,6 +12,10 @@ html
 
     = action_cable_meta_tag
     = csrf_meta_tags
+
+    javascript:
+      CONFIG = #{{JSON.generate(config)}};
+
   body
     == yield
 
