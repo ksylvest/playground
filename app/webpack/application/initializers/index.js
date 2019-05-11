@@ -1,2 +1,0 @@
-import './axios';
-import './fontawesome';

@@ -1,111 +1,50 @@
-import * as classnames from "classnames";
 import * as React from "react";
-import { connect } from "react-redux";
+import { useContext } from "react";
+import { Mutation } from "react-apollo";
 
-import { Field } from "./field";
+import { Context } from "./context";
 
-import { Auth } from "../resources";
-import { sentence } from "../utilities";
+import { Form } from "./login/form";
 
-import { Types } from "../store/actions";
+import {
+  IErrors,
+  IUser,
+  Status,
+} from "../types";
 
-const DEFAULT_EXCEPTION = { base: ["an unknown error occurred while trying to login"] };
+import * as MUTATION from "./login/mutation.gql";
 
-interface ILoginProps {
-  onAuthenticate(): void;
+interface IMutationData {
+  login: {
+    status: Status;
+    user?: IUser;
+    errors?: IErrors;
+  };
 }
 
-interface ILoginState {
-  email?: string;
-  password?: string;
-  errors?: { [key: string]: string[] };
-  syncing?: Date;
+interface IMutationVariables {
+  input: {
+    email: string;
+    password: string;
+  };
 }
 
-class Login extends React.Component<ILoginProps, ILoginState> {
-  constructor(props: ILoginProps) {
-    super(props);
-    this.state = {};
-  }
-
-  public render() {
-    const { onSubmit, onChange } = this;
-    const { email, password, syncing, errors } = this.state;
-    return (
-      <form onSubmit={onSubmit}>
-        {errors && errors.base && <div className="notification is-danger">{sentence(errors.base)}</div>}
-        <Field
-          icon="envelope"
-          type="email"
-          field="email"
-          value={email || ""}
-          label="Email"
-          placeholder="Email"
-          errors={errors}
-          onChange={onChange}
+export const Login: React.FC = () => {
+  const { auth } = useContext(Context);
+  return (
+    <Mutation<IMutationData, IMutationVariables> mutation={MUTATION}>
+      {(submit, { loading, data }) => (
+        <Form
+          save={async (input) => {
+            const result = await submit({ variables: { input } });
+            if (!result || !result.data) { return; }
+            if (!result.data.login.user) { return; }
+            auth(result.data.login.user);
+          }}
+          loading={loading}
+          errors={data && data.login ? data.login.errors : undefined}
         />
-        <Field
-          icon="lock"
-          type="password"
-          field="password"
-          value={password || ""}
-          label="Password"
-          placeholder="Password"
-          errors={errors}
-          onChange={onChange}
-        />
-        <div className="field">
-          <div className="control">
-            <button
-              className={classnames("button", "is-primary", { "is-loading": !!syncing })}
-              disabled={!!syncing}
-            >
-              Login
-            </button>
-          </div>
-        </div>
-      </form>
-    );
-  }
-
-  private save = async () => {
-    if (this.state.syncing) { return; }
-    this.setState({ syncing: new Date() });
-
-    const { email, password } = this.state;
-
-    const auth = new Auth(email, password);
-    try {
-      await auth.save();
-      this.props.onAuthenticate();
-    } catch (exception) {
-      this.setState({
-        errors: exception.response ? exception.response.data : DEFAULT_EXCEPTION,
-        syncing: undefined,
-      });
-    }
-  }
-
-  private onChange = (field: string, value: string) => {
-    this.setState({ [field]: value });
-  }
-
-  private onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-    this.save();
-  }
-}
-
-const ConnectedLogin = connect(
-  undefined,
-  (dispatch) => {
-    return {
-      onAuthenticate: () => {
-        dispatch({ type: Types.AUTH_RESET });
-      },
-    };
-  },
-)(Login);
-
-export { ConnectedLogin as Login };
+      )}
+    </Mutation>
+  );
+};

@@ -1,20 +1,9 @@
 class Session < ApplicationRecord
-  ALGORITHM = 'HS256'.freeze
-
   belongs_to :user
 
   validates :ip, presence: true
 
-  after_initialize do
-    self.token = SecureRandom.hex
-  end
+  after_initialize { self.ip ||= Current.ip }
 
-  def self.encode(payload, algorithm: ALGORITHM)
-    JWT.encode(payload, Rails.application.secrets.secret_key_base, algorithm)
-  end
-
-  def self.decode(payload, algorithm: ALGORITHM)
-    result, = JWT.decode(payload, Rails.application.secrets.secret_key_base, algorithm, algorithm: algorithm)
-    result
-  end
+  scope :active, -> { where(deleted_at: nil) }
 end

@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   root to: 'main#index'
+  post '/graphql', to: 'graphql#execute', as: :graphql
 
   constraints format: :html do
-    %w[login signup checkout recovery].each do |path|
+    %w[login signup settings settings/profile settings/sessions].each do |path|
       get path, to: 'main#index', as: path
     end
   end

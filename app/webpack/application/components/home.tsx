@@ -1,9 +1,7 @@
 import * as React from "react";
 
-const Home = () => (
+export const Home: React.FC = () => (
   <div className="section">
     <div className="title">Welcome!</div>
   </div>
 );
-
-export { Home };
