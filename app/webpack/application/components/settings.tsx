@@ -16,7 +16,7 @@ import {
   ROOT_URL,
   SETTINGS_PROFILE_URL,
   SETTINGS_SESSIONS_URL,
-} from "../config/routes";
+} from "@application/config/routes";
 
 const SESSIONS_DEFAULT_URL = SETTINGS_PROFILE_URL;
 

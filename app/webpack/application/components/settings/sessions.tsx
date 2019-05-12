@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Query } from "react-apollo";
 
-import { ISession } from "../../types";
+import { ISession } from "@application/types";
 
 import * as QUERY from "./sessions/query.gql";
 
