@@ -16,8 +16,7 @@ html
     javascript:
       CONFIG = #{{JSON.generate(config)}};
 
-  body
-    == yield
-
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
+  body
+    == yield
