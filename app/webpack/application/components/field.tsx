@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as classnames from "classnames";
 import * as React from "react";
 
 import { IErrors } from "@application/types";
 
 import { sentence } from "@application/utilities";
+
+import { Form } from "@application/components/bulma";
 
 export const Field: React.FC<{
   icon: "envelope" | "lock" | "info";
@@ -14,7 +15,7 @@ export const Field: React.FC<{
   label: string;
   placeholder: string;
   errors?: IErrors;
-  onValue(value: string | undefined): void;
+  onValue(value: string): void;
 }> = ({
   icon,
   type,
@@ -31,27 +32,27 @@ export const Field: React.FC<{
   const valid = !!errors && !messages;
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onValue(event.target.value || undefined);
+    onValue(event.target.value);
   };
 
   return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control has-icons-left has-icons-right">
-        <input
-          className={classnames("input", { "is-success": valid, "is-danger": invalid })}
+    <Form.Field>
+      <Form.Label>{label}</Form.Label>
+      <Form.Control icons="both">
+        <Form.Input
+          color={errors ? (!messages ? "success" : "danger") : undefined}
           type={type}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
         />
-        <span className="icon is-small is-left"><FontAwesomeIcon icon={icon} /></span>
-        <span className="icon is-small is-right">
+        <Form.Icon size="small" alignment="left"><FontAwesomeIcon icon={icon} /></Form.Icon>
+        <Form.Icon size="small" alignment="right">
           {valid && <FontAwesomeIcon icon="check-square" />}
           {invalid && <FontAwesomeIcon icon="exclamation-circle" />}
-        </span>
-        {help && <p className="help is-danger">{help}</p>}
-      </div>
-    </div>
+        </Form.Icon>
+        {help && <Form.Help color="danger">{help}</Form.Help>}
+      </Form.Control>
+    </Form.Field>
   );
 };

@@ -6,16 +6,16 @@ import {
   SETTINGS_SESSIONS_URL,
 } from "@application/config/routes";
 
+import { Panel } from "@application/components/bulma";
+
 export const Menu: React.FC = () => (
-  <nav className="panel">
-    <p className="panel-heading">
-      Personal
-    </p>
+  <Panel>
+    <Panel.Heading>Personal</Panel.Heading>
     <NavLink to={SETTINGS_PROFILE_URL} className="panel-block" activeClassName="is-active">
       Profile
     </NavLink>
     <NavLink to={SETTINGS_SESSIONS_URL} className="panel-block" activeClassName="is-active">
       Sessions
     </NavLink>
-  </nav>
+  </Panel>
 );

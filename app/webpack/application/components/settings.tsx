@@ -6,6 +6,13 @@ import {
   Switch,
 } from "react-router-dom";
 
+import {
+  Column,
+  Columns,
+  Container,
+  Section,
+} from "@application/components/bulma";
+
 import { Context } from "./context";
 
 import { Menu } from "./settings/menu";
@@ -24,13 +31,13 @@ export const Settings: React.FC = () => {
   const { user } = useContext(Context);
   if (!user) { return <Redirect to={ROOT_URL} />; }
   return (
-    <div className="container">
-      <div className="section">
-        <div className="columns">
-          <div className="column is-3">
+    <Container>
+      <Section>
+        <Columns>
+          <Column size={3}>
             <Menu />
-          </div>
-          <div className="column is-9">
+          </Column>
+          <Column size={9}>
             <Switch>
               <Route
                 path={SETTINGS_PROFILE_URL}
@@ -42,9 +49,9 @@ export const Settings: React.FC = () => {
               />
               <Redirect to={SESSIONS_DEFAULT_URL} />
             </Switch>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Column>
+        </Columns>
+      </Section>
+    </Container>
   );
 };
