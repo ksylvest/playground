@@ -7,6 +7,12 @@ import {
   Switch,
 } from "react-router-dom";
 
+import {
+  Container,
+  Section,
+  Tabs,
+} from "@application/components/bulma";
+
 import { Context } from "./context";
 import { Login } from "./login";
 import { Signup } from "./signup";
@@ -18,12 +24,12 @@ import {
 } from "@application/config/routes";
 
 export const Authenticator: React.FC = () => {
-  const { user } = useContext(Context);
-  if (user) { return <Redirect to={ROOT_URL} />; }
+  const { session } = useContext(Context);
+  if (session) { return <Redirect to={ROOT_URL} />; }
   return (
-    <div className="container">
-      <div className="section">
-        <div className="tabs">
+    <Container>
+      <Section>
+        <Tabs>
           <ul>
             <Route
               path={LOGIN_URL}
@@ -42,7 +48,7 @@ export const Authenticator: React.FC = () => {
               )}
             />
           </ul>
-        </div>
+        </Tabs>
         <Switch>
           <Route
             path={LOGIN_URL}
@@ -53,7 +59,7 @@ export const Authenticator: React.FC = () => {
             component={Signup}
           />
         </Switch>
-      </div>
-    </div>
+      </Section>
+    </Container>
   );
 };

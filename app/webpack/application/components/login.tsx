@@ -4,7 +4,7 @@ import { Mutation } from "react-apollo";
 
 import { Context } from "./context";
 
-import { Form } from "./login/form";
+import { Fields } from "./login/fields";
 
 import {
   IErrors,
@@ -34,7 +34,7 @@ export const Login: React.FC = () => {
   return (
     <Mutation<IMutationData, IMutationVariables> mutation={MUTATION}>
       {(submit, { loading, data }) => (
-        <Form
+        <Fields
           save={async (input) => {
             const result = await submit({ variables: { input } });
             if (!result || !result.data) { return; }

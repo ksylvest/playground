@@ -28,11 +28,6 @@ export const Sessions: React.FC = () => (
               {data.sessions.map(({ id, ip }) => (
                 <tr key={id}>
                   <td>{ip}</td>
-                  <td>
-                    <button type="button" className="button">
-                      Revoke
-                    </button>
-                  </td>
                 </tr>
               ))}
             </tbody>

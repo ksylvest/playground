@@ -3,6 +3,13 @@ import { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
 
+import {
+  Button,
+  Container,
+  Content,
+  Navbar,
+} from "@application/components/bulma";
+
 import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
 import { IUser } from "@application/types";
@@ -34,19 +41,15 @@ export const App: React.FC = () => {
       <Context.Provider value={{ auth, deauth, user }}>
         <Router>
           <div>
-            <header className="navbar is-light">
-              <div className="navbar-brand">
+            <Navbar color="light">
+              <Navbar.Brand>
                 <NavLink className="navbar-item" to={ROOT_URL} activeClassName="is-active">
                   Playground
                 </NavLink>
-                <div className="navbar-burger burger">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-              <div className="navbar-menu">
-                <div className="navbar-start">
+                <Navbar.Burger />
+              </Navbar.Brand>
+              <Navbar.Menu>
+                <Navbar.Start>
                   <NavLink exact to={ROOT_URL} className="navbar-item" activeClassName="is-active">
                     Home
                   </NavLink>
@@ -55,8 +58,8 @@ export const App: React.FC = () => {
                       Settings
                     </NavLink>
                   }
-                </div>
-                <div className="navbar-end">
+                </Navbar.Start>
+                <Navbar.End>
                   {!user &&
                     <>
                       <NavLink exact to={LOGIN_URL} className="navbar-item" activeClassName="is-active">
@@ -71,18 +74,16 @@ export const App: React.FC = () => {
                     <>
                       <Logout>
                         {({ logout }) => (
-                          <div className="navbar-item">
-                            <button type="button" className="button" onClick={logout}>
-                              Logout
-                            </button>
-                          </div>
+                          <Navbar.Item>
+                            <Button type="button" onClick={logout}>Logout</Button>
+                          </Navbar.Item>
                         )}
                       </Logout>
                     </>
                   }
-                </div>
-              </div>
-            </header>
+                </Navbar.End>
+              </Navbar.Menu>
+            </Navbar>
 
             <Switch>
               <Route exact path={ROOT_URL} component={Home} />
@@ -92,11 +93,13 @@ export const App: React.FC = () => {
             </Switch>
 
             <footer>
-              <div className="container">
-                <div className="content has-text-centered">
-                  <span>by</span> {" "} <a href="https://kvn.app" target="_blank">Kevin Sylvestre</a>
-                </div>
-              </div>
+              <Container>
+                <Content>
+                  <p className="has-text-centered">
+                    <span>by</span> {" "} <a href="https://kvn.app" target="_blank">Kevin Sylvestre</a>
+                  </p>
+                </Content>
+              </Container>
             </footer>
           </div>
         </Router>
