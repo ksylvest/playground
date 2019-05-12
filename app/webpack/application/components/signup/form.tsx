@@ -2,11 +2,11 @@ import * as cn from "classnames";
 import * as React from "react";
 import { useState } from "react";
 
-import { IErrors } from "../../types";
+import { IErrors } from "@application/types";
 
-import { sentence } from "../../utilities";
+import { sentence } from "@application/utilities";
 
-import { Field } from "../field";
+import { Field } from "@application/components/field";
 
 export const Form: React.FC<{
   loading: boolean;

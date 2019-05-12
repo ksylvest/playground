@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as classnames from "classnames";
 import * as React from "react";
 
-import { IErrors } from "../types";
+import { IErrors } from "@application/types";
 
-import { sentence } from "../utilities";
+import { sentence } from "@application/utilities";
 
 export const Field: React.FC<{
   icon: "envelope" | "lock" | "info";

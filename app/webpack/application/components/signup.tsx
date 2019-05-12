@@ -10,7 +10,7 @@ import {
   IErrors,
   IUser,
   Status,
-} from "../types";
+} from "@application/types";
 
 import * as MUTATION from "./signup/mutation.gql";
 

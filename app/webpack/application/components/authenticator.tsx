@@ -15,7 +15,7 @@ import {
   LOGIN_URL,
   ROOT_URL,
   SIGNUP_URL,
-} from "../config/routes";
+} from "@application/config/routes";
 
 export const Authenticator: React.FC = () => {
   const { user } = useContext(Context);

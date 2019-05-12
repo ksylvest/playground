@@ -3,9 +3,9 @@ import { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
 
-import { CLIENT as APOLLO_CLIENT } from "../config/apollo";
+import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
-import { IUser } from "../types";
+import { IUser } from "@application/types";
 
 import { Context } from "./context";
 
@@ -19,7 +19,7 @@ import {
   ROOT_URL,
   SETTINGS_URL,
   SIGNUP_URL,
-} from "../config/routes";
+} from "@application/config/routes";
 
 declare const CONFIG: { user?: IUser };
 const USER = CONFIG.user;

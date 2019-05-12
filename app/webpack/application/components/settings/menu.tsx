@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import {
   SETTINGS_PROFILE_URL,
   SETTINGS_SESSIONS_URL,
-} from "../../config/routes";
+} from "@application/config/routes";
 
 export const Menu: React.FC = () => (
   <nav className="panel">

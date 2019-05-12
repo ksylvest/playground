@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { IUser } from "../types";
+import { IUser } from "@application/types";
 
 export const Context = createContext<{
   user?: IUser;
