@@ -53,6 +53,6 @@
   "devDependencies": {
     "tslint": "^5.16.0",
     "tslint-react": "^4.0.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.4.0"
   }
 }
