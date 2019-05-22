@@ -22,7 +22,7 @@
     "@types/webfontloader": "^1.6.29",
     "actioncable": "^5.2.3",
     "apollo-boost": "^0.3.1",
-    "apollo-client": "^2.5.1",
+    "apollo-client": "^2.6.0",
     "axios": "^0.18.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-polyfill": "^6.26.0",
