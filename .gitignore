@@ -2,8 +2,8 @@
 .sass*
 .powenv
 config/application.yml
+config/master.key
 coverage
-solr
 log/*
 tmp/*
 db/*.sqlite*
