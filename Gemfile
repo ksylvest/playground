@@ -33,6 +33,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 group :development do

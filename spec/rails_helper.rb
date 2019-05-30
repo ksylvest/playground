@@ -6,6 +6,9 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
