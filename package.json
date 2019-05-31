@@ -9,7 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@rails/webpacker": "^4.0.4",
-    "@types/classnames": "^2.2.7",
+    "@types/classnames": "^2.2.8",
     "@types/graphql": "^14.2.0",
     "@types/js-cookie": "^2.2.2",
     "@types/jwt-decode": "^2.2.1",
