@@ -8,9 +8,8 @@ class GraphqlController < ApplicationController
 private
 
   def result
-    context = { cookies: cookies }
     query = params[:query]
     variables = params[:variables]
-    AppSchema.execute(query, variables: variables, context: context)
+    AppSchema.execute(query, variables: variables)
   end
 end

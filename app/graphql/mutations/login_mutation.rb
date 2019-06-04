@@ -1,5 +1,5 @@
 module Mutations
-  class LoginMutation < AuthMutation
+  class LoginMutation < GraphQL::Schema::Mutation
     argument :input, ::Types::LoginInput, required: true
 
     field :status, ::Types::StatusType, null: false
@@ -10,7 +10,7 @@ module Mutations
       auth = Auth.new(input.to_h)
       user = auth.authenticate
       if user
-        auth!(user)
+        Current.auth!(user: user)
         { status: :ok, session: Current.session }
       else
         { status: :unprocessable, errors: auth.errors }

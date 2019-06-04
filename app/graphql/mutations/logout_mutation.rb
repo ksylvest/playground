@@ -1,9 +1,9 @@
 module Mutations
-  class LogoutMutation < AuthMutation
+  class LogoutMutation < GraphQL::Schema::Mutation
     field :status, ::Types::StatusType, null: false
 
     def resolve
-      deauth!
+      Current.deauth!
       { status: :ok }
     end
   end
