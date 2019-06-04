@@ -1,9 +1,12 @@
 mutation LoginMutation($input: LoginInput!) {
   login(input: $input) {
     status
-    user {
+    session {
       id
-      name
+      user {
+        id
+        name
+      }
     }
     errors {
       messages

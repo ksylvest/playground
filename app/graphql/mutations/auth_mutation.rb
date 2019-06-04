@@ -11,6 +11,7 @@ module Mutations
     def deauth!
       cookies = context[:cookies]
       Current.session&.touch(:deleted_at)
+      Current.session = nil
       cookies.delete(:session_id)
     end
   end

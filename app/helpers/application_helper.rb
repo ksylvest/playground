@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def config
-    { user: Current.user&.slice(:id, :name) }
+    { session: Current.session&.slice(:id) }
   end
 end

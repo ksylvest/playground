@@ -4,14 +4,14 @@ module Mutations
 
     field :status, ::Types::StatusType, null: false
     field :errors, ::Types::ErrorsType, null: true
-    field :user, ::Types::UserType, null: true
+    field :session, ::Types::SessionType, null: true
 
     def resolve(input:)
       auth = Auth.new(input.to_h)
       user = auth.authenticate
       if user
         auth!(user)
-        { status: :ok, user: user }
+        { status: :ok, session: Current.session }
       else
         { status: :unprocessable, errors: auth.errors }
       end
