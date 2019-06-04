@@ -1,5 +1,5 @@
 module Mutations
-  class SignupMutation < AuthMutation
+  class SignupMutation < GraphQL::Schema::Mutation
     argument :input, ::Types::SignupInput, required: true
 
     field :status, ::Types::StatusType, null: false
@@ -9,7 +9,7 @@ module Mutations
     def resolve(input:)
       user = User.new(input.to_h)
       if user.save
-        auth!(user)
+        Current.auth!(user: user)
         { status: :ok, session: Current.session }
       else
         { status: :unprocessable, errors: user.errors }
