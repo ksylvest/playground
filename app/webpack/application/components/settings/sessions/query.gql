@@ -2,5 +2,15 @@ query Sessions {
   sessions {
     id
     ip
+    geography {
+      id
+      city
+      region
+      country
+      continent
+      zip
+      latitude
+      longitude
+    }
   }
 }
