@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
+import { RouteComponentProps, withRouter } from "react-router";
 import {
   Link,
   Redirect,
@@ -7,11 +8,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import {
-  Container,
-  Section,
-  Tabs,
-} from "@application/components/bulma";
+import { Tabs } from "@application/components/bulma";
 
 import { Context } from "./context";
 import { Login } from "./login";
@@ -23,43 +20,46 @@ import {
   SIGNUP_URL,
 } from "@application/config/routes";
 
-export const Authenticator: React.FC = () => {
+const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
   const { session } = useContext(Context);
-  if (session) { return <Redirect to={ROOT_URL} />; }
+  if (session) {
+    return <Redirect to={location.state && location.state.back ? location.state.back : ROOT_URL} />;
+  }
   return (
-    <Container>
-      <Section>
-        <Tabs>
-          <ul>
-            <Route
-              path={LOGIN_URL}
-              children={({ match }) => (
-                <li className={match ? "is-active" : undefined}>
-                  <Link to={LOGIN_URL}>Login</Link>
-                </li>
-              )}
-            />
-            <Route
-              path={SIGNUP_URL}
-              children={({ match }) => (
-                <li className={match ? "is-active" : undefined}>
-                  <Link to={SIGNUP_URL}>Signup</Link>
-                </li>
-              )}
-            />
-          </ul>
-        </Tabs>
-        <Switch>
+    <>
+      <Tabs>
+        <ul>
           <Route
             path={LOGIN_URL}
-            component={Login}
+            children={({ match }) => (
+              <li className={match ? "is-active" : undefined}>
+                <Link to={{ pathname: LOGIN_URL, state: location.state }}>Login</Link>
+              </li>
+            )}
           />
           <Route
             path={SIGNUP_URL}
-            component={Signup}
+            children={({ match }) => (
+              <li className={match ? "is-active" : undefined}>
+                <Link to={{ pathname: SIGNUP_URL, state: location.state }}>Signup</Link>
+              </li>
+            )}
           />
-        </Switch>
-      </Section>
-    </Container>
+        </ul>
+      </Tabs>
+      <Switch>
+        <Route
+          path={LOGIN_URL}
+          component={Login}
+        />
+        <Route
+          path={SIGNUP_URL}
+          component={Signup}
+        />
+      </Switch>
+    </>
   );
 };
+
+const AuthenticatorWithRouter = withRouter(Authenticator);
+export { AuthenticatorWithRouter as Authenticator };
