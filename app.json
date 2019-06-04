@@ -1,6 +1,9 @@
 {
   "name": "ksylvest",
   "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
     "NODE_ENV": {
       "required": true
     },
