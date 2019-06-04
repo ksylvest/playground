@@ -16,6 +16,7 @@ html
     javascript:
       CONFIG = #{{JSON.generate(config)}};
       ENVIRONMENT = #{{JSON.generate(Rails.env)}};
+      RELEASE = #{{JSON.generate(release)}};
       SENTRY_DSN = #{{JSON.generate(Rails.application.credentials.sentry_dsn)}};
 
     = stylesheet_pack_tag 'application'
