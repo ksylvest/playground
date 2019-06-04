@@ -8,6 +8,8 @@ module Playground
   class Application < Rails::Application
     config.load_defaults 5.1
 
+    config.active_job.queue_adapter = :sidekiq
+
     config.generators do |g|
       g.helper false
       g.stylesheets false
@@ -16,6 +18,5 @@ module Playground
       g.test_framework :rspec, fixture: true, views: false
       g.fixture_replacement :fabrication
     end
-
   end
 end
