@@ -1,4 +1,5 @@
 .bundle
+.byebug*
 .sass*
 .powenv
 config/application.yml
