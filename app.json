@@ -10,6 +10,9 @@
     "RAILS_ENV": {
       "required": true
     },
+    "RAILS_MASTER_KEY": {
+      "required": true
+    },
     "SECRET_KEY_BASE": {
       "generator": "secret"
     }
