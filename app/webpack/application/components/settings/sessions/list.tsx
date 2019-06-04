@@ -28,6 +28,10 @@ export const List: React.FC<{
               {session.ip}
             </td>
             <td>
+              {session.geography &&
+                <>{session.geography.city}, {session.geography.region}, {session.geography.country}</>}
+            </td>
+            <td>
               {current && current.id !== session.id
                 ? <Button outlined color="danger" onClick={() => onRevoke(session)}>Revoke</Button>
                 : <Button disabled>Current</Button>

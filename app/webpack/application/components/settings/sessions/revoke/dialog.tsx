@@ -32,6 +32,8 @@ export const Dialog: React.FC<{
           <Content>
             <p>Are you sure you want to revoke this session?</p>
             <p><strong>{session.ip}</strong></p>
+            {session.geography &&
+              <p><strong>{session.geography.city}, {session.geography.region}, {session.geography.country}</strong></p>}
             <p>Devices using this session will be need to re-authenticate.</p>
           </Content>
         </Modal.Card.Body>
