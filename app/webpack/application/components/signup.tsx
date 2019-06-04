@@ -8,7 +8,7 @@ import { Fields } from "./signup/fields";
 
 import {
   IErrors,
-  IUser,
+  ISession,
   Status,
 } from "@application/types";
 
@@ -17,7 +17,7 @@ import * as MUTATION from "./signup/mutation.gql";
 interface IMutationData {
   signup: {
     status: Status;
-    user?: IUser;
+    session?: ISession;
     errors?: IErrors;
   };
 }
@@ -33,19 +33,20 @@ interface IMutationVariables {
 export const Signup: React.FC = () => {
   const { auth } = useContext(Context);
   return (
-    <Mutation<IMutationData, IMutationVariables> mutation={MUTATION}>
-      {(submit, { loading, data }) => (
+    <Mutation<IMutationData, IMutationVariables>
+      mutation={MUTATION}
+      children={(submit, { loading, data }) => (
         <Fields
           save={async (input) => {
             const result = await submit({ variables: { input } });
             if (!result || !result.data) { return; }
-            if (!result.data.signup.user) { return; }
-            auth(result.data.signup.user);
+            if (!result.data.signup.session) { return; }
+            auth(result.data.signup.session);
           }}
           loading={loading}
           errors={data && data.signup ? data.signup.errors : undefined}
         />
       )}
-    </Mutation>
+    />
   );
 };

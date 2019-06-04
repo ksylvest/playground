@@ -8,7 +8,7 @@ module Types
     end
 
     def sessions
-      Current.user.sessions
+      Current.user.sessions.active
     end
   end
 end

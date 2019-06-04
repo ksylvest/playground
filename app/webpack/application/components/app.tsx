@@ -12,7 +12,7 @@ import {
 
 import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
-import { IUser } from "@application/types";
+import { ISession } from "@application/types";
 
 import { Context } from "./context";
 
@@ -28,19 +28,19 @@ import {
   SIGNUP_URL,
 } from "@application/config/routes";
 
-declare const CONFIG: { user?: IUser };
-const USER = CONFIG.user;
+declare const CONFIG: { session?: ISession };
+const SESSION = CONFIG.session;
 
 export const App: React.FC = () => {
-  const [user, setUser] = useState<IUser | undefined>(USER);
-  const auth = setUser;
-  const deauth = () => setUser(undefined);
+  const [session, setSession] = useState<ISession | undefined>(SESSION);
+  const auth = setSession;
+  const deauth = () => setSession(undefined);
 
   return (
     <ApolloProvider client={APOLLO_CLIENT}>
-      <Context.Provider value={{ auth, deauth, user }}>
+      <Context.Provider value={{ auth, deauth, session }}>
         <Router>
-          <div>
+          <>
             <Navbar color="light">
               <Navbar.Brand>
                 <NavLink className="navbar-item" to={ROOT_URL} activeClassName="is-active">
@@ -53,14 +53,14 @@ export const App: React.FC = () => {
                   <NavLink exact to={ROOT_URL} className="navbar-item" activeClassName="is-active">
                     Home
                   </NavLink>
-                  {user &&
+                  {session &&
                     <NavLink to={SETTINGS_URL} className="navbar-item" activeClassName="is-active">
                       Settings
                     </NavLink>
                   }
                 </Navbar.Start>
                 <Navbar.End>
-                  {!user &&
+                  {!session &&
                     <>
                       <NavLink exact to={LOGIN_URL} className="navbar-item" activeClassName="is-active">
                         Login
@@ -70,7 +70,7 @@ export const App: React.FC = () => {
                       </NavLink>
                     </>
                   }
-                  {user &&
+                  {session &&
                     <>
                       <Logout>
                         {({ logout }) => (
@@ -101,7 +101,7 @@ export const App: React.FC = () => {
                 </Content>
               </Container>
             </footer>
-          </div>
+          </>
         </Router>
       </Context.Provider>
     </ApolloProvider>
