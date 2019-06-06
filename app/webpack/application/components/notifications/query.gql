@@ -1,0 +1,8 @@
+query Notifications {
+  notifications {
+    id
+    message
+    read
+    sent
+  }
+}

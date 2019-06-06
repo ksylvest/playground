@@ -12,6 +12,7 @@ import { Logout } from "@application/components/logout";
 
 import {
   LOGIN_URL,
+  NOTIFICATIONS_URL,
   ROOT_URL,
   SETTINGS_URL,
   SIGNUP_URL,
@@ -34,9 +35,14 @@ export const Header: React.FC = () => {
               Home
             </NavLink>
             {session &&
-              <NavLink to={SETTINGS_URL} className="navbar-item" activeClassName="is-active">
-                Settings
-              </NavLink>
+              <>
+                <NavLink to={SETTINGS_URL} className="navbar-item" activeClassName="is-active">
+                  Settings
+                </NavLink>
+                <NavLink to={NOTIFICATIONS_URL} className="navbar-item" activeClassName="is-active">
+                  Notifications
+                </NavLink>
+              </>
             }
           </Navbar.Start>
           <Navbar.End>

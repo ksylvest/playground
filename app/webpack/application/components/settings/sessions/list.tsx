@@ -34,7 +34,7 @@ export const List: React.FC<{
             <td>
               {current && current.id !== session.id
                 ? <Button outlined color="danger" onClick={() => onRevoke(session)}>Revoke</Button>
-                : <Button disabled>Current</Button>
+                : <Button outlined disabled>Current</Button>
               }
             </td>
           </tr>
