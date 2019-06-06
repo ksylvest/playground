@@ -7,24 +7,24 @@ export const Columns: React.FC<{
   centered?: boolean;
   vcentered?: boolean;
   multiline?: boolean;
-  gapless?: boolean;
+  gap?: "gapless" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 6 | 7;
 }> = ({
   mobile,
   desktop,
   centered,
   vcentered,
   multiline,
-  gapless,
+  gap,
   children,
 }) => (
   <div
     className={cn(
       "columns",
+      gap && `is-variable is-${gap}`,
       mobile && "is-mobile",
       desktop && "is-desktop",
       multiline && "is-multiline",
       centered && "is-centered",
-      gapless && "is-gapless",
       vcentered && "is-vcentered",
     )}
   >
