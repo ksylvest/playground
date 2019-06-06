@@ -23,10 +23,12 @@ import { Context } from "./context";
 import { Alerts } from "./alerts";
 import { Authenticator } from "./authenticator";
 import { Home } from "./home";
+import { Notifications } from "./notifications";
 import { Settings } from "./settings";
 
 import {
   LOGIN_URL,
+  NOTIFICATIONS_URL,
   ROOT_URL,
   SETTINGS_URL,
   SIGNUP_URL,
@@ -53,6 +55,7 @@ export const App: React.FC = () => {
                   <Route exact path={ROOT_URL} component={Home} />
                   <Route exact path={LOGIN_URL} component={Authenticator} />
                   <Route exact path={SIGNUP_URL} component={Authenticator} />
+                  <Route exact path={NOTIFICATIONS_URL} component={Notifications} />
                   <Route path={SETTINGS_URL} component={Settings} />
                 </Switch>
               </Section>
