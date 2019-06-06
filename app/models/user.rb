@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  include Activatable
+
   has_secure_password validations: false
 
   has_many :sessions, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true
