@@ -12,6 +12,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   outlined?: boolean;
   rounded?: boolean;
+  selected?: boolean;
 }> = ({
   color,
   size,
@@ -19,6 +20,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
   outlined,
   loading,
   rounded,
+  selected,
   children,
   className,
   ...props
@@ -33,6 +35,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
       outlined && "is-outlined",
       loading && "is-loading",
       rounded && "is-rounded",
+      selected && "is-selected",
       className,
     )}
   >
