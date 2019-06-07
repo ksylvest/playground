@@ -1,6 +1,11 @@
 import * as React from "react";
-import { useContext } from "react";
+import {
+  useContext,
+  useState,
+} from "react";
 import { NavLink } from "react-router-dom";
+
+import { useActionCableSubscription } from "@application/utils/hooks";
 
 import {
   Button,
@@ -20,6 +25,9 @@ import {
 
 export const Header: React.FC = () => {
   const { session } = useContext(Context);
+  const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
+  useActionCableSubscription({ channel: "StatsChannel" }, setStats);
+
   return (
     <header>
       <Navbar color="light">
@@ -40,7 +48,7 @@ export const Header: React.FC = () => {
                   Settings
                 </NavLink>
                 <NavLink to={NOTIFICATIONS_URL} className="navbar-item" activeClassName="is-active">
-                  Notifications
+                  Notifications {stats && !!stats.notifications && <>({stats.notifications})</>}
                 </NavLink>
               </>
             }
