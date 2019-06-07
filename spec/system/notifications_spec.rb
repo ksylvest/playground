@@ -20,8 +20,6 @@ RSpec.feature 'notifications', type: :system do
       expect(page).to have_text('Notifications')
     end
 
-    expect(page).to have_link('Notifications (2)')
-
     within('.message', text: 'Welcome!') do
       expect(page).to have_text('Welcome!')
 
@@ -50,7 +48,5 @@ RSpec.feature 'notifications', type: :system do
       expect(page).to have_text('Nothing to See')
       expect(page).to have_text('Your Are All Caught up for Notifications')
     end
-
-    expect(page).to_not have_link('Notifications (2)')
   end
 end
