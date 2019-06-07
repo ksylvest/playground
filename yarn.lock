@@ -856,6 +856,11 @@
     "@sentry/types" "5.4.0"
     tslib "^1.9.3"
 
+"@types/actioncable@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@types/actioncable/-/actioncable-5.2.0.tgz#2d10187560be76e5b4d9ae6743d26a5f34ebf0a5"
+  integrity sha512-fsXlob3/mPO7z8iaTo0Li6QF9q4XY57kUsuL7ijxvLG/9v57K5vsAjULPyCUzWesVgwzmWqiTI+ATJC0+o7x2w==
+
 "@types/classnames@^2.2.8":
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.8.tgz#17139e1e1104203572caa4368f6796f6225b70b4"

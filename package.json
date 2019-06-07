@@ -10,6 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@rails/webpacker": "^4.0.7",
     "@sentry/browser": "^5.4.0",
+    "@types/actioncable": "^5.2.0",
     "@types/classnames": "^2.2.8",
     "@types/graphql": "^14.2.0",
     "@types/js-cookie": "^2.2.2",
