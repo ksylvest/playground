@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { Empty } from "./empty";
 import { Entry } from "./entry";
 
 import { INotification } from "@application/types";
@@ -19,5 +20,6 @@ export const List: React.FC<{
         onChange={onChange}
       />
     ))}
+    {notifications && !notifications.length && <Empty />}
   </>
 );

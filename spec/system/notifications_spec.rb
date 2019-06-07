@@ -46,6 +46,11 @@ RSpec.feature 'notifications', type: :system do
 
     expect(page).to_not have_selector('.message', text: 'Goodbye!')
 
+    within('.hero') do
+      expect(page).to have_text('Nothing to See')
+      expect(page).to have_text('Your Are All Caught up for Notifications')
+    end
+
     expect(page).to_not have_link('Notifications (2)')
   end
 end
