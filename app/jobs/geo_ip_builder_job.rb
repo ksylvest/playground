@@ -2,6 +2,8 @@ class GeoIPBuilderJob < ApplicationJob
   queue_as :default
 
   def perform(ip)
+    return if ip.eql?('0.0.0.0')
+    return if IPAddr.new(ip).loopback?
     return if GeoIP.exists?(ip: ip)
 
     geo_ip = parse(ip: ip, result: IPStack.fetch!(ip: ip))

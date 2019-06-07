@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'settings/sessions', type: :system do
   let(:user) { Fabricate(:user) }
+  let!(:geo_ip) { Fabricate(:geo_ip, ip: '4.4.4.4') }
   let!(:session) { Fabricate(:session, user: user, ip: '4.4.4.4') }
 
   scenario 'managing sessions' do
@@ -24,6 +25,9 @@ RSpec.feature 'settings/sessions', type: :system do
 
     within('.table') do
       expect(page).to have_text('4.4.4.4')
+      expect(page).to have_text('New York')
+      expect(page).to have_text('Saratoga Springs')
+      expect(page).to have_text('United States')
       click_button 'Revoke'
     end
 
