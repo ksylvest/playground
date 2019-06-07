@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe GeoIPBuilderJob, type: :job do
-  let(:ip) { '0.0.0.0' }
+  let(:ip) { '4.4.4.4' }
 
   describe '#perform' do
     let(:status) { 200 }
     let(:body) do
       <<~JSON
         {
-          "ip": "0.0.0.0",
+          "ip": "4.4.4.4",
           "continent_code": "NA",
           "continent_name": "North America",
           "country_code": "US",
