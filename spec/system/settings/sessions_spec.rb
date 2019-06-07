@@ -15,7 +15,10 @@ RSpec.feature 'settings/sessions', type: :system do
       click_button('Login')
     end
 
-    expect(page).to have_text('Sessions')
+    within('.title') do
+      expect(page).to have_text('Sessions')
+    end
+
     expect(page).to have_text('This is a listing of clients that can access your account.')
     expect(page).to have_text('Revoke any sessions that you do not recognize or trust.')
 
