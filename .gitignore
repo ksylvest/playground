@@ -1,7 +1,7 @@
 .bundle
 .byebug*
 .sass*
-.powenv
+.yarn*
 config/application.yml
 config/master.key
 coverage
