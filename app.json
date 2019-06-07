@@ -38,6 +38,6 @@
     }
   ],
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:fixtures:load"
+    "postdeploy": "bundle exec rake db:setup"
   }
 }
