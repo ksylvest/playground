@@ -1,2 +1,0 @@
-Fabricator(:auth) do
-end
