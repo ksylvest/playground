@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'notifications', type: :system do
   let(:user) { Fabricate(:user) }
-  let!(:notification) { Fabricate(:notification, user: user) }
+  let!(:welcome_notification) { Fabricate(:notification, user: user, message: 'Welcome!') }
+  let!(:goodbye_notification) { Fabricate(:notification, user: user, message: 'Goodbye!') }
 
   scenario 'managing sessions' do
     visit notifications_path
@@ -15,10 +16,14 @@ RSpec.feature 'notifications', type: :system do
       click_button('Login')
     end
 
-    expect(page).to have_text('Notifications')
+    within('.title') do
+      expect(page).to have_text('Notifications')
+    end
 
-    within('.message') do
-      expect(page).to have_text(notification.message)
+    expect(page).to have_link('Notifications (2)')
+
+    within('.message', text: 'Welcome!') do
+      expect(page).to have_text('Welcome!')
 
       expect(page).to have_button('Read', disabled: false)
       click_button('Read')
@@ -27,6 +32,20 @@ RSpec.feature 'notifications', type: :system do
       click_button('Clear')
     end
 
-    expect(page).to_not have_selector('.message')
+    expect(page).to_not have_selector('.message', text: 'Welcome!')
+
+    within('.message', text: 'Goodbye!') do
+      expect(page).to have_text('Goodbye!')
+
+      expect(page).to have_button('Read', disabled: false)
+      click_button('Read')
+      expect(page).to have_button('Read', disabled: true)
+
+      click_button('Clear')
+    end
+
+    expect(page).to_not have_selector('.message', text: 'Goodbye!')
+
+    expect(page).to_not have_link('Notifications (2)')
   end
 end
