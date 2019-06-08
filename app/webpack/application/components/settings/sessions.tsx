@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Query } from "react-apollo";
+import { useQuery } from "urql";
 
 import { ISession } from "@application/types";
 
@@ -15,6 +15,8 @@ interface IQueryData {
 
 export const Sessions: React.FC = () => {
   const [revoking, setRevoking] = useState<ISession | undefined>();
+  const [{ data }, refetch] = useQuery<IQueryData>({ query: QUERY });
+
   return (
     <>
       <h2 className="title">Sessions</h2>
@@ -25,22 +27,16 @@ export const Sessions: React.FC = () => {
 
       <hr />
 
-      <Query<IQueryData> query={QUERY}>
-        {({ data, refetch }) => (
-          <>
-            <List sessions={data ? data.sessions : undefined} onRevoke={setRevoking} />
-            {revoking &&
-              <Revoke
-                session={revoking}
-                onClose={() => {
-                  setRevoking(undefined);
-                  refetch();
-                }}
-              />
-            }
-          </>
-        )}
-      </Query>
+      <List sessions={data ? data.sessions : undefined} onRevoke={setRevoking} />
+      {revoking &&
+        <Revoke
+          session={revoking}
+          onClose={() => {
+            setRevoking(undefined);
+            refetch();
+          }}
+        />
+      }
     </>
   );
 };

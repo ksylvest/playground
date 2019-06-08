@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "urql";
 
 import { INotification, Status } from "@application/types";
 
@@ -27,24 +27,19 @@ export const Destroy: React.FC<{
 }> = ({
   notification,
   onChange,
-}) => (
-  <Mutation<IMutationData, IMutationVariables>
-    variables={{ id: notification.id }}
-    mutation={MUTATION}
-    children={(save) => {
-      const onClick = async () => {
-        await save();
-        onChange();
-      };
+}) => {
+  const [{ fetching }, submit] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+  const onClick = async () => {
+    await submit({ id: notification.id });
+    onChange();
+  };
 
-      return (
-        <Button rounded onClick={onClick}>
-          <Icon>
-            <FontAwesomeIcon icon="times" />
-          </Icon>
-          <span>Clear</span>
-        </Button>
-      );
-    }}
-  />
-);
+  return (
+    <Button rounded disabled={fetching} loading={fetching} onClick={onClick}>
+      <Icon>
+        <FontAwesomeIcon icon="times" />
+      </Icon>
+      <span>Clear</span>
+    </Button>
+  );
+};

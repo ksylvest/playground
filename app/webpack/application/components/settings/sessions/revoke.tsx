@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "urql";
 
 import {
   ISession,
@@ -31,26 +31,23 @@ export const Revoke: React.FC<{
   onClose,
 }) => {
   const { notify } = useContext(Context);
+  const [{ fetching }, submit] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+
+  const onContinue = async () => {
+    await submit({ id: session.id });
+    onClose();
+    notify({
+      kind: "alert",
+      message: `The session "${session.ip}" is revoked.`,
+    });
+  };
 
   return (
-    <Mutation<IMutationData, IMutationVariables>
-      mutation={MUTATION}
-      variables={{ id: session.id }}
-      children={(submit, { loading }) => (
-        <Dialog
-          session={session}
-          loading={loading}
-          onContinue={async () => {
-            await submit();
-            onClose();
-            notify({
-              kind: "alert",
-              message: `The session "${session.ip}" is revoked.`,
-            });
-          }}
-          onCancel={onClose}
-        />
-      )}
+    <Dialog
+      session={session}
+      loading={fetching}
+      onContinue={onContinue}
+      onCancel={onClose}
     />
   );
 };

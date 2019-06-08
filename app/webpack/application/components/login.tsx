@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "urql";
 
 import { Context } from "./context";
 
@@ -31,21 +31,16 @@ interface IMutationVariables {
 
 export const Login: React.FC = () => {
   const { auth } = useContext(Context);
+  const [{ data, fetching }, submit] = useMutation<IMutationData, IMutationVariables>(MUTATION);
   return (
-    <Mutation<IMutationData, IMutationVariables>
-      mutation={MUTATION}
-      children={(submit, { loading, data }) => (
-        <Fields
-          save={async (input) => {
-            const result = await submit({ variables: { input } });
-            if (!result || !result.data) { return; }
-            if (!result.data.login.session) { return; }
-            auth(result.data.login.session);
-          }}
-          loading={loading}
-          errors={data && data.login ? data.login.errors : undefined}
-        />
-      )}
+    <Fields
+      save={async (input) => {
+        const result = await submit({ input });
+        if (!result.data || !result.data.login.session) { return; }
+        auth(result.data.login.session);
+      }}
+      loading={fetching}
+      errors={data && data.login ? data.login.errors : undefined}
     />
   );
 };

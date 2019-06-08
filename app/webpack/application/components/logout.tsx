@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "urql";
 
 import { Context } from "./context";
 
@@ -14,20 +14,21 @@ interface IMutationData {
 
 export const Logout: React.FC<{
   children(props: {
-    loading: boolean;
+    fetching: boolean;
     logout(): void;
   }): React.ReactNode;
 }> = ({ children }) => {
   const { deauth } = useContext(Context);
+  const [{ fetching }, submit] = useMutation<IMutationData>(MUTATION);
   return (
-    <Mutation<IMutationData> mutation={MUTATION}>
-      {(logout, { loading }) => children({
-        loading,
+    <>
+      {children({
+        fetching,
         logout: async () => {
-          await logout();
+          await submit();
           deauth();
         },
       })}
-    </Mutation>
+    </>
   );
 };
