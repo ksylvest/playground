@@ -21,7 +21,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-fontawesome": "^1.6.3",
     "@types/react-redux": "^7.1.0",
-    "@types/react-router": "^5.0.1",
+    "@types/react-router": "^5.0.2",
     "@types/react-router-dom": "^4.3.4",
     "@types/webfontloader": "^1.6.29",
     "actioncable": "^5.2.3",
