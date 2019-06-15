@@ -23,8 +23,11 @@ import {
   SIGNUP_URL,
 } from "@application/config/routes";
 
+const DEFAULT_ACTIVE = false;
+
 export const Header: React.FC = () => {
   const { session } = useContext(Context);
+  const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   useActionCableSubscription({ channel: "StatsChannel" }, setStats);
 
@@ -35,9 +38,9 @@ export const Header: React.FC = () => {
           <NavLink className="navbar-item" to={ROOT_URL} activeClassName="is-active">
             Playground
           </NavLink>
-          <Navbar.Burger />
+          <Navbar.Burger active={active} onClick={() => setActive(!active)} />
         </Navbar.Brand>
-        <Navbar.Menu>
+        <Navbar.Menu active={active}>
           <Navbar.Start>
             <NavLink exact to={ROOT_URL} className="navbar-item" activeClassName="is-active">
               Home
@@ -66,13 +69,22 @@ export const Header: React.FC = () => {
             }
             {session &&
               <>
-                <Logout>
-                  {({ logout }) => (
-                    <Navbar.Item>
-                      <Button type="button" onClick={logout}>Logout</Button>
-                    </Navbar.Item>
-                  )}
-                </Logout>
+                <Navbar.Item dropdown hoverable>
+                  <Navbar.Link>Me</Navbar.Link>
+                  <Navbar.Dropdown direction="right">
+                    <NavLink to={SETTINGS_URL} className="navbar-item" activeClassName="is-active">
+                      Settings
+                    </NavLink>
+                    <Navbar.Divider />
+                    <Logout>
+                      {({ logout }) => (
+                        <Navbar.Item>
+                          <Button type="button" onClick={logout}>Logout</Button>
+                        </Navbar.Item>
+                      )}
+                    </Logout>
+                  </Navbar.Dropdown>
+                </Navbar.Item>
               </>
             }
           </Navbar.End>

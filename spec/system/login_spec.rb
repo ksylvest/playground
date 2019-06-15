@@ -12,7 +12,7 @@ RSpec.feature 'login', type: :system do
       click_button('Login')
     end
 
-    expect(page).to have_text('Logout')
+    expect(page).to have_text('Me')
   end
 
   scenario 'submitting with invalid credentials' do
