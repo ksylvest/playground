@@ -3,8 +3,11 @@ import * as React from "react";
 
 import { Brand } from "./navbar/brand";
 import { Burger } from "./navbar/burger";
+import { Divider } from "./navbar/divider";
+import { Dropdown } from "./navbar/dropdown";
 import { End } from "./navbar/end";
 import { Item } from "./navbar/item";
+import { Link } from "./navbar/link";
 import { Menu } from "./navbar/menu";
 import { Start } from "./navbar/start";
 
@@ -21,8 +24,11 @@ const Navbar: React.FC<{
 const Combined = Object.assign(Navbar, {
   Brand,
   Burger,
+  Divider,
+  Dropdown,
   End,
   Item,
+  Link,
   Menu,
   Start,
 });
