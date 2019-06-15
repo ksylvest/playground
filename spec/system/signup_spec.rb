@@ -13,7 +13,7 @@ RSpec.feature 'signup', type: :system do
       click_button('Signup')
     end
 
-    expect(page).to have_text('Logout')
+    expect(page).to have_text('Me')
   end
 
   scenario 'submitting with invalid credentials' do
@@ -26,7 +26,5 @@ RSpec.feature 'signup', type: :system do
       expect(page).to have_text("Email\nCan't be blank.")
       expect(page).to have_text("Password\nCan't be blank.")
     end
-
-    expect(page).to_not have_text('Logout')
   end
 end
