@@ -25,6 +25,7 @@ gem 'fabrication'
 gem 'turbolinks'
 
 gem 'aws-sdk-s3', require: false
+gem 'mini_magick'
 
 group :test do
   gem 'rspec-rails'
