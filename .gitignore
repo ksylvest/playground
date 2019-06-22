@@ -7,6 +7,7 @@ config/master.key
 coverage
 log/*
 tmp/*
+storage/*
 db/*.sqlite*
 public/assets
 public/system

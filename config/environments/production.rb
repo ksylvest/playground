@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Configure active storage service.
+  config.active_storage.service = :aws
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
