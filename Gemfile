@@ -24,6 +24,8 @@ gem 'byebug'
 gem 'fabrication'
 gem 'turbolinks'
 
+gem 'aws-sdk-s3', require: false
+
 group :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
