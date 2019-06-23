@@ -1,7 +1,7 @@
 import * as cn from "classnames";
 import * as React from "react";
 
-export const Image: React.FC<{
+export const Image: React.FC<React.ImgHTMLAttributes<HTMLImageElement> & {
   dimensions?: 16 | 24 | 32 | 48 | 64 | 96;
   rounded?: boolean;
   square?: boolean;
@@ -9,16 +9,15 @@ export const Image: React.FC<{
   dimensions,
   rounded,
   square,
-  children,
+  ...props
 }) => (
   <figure
     className={cn(
       "image",
       square && "is-square",
-      rounded && "is-rounded",
       dimensions && `is-${dimensions}x${dimensions}`,
     )}
   >
-    {children}
+    <img {...props} className={cn(rounded && "is-rounded", props.className)} />
   </figure>
 );
