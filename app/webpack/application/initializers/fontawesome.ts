@@ -8,7 +8,9 @@ import {
   faExclamationCircle,
   faInfo,
   faLock,
+  faSpinner,
   faTimes,
+  faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -19,5 +21,7 @@ library.add(
   faExclamationCircle,
   faInfo,
   faLock,
+  faSpinner,
   faTimes,
+  faUpload,
 );
