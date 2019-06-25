@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "react-apollo";
 
 import { Context } from "./context";
 
@@ -32,21 +32,19 @@ interface IMutationVariables {
 
 export const Signup: React.FC = () => {
   const { auth } = useContext(Context);
+  const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+
   return (
-    <Mutation<IMutationData, IMutationVariables>
-      mutation={MUTATION}
-      children={(submit, { loading, data }) => (
-        <Fields
-          save={async (input) => {
-            const result = await submit({ variables: { input } });
-            if (!result || !result.data) { return; }
-            if (!result.data.signup.session) { return; }
-            auth(result.data.signup.session);
-          }}
-          loading={loading}
-          errors={data && data.signup ? data.signup.errors : undefined}
-        />
-      )}
+    <Fields
+      save={async (input) => {
+        if (loading) { return; }
+        const result = await submit({ variables: { input } });
+        if (!result || !result.data) { return; }
+        if (!result.data.signup.session) { return; }
+        auth(result.data.signup.session);
+      }}
+      loading={loading}
+      errors={data && data.signup ? data.signup.errors : undefined}
     />
   );
 };

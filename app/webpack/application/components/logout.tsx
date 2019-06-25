@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Mutation } from "react-apollo";
+import { useMutation } from "react-apollo";
 
 import { Context } from "./context";
 
@@ -16,18 +16,17 @@ export const Logout: React.FC<{
   children(props: {
     loading: boolean;
     logout(): void;
-  }): React.ReactNode;
+  }): React.ReactElement;
 }> = ({ children }) => {
   const { deauth } = useContext(Context);
-  return (
-    <Mutation<IMutationData> mutation={MUTATION}>
-      {(logout, { loading }) => children({
-        loading,
-        logout: async () => {
-          await logout();
-          deauth();
-        },
-      })}
-    </Mutation>
-  );
+  const [submit, { loading }] = useMutation<IMutationData>(MUTATION);
+
+  return children({
+    loading,
+    logout: async () => {
+      if (loading) { return; }
+      await submit();
+      deauth();
+    },
+  });
 };
