@@ -9,6 +9,10 @@ class Current < ActiveSupport::CurrentAttributes
     self.session = Session.active.find_by(id: session_id) if session_id
   end
 
+  def authed?
+    user.present?
+  end
+
   def auth!(user:)
     self.session = user.sessions.build
     session.save!

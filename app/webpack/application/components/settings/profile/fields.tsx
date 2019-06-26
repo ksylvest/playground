@@ -1,5 +1,8 @@
 import * as React from "react";
-import { useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
 import { IErrors } from "@application/types";
 
@@ -16,6 +19,10 @@ import { Field } from "@application/components/field";
 export const Fields: React.FC<{
   loading: boolean;
   errors?: IErrors;
+  defaults?: {
+    email: string;
+    name: string;
+  }
   save(variables: {
     email: string;
     name: string;
@@ -23,10 +30,17 @@ export const Fields: React.FC<{
 }> = ({
   loading,
   errors,
+  defaults,
   save,
 }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+
+  useEffect(() => {
+    if (!defaults) { return; }
+    setName(defaults.name);
+    setEmail(defaults.email);
+  }, [defaults]);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

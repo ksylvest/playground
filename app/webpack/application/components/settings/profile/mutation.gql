@@ -1,0 +1,8 @@
+mutation ChangeProfile($input: UserInput!) {
+  changeProfile(input: $input) {
+    status
+    errors {
+      messages
+    }
+  }
+}
