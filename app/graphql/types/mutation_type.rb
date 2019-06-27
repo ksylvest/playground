@@ -10,5 +10,8 @@ module Types
     field :read_notification, mutation: ::Mutations::Notification::ReadMutation
 
     field :change_profile, mutation: ::Mutations::Profile::ChangeMutation
+
+    field :attach_avatar, mutation: ::Mutations::Avatar::AttachMutation
+    field :detach_avatar, mutation: ::Mutations::Avatar::DetachMutation
   end
 end

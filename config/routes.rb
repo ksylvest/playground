@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   post '/graphql', to: 'graphql#execute', as: :graphql
 
   constraints format: :html do
-    %w[login signup notifications settings settings/profile settings/sessions].each do |path|
+    %w[
+      login
+      signup
+      notifications
+      settings
+      settings/avatar
+      settings/profile
+      settings/sessions
+    ].each do |path|
       get path, to: 'main#index', as: path
     end
   end

@@ -1,0 +1,5 @@
+mutation AttachAvatar($id: ID!) {
+  attachAvatar(id: $id) {
+    status
+  }
+}
