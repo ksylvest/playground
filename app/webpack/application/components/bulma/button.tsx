@@ -8,6 +8,7 @@ type Size = "small" | "normal" | "medium" | "large";
 export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: Color;
   size?: Size;
+  fullwidth?: boolean;
   inverted?: boolean;
   loading?: boolean;
   outlined?: boolean;
@@ -16,6 +17,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
 }> = ({
   color,
   size,
+  fullwidth,
   inverted,
   outlined,
   loading,
@@ -31,6 +33,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & {
       "button",
       color && `is-${color}`,
       size && `is-${size}`,
+      fullwidth && "is-fullwidth",
       inverted && "is-inverted",
       outlined && "is-outlined",
       loading && "is-loading",

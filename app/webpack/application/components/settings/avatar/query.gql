@@ -1,0 +1,9 @@
+query Avatar {
+  user {
+    id
+    avatar {
+      id
+      url
+    }
+  }
+}

@@ -11,6 +11,7 @@ import {
   faSpinner,
   faTimes,
   faUpload,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -24,4 +25,5 @@ library.add(
   faSpinner,
   faTimes,
   faUpload,
+  faUser,
 );
