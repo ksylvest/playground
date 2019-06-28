@@ -8,8 +8,6 @@ class GraphqlController < ApplicationController
 private
 
   def result
-    query = params[:query]
-    variables = params[:variables]
-    AppSchema.execute(query, variables: variables)
+    AppSchema.execute(params[:query], variables: params[:variables])
   end
 end
