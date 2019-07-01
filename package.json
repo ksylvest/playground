@@ -51,7 +51,7 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.35.0"
+    "webpack": "^4.35.2"
   },
   "devDependencies": {
     "tslint": "^5.18.0",
