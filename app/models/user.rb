@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true, if: -> { email.present? }
   validates :email, format: { with: Validation::EMAIL, message: 'is invalid' }, if: -> { email.present? }
-  validates :password, presence: true, unless: -> { passworded? }
+  validates :password, presence: true, if: -> { password_digest.blank? }
 
   scope :ordered, -> { order(:id) }
 
@@ -21,11 +21,4 @@ class User < ApplicationRecord
       user.password = SecureRandom.hex
     end
   end
-
-private
-
-  def passworded?
-    password_digest.present?
-  end
-
 end
