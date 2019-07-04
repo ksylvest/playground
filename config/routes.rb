@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       notifications
       settings
       settings/avatar
+      settings/password
       settings/profile
       settings/sessions
     ].each do |path|

@@ -1,0 +1,8 @@
+mutation PasswordMutation($input: PasswordInput!) {
+  changePassword(input: $input) {
+    status
+    errors {
+      messages
+    }
+  }
+}
