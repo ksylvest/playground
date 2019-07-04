@@ -1,4 +1,3 @@
-# typed: false
 module Mutations
   module Avatar
     class DetachMutation < GraphQL::Schema::Mutation
