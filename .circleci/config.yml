@@ -30,6 +30,10 @@ commands:
             - bundler-{{ arch }}
             - bundler
       -
+        run: gem update --system
+      -
+        run: gem install bundler
+      -
         run: bundle check || bundle install
       -
         save_cache:
