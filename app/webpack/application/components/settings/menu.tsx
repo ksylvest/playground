@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import {
   SETTINGS_AVATAR_URL,
+  SETTINGS_PASSWORD_URL,
   SETTINGS_PROFILE_URL,
   SETTINGS_SESSIONS_URL,
 } from "@application/config/routes";
@@ -14,6 +15,9 @@ export const Menu: React.FC = () => (
     <Panel.Heading>Personal</Panel.Heading>
     <NavLink to={SETTINGS_AVATAR_URL} className="panel-block" activeClassName="is-active">
       Avatar
+    </NavLink>
+    <NavLink to={SETTINGS_PASSWORD_URL} className="panel-block" activeClassName="is-active">
+      Password
     </NavLink>
     <NavLink to={SETTINGS_PROFILE_URL} className="panel-block" activeClassName="is-active">
       Profile

@@ -9,6 +9,8 @@ module Types
     field :destroy_notification, mutation: ::Mutations::Notification::DestroyMutation
     field :read_notification, mutation: ::Mutations::Notification::ReadMutation
 
+    field :change_password, mutation: ::Mutations::Password::ChangeMutation
+
     field :change_profile, mutation: ::Mutations::Profile::ChangeMutation
 
     field :attach_avatar, mutation: ::Mutations::Avatar::AttachMutation
