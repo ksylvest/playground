@@ -61,7 +61,7 @@ commands:
             - ~/.cache/yarn
 
 jobs:
-  lint:
+  tslint:
     executor: default
     steps:
       - checkout
@@ -139,7 +139,7 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - lint
+      - tslint
       - brakeman
       - rubocop
       - rspec
