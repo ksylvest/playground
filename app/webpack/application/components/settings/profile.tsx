@@ -38,8 +38,8 @@ import * as QUERY from "./profile/query.gql";
 
 export const Profile: React.FC = () => {
   const { notify } = useContext(Context);
-  const { data: defaults, loading: mutating } = useQuery<IQueryData>(QUERY);
-  const [submit, { data, loading: querying }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+  const { data: defaults, loading: querying } = useQuery<IQueryData>(QUERY);
+  const [submit, { data, loading: mutating }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   return (
     <>
