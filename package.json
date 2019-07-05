@@ -9,7 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@rails/webpacker": "^4.0.7",
-    "@sentry/browser": "^5.4.3",
+    "@sentry/browser": "^5.5.0",
     "@types/actioncable": "^5.2.0",
     "@types/activestorage": "^5.2.2",
     "@types/classnames": "^2.2.9",
