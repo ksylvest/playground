@@ -1,4 +1,2 @@
-import "./sentry";
-
 import "./fontawesome";
-import "./webfontloader";
+import "./sentry";
