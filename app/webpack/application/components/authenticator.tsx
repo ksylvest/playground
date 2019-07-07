@@ -1,3 +1,4 @@
+import * as cn from "classnames";
 import * as React from "react";
 import { useContext } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
@@ -29,22 +30,12 @@ const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
     <>
       <Tabs>
         <ul>
-          <Route
-            path={LOGIN_URL}
-            children={({ match }) => (
-              <li className={match ? "is-active" : undefined}>
-                <Link to={{ pathname: LOGIN_URL, state: location.state }}>Login</Link>
-              </li>
-            )}
-          />
-          <Route
-            path={SIGNUP_URL}
-            children={({ match }) => (
-              <li className={match ? "is-active" : undefined}>
-                <Link to={{ pathname: SIGNUP_URL, state: location.state }}>Signup</Link>
-              </li>
-            )}
-          />
+          <li className={cn(location.pathname === LOGIN_URL && "is-active")}>
+            <Link to={{ pathname: LOGIN_URL, state: location.state }}>Login</Link>
+          </li>
+          <li className={cn(location.pathname === SIGNUP_URL && "is-active")}>
+            <Link to={{ pathname: SIGNUP_URL, state: location.state }}>Signup</Link>
+          </li>
         </ul>
       </Tabs>
       <Switch>
