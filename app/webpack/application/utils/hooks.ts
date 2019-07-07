@@ -1,3 +1,2 @@
 export * from "./use_action_cable_subscription";
 export * from "./use_active_storage_direct_upload";
-export * from "./use_file_reader";
