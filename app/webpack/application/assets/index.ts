@@ -1,1 +1,1 @@
-import "./bulma.sass";
+import "./bulma";
