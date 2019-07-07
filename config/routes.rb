@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: 'main#index'
   post '/graphql', to: 'graphql#execute', as: :graphql
 
+  resource :robots, only: :show, defaults: { format: :text }
+  resource :sitemap, only: :show, defaults: { format: :xml }
+
   constraints format: :html do
     %w[
       login
@@ -16,14 +19,6 @@ Rails.application.routes.draw do
       settings/sessions
     ].each do |path|
       get path, to: 'main#index', as: path
-    end
-  end
-
-  namespace :api do
-    constraints format: :json do
-      resource :user, only: %i[create]
-      resource :auth, only: %i[create destroy]
-      resource :demo, only: %i[show]
     end
   end
 end
