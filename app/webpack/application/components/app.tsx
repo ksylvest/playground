@@ -1,7 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
 import { ApolloProvider } from "react-apollo";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  StaticRouter,
+  Switch,
+} from "react-router-dom";
 
 import {
   Container,
@@ -35,18 +40,30 @@ import {
   SIGNUP_URL,
 } from "@application/config/routes";
 
-declare const CONFIG: { session?: ISession };
-const SESSION = CONFIG.session;
+const Router: React.FC<{
+  location: string;
+}> = ({
+  location,
+  children,
+}) => {
+  return typeof(window) !== "undefined"
+    ? <BrowserRouter children={children} />
+    : <StaticRouter children={children} location={location} />;
+};
 
-export const App: React.FC = () => {
-  const [flash, notify] = useState<IFlash | undefined>(undefined);
-  const [session, auth] = useState<ISession | undefined>(SESSION);
+export const App: React.FC<{
+  location: string;
+  flash?: IFlash;
+  session?: ISession;
+}> = (props) => {
+  const [flash, notify] = useState<IFlash | undefined>(props.flash);
+  const [session, auth] = useState<ISession | undefined>(props.session);
   const deauth = () => auth(undefined);
 
   return (
     <ApolloProvider client={APOLLO_CLIENT}>
       <Context.Provider value={{ auth, deauth, session, flash, notify }}>
-        <Router>
+        <Router location={props.location}>
           <>
             <Header />
             <Container>

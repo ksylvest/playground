@@ -14,12 +14,11 @@ html
     = csrf_meta_tags
 
     javascript:
-      CONFIG = #{{JSON.generate(config)}};
       ENVIRONMENT = #{{JSON.generate(Rails.env)}};
       RELEASE = #{{JSON.generate(release)}};
       SENTRY_DSN = #{{JSON.generate(Rails.application.credentials.sentry_dsn)}};
 
-    = stylesheet_pack_tag 'application'
-    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application', async: 'async'
+    = javascript_pack_tag 'application', async: 'async'
   body
     == yield

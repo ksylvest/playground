@@ -3,8 +3,6 @@ import {
   useState,
 } from "react";
 
-import { DirectUpload } from "activestorage";
-
 const URL = "/rails/active_storage/direct_uploads";
 
 type Callback = (params: {
@@ -12,23 +10,31 @@ type Callback = (params: {
   error?: Error;
 }) => void;
 
-export const useActiveStorageDirectUpload = (file?: File, callback?: Callback) => {
-  const [result, setResult] = useState<DirectUpload | undefined>(undefined);
+export const useActiveStorageDirectUpload = (() => {
+  if (typeof(window) === "undefined") {
+    return () => { /* noop */ };
+  }
 
-  useEffect(() => {
-    if (!file) { return; }
-    const uploader = new DirectUpload(file, URL);
-    setResult(uploader);
+  const ActiveStorage = require("activestorage");
 
-    uploader.create((error, blob) => {
-      setResult(undefined);
-      if (!callback) { return; }
-      callback({
-        blob,
-        error,
+  return (file?: File, callback?: Callback) => {
+    const [result, setResult] = useState<ActiveStorage.DirectUpload | undefined>(undefined);
+
+    useEffect(() => {
+      if (!file) { return; }
+      const uploader: ActiveStorage.DirectUpload = new ActiveStorage.DirectUpload(file, URL);
+      setResult(uploader);
+
+      uploader.create((error: Error, blob: ActiveStorage.Blob) => {
+        setResult(undefined);
+        if (!callback) { return; }
+        callback({
+          blob,
+          error,
+        });
       });
-    });
-  }, [file]);
+    }, [file]);
 
-  return result;
-};
+    return result;
+  };
+})();

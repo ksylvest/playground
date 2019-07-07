@@ -3,28 +3,37 @@ import {
   useState,
 } from "react";
 
-import { CLIENT } from "@application/libraries/actioncable";
-
 export enum ActionCableSubscriptionStatus {
   Connected = "CONNECTED",
   Disconnected = "DISCONNECTED",
 }
 
-export const useActionCableSubscription = <T>(to: ActionCable.ChannelNameWithParams, received: (data: T) => void) => {
-  const [status, setStatus] = useState<ActionCableSubscriptionStatus | undefined>(undefined);
+export const useActionCableSubscription = (() => {
+  if (typeof(window) === "undefined") {
+    return () => { /* noop */ };
+  }
 
-  useEffect(() => {
-    const subscription = CLIENT.subscriptions.create(to, {
-      connected: () => setStatus(ActionCableSubscriptionStatus.Connected),
-      disconnected: () => setStatus(ActionCableSubscriptionStatus.Disconnected),
-      received,
-    });
-    return () => {
-      subscription.unsubscribe();
+  const ActionCable = require("actioncable");
+
+  const CLIENT: ActionCable.Cable = ActionCable.createConsumer();
+
+  return <T>(to: ActionCable.ChannelNameWithParams, received: (data: T) => void) => {
+    const [status, setStatus] = useState<ActionCableSubscriptionStatus | undefined>(undefined);
+
+    useEffect(() => {
+      if (!CLIENT) { return; }
+      const subscription = CLIENT.subscriptions.create(to, {
+        connected: () => setStatus(ActionCableSubscriptionStatus.Connected),
+        disconnected: () => setStatus(ActionCableSubscriptionStatus.Disconnected),
+        received,
+      });
+      return () => {
+        subscription.unsubscribe();
+      };
+    }, [to]);
+
+    return {
+      status,
     };
-  }, [to]);
-
-  return {
-    status,
   };
-};
+})();

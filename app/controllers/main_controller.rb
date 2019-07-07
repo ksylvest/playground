@@ -1,5 +1,10 @@
 class MainController < ApplicationController
+  per_request_react_rails_prerenderer
+
   def index
-    expires_in 5.minutes
+    render component: 'App', props: {
+      location: request.path,
+      session: Current.session&.slice(:id),
+    }
   end
 end

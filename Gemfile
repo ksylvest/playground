@@ -18,6 +18,8 @@ gem 'stripe'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'mini_racer'
+gem 'react-rails'
 gem 'slim-rails'
 
 gem 'byebug'
