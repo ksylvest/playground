@@ -4,6 +4,7 @@ import {
   useMutation,
   useQuery,
 } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 import { IErrors, Status } from "@application/types";
 
@@ -43,6 +44,10 @@ export const Profile: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Settings - Profile | Playground</title>
+      </Helmet>
+
       <h2 className="title">Profile</h2>
       <hr />
       <Fields

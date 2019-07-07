@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 import { Context } from "./context";
 
@@ -35,16 +36,22 @@ export const Signup: React.FC = () => {
   const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   return (
-    <Fields
-      save={async (input) => {
-        if (loading) { return; }
-        const result = await submit({ variables: { input } });
-        if (!result || !result.data) { return; }
-        if (!result.data.signup.session) { return; }
-        auth(result.data.signup.session);
-      }}
-      loading={loading}
-      errors={data && data.signup ? data.signup.errors : undefined}
-    />
+    <>
+      <Helmet>
+        <title>Settings - Signup | Playground</title>
+      </Helmet>
+
+      <Fields
+        save={async (input) => {
+          if (loading) { return; }
+          const result = await submit({ variables: { input } });
+          if (!result || !result.data) { return; }
+          if (!result.data.signup.session) { return; }
+          auth(result.data.signup.session);
+        }}
+        loading={loading}
+        errors={data && data.signup && data.signup.errors}
+      />
+    </>
   );
 };

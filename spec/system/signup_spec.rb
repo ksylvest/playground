@@ -6,6 +6,8 @@ RSpec.feature 'signup', type: :system do
   scenario 'submitting with valid credentials' do
     visit signup_path
 
+    expect(page).to have_title('Signup | Playground')
+
     within('form') do
       fill_in('Name', with: user.name)
       fill_in('Email', with: user.email)
@@ -18,6 +20,8 @@ RSpec.feature 'signup', type: :system do
 
   scenario 'submitting with invalid credentials' do
     visit signup_path
+
+    expect(page).to have_title('Signup | Playground')
 
     within('form') do
       click_button('Signup')

@@ -14,6 +14,8 @@ RSpec.feature 'settings/profile', type: :system do
       click_button('Login')
     end
 
+    expect(page).to have_title('Settings - Profile | Playground')
+
     within('.title') do
       expect(page).to have_text('Profile')
     end
