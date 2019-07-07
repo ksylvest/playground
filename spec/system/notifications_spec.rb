@@ -16,6 +16,8 @@ RSpec.feature 'notifications', type: :system do
       click_button('Login')
     end
 
+    expect(page).to have_title('Notifications | Playground')
+
     within('.title') do
       expect(page).to have_text('Notifications')
     end

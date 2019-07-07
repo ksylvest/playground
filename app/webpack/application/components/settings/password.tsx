@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 import { IErrors, Status } from "@application/types";
 
@@ -30,6 +31,10 @@ export const Password: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Settings - Password | Playground</title>
+      </Helmet>
+
       <h2 className="title">Password</h2>
       <hr />
       <Fields

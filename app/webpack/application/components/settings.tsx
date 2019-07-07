@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Helmet } from "react-helmet";
 import {
   Redirect,
   Route,
@@ -27,30 +28,36 @@ import {
 const SESSIONS_DEFAULT_URL = SETTINGS_PROFILE_URL;
 
 export const Settings: React.FC = () => (
-  <Columns>
-    <Column size={3}>
-      <Menu />
-    </Column>
-    <Column size={9}>
-      <Switch>
-        <Route
-          path={SETTINGS_AVATAR_URL}
-          component={Avatar}
-        />
-        <Route
-          path={SETTINGS_PASSWORD_URL}
-          component={Password}
-        />
-        <Route
-          path={SETTINGS_PROFILE_URL}
-          component={Profile}
-        />
-        <Route
-          path={SETTINGS_SESSIONS_URL}
-          component={Sessions}
-        />
-        <Redirect to={SESSIONS_DEFAULT_URL} />
-      </Switch>
-    </Column>
-  </Columns>
+  <>
+    <Helmet>
+      <title>Settings | Playground</title>
+    </Helmet>
+
+    <Columns>
+      <Column size={3}>
+        <Menu />
+      </Column>
+      <Column size={9}>
+        <Switch>
+          <Route
+            path={SETTINGS_AVATAR_URL}
+            component={Avatar}
+          />
+          <Route
+            path={SETTINGS_PASSWORD_URL}
+            component={Password}
+          />
+          <Route
+            path={SETTINGS_PROFILE_URL}
+            component={Profile}
+          />
+          <Route
+            path={SETTINGS_SESSIONS_URL}
+            component={Sessions}
+          />
+          <Redirect to={SESSIONS_DEFAULT_URL} />
+        </Switch>
+      </Column>
+    </Columns>
+  </>
 );

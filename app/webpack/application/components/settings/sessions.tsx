@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useQuery } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 import { ISession } from "@application/types";
 
@@ -25,6 +26,10 @@ export const Sessions: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Settings - Sessions | Playground</title>
+      </Helmet>
+
       <h2 className="title">Sessions</h2>
       <h4 className="subtitle">
         This is a listing of clients that can access your account.

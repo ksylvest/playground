@@ -16,6 +16,8 @@ RSpec.feature 'settings/password', type: :system do
       click_button('Login')
     end
 
+    expect(page).to have_title('Settings - Password | Playground')
+
     within('.title') do
       expect(page).to have_text('Password')
     end

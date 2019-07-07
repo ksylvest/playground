@@ -16,6 +16,8 @@ RSpec.feature 'settings/sessions', type: :system do
       click_button('Login')
     end
 
+    expect(page).to have_title('Settings - Avatar | Playground')
+
     within('.title') do
       expect(page).to have_text('Avatar')
     end
