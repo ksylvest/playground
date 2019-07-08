@@ -1,1 +1,1 @@
-import "./bulma";
+import "bulma/css/bulma.css";
