@@ -14,6 +14,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+ActiveJob::Base.queue_adapter = :test
+
 RSpec.configure do |config|
   config.before(type: :system) do
     driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800]

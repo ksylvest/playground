@@ -9,7 +9,7 @@ module Types
     end
 
     def sessions
-      Current.user.sessions.active
+      Current.user.sessions.active.chronological
     end
 
     def notifications

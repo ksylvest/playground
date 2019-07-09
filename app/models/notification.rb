@@ -9,5 +9,5 @@ class Notification < ApplicationRecord
   after_initialize { self.sent_at ||= Time.current }
   after_commit { NotificationPublishJob.new(self).enqueue }
 
-  scope :chronological, -> { order(:sent_at) }
+  scope :chronological, -> { order(sent_at: :desc) }
 end

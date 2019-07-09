@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useQuery } from "react-apollo";
 import { Helmet } from "react-helmet";
 
+import { useActionCableSubscription } from "@application/utils/hooks";
+
 import { ISession } from "@application/types";
 
 import { List } from "./sessions/list";
@@ -18,6 +20,8 @@ export const Sessions: React.FC = () => {
   const [revoking, setRevoking] = useState<ISession | undefined>();
   const { data, refetch } = useQuery<IQueryData>(QUERY);
   const sessions = data ? data.sessions : undefined;
+
+  useActionCableSubscription({ channel: "PresenceChannel" }, refetch);
 
   const onClose = () => {
     setRevoking(undefined);

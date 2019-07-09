@@ -67,7 +67,9 @@ ActiveRecord::Schema.define(version: 2019_06_22_190335) do
   create_table "sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.inet "ip", null: false
+    t.string "status", default: "online", null: false
     t.datetime "deleted_at"
+    t.datetime "seen_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"

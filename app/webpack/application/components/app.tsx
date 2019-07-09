@@ -3,6 +3,8 @@ import { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { useActionCableSubscription } from "@application/utils/hooks";
+
 import {
   Container,
   Section,
@@ -41,11 +43,15 @@ const SESSION = CONFIG.session;
 export const App: React.FC = () => {
   const [flash, notify] = useState<IFlash | undefined>(undefined);
   const [session, auth] = useState<ISession | undefined>(SESSION);
+  const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = () => auth(undefined);
+
+  useActionCableSubscription({ channel: "StatsChannel" }, setStats);
+  useActionCableSubscription({ channel: "PresenceChannel" }, () => { /* noop */ });
 
   return (
     <ApolloProvider client={APOLLO_CLIENT}>
-      <Context.Provider value={{ auth, deauth, session, flash, notify }}>
+      <Context.Provider value={{ auth, deauth, session, flash, notify, stats }}>
         <Router>
           <>
             <Header />

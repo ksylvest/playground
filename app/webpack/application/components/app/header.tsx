@@ -5,8 +5,6 @@ import {
 } from "react";
 import { NavLink } from "react-router-dom";
 
-import { useActionCableSubscription } from "@application/utils/hooks";
-
 import {
   Button,
   Navbar,
@@ -26,10 +24,8 @@ import {
 const DEFAULT_ACTIVE = false;
 
 export const Header: React.FC = () => {
-  const { session } = useContext(Context);
+  const { session, stats } = useContext(Context);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
-  const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
-  useActionCableSubscription({ channel: "StatsChannel" }, setStats);
 
   return (
     <header>

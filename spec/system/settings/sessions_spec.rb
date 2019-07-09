@@ -25,7 +25,7 @@ RSpec.feature 'settings/sessions', type: :system do
     expect(page).to have_text('This is a listing of clients that can access your account.')
     expect(page).to have_text('Revoke any sessions that you do not recognize or trust.')
 
-    within('.table') do
+    within('.message', text: '4.4.4.4') do
       expect(page).to have_text('4.4.4.4')
       expect(page).to have_text('New York')
       expect(page).to have_text('Saratoga Springs')
@@ -42,8 +42,6 @@ RSpec.feature 'settings/sessions', type: :system do
 
     expect(page).to have_text('The session "4.4.4.4" is revoked.')
 
-    within('.table') do
-      expect(page).to_not have_text('4.4.4.4')
-    end
+    expect(page).to_not have_selector('.message', text: '4.4.4.4')
   end
 end
