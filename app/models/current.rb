@@ -16,7 +16,7 @@ class Current < ActiveSupport::CurrentAttributes
   def auth!(user:)
     self.session = user.sessions.build
     session.save!
-    cookies.encrypted[:session_id] = session.id
+    cookies.permanent.encrypted[:session_id] = session.id
   end
 
   def deauth!
