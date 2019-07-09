@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe NotificationPublishJob, type: :job do
-  let(:user) { Fabricate.create(:user) }
-  let(:notification) { Fabricate.create(:notification, user: user) }
+  let(:user) { Fabricate(:user) }
+  let(:notification) { Fabricate(:notification, user: user) }
 
   describe '#perform' do
     it 'broadcasts to the stats channels with a count' do

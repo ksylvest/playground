@@ -2,6 +2,8 @@ query Sessions {
   sessions {
     id
     ip
+    seen
+    status
     geography {
       id
       city

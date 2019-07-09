@@ -8,6 +8,7 @@ import {
 export const Context = createContext<{
   flash?: IFlash;
   session?: ISession;
+  stats?: { notifications: number };
   auth(session: ISession): void;
   deauth(): void;
   notify(flash?: IFlash): void;
