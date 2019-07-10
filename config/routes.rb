@@ -7,18 +7,18 @@ Rails.application.routes.draw do
   resource :robots, only: :show, defaults: { format: :text }
   resource :sitemap, only: :show, defaults: { format: :xml }
 
-  constraints format: :html do
-    %w[
-      login
-      signup
-      notifications
-      settings
-      settings/avatar
-      settings/password
-      settings/profile
-      settings/sessions
-    ].each do |path|
-      get path, to: 'main#index', as: path
-    end
+  %w[
+    login
+    signup
+    notifications
+    settings
+    settings/avatar
+    settings/password
+    settings/profile
+    settings/sessions
+  ].each do |path|
+    get path, to: 'main#index', as: path
   end
+
+  get '*path', to: 'main#index'
 end
