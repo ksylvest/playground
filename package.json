@@ -49,7 +49,7 @@
     "react-helmet": "^5.2.1",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "regenerator-runtime": "^0.13.2",
+    "regenerator-runtime": "^0.13.3",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "unfetch": "^4.1.0",
