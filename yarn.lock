@@ -2,44 +2,53 @@
 # yarn lockfile v1
 
 
-"@apollo/react-common@^0.1.0-beta.8":
-  version "0.1.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@apollo/react-common/-/react-common-0.1.0-beta.8.tgz#98978b0da1a12b5866655295dc46e8a8eaa33ea2"
-  integrity sha512-iNxF9gxxwe9oeovx8XgqU+2J5cOB3RnoSvIfahW2vhJrxtAahWg0AjTTvhQsnLi5OvIiVyivvU+R7xlj/9C0pg==
+"@apollo/react-common@^0.1.0-beta.9":
+  version "0.1.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@apollo/react-common/-/react-common-0.1.0-beta.9.tgz#33d0a46d049d15e97b2f9f1e9e012c338567c1de"
+  integrity sha512-3/FYW7LilVlhfCkxL26Yglmr1LfWd2z+LEMHvtHF8K54Ejmb8kYglvDfbuAIsGT1f8WagpIkDm7eI1tfTdgNmw==
   dependencies:
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-components@^0.1.0-beta.7":
-  version "0.1.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@apollo/react-components/-/react-components-0.1.0-beta.7.tgz#1a3457b2249cad4b04be3cf9f7b28c816662f979"
-  integrity sha512-hNXdUu9sN8lQB/mxDAdSmLqYAm4wKkKXs1X7TuCcUbTn7RSeUM9F67/uFcDJ1Io+RPse+EI3EG8jOkCIo4S/0g==
+"@apollo/react-components@^0.1.0-beta.8":
+  version "0.1.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@apollo/react-components/-/react-components-0.1.0-beta.8.tgz#bc6240de691b93da0e66a8e32d13fc98b80ab3f8"
+  integrity sha512-tLj9rEW9EZzXein6XG50jk4K9mJq0a2XwdZ/0y1gK3ELc41dOB20kmYknT2+j+RhG6CU5HkBfE1yDmXc9yt9PA==
   dependencies:
-    "@apollo/react-common" "^0.1.0-beta.8"
-    "@apollo/react-hooks" "^0.1.0-beta.10"
-    hoist-non-react-statics "^3.3.0"
+    "@apollo/react-common" "^0.1.0-beta.9"
+    "@apollo/react-hooks" "^0.1.0-beta.11"
     prop-types "^15.7.2"
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-hoc@^0.1.0-beta.7":
-  version "0.1.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@apollo/react-hoc/-/react-hoc-0.1.0-beta.7.tgz#cc3aeffd4ce9b9ecbbb94d87b09601012ff6acdc"
-  integrity sha512-dNEAkeNStSSfuJmJBw3Hd11PMoQwfBq3rmFZeVhC4Wa4DtqVXEvO3/x6FX34fmJHEtvPoGD1Uxa05jFkWvH3/Q==
+"@apollo/react-hoc@^0.1.0-beta.8":
+  version "0.1.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@apollo/react-hoc/-/react-hoc-0.1.0-beta.8.tgz#c491f49d0990b2fb54be81bad625e2833ac87f18"
+  integrity sha512-Tsou8uV89oabikJJTHkDdy/VB6+EOVUSm3AQcnG8pptqSEmpxREQxp9RrSNS/CMzSJo6TyE5jH5GLczyf7x4gg==
   dependencies:
-    "@apollo/react-common" "^0.1.0-beta.8"
-    "@apollo/react-components" "^0.1.0-beta.7"
+    "@apollo/react-common" "^0.1.0-beta.9"
+    "@apollo/react-components" "^0.1.0-beta.8"
+    hoist-non-react-statics "^3.3.0"
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-hooks@^0.1.0-beta.10":
-  version "0.1.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@apollo/react-hooks/-/react-hooks-0.1.0-beta.10.tgz#4069fad454c0a77eb09d00242dcd96b3bac7791b"
-  integrity sha512-txwIsFhhK4QvF/L5geh4Mh8d1XRje6It3HL9PEc4N83Q/fgzHMWDlvvbUo1HqZuyPKEbFOH7Hi7LsYJBGev6Sw==
+"@apollo/react-hooks@^0.1.0-beta.11":
+  version "0.1.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@apollo/react-hooks/-/react-hooks-0.1.0-beta.11.tgz#3b12836fb6fd944767757f5c7cb477ba880f6d52"
+  integrity sha512-hcEQWLFLpO2lN6AcXFsO/tK27Ve9+hIpw827fQBCuIbCyy2+e715ZMwrgzY5HCeCvLPY9DcS9I++0etr+f3UXw==
   dependencies:
-    "@apollo/react-common" "^0.1.0-beta.8"
-    apollo-utilities "^1.3.2"
+    "@apollo/react-common" "^0.1.0-beta.9"
+    "@wry/equality" "^0.1.9"
     ts-invariant "^0.4.4"
+    tslib "^1.10.0"
+
+"@apollo/react-ssr@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@apollo/react-ssr/-/react-ssr-0.1.0-beta.1.tgz#9e4c10f8b7e8e0c30564b0409ca787160fafe924"
+  integrity sha512-09AvAjrk3g3n5X4S5gsGOw2nYDlQ4ep3Qr4bPiQkhFM9IeYGQ6rWSaZIcAJDFL4IwnwdJQtoQDYXB1Muc9nuyw==
+  dependencies:
+    "@apollo/react-common" "^0.1.0-beta.9"
+    "@apollo/react-hooks" "^0.1.0-beta.11"
     tslib "^1.10.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
@@ -1185,7 +1194,7 @@
     "@types/node" ">=6"
     tslib "^1.9.3"
 
-"@wry/equality@^0.1.2":
+"@wry/equality@^0.1.2", "@wry/equality@^0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@wry/equality/-/equality-0.1.9.tgz#b13e18b7a8053c6858aa6c85b54911fb31e3a909"
   integrity sha512-mB6ceGjpMGz1ZTza8HYnrPGos2mC6So4NhS1PtZ8s4Qt0K7fBiIGhpSxUbQmhwcSWE3no+bYxmI2OL6KuXYmoQ==
@@ -6322,15 +6331,16 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^3.0.0-beta.3:
-  version "3.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-3.0.0-beta.3.tgz#bc704e299f515e7081e03fcc85ee0be3501c5e9f"
-  integrity sha512-SxcDSq0b3n7WZ/2oV9qWDcU0AMHLgFBLKzV6me6hXha2uiQOMaZJwxxCldT9q5KKq9FKAHBTrVqfZfCfGDYM8A==
+react-apollo@^3.0.0-beta.4:
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-3.0.0-beta.4.tgz#bc4bfb5c2015d7098f16ef107c5adc916bd3b515"
+  integrity sha512-wA3rMe6qoqFWUJ7//n+lsmcsRfMULdysTi2ldr2ribYZdKa9ZhW0uQoA754m0oN60TrSh2HG117WBU4LnhXKkQ==
   dependencies:
-    "@apollo/react-common" "^0.1.0-beta.8"
-    "@apollo/react-components" "^0.1.0-beta.7"
-    "@apollo/react-hoc" "^0.1.0-beta.7"
-    "@apollo/react-hooks" "^0.1.0-beta.10"
+    "@apollo/react-common" "^0.1.0-beta.9"
+    "@apollo/react-components" "^0.1.0-beta.8"
+    "@apollo/react-hoc" "^0.1.0-beta.8"
+    "@apollo/react-hooks" "^0.1.0-beta.11"
+    "@apollo/react-ssr" "^0.1.0-beta.1"
 
 react-dom@^16.8.6:
   version "16.8.6"
