@@ -40,7 +40,7 @@ commands:
           key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-  precopmile:
+  precompile:
     steps:
       -
         run: bundle exec rake assets:precompile
@@ -100,7 +100,7 @@ jobs:
       - checkout
       - bundle
       - yarn
-      - precopmile
+      - precompile
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       -
