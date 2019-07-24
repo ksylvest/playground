@@ -64,7 +64,7 @@ GEM
       aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.13)
     bindex (0.7.0)
-    brakeman (4.6.0)
+    brakeman (4.6.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.26.0)
