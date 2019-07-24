@@ -7,7 +7,7 @@ module Mutations
 
       def resolve(id:)
         session = Current.user.sessions.active.find_by(id: id)
-        session&.touch(:deleted_at)
+        session&.clear!
 
         { status: :ok }
       end

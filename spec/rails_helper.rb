@@ -10,7 +10,7 @@ require 'webmock/rspec'
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -21,7 +21,7 @@ RSpec.configure do |config|
     driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800]
   end
 
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join('spec', 'fixtures')
 
   config.use_transactional_fixtures = true
 
