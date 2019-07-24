@@ -10,4 +10,14 @@ class Notification < ApplicationRecord
   after_commit { NotificationPublishJob.new(self).enqueue }
 
   scope :chronological, -> { order(sent_at: :desc) }
+
+  def clear!
+    self.deleted_at = Time.current
+    save!
+  end
+
+  def read!
+    self.read_at = Time.current
+    save!
+  end
 end

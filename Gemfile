@@ -41,6 +41,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'web-console'
   gem 'listen'
   gem 'spring'

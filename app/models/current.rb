@@ -21,7 +21,7 @@ class Current < ActiveSupport::CurrentAttributes
 
   def deauth!
     cookies.delete(:session_id)
-    session&.touch(:deleted_at)
+    session&.clear!
     self.session = nil
   end
 

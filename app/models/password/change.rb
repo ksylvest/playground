@@ -9,7 +9,7 @@ module Password
 
     validate do
       errors[:current] << INVALID_CURRENT unless @user.authenticate(@current)
-      errors[:replacement] << INVALID_REPLACEMENT unless @replacement.present?
+      errors[:replacement] << INVALID_REPLACEMENT if @replacement.blank?
     end
 
     def initialize(current:, replacement:, user:)

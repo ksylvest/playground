@@ -7,7 +7,7 @@ module Mutations
 
       def resolve(id:)
         notification = Current.user.notifications.unread.find_by(id: id)
-        notification&.touch(:read_at)
+        notification&.read!
 
         { status: :ok }
       end

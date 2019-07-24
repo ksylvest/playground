@@ -13,15 +13,22 @@ class Session < ApplicationRecord
 
   scope :chronological, -> { order(seen_at: :desc) }
 
+  def clear!
+    self.deleted_at = Time.current
+    save!
+  end
+
   def appear!
-    touch(:seen_at)
+    self.seen_at = Time.current
     online!
+    save!
     SessionPublishJob.new(self).enqueue
   end
 
   def disappear!
-    touch(:seen_at)
+    self.seen_at = Time.current
     offline!
+    save!
     SessionPublishJob.new(self).enqueue
   end
 end

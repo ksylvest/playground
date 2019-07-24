@@ -1,11 +1,6 @@
 module ControllerAuthHelper
-  def authenticate(user)
-    subject.authenticate(user)
-  end
-
-  def deauthenticate
-    subject.deauthenticate
-  end
+  delegate :authenticate, to: :subject
+  delegate :deauthenticate, to: :subject
 
   def should_be_authenticated
     expect(subject.user).to_not be_nil

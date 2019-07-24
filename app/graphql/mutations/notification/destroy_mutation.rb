@@ -7,7 +7,7 @@ module Mutations
 
       def resolve(id:)
         notification = Current.user.notifications.active.find_by(id: id)
-        notification&.touch(:deleted_at)
+        notification&.clear!
 
         { status: :ok }
       end
