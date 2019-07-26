@@ -54,7 +54,7 @@
     "typescript": "^3.5.3",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.37.0"
+    "webpack": "^4.38.0"
   },
   "devDependencies": {
     "tslint": "^5.18.0",
