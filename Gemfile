@@ -7,6 +7,7 @@ gem 'pg'
 gem 'puma'
 
 gem 'bcrypt'
+gem 'byebug'
 gem 'graphql'
 gem 'graphql-batch'
 gem 'http'
@@ -15,9 +16,6 @@ gem 'stripe'
 gem 'webpacker'
 
 gem 'slim-rails'
-
-gem 'byebug'
-gem 'turbolinks'
 
 gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
