@@ -34,7 +34,7 @@ commands:
       -
         run: gem install bundler
       -
-        run: bundle check || bundle install
+        run: bundle check || bundle install && bundle clean
       -
         save_cache:
           key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
