@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'signup', type: :system do
-  let(:user) { Fabricate.build(:user) }
+  let(:user) { build(:user) }
 
   scenario 'submitting with valid credentials' do
     visit signup_path

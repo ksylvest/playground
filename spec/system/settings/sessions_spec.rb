@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'settings/sessions', type: :system do
-  let(:user) { Fabricate(:user) }
-  let!(:geo_ip) { Fabricate(:geo_ip, ip: '4.4.4.4') }
-  let!(:session) { Fabricate(:session, user: user, ip: '4.4.4.4') }
+  let(:user) { create(:user) }
+  let!(:geo_ip) { create(:geo_ip, ip: '4.4.4.4') }
+  let!(:session) { create(:session, user: user, ip: '4.4.4.4') }
 
   scenario 'managing sessions' do
     visit settings_sessions_path

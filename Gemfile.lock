@@ -47,8 +47,8 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.195.0)
-    aws-sdk-core (3.61.2)
+    aws-partitions (1.196.0)
+    aws-sdk-core (3.62.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.1)
@@ -87,7 +87,11 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
-    fabrication (2.20.2)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.2)
+      factory_bot (~> 5.0.2)
+      railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -298,7 +302,7 @@ DEPENDENCIES
   brakeman
   byebug
   capybara
-  fabrication
+  factory_bot_rails
   graphql
   graphql-batch
   http

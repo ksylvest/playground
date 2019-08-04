@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'login', type: :system do
-  let(:user) { Fabricate(:user) }
+  let(:user) { create(:user) }
 
   scenario 'submitting with valid credentials' do
     visit login_path

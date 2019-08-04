@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'notifications', type: :system do
-  let(:user) { Fabricate(:user) }
-  let!(:welcome_notification) { Fabricate(:notification, user: user, message: 'Welcome!') }
-  let!(:goodbye_notification) { Fabricate(:notification, user: user, message: 'Goodbye!') }
+  let(:user) { create(:user) }
+  let!(:welcome_notification) { create(:notification, user: user, message: 'Welcome!') }
+  let!(:goodbye_notification) { create(:notification, user: user, message: 'Goodbye!') }
 
   scenario 'managing sessions' do
     visit notifications_path
