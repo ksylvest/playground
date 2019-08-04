@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Auth, type: :model do
-  let(:user) { Fabricate(:user) }
+  let(:user) { create(:user) }
 
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }

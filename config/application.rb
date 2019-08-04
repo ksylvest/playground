@@ -14,7 +14,7 @@ module Playground
       g.javascripts false
       g.template_engine :slim
       g.test_framework :rspec, fixture: true, views: false
-      g.fixture_replacement :fabrication
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
   end
 end

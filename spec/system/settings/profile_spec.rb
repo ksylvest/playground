@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'settings/profile', type: :system do
-  let(:user) { Fabricate(:user) }
+  let(:user) { create(:user) }
 
   scenario 'changing a profile' do
     visit settings_profile_path

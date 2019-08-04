@@ -17,6 +17,8 @@ ActiveRecord::Migration.maintain_test_schema!
 ActiveJob::Base.queue_adapter = :test
 
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+
   config.before(type: :system) do
     driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800]
   end

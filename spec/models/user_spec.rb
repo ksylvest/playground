@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { Fabricate.build(:user) }
+  subject { build(:user) }
 
   it { should have_many(:sessions) }
   it { should have_many(:notifications) }
@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
 
   describe '.system' do
     it 'finds a system user if exists' do
-      user = Fabricate(:user, email: 'system@playground.dev')
+      user = create(:user, email: 'system@playground.dev')
       expect(User.system).to eql(user)
     end
 
