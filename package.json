@@ -34,7 +34,7 @@
     "luxon": "^1.17.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-apollo": "^3.0.0-beta.5",
+    "react-apollo": "^3.0.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-router": "^5.0.1",
