@@ -4,6 +4,12 @@ RSpec.describe GeoIPBuilderJob, type: :job do
   let(:ip) { '4.4.4.4' }
 
   describe '#perform' do
+    subject :perform do
+      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{IPStack.config.access_key}")
+        .to_return(status: status, body: body)
+      GeoIPBuilderJob.new.perform(ip)
+    end
+
     let(:status) { 200 }
     let(:body) do
       <<~JSON
@@ -22,12 +28,6 @@ RSpec.describe GeoIPBuilderJob, type: :job do
           "connection": { "asn": "" }
         }
       JSON
-    end
-
-    subject :perform do
-      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{IPStack.config.access_key}")
-        .to_return(status: status, body: body)
-      GeoIPBuilderJob.new.perform(ip)
     end
 
     it 'builds a geo IP entry' do
