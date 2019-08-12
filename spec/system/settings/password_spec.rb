@@ -5,7 +5,7 @@ RSpec.describe 'settings/password', type: :system do
   let(:current) { user.password }
   let(:replacement) { SecureRandom.alphanumeric }
 
-  scenario 'changing passwords' do
+  it 'lets a user change their password' do
     visit settings_password_path
 
     expect(page).to have_text('You must be authenticated to access this.')

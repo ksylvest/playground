@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'settings/profile', type: :system do
   let(:user) { create(:user) }
 
-  scenario 'changing a profile' do
+  it 'lets a user change their profile' do
     visit settings_profile_path
 
     expect(page).to have_text('You must be authenticated to access this.')

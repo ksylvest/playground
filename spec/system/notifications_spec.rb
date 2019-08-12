@@ -5,7 +5,7 @@ RSpec.describe 'notifications', type: :system do
   let!(:welcome_notification) { create(:notification, user: user, message: 'Welcome!') }
   let!(:goodbye_notification) { create(:notification, user: user, message: 'Goodbye!') }
 
-  scenario 'managing sessions' do
+  it 'lets a user manage their notifications' do
     visit notifications_path
 
     expect(page).to have_text('You must be authenticated to access this.')

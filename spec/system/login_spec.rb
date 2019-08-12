@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe 'login', type: :system do
   let(:user) { create(:user) }
 
-  scenario 'submitting with valid credentials' do
+  it 'submits with valid credentials' do
     visit login_path
-
     expect(page).to have_title('Login | Playground')
 
     within('form') do
@@ -17,7 +16,7 @@ RSpec.describe 'login', type: :system do
     expect(page).to have_text('Me')
   end
 
-  scenario 'submitting with invalid credentials' do
+  it 'errors with invalid credentials' do
     visit login_path
     expect(page).to have_title('Login | Playground')
 
