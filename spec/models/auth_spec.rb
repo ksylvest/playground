@@ -19,7 +19,7 @@ RSpec.describe Auth, type: :model do
     it 'does not authenticate with invalid credentials' do
       auth = Auth.new(email: user.email, password: 'hacker')
       auth.authenticate
-      expect(auth.authenticate).to_not eq(user)
+      expect(auth.authenticate).not_to eq(user)
     end
   end
 end

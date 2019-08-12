@@ -32,7 +32,7 @@ RSpec.feature 'notifications', type: :system do
       click_button('Clear')
     end
 
-    expect(page).to_not have_selector('.message', text: 'Welcome!')
+    expect(page).not_to have_selector('.message', text: 'Welcome!')
 
     within('.message', text: 'Goodbye!') do
       expect(page).to have_text('Goodbye!')
@@ -44,7 +44,7 @@ RSpec.feature 'notifications', type: :system do
       click_button('Clear')
     end
 
-    expect(page).to_not have_selector('.message', text: 'Goodbye!')
+    expect(page).not_to have_selector('.message', text: 'Goodbye!')
 
     within('.hero') do
       expect(page).to have_text('Nothing to See')

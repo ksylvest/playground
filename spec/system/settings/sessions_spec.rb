@@ -42,6 +42,6 @@ RSpec.feature 'settings/sessions', type: :system do
 
     expect(page).to have_text('The session "4.4.4.4" is revoked.')
 
-    expect(page).to_not have_selector('.message', text: '4.4.4.4')
+    expect(page).not_to have_selector('.message', text: '4.4.4.4')
   end
 end
