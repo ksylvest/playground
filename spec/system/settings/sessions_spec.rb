@@ -5,7 +5,7 @@ RSpec.describe 'settings/sessions', type: :system do
   let!(:geo_ip) { create(:geo_ip, ip: '4.4.4.4') }
   let!(:session) { create(:session, user: user, ip: '4.4.4.4') }
 
-  scenario 'managing sessions' do
+  it 'lets a user manage their sessions' do
     visit settings_sessions_path
 
     expect(page).to have_text('You must be authenticated to access this.')

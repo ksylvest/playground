@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'signup', type: :system do
   let(:user) { build(:user) }
 
-  scenario 'submitting with valid credentials' do
+  it 'submits with valid credentials' do
     visit signup_path
 
     expect(page).to have_title('Signup | Playground')
@@ -18,7 +18,7 @@ RSpec.describe 'signup', type: :system do
     expect(page).to have_text('Me')
   end
 
-  scenario 'submitting with invalid credentials' do
+  it 'errors with invalid credentials' do
     visit signup_path
 
     expect(page).to have_title('Signup | Playground')
