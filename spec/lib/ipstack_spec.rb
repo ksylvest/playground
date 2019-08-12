@@ -41,8 +41,8 @@ RSpec.describe IPStack do
         expect(fetch!.country.name).to eql('United States')
         expect(fetch!.continent.code).to eql('NA')
         expect(fetch!.continent.name).to eql('North America')
-        expect(fetch!.latitude).to eql(43.2)
-        expect(fetch!.longitude).to eql(-73.8)
+        expect(fetch!.latitude).to be(43.2)
+        expect(fetch!.longitude).to be(-73.8)
       end
     end
 
