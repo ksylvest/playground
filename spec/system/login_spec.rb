@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'login', type: :system do
+RSpec.describe 'login', type: :system do
   let(:user) { create(:user) }
 
   scenario 'submitting with valid credentials' do

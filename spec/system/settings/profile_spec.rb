@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'settings/profile', type: :system do
+RSpec.describe 'settings/profile', type: :system do
   let(:user) { create(:user) }
 
   scenario 'changing a profile' do

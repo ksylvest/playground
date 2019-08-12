@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'signup', type: :system do
+RSpec.describe 'signup', type: :system do
   let(:user) { build(:user) }
 
   scenario 'submitting with valid credentials' do
