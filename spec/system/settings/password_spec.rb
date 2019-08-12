@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'settings/password', type: :system do
+RSpec.describe 'settings/password', type: :system do
   let(:user) { create(:user) }
   let(:current) { user.password }
   let(:replacement) { SecureRandom.alphanumeric }
