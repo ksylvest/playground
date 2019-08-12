@@ -24,7 +24,7 @@
     "actioncable": "^5.2.3",
     "activestorage": "^5.2.3",
     "apollo-boost": "^0.4.3",
-    "apollo-client": "^2.6.3",
+    "apollo-client": "^2.6.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bulma": "^0.7.5",
     "classnames": "^2.2.6",
