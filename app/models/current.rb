@@ -5,23 +5,24 @@ class Current < ActiveSupport::CurrentAttributes
 
   def cookies=(cookies)
     super
-    session_id = cookies.encrypted[:session_id]
-    self.session = Session.active.find_by(id: session_id) if session_id
-  end
 
-  def authed?
-    user.present?
+    session_id = cookies.encrypted[:session_id]
+    return unless session_id
+
+    self.session = Session.active.find_by(id: session_id)
+    cookies.delete(:session_id) unless session
   end
 
   def auth!(user:)
-    self.session = user.sessions.build
+    self.session = user.sessions.build(ip: ip)
     session.save!
-    cookies.permanent.encrypted[:session_id] = session.id
+    cookies.permanent.encrypted[:session_id] = session.id if cookies
+    session
   end
 
   def deauth!
-    cookies.delete(:session_id)
     session&.clear!
+    cookies&.delete(:session_id)
     self.session = nil
   end
 

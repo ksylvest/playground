@@ -9,8 +9,8 @@ module Mutations
     def resolve(input:)
       user = User.new(input.to_h)
       if user.save
-        Current.auth!(user: user)
-        { status: :ok, session: Current.session }
+        session = Current.auth!(user: user)
+        { status: :ok, session: session }
       else
         { status: :unprocessable, errors: user.errors }
       end

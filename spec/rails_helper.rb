@@ -23,6 +23,13 @@ RSpec.configure do |config|
     driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800]
   end
 
+  config.around do |example|
+    Current.ip = '0.0.0.0'
+    example.run
+  ensure
+    Current.reset
+  end
+
   config.fixture_path = Rails.root.join('spec', 'fixtures')
 
   config.use_transactional_fixtures = true
