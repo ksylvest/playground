@@ -1,4 +1,4 @@
-mutation SignupMutation($input: SignupInput!) {
+mutation Signup($input: SignupInput!) {
   signup(input: $input) {
     status
     session {
