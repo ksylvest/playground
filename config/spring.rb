@@ -1,1 +1,5 @@
-%w[tmp/restart.txt].each { |path| Spring.watch(path) }
+Spring.watch(
+  '.ruby-version',
+  '.rbenv-vars',
+  'tmp/restart.txt'
+)

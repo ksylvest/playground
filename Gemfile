@@ -16,10 +16,12 @@ gem 'kaminari'
 gem 'stripe'
 gem 'webpacker'
 
+gem 'aws-sdk-s3', require: false
+gem 'image_processing'
+
 gem 'slim-rails'
 
-gem 'aws-sdk-s3', require: false
-gem 'mini_magick'
+gem 'bootsnap', require: false
 
 group :test do
   gem 'capybara'

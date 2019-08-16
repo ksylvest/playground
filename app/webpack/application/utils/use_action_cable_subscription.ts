@@ -10,7 +10,7 @@ export enum ActionCableSubscriptionStatus {
   Disconnected = "DISCONNECTED",
 }
 
-export const useActionCableSubscription = <T>(to: ActionCable.ChannelNameWithParams, received: (data: T) => void) => {
+export const useActionCableSubscription = <T>(to: any, received: (data: T) => void) => {
   const [status, setStatus] = useState<ActionCableSubscriptionStatus | undefined>(undefined);
 
   useEffect(() => {
