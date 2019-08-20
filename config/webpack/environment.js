@@ -7,6 +7,9 @@ environment.loaders.prepend('graphql', graphql);
 environment.loaders.prepend('typescript', typescript);
 
 environment.config.merge({
+  externals: {
+    stripe: 'Stripe',
+  },
   resolve: {
     alias: {
       '@application': path.join(__dirname, '..', '..', 'app', 'webpack', 'application'),

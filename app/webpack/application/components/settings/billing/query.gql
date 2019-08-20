@@ -1,0 +1,15 @@
+query BillingSettings {
+  billing {
+    customer {
+      id
+      currency
+      sources {
+        id
+        number
+        brand
+        exp
+        default
+      }
+    }
+  }
+}

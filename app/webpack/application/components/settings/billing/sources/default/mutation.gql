@@ -1,0 +1,5 @@
+mutation SettingsBillingSourceDefaultMutation($id: ID!) {
+  defaultBillingSource(id: $id) {
+    status
+  }
+}

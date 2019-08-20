@@ -5,14 +5,7 @@ RSpec.describe 'settings/profile', type: :system do
 
   it 'lets a user change their profile' do
     visit settings_profile_path
-
-    expect(page).to have_text('You must be authenticated to access this.')
-
-    within('form') do
-      fill_in('Email', with: user.email)
-      fill_in('Password', with: user.password)
-      click_button('Login')
-    end
+    login(user)
 
     expect(page).to have_title('Settings - Profile | Playground')
 

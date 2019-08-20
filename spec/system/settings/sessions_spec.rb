@@ -7,14 +7,7 @@ RSpec.describe 'settings/sessions', type: :system do
 
   it 'lets a user manage their sessions' do
     visit settings_sessions_path
-
-    expect(page).to have_text('You must be authenticated to access this.')
-
-    within('form') do
-      fill_in('Email', with: user.email)
-      fill_in('Password', with: user.password)
-      click_button('Login')
-    end
+    login(user)
 
     expect(page).to have_title('Settings - Sessions | Playground')
 

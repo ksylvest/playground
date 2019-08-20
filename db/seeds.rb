@@ -18,3 +18,21 @@ Notification.transaction do
     Notification.find_or_initialize_by(user: user, message: "Goodbye #{user.name}").save!
   end
 end
+
+Stripe::Customer.all.each do |stripe_customer|
+  user = User.find_by!(email: stripe_customer.email)
+  next unless user
+
+  customer = Billing::Customer.find_or_initialize_by(stripe_id: stripe_customer.id)
+  customer.user = user
+  customer.parse(stripe_customer)
+  customer.save!
+
+  stripe_customer.sources.each do |stripe_source|
+    source = Billing::Source.find_or_initialize_by(stripe_id: stripe_source.id)
+    source.customer = customer
+    source.default = stripe_source.id.eql?(stripe_customer.default_source)
+    source.parse(stripe_source)
+    source.save!
+  end
+end

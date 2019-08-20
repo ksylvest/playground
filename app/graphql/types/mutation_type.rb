@@ -15,5 +15,9 @@ module Types
 
     field :attach_avatar, mutation: ::Mutations::Avatar::AttachMutation
     field :detach_avatar, mutation: ::Mutations::Avatar::DetachMutation
+
+    field :build_billing_source, mutation: ::Mutations::Billing::Source::BuildMutation
+    field :destroy_billing_source, mutation: ::Mutations::Billing::Source::DestroyMutation
+    field :default_billing_source, mutation: ::Mutations::Billing::Source::DefaultMutation
   end
 end

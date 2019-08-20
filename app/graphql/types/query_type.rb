@@ -1,10 +1,15 @@
 module Types
   class QueryType < GraphQL::Schema::Object
     field :user, UserType, null: true
+    field :billing, BillingType, null: false
     field :sessions, [SessionType], null: false
     field :notifications, [NotificationType], null: false
 
     def user
+      Current.user
+    end
+
+    def billing
       Current.user
     end
 

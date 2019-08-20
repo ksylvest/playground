@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :notification do
-    association :user, strategy: :build
+    user
     message { 'Welcome!' }
   end
 end
