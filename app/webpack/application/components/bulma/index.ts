@@ -1,6 +1,7 @@
 export * from "./box";
 export * from "./button";
 export * from "./buttons";
+export * from "./card";
 export * from "./colors";
 export * from "./column";
 export * from "./columns";
@@ -24,3 +25,4 @@ export * from "./table";
 export * from "./tabs";
 export * from "./tag";
 export * from "./tags";
+export * from "./typography";

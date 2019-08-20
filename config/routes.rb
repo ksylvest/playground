@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       notifications
       settings
       settings/avatar
+      settings/billing
       settings/password
       settings/profile
       settings/sessions

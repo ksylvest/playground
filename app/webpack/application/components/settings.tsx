@@ -14,12 +14,14 @@ import {
 import { Menu } from "./settings/menu";
 
 import { Avatar } from "./settings/avatar";
+import { Billing } from "./settings/billing";
 import { Password } from "./settings/password";
 import { Profile } from "./settings/profile";
 import { Sessions } from "./settings/sessions";
 
 import {
   SETTINGS_AVATAR_URL,
+  SETTINGS_BILLING_URL,
   SETTINGS_PASSWORD_URL,
   SETTINGS_PROFILE_URL,
   SETTINGS_SESSIONS_URL,
@@ -42,6 +44,10 @@ export const Settings: React.FC = () => (
           <Route
             path={SETTINGS_AVATAR_URL}
             component={Avatar}
+          />
+          <Route
+            path={SETTINGS_BILLING_URL}
+            component={Billing}
           />
           <Route
             path={SETTINGS_PASSWORD_URL}

@@ -1,0 +1,5 @@
+mutation SettingsBillingSourceDestroyMutation($id: ID!) {
+  destroyBillingSource(id: $id) {
+    status
+  }
+}
