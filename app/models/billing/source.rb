@@ -23,8 +23,4 @@ class Billing::Source < ApplicationRecord
     self.exp_month = stripe.exp_month
     self.exp_year = stripe.exp_year
   end
-
-  def exp
-    Date.new(exp_year, exp_month)
-  end
 end
