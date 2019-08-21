@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { Context } from "./context";
 
@@ -36,9 +37,7 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Login | Playground</title>
-      </Helmet>
+      <Title>Login | Playground</Title>
 
       <Fields
         save={async (input) => {

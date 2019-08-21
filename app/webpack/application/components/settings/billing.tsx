@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { Sources } from "./billing/sources";
 
@@ -22,9 +23,7 @@ export const Billing: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Settings - Billing | Playground</title>
-      </Helmet>
+      <Title>Settings - Billing | Playground</Title>
 
       <h2 className="title">Billing</h2>
       <hr />

@@ -1,11 +1,10 @@
 import * as React from "react";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 export const Home: React.FC = () => (
   <>
-    <Helmet>
-      <title>Home | Playground</title>
-    </Helmet>
+    <Title>Home | Playground</Title>
 
     <div className="title">Welcome!</div>
   </>

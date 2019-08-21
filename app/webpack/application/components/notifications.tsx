@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { INotification } from "@application/types";
 
@@ -18,9 +19,7 @@ export const Notifications: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Notifications | Playground</title>
-      </Helmet>
+      <Title>Notifications | Playground</Title>
 
       <h2 className="title">Notifications</h2>
       <hr />

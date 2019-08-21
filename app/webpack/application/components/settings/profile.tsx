@@ -4,7 +4,8 @@ import {
   useMutation,
   useQuery,
 } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { IErrors, Status } from "@application/types";
 
@@ -44,9 +45,7 @@ export const Profile: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Settings - Profile | Playground</title>
-      </Helmet>
+      <Title>Settings - Profile | Playground</Title>
 
       <h2 className="title">Profile</h2>
       <hr />

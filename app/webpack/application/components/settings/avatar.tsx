@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Helmet } from "react-helmet";
+import { Title } from "@application/components/helpers";
 
 import { Attach } from "./avatar/attach";
 import { Detach } from "./avatar/detach";
@@ -29,9 +29,7 @@ export const Avatar: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Settings - Avatar | Playground</title>
-      </Helmet>
+      <Title>Settings - Avatar | Playground</Title>
 
       <h2 className="title">Avatar</h2>
       <hr />

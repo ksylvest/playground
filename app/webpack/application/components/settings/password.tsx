@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { IErrors, Status } from "@application/types";
 
@@ -31,9 +32,7 @@ export const Password: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Settings - Password | Playground</title>
-      </Helmet>
+      <Title>Settings - Password | Playground</Title>
 
       <h2 className="title">Password</h2>
       <hr />

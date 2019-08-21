@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Helmet } from "react-helmet";
+import { Title } from "@application/components/helpers";
 import {
   Redirect,
   Route,
@@ -31,9 +31,7 @@ const SESSIONS_DEFAULT_URL = SETTINGS_PROFILE_URL;
 
 export const Settings: React.FC = () => (
   <>
-    <Helmet>
-      <title>Settings | Playground</title>
-    </Helmet>
+    <Title>Settings | Playground</Title>
 
     <Columns>
       <Column size={3}>
