@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
 import { useQuery } from "react-apollo";
-import { Helmet } from "react-helmet";
+
+import { Title } from "@application/components/helpers";
 
 import { useActionCableSubscription } from "@application/utils/hooks";
 
@@ -30,9 +31,7 @@ export const Sessions: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Settings - Sessions | Playground</title>
-      </Helmet>
+      <Title>Settings - Sessions | Playground</Title>
 
       <h2 className="title">Sessions</h2>
       <h4 className="subtitle">
