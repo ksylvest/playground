@@ -24,7 +24,7 @@ RSpec.describe 'settings/billing', type: :system do
     let(:source) { create(:billing_source, customer: customer) }
 
     it 'lets a user manage build a source' do
-      expect(Billing::BuildSourceService).to receive(:perform!) { source }
+      expect(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: 'fake') { source }
 
       visit settings_billing_path
       login(user)
@@ -34,7 +34,6 @@ RSpec.describe 'settings/billing', type: :system do
         expect(page).to have_text('Add a Card')
         expect(page).to have_button('Save')
         expect(page).to have_button('Cancel')
-        fill_in_source
         click_button('Save')
       end
 

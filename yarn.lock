@@ -1019,14 +1019,6 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-stripe-elements@^1.3.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@types/react-stripe-elements/-/react-stripe-elements-1.3.1.tgz#535796c7d7d95c30e2641230f4d1b39950d7212a"
-  integrity sha512-itZD2GZxJsZt9bl6JrNq7/tfZo5F5JfI16Hrp7hzyDbujcdJMgTtKTxoBys9jrh6PQ/K3FzMYtv9GeV0nsa/yQ==
-  dependencies:
-    "@types/react" "*"
-    "@types/stripe-v3" "*"
-
 "@types/react@*", "@types/react@^16.9.2":
   version "16.9.2"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.2.tgz#6d1765431a1ad1877979013906731aae373de268"
@@ -1034,11 +1026,6 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
-
-"@types/stripe-v3@*":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@types/stripe-v3/-/stripe-v3-3.1.6.tgz#68de88cfc89f5fb6ca5ae88c084c0e4fab66fb17"
-  integrity sha512-HdTIKbdFMYhJ9PA1UtWjm620JXNchjCTuya8TAKeVdCbmlumd86RldbgMHGxptLPy++xsB7lEDrhK/dO7JP9Pg==
 
 "@types/webfontloader@^1.6.29":
   version "1.6.29"
@@ -6245,13 +6232,6 @@ react-router@5.0.1, react-router@^5.0.1:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
-
-react-stripe-elements@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-4.0.1.tgz#89b52c909a80f17afc7907313c3b3c3f21fa125d"
-  integrity sha512-S+O2+hphs6ASz29l85nj6mpS7YWTa3NMwZTonIMt4+8xrfS/jET+0Xd3cNdJoGkHiCtLEId6UimqivONK+liOw==
-  dependencies:
-    prop-types "^15.5.10"
 
 react@^16.9.0:
   version "16.9.0"

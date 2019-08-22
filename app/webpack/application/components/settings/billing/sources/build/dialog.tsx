@@ -1,12 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
 import { useMutation } from "react-apollo";
+
 import {
-  CardElement,
-  Elements,
-  injectStripe,
-  ReactStripeElements,
-} from "react-stripe-elements";
+  Element,
+  useAdapter,
+} from "@application/components/libraries/stripe";
 
 import {
   Button,
@@ -31,13 +30,14 @@ interface IDialogProps {
   onSave(): void;
 }
 
-const Dialog: React.FC<ReactStripeElements.InjectedStripeProps & IDialogProps> = ({
-  stripe,
+export const Dialog: React.FC<IDialogProps> = ({
   onCancel,
   onSave,
 }) => {
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
-  const [tokenizer, setTokenizer] = useState<Promise<ReactStripeElements.PatchedTokenResponse> | undefined>();
+  const [tokenizer, setTokenizer] = useState<Promise<stripe.ITokenResponse> | undefined>(undefined);
+  const adapter = useAdapter();
+
   const saving = loading || !!tokenizer;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -45,11 +45,14 @@ const Dialog: React.FC<ReactStripeElements.InjectedStripeProps & IDialogProps> =
     event.stopPropagation();
 
     if (saving) { return; }
-    if (!stripe) { return; }
-    const promise = stripe.createToken();
-    setTokenizer(promise);
-    const { token } = await promise;
+    const attempt = adapter.tokenize();
+    setTokenizer(attempt);
+    const {
+      error,
+      token,
+    } = await attempt;
     setTokenizer(undefined);
+    if (error) { return; }
 
     await submit({
       variables: {
@@ -71,7 +74,7 @@ const Dialog: React.FC<ReactStripeElements.InjectedStripeProps & IDialogProps> =
             </Modal.Card.Head>
             <Modal.Card.Body>
               <Content>
-                <CardElement onReady={(element) => element.focus()} />
+                <Element element={adapter} />
               </Content>
             </Modal.Card.Body>
             <Modal.Card.Foot>
@@ -84,7 +87,3 @@ const Dialog: React.FC<ReactStripeElements.InjectedStripeProps & IDialogProps> =
     </Modal>
   );
 };
-
-const DialogWithStripe = injectStripe(Dialog);
-const DialogWithElements: React.FC<IDialogProps> = (props) => <Elements children={<DialogWithStripe {...props} />} />;
-export { DialogWithElements as Dialog };
