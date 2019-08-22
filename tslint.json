@@ -3,6 +3,7 @@
   "rules": {
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,
-    "jsx-boolean-value": ["never"]
+    "jsx-boolean-value": ["never"],
+    "no-namespace": [true, "allow-declarations"]
   }
 }
