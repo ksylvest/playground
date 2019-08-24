@@ -1,0 +1,5 @@
+mutation BuildBillingSubscription($source: String!) {
+  buildBillingSource(source: $source) {
+    status
+  }
+}

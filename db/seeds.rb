@@ -24,6 +24,19 @@ Feed::Entry.transaction do
   end
 end
 
+Stripe::Product.list.each do |stripe_product|
+  product = Billing::Product.find_or_initialize_by(stripe_id: stripe_product.id)
+  product.parse(stripe_product)
+  product.save!
+end
+
+Stripe::Plan.list.each do |stripe_plan|
+  plan = Billing::Plan.find_or_initialize_by(stripe_id: stripe_plan.id)
+  plan.product = Billing::Product.find_by!(stripe_id: stripe_plan.product)
+  plan.parse(stripe_plan)
+  plan.save!
+end
+
 Stripe::Customer.list.each do |stripe_customer|
   user = User.find_by(email: stripe_customer.email)
   next unless user

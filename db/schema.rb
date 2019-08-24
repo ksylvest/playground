@@ -49,6 +49,27 @@ ActiveRecord::Schema.define(version: 2019_08_26_013409) do
     t.index ["user_id"], name: "index_billing_customers_on_user_id", unique: true
   end
 
+  create_table "billing_plans", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "stripe_id", null: false
+    t.uuid "product_id", null: false
+    t.integer "amount", null: false
+    t.string "currency", null: false
+    t.string "interval", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_billing_plans_on_product_id"
+    t.index ["stripe_id"], name: "index_billing_plans_on_stripe_id", unique: true
+  end
+
+  create_table "billing_products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "stripe_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_billing_products_on_name", unique: true
+    t.index ["stripe_id"], name: "index_billing_products_on_stripe_id", unique: true
+  end
+
   create_table "billing_sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "stripe_id", null: false
     t.uuid "customer_id", null: false
@@ -62,6 +83,17 @@ ActiveRecord::Schema.define(version: 2019_08_26_013409) do
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_billing_sources_on_customer_id"
     t.index ["stripe_id"], name: "index_billing_sources_on_stripe_id", unique: true
+  end
+
+  create_table "billing_subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "stripe_id", null: false
+    t.uuid "customer_id", null: false
+    t.uuid "plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_billing_subscriptions_on_customer_id"
+    t.index ["plan_id"], name: "index_billing_subscriptions_on_plan_id"
+    t.index ["stripe_id"], name: "index_billing_subscriptions_on_stripe_id", unique: true
   end
 
   create_table "feed_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -130,7 +162,10 @@ ActiveRecord::Schema.define(version: 2019_08_26_013409) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "billing_customers", "users"
+  add_foreign_key "billing_plans", "billing_products", column: "product_id"
   add_foreign_key "billing_sources", "billing_customers", column: "customer_id"
+  add_foreign_key "billing_subscriptions", "billing_customers", column: "customer_id"
+  add_foreign_key "billing_subscriptions", "billing_plans", column: "plan_id"
   add_foreign_key "feed_entries", "users"
   add_foreign_key "feed_likes", "feed_entries", column: "entry_id"
   add_foreign_key "feed_likes", "users"
