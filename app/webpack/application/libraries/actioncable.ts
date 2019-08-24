@@ -1,3 +1,3 @@
-import * as ActionCable from "@rails/actioncable";
+import { createConsumer } from "@rails/actioncable";
 
-export const CLIENT = ActionCable.createConsumer();
+export const CLIENT = createConsumer();
