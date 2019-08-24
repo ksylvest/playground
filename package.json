@@ -42,12 +42,12 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "unfetch": "^4.1.0",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "webpack": "^4.39.2"
   },
   "devDependencies": {
     "tslint": "^5.19.0",
     "tslint-react": "^4.0.0",
-    "webpack": "^4.39.2",
     "webpack-dev-server": "^3.8.0"
   }
 }
