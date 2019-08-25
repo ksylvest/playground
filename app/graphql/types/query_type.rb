@@ -1,12 +1,17 @@
 module Types
   class QueryType < GraphQL::Schema::Object
     field :billing, BillingType, null: false
+    field :feed, FeedType, null: false
     field :notifications, [NotificationType], null: false
     field :sessions, [SessionType], null: false
     field :user, UserType, null: true
 
     def billing
       ::Billing::Context.new(user: Current.user)
+    end
+
+    def feed
+      ::Feed::Context.new
     end
 
     def notifications
