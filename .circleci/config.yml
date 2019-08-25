@@ -93,6 +93,7 @@ jobs:
       - checkout
       - bundle
       - yarn
+      - run: sudo apt-get install libvips libvips-dev libvips-tools
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       -
