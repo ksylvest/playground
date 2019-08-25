@@ -4,7 +4,7 @@ import { useQuery } from "react-apollo";
 
 import { Title } from "@application/components/helpers";
 
-import { useActionCableSubscription } from "@application/utils/hooks";
+import { useActionCableSubscription } from "@application/hooks";
 
 import { ISession } from "@application/types";
 
