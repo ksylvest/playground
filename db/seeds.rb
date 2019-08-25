@@ -19,8 +19,8 @@ Notification.transaction do
   end
 end
 
-Stripe::Customer.all.each do |stripe_customer|
-  user = User.find_by!(email: stripe_customer.email)
+Stripe::Customer.list.each do |stripe_customer|
+  user = User.find_by(email: stripe_customer.email)
   next unless user
 
   customer = Billing::Customer.find_or_initialize_by(stripe_id: stripe_customer.id)
