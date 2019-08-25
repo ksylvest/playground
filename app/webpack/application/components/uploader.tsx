@@ -5,7 +5,7 @@ import {
   useState,
 } from "react";
 
-import { useActiveStorageDirectUpload } from "@application/utils/hooks";
+import { useActiveStorageDirectUpload } from "@application/hooks";
 
 import { Form } from "@application/components/bulma";
 
