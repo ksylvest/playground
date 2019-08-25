@@ -6,7 +6,7 @@ module Types
     field :user, UserType, null: true
 
     def billing
-      Current.user
+      ::Billing::Context.new(user: Current.user)
     end
 
     def notifications
