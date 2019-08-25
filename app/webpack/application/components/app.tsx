@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Config } from "./config";
 
-import { useActionCableSubscription } from "@application/utils/hooks";
+import { useActionCableSubscription } from "@application/hooks";
 
 import {
   Container,
