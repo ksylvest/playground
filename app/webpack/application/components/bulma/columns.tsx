@@ -3,6 +3,7 @@ import * as React from "react";
 
 export const Columns: React.FC<{
   mobile?: boolean;
+  tablet?: boolean;
   desktop?: boolean;
   centered?: boolean;
   vcentered?: boolean;
@@ -10,6 +11,7 @@ export const Columns: React.FC<{
   gap?: "gapless" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 6 | 7;
 }> = ({
   mobile,
+  tablet,
   desktop,
   centered,
   vcentered,
@@ -22,6 +24,7 @@ export const Columns: React.FC<{
       "columns",
       gap && `is-variable is-${gap}`,
       mobile && "is-mobile",
+      tablet && "is-tablet",
       desktop && "is-desktop",
       multiline && "is-multiline",
       centered && "is-centered",
