@@ -1,0 +1,20 @@
+query Feed {
+  feed {
+    entries {
+      id
+      tags
+      photos {
+        id
+        url
+      }
+      user {
+        id
+        name
+        avatar {
+          id
+          url
+        }
+      }
+    }
+  }
+}

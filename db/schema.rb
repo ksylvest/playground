@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_043237) do
+ActiveRecord::Schema.define(version: 2019_08_25_182156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2019_07_13_043237) do
     t.index ["stripe_id"], name: "index_billing_sources_on_stripe_id", unique: true
   end
 
+  create_table "feed_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "tags", default: [], null: false, array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_feed_entries_on_user_id"
+  end
+
   create_table "geo_ips", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.inet "ip", null: false
     t.string "city", null: false
@@ -113,6 +121,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_043237) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "billing_customers", "users"
   add_foreign_key "billing_sources", "billing_customers", column: "customer_id"
+  add_foreign_key "feed_entries", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "sessions", "users"
 end
