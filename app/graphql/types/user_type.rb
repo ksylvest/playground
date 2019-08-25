@@ -6,7 +6,9 @@ module Types
     field :avatar, AttachedType, null: true
 
     def avatar
-      object.avatar if object.avatar.attached?
+      Loaders::ActiveStorageAttachmentLoader.for(:avatar, kind: :attachment).load(object).then do |avatar|
+        avatar if avatar.attached?
+      end
     end
   end
 end
