@@ -1,7 +1,7 @@
 module Types
   module Billing
     class SourceType < GraphQL::Schema::Object
-      graphql_name 'BillingSource'
+      graphql_name 'Billing__Source'
 
       field :id, ID, null: false
       field :number, String, null: false

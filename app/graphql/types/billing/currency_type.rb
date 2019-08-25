@@ -1,7 +1,7 @@
 module Types
   module Billing
     class CurrencyType < GraphQL::Schema::Enum
-      graphql_name 'BillingCurrency'
+      graphql_name 'Billing__Currency'
 
       value 'CAD', value: 'cad'
       value 'EUR', value: 'eur'

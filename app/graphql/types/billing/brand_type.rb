@@ -1,7 +1,7 @@
 module Types
   module Billing
     class BrandType < GraphQL::Schema::Enum
-      graphql_name 'BillingBrand'
+      graphql_name 'Billing__Brand'
 
       value 'AMERICAN_EXPRESS', value: 'American Express'
       value 'DINERS_CLUB', value: 'Diners Club'
