@@ -1,24 +1,24 @@
 module Types
   class QueryType < GraphQL::Schema::Object
-    field :user, UserType, null: true
     field :billing, BillingType, null: false
-    field :sessions, [SessionType], null: false
     field :notifications, [NotificationType], null: false
-
-    def user
-      Current.user
-    end
+    field :sessions, [SessionType], null: false
+    field :user, UserType, null: true
 
     def billing
       Current.user
+    end
+
+    def notifications
+      Current.user.notifications.active.chronological
     end
 
     def sessions
       Current.user.sessions.active.chronological
     end
 
-    def notifications
-      Current.user.notifications.active.chronological
+    def user
+      Current.user
     end
   end
 end
