@@ -15,7 +15,7 @@ RSpec.describe 'settings/sessions', type: :system do
       expect(page).to have_text('Avatar')
     end
 
-    attach_file('avatar', file_fixture('avatar.svg'), visible: :any)
+    attach_file('avatar', file_fixture('photo.png'), visible: :any)
 
     expect(page).to have_text('Your avatar has been saved.')
 
