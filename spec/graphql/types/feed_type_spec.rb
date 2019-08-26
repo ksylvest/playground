@@ -15,14 +15,14 @@ RSpec.describe Types::FeedType do
               tags
               photos {
                 id
-                url
+                url: variant(l: 1280, w: 1280, format: JPG)
               }
               user {
                 id
                 name
                 avatar {
                   id
-                  url
+                  url: variant(l: 96, w: 96, format: JPG)
                 }
               }
             }
@@ -31,7 +31,8 @@ RSpec.describe Types::FeedType do
       GQL
     end
 
-    let!(:entry) { create(:feed_entry) }
+    let(:user) { create(:user, :with_avatar) }
+    let!(:entry) { create(:feed_entry, :with_photos) }
 
     it 'resolves a feed' do
       expect(execute['errors']).to be_nil
