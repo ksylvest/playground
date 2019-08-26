@@ -1,32 +1,44 @@
 import * as React from "react";
 import { useState } from "react";
+import { useQuery } from "react-apollo";
 
 import { useKey } from "@application/hooks";
 
 import { IFeedEntry } from "@application/types";
-
-const CLOSE_KEY = "Escape";
-const NEXT_KEY = "ArrowRight";
-const PREV_KEY = "ArrowLeft";
 
 import {
   Image,
   Modal,
 } from "@application/components/bulma";
 
+import * as QUERY from "./lightbox/query.gql";
+
+interface IQueryData {
+  feed: {
+    entry: IFeedEntry;
+  };
+}
+
+const DEFAULT_INDEX = 0;
+const CLOSE_KEY = "Escape";
+const NEXT_KEY = "ArrowRight";
+const PREV_KEY = "ArrowLeft";
+
 export const Lightbox: React.FC<{
   entry: IFeedEntry;
   onClose(): void;
 }> = ({
-  entry,
+  entry: { id },
   onClose,
 }) => {
-  const [index, setIndex] = useState<number>(0);
-  const photo = entry.photos[index];
+  const { data } = useQuery<IQueryData>(QUERY, { variables: { id } });
+  const [index, setIndex] = useState<number>(DEFAULT_INDEX);
+  const photos = data && data.feed && data.feed.entry.photos;
+  const photo = photos && photos[index];
 
   const onGo = (offset: number) => {
-    if (!entry.photos) { return; }
-    setIndex((index + entry.photos.length + offset) % entry.photos.length);
+    if (!photos) { return; }
+    setIndex((index + photos.length + offset) % photos.length);
   };
 
   const onNext = () => onGo(+1);

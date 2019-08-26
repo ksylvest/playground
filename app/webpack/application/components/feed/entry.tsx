@@ -24,7 +24,7 @@ export const Entry: React.FC<{
     <Card>
       <Card.Image>
         <a
-          href={`/feed/entry/${entry.id}`}
+          href="#"
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();

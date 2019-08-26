@@ -6,14 +6,15 @@ module Types
       argument :l, Int, required: true, as: :length
       argument :w, Int, required: true, as: :width
       argument :format, Attached::FormatType, required: false
+      argument :resize, Attached::ResizeType, required: false
     end
 
-    def variant(length:, width:, format: :jpg)
+    def variant(length:, width:, format: :jpg, resize: :fill)
       size = [
         length,
         width,
       ]
-      variant_url(object.variant(resize_to_fill: size, convert: format), format)
+      variant_url(object.variant("resize_to_#{resize}": size, convert: format), format)
     end
 
   private
