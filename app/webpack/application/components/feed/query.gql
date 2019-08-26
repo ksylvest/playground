@@ -5,7 +5,7 @@ query Feed {
       tags
       photos {
         id
-        url: variant(l: 1280, w: 1280, format: JPG)
+        url: variant(l: 640, w: 640, format: JPG, resize: FILL)
       }
       user {
         id
