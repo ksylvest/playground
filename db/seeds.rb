@@ -1,21 +1,26 @@
-User.transaction do
-  passworded = ->(user) { user.password = SecureRandom.alphanumeric }
-  User.find_or_initialize_by(name: 'John', email: 'john@beatles.com', &passworded).save!
-  User.find_or_initialize_by(name: 'Paul', email: 'paul@beatles.com', &passworded).save!
-  User.find_or_initialize_by(name: 'George', email: 'george@beatles.com', &passworded).save!
-  User.find_or_initialize_by(name: 'Ringo', email: 'ringo@beatles.com', &passworded).save!
-end
+require 'open-uri'
 
-Session.transaction do
-  User.all.each do |user|
-    Session.find_or_initialize_by(user: user, ip: '0.0.0.0').save!
+User.transaction do
+  YAML.load(File.open(Rails.root.join('db', 'seeds', 'users.yml'))).each do |data|
+    next if User.exists?(id: data['id'])
+
+    user = User.new(id: data['id'], name: data['name'], email: data['email'])
+    user.avatar.attach(io: URI.parse(data['avatar']).open, filename: 'avatar')
+    user.password = SecureRandom.alphanumeric
+    user.save!
   end
 end
 
-Notification.transaction do
-  User.all.each do |user|
-    Notification.find_or_initialize_by(user: user, message: "Welcome #{user.name}").save!
-    Notification.find_or_initialize_by(user: user, message: "Goodbye #{user.name}").save!
+Feed::Entry.transaction do
+  YAML.load(File.open(Rails.root.join('db', 'seeds', 'feed', 'entries.yml'))).each do |data|
+    next if Feed::Entry.exists?(id: data['id'])
+
+    entry = Feed::Entry.new(id: data['id'])
+    entry.user = User.order('RANDOM()').take
+    data['photos'].each do |url|
+      entry.photos.attach(io: URI.parse(url).open, filename: 'photo')
+    end
+    entry.save!
   end
 end
 
