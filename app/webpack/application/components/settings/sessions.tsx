@@ -26,7 +26,6 @@ export const Sessions: React.FC = () => {
 
   const onClose = () => {
     setRevoking(undefined);
-    refetch();
   };
 
   return (

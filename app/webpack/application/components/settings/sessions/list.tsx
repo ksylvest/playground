@@ -11,5 +11,9 @@ export const List: React.FC<{
   sessions,
   onRevoke,
 }) => (
-  <>{sessions && sessions.map((session) => <Entry key={session.id} session={session} onRevoke={onRevoke} />)}</>
+  <>
+    {sessions && sessions.filter(({ deleted }) => !deleted).map((session) => (
+      <Entry key={session.id} session={session} onRevoke={onRevoke} />
+    ))}
+  </>
 );
