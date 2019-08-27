@@ -17,10 +17,8 @@ import { INotification } from "@application/types";
 
 export const Entry: React.FC<{
   notification: INotification;
-  onChange(): void;
 }> = ({
   notification,
-  onChange,
 }) => {
   const color = notification.read ? "light" : "info";
   return (
@@ -38,8 +36,8 @@ export const Entry: React.FC<{
           </Column>
           <Column narrow>
             <Buttons addons>
-              <Read notification={notification} onChange={onChange} />
-              <Destroy notification={notification} onChange={onChange} />
+              <Read notification={notification} />
+              <Destroy notification={notification} />
             </Buttons>
           </Column>
         </Columns>

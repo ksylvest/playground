@@ -3,4 +3,5 @@ export interface INotification {
   message: string;
   sent: string;
   read: boolean;
+  deleted: boolean;
 }

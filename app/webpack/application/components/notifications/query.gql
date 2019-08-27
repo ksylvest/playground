@@ -2,6 +2,7 @@ query Notifications {
   notifications {
     id
     message
+    deleted
     read
     sent
   }

@@ -1,5 +1,8 @@
 mutation DestroyNotification($id: ID!) {
   destroyNotification(id: $id) {
-    status
+    notification {
+      id
+      deleted
+    }
   }
 }

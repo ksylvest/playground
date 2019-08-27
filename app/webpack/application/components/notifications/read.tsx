@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { useMutation } from "react-apollo";
 
-import { INotification, Status } from "@application/types";
+import { INotification } from "@application/types";
 
 import {
   Button,
@@ -13,7 +13,7 @@ import * as MUTATION from "./read/mutation.gql";
 
 interface IMutationData {
   readNotification: {
-    status: Status;
+    notification: INotification;
   };
 }
 
@@ -23,24 +23,23 @@ interface IMutationVariables {
 
 export const Read: React.FC<{
   notification: INotification;
-  onChange(): void;
 }> = ({
-  notification,
-  onChange,
+  notification: {
+    id,
+    read,
+  },
 }) => {
-  const variables = { id: notification.id };
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
+  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables: { id } });
 
   const onClick = async () => {
     if (loading) { return; }
     await submit();
-    onChange();
   };
 
   return (
-    <Button outlined rounded disabled={notification.read} loading={loading} onClick={onClick}>
+    <Button outlined rounded disabled={read} loading={loading} onClick={onClick}>
       <Icon>
-        <FontAwesomeIcon icon={notification.read ? "circle" : "check"} />
+        <FontAwesomeIcon icon={read ? "circle" : "check"} />
       </Icon>
       <span>Read</span>
     </Button>

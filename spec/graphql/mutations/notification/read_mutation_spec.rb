@@ -11,7 +11,10 @@ RSpec.describe Mutations::Notification::ReadMutation do
       <<~GQL
         mutation ReadNotification($id: ID!) {
           readNotification(id: $id) {
-            status
+            notification {
+              id
+              read
+            }
           }
         }
       GQL
@@ -20,9 +23,11 @@ RSpec.describe Mutations::Notification::ReadMutation do
     let(:user) { create(:user) }
     let!(:notification) { create(:notification, user: user) }
 
-    it 'resolves "OK"' do
+    it 'resolves' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['readNotification']['status']).to eql('OK')
+      expect(execute['data']['readNotification']['notification']).to be_present
+      expect(execute['data']['readNotification']['notification']['id']).to eql(notification.id)
+      expect(execute['data']['readNotification']['notification']['read']).to be_truthy
     end
   end
 end

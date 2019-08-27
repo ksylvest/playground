@@ -11,7 +11,10 @@ RSpec.describe Mutations::Notification::DestroyMutation do
       <<~GQL
         mutation DestroyNotification($id: ID!) {
           destroyNotification(id: $id) {
-            status
+            notification {
+              id
+              deleted
+            }
           }
         }
       GQL
@@ -22,7 +25,9 @@ RSpec.describe Mutations::Notification::DestroyMutation do
 
     it 'resolves "OK"' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['destroyNotification']['status']).to eql('OK')
+      expect(execute['data']['destroyNotification']['notification']).to be_present
+      expect(execute['data']['destroyNotification']['notification']['id']).to eql(notification.id)
+      expect(execute['data']['destroyNotification']['notification']['deleted']).to be_truthy
     end
   end
 end
