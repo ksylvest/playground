@@ -3,6 +3,8 @@ query Feed {
     entries {
       id
       tags
+      liked
+      likes
       photos {
         id
         url: variant(l: 640, w: 640, format: JPG, resize: FILL)

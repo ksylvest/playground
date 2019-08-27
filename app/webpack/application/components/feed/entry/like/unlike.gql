@@ -1,0 +1,9 @@
+mutation UnlikeFeedEntry($id: ID!) {
+  result: unlikeFeedEntry(id: $id) {
+    entry {
+      id
+      liked
+      likes
+    }
+  }
+}

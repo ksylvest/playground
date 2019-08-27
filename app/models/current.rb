@@ -29,4 +29,8 @@ class Current < ActiveSupport::CurrentAttributes
   def user
     session&.user
   end
+
+  def authed?
+    !user.nil?
+  end
 end
