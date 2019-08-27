@@ -6,9 +6,14 @@ module Types
       field :id, ID, null: false
       field :tags, [String], null: false
       field :photos, [AttachedType], null: false
+      field :comments, [CommentType], null: false
       field :user, UserType, null: false
       field :likes, Int, null: false
       field :liked, Boolean, null: false
+
+      def comments
+        ::Loaders::AssociationLoader.for(:comments).load(object)
+      end
 
       def photos
         ::Loaders::ActiveStorageAttachmentLoader.for(:photos, kind: :attachments).load(object)
