@@ -6,4 +6,7 @@ export interface IEntry {
   tags: string[];
   photos: IAttached[];
   user: IUser;
+  liked: boolean;
+  likes: number;
+  comments: number;
 }

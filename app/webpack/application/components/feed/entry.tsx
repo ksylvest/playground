@@ -10,6 +10,8 @@ import {
   Image,
 } from "@application/components/bulma";
 
+import { Actions } from "./entry/actions";
+
 export const Entry: React.FC<{
   entry: IFeedEntry;
   onSelect(entry: IFeedEntry): void;
@@ -45,12 +47,15 @@ export const Entry: React.FC<{
             <Image
               rounded
               square
-              dimensions={48}
+              dimensions={32}
               src={avatar ? avatar.url : require("@application/assets/avatar/placeholder.svg")}
             />
           </Column>
           <Column>
             <p>{entry.user.name}</p>
+          </Column>
+          <Column narrow>
+            <Actions entry={entry} />
           </Column>
         </Columns>
       </Card.Content>

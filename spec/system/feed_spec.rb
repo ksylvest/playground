@@ -22,4 +22,22 @@ RSpec.describe 'feed', type: :system do
       find('.modal-close').click
     end
   end
+
+  it 'lets a user like and unlike an entry' do
+    visit login_path
+    login(user)
+
+    expect(page).to have_title('Feed | Playground')
+
+    within('.card') do
+      find('button').click
+      within('[title="Unlike"]') do
+        expect(page).to have_text('1')
+      end
+      find('button').click
+      within('[title="Like"]') do
+        expect(page).to have_text('0')
+      end
+    end
+  end
 end

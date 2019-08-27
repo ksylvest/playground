@@ -7,6 +7,8 @@ module Types
       field :tags, [String], null: false
       field :photos, [AttachedType], null: false
       field :user, UserType, null: false
+      field :likes, Int, null: false
+      field :liked, Boolean, null: false
 
       def photos
         ::Loaders::ActiveStorageAttachmentLoader.for(:photos, kind: :attachments).load(object)
@@ -14,6 +16,14 @@ module Types
 
       def user
         ::Loaders::AssociationLoader.for(:user).load(object)
+      end
+
+      def likes
+        ::Loaders::CounterLoader.for(::Feed::Like, key: :entry_id).load(object.id)
+      end
+
+      def liked
+        Current.authed? && ::Feed::Like.exists?(user: Current.user, entry: object)
       end
     end
   end

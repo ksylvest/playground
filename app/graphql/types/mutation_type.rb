@@ -19,5 +19,8 @@ module Types
     field :build_billing_source, mutation: ::Mutations::Billing::Source::BuildMutation
     field :destroy_billing_source, mutation: ::Mutations::Billing::Source::DestroyMutation
     field :default_billing_source, mutation: ::Mutations::Billing::Source::DefaultMutation
+
+    field :like_feed_entry, mutation: ::Mutations::Feed::Entry::LikeMutation
+    field :unlike_feed_entry, mutation: ::Mutations::Feed::Entry::UnlikeMutation
   end
 end

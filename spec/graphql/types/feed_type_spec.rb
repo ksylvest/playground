@@ -13,6 +13,8 @@ RSpec.describe Types::FeedType do
             entries {
               id
               tags
+              likes
+              liked
               photos {
                 id
                 url: variant(l: 1280, w: 1280, format: JPG)

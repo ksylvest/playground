@@ -1,0 +1,9 @@
+mutation LikeFeedEntry($id: ID!) {
+  result: likeFeedEntry(id: $id) {
+    entry {
+      id
+      liked
+      likes
+    }
+  }
+}
