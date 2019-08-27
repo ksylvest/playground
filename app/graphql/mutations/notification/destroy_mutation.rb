@@ -3,13 +3,13 @@ module Mutations
     class DestroyMutation < GraphQL::Schema::Mutation
       graphql_name 'DestroyNotification'
       argument :id, ID, required: true
-      field :status, ::Types::StatusType, null: false
+      field :notification, ::Types::NotificationType, null: false
 
       def resolve(id:)
-        notification = Current.user.notifications.active.find_by(id: id)
-        notification&.clear!
+        notification = Current.user.notifications.find_by!(id: id)
+        notification.clear!
 
-        { status: :ok }
+        { notification: notification }
       end
     end
   end

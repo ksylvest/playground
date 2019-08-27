@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { useMutation } from "react-apollo";
 
-import { INotification, Status } from "@application/types";
+import { INotification } from "@application/types";
 
 import {
   Button,
@@ -13,7 +13,7 @@ import * as MUTATION from "./destroy/mutation.gql";
 
 interface IMutationData {
   destroyNotification: {
-    status: Status;
+    notification: INotification;
   };
 }
 
@@ -23,10 +23,8 @@ interface IMutationVariables {
 
 export const Destroy: React.FC<{
   notification: INotification;
-  onChange(): void;
 }> = ({
   notification,
-  onChange,
 }) => {
   const variables = { id: notification.id };
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
@@ -34,7 +32,6 @@ export const Destroy: React.FC<{
   const onClick = async () => {
     if (loading) { return; }
     await submit();
-    onChange();
   };
 
   return (

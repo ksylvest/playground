@@ -1,5 +1,8 @@
 mutation ReadNotification($id: ID!) {
   readNotification(id: $id) {
-    status
+    notification {
+      id
+      read
+    }
   }
 }

@@ -14,8 +14,7 @@ interface IQueryData {
 }
 
 export const Notifications: React.FC = () => {
-  const { data, refetch } = useQuery<IQueryData>(QUERY);
-  const notifications = data ? data.notifications : undefined;
+  const { data } = useQuery<IQueryData>(QUERY);
 
   return (
     <>
@@ -24,8 +23,7 @@ export const Notifications: React.FC = () => {
       <h2 className="title">Notifications</h2>
       <hr />
       <List
-        notifications={notifications}
-        onChange={refetch}
+        notifications={data && data.notifications}
       />
     </>
   );
