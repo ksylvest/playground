@@ -5,6 +5,7 @@ import { useMutation } from "react-apollo";
 import {
   Element,
   useAdapter,
+  useElement,
 } from "@application/components/libraries/stripe";
 
 import {
@@ -37,6 +38,7 @@ export const Dialog: React.FC<IDialogProps> = ({
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
   const [tokenizer, setTokenizer] = useState<Promise<stripe.ITokenResponse> | undefined>(undefined);
   const adapter = useAdapter();
+  const element = useElement(adapter, "card");
 
   const saving = loading || !!tokenizer;
 
@@ -45,7 +47,7 @@ export const Dialog: React.FC<IDialogProps> = ({
     event.stopPropagation();
 
     if (saving) { return; }
-    const attempt = adapter.tokenize();
+    const attempt = adapter.tokenize(await element);
     setTokenizer(attempt);
     const {
       error,
@@ -74,7 +76,7 @@ export const Dialog: React.FC<IDialogProps> = ({
             </Modal.Card.Head>
             <Modal.Card.Body>
               <Content>
-                <Element element={adapter} />
+                <Element element={element} />
               </Content>
             </Modal.Card.Body>
             <Modal.Card.Foot>
