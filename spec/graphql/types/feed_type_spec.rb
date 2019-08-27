@@ -15,6 +15,10 @@ RSpec.describe Types::FeedType do
               tags
               likes
               liked
+              comments {
+                id
+                message
+              }
               photos {
                 id
                 url: variant(l: 1280, w: 1280, format: JPG)
@@ -35,6 +39,8 @@ RSpec.describe Types::FeedType do
 
     let(:user) { create(:user, :with_avatar) }
     let!(:entry) { create(:feed_entry, :with_photos) }
+    let!(:comment) { create(:feed_comment, entry: entry) }
+    let!(:like) { create(:feed_like, entry: entry) }
 
     it 'resolves a feed' do
       expect(execute['errors']).to be_nil
