@@ -2,6 +2,7 @@ query Sessions {
   sessions {
     id
     ip
+    deleted
     seen
     status
     geography {

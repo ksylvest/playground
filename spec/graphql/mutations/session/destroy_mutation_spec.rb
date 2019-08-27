@@ -11,7 +11,10 @@ RSpec.describe Mutations::Session::DestroyMutation do
       <<~GQL
         mutation DestroySession($id: String!) {
           destroySession(id: $id) {
-            status
+            session {
+              id
+              deleted
+            }
           }
         }
       GQL
@@ -22,7 +25,9 @@ RSpec.describe Mutations::Session::DestroyMutation do
 
     it 'resolves "OK"' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['destroySession']['status']).to eql('OK')
+      expect(execute['data']['destroySession']['session']).to be_present
+      expect(execute['data']['destroySession']['session']['id']).to eql(session.id)
+      expect(execute['data']['destroySession']['session']['deleted']).to be_truthy
     end
   end
 end

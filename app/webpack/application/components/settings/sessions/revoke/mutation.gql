@@ -1,5 +1,8 @@
 mutation DestroySession($id: String!) {
   destroySession(id: $id) {
-    status
+    session {
+      id
+      deleted
+    }
   }
 }

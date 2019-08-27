@@ -3,13 +3,13 @@ module Mutations
     class DestroyMutation < GraphQL::Schema::Mutation
       graphql_name 'DestroySession'
       argument :id, ::String, required: true
-      field :status, ::Types::StatusType, null: false
+      field :session, ::Types::SessionType, null: false
 
       def resolve(id:)
-        session = Current.user.sessions.active.find_by(id: id)
-        session&.clear!
+        session = Current.user.sessions.find_by(id: id)
+        session.clear!
 
-        { status: :ok }
+        { session: session }
       end
     end
   end
