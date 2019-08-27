@@ -1,5 +1,4 @@
 export interface IBase {
-  mount(element: HTMLElement): void;
-  unmount(): void;
-  tokenize(): Promise<stripe.ITokenResponse>;
+  element(type: "card"): Promise<stripe.IElement>;
+  tokenize(element: stripe.IElement): Promise<stripe.ITokenResponse>;
 }

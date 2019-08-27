@@ -1,12 +1,33 @@
+import { memoize } from "lodash";
+
 import { IBase } from "./base";
 
 declare const STRIPE_PUBLISHABLE_KEY: string;
 
-export class Live implements IBase {
-  private stripe: stripe.IStripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-  private element = this.stripe.elements().create("card");
+const LIBRARY = new Promise<stripe.ILibrary>((
+  resolve,
+  reject,
+) => {
+  Object.assign(window, {
+    STRIPE_ONERROR: () => {
+      reject();
+    },
+    STRIPE_ONLOAD: () => {
+      resolve(Stripe);
+    },
+  });
+});
 
-  public tokenize = () => this.stripe.createToken(this.element);
-  public mount = (ref: HTMLElement) => this.element.mount(ref);
-  public unmount = () => this.element.unmount();
+export class Live implements IBase {
+  private stripe = memoize(async () => (await LIBRARY)(STRIPE_PUBLISHABLE_KEY));
+
+  public element = async (type: "card") => {
+    const stripe = await this.stripe();
+    return stripe.elements().create(type);
+  }
+
+  public tokenize = async (element: stripe.IElement) => {
+    const stripe = await this.stripe();
+    return stripe.createToken(element);
+  }
 }
