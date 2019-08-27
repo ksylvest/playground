@@ -1,0 +1,7 @@
+FactoryBot.define do
+  factory :feed_comment, class: 'Feed::Comment' do
+    user
+    association(:entry, factory: :feed_entry)
+    message { 'The quick brown fox jumped over the lazy dog.' }
+  end
+end
