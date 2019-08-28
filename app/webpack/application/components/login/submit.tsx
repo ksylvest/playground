@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 
-import { Button } from "@application/components/bulma";
+import { Button } from "tights";
 
 import { Context } from "./context";
 
