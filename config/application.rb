@@ -8,8 +8,6 @@ module Playground
   class Application < Rails::Application
     config.load_defaults 6.0
 
-    config.active_storage.variant_processor = :vips
-
     config.generators do |g|
       g.helper false
       g.stylesheets false
