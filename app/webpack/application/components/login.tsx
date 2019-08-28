@@ -1,55 +1,24 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation } from "react-apollo";
-
-import { Title } from "@application/components/helpers";
 
 import { Context } from "./context";
+import { Title } from "./helpers";
 
+import { Controls } from "./login/controls";
 import { Fields } from "./login/fields";
-
-import {
-  IErrors,
-  ISession,
-  Status,
-} from "@application/types";
-
-import * as MUTATION from "./login/mutation.gql";
-
-interface IMutationData {
-  login: {
-    status: Status;
-    session?: ISession;
-    errors?: IErrors;
-  };
-}
-
-interface IMutationVariables {
-  input: {
-    email: string;
-    password: string;
-  };
-}
+import { Form } from "./login/form";
 
 export const Login: React.FC = () => {
   const { auth } = useContext(Context);
-  const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   return (
     <>
-      <Title>Login | Playground</Title>
+      <Title>Settings - Login | Playground</Title>
 
-      <Fields
-        save={async (input) => {
-          if (loading) { return; }
-          const result = await submit({ variables: { input } });
-          if (!result || !result.data) { return; }
-          if (!result.data.login.session) { return; }
-          auth(result.data.login.session);
-        }}
-        loading={loading}
-        errors={data && data.login && data.login.errors}
-      />
+      <Form onAuth={auth}>
+        <Fields />
+        <Controls />
+      </Form>
     </>
   );
 };
