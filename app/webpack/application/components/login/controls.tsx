@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Form } from "@application/components/bulma";
+import { Form } from "tights";
 
 import { Submit } from "./submit";
 
