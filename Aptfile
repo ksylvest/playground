@@ -1,7 +1,4 @@
-libpng
-libjpeg
-libtiff
-libwebp
+libtool
 libvips
 libvips-dev
 libvips-tools
