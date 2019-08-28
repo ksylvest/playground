@@ -1,45 +1,18 @@
 import * as React from "react";
-import { useState } from "react";
-
-import { IErrors } from "@application/types";
+import { useContext } from "react";
 
 import { sentence } from "@application/utilities";
 
-import {
-  Button,
-  Form,
-  Notification,
-} from "tights";
+import { Notification } from "tights";
 
 import { Field } from "@application/components/field";
 
-export const Fields: React.FC<{
-  loading: boolean;
-  errors?: IErrors;
-  save(variables: {
-    email: string;
-    password: string;
-  }): void;
-}> = ({
-  loading,
-  errors,
-  save,
-}) => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+import { Context } from "./context";
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    save({
-      email,
-      password,
-    });
-  };
-
+export const Fields: React.FC = () => {
+  const { input, errors, onChange } = useContext(Context);
   return (
-    <Form onSubmit={onSubmit}>
+    <>
       {errors && errors.messages.base &&
         <Notification color="danger">{sentence(errors.messages.base)}</Notification>
       }
@@ -48,29 +21,23 @@ export const Fields: React.FC<{
         icon="envelope"
         type="email"
         field="email"
-        value={email}
+        value={input.email}
         label="Email"
         placeholder="Email"
         errors={errors}
-        onValue={setEmail}
+        onValue={(email) => onChange({ ...input, email })}
       />
 
       <Field
         icon="lock"
         type="password"
         field="password"
-        value={password}
+        value={input.password}
         label="Password"
         placeholder="Password"
         errors={errors}
-        onValue={setPassword}
+        onValue={(password) => onChange({ ...input, password })}
       />
-
-      <Form.Field>
-        <Form.Control>
-          <Button type="submit" loading={loading} color="primary">Login</Button>
-        </Form.Control>
-      </Form.Field>
-    </Form>
+    </>
   );
 };
