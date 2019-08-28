@@ -1,4 +1,15 @@
+build-essential
+
 pkgconfig
+
+libglib2.0-dev
+
+libpng
+libjpeg
+libtiff
+libheif
+libwebp
+
 libtool
 libvips
 libvips-dev
