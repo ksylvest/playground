@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resource :sitemap, only: :show, defaults: { format: :xml }
   resources :attachments, only: :show
 
+  namespace :twilio do
+    resource :voice, only: :show, defaults: { format: :xml }
+  end
+
   constraints format: :html do
     %w[
       login
