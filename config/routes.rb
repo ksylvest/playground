@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resource :robots, only: :show, defaults: { format: :text }
   resource :sitemap, only: :show, defaults: { format: :xml }
 
+  namespace :twilio do
+    resource :voice, only: :show, defaults: { format: :xml }
+  end
+
   constraints format: :html do
     %w[
       login
