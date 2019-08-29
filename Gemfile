@@ -25,6 +25,8 @@ gem 'jsbundling-rails'
 gem 'sentry-rails'
 gem 'sprockets-rails'
 
+gem 'twilio-ruby'
+
 gem 'bootsnap', require: false
 
 group :test do
