@@ -21,6 +21,8 @@ gem 'image_processing'
 
 gem 'slim-rails'
 
+gem 'twilio-ruby'
+
 gem 'bootsnap', require: false
 
 group :test do
