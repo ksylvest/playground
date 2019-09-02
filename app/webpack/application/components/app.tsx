@@ -9,7 +9,7 @@ import { useActionCableSubscription } from "@application/hooks";
 import {
   Container,
   Section,
-} from "@application/components/bulma";
+} from "tights";
 
 import {
   IFlash,

@@ -9,7 +9,7 @@ import {
   SETTINGS_SESSIONS_URL,
 } from "@application/config/routes";
 
-import { Panel } from "@application/components/bulma";
+import { Panel } from "tights";
 
 export const Menu: React.FC = () => (
   <Panel>

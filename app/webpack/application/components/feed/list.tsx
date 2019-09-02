@@ -9,7 +9,7 @@ import { IFeedEntry } from "@application/types";
 import {
   Column,
   Columns,
-} from "@application/components/bulma";
+} from "tights";
 
 export const List: React.FC<{
   entries: IFeedEntry[];

@@ -14,7 +14,7 @@ import {
   Delete,
   Form,
   Modal,
-} from "@application/components/bulma";
+} from "tights";
 
 import * as MUTATION from "./mutation.gql";
 

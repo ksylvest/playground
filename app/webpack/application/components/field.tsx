@@ -5,7 +5,7 @@ import { IErrors } from "@application/types";
 
 import { sentence } from "@application/utilities";
 
-import { Form } from "@application/components/bulma";
+import { Form, Icon } from "tights";
 
 export const Field: React.FC<{
   icon: "envelope" | "lock" | "info";
@@ -46,11 +46,11 @@ export const Field: React.FC<{
           placeholder={placeholder}
           onChange={onChange}
         />
-        <Form.Icon size="small" alignment="left"><FontAwesomeIcon icon={icon} /></Form.Icon>
-        <Form.Icon size="small" alignment="right">
+        <Icon size="small" alignment="left"><FontAwesomeIcon icon={icon} /></Icon>
+        <Icon size="small" alignment="right">
           {valid && <FontAwesomeIcon icon="check-square" />}
           {invalid && <FontAwesomeIcon icon="exclamation-circle" />}
-        </Form.Icon>
+        </Icon>
         {help && <Form.Help color="danger">{help}</Form.Help>}
       </Form.Control>
     </Form.Field>

@@ -5,7 +5,7 @@ import {
   Content,
   Delete,
   Modal,
-} from "@application/components/bulma";
+} from "tights";
 
 export const Dialog: React.FC<{
   loading: boolean;

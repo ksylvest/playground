@@ -7,7 +7,7 @@ import {
 
 import { useActiveStorageDirectUpload } from "@application/hooks";
 
-import { Form } from "@application/components/bulma";
+import { Form } from "tights";
 
 export const Uploader: React.FC<{
   accept?: string;

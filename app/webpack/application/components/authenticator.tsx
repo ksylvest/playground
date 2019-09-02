@@ -9,7 +9,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import { Tabs } from "@application/components/bulma";
+import { Tabs } from "tights";
 
 import { Context } from "./context";
 import { Login } from "./login";

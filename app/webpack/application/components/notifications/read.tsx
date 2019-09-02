@@ -7,7 +7,7 @@ import { INotification } from "@application/types";
 import {
   Button,
   Icon,
-} from "@application/components/bulma";
+} from "tights";
 
 import * as MUTATION from "./read/mutation.gql";
 

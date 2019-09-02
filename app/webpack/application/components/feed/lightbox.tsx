@@ -9,7 +9,7 @@ import { IFeedEntry } from "@application/types";
 import {
   Image,
   Modal,
-} from "@application/components/bulma";
+} from "tights";
 
 import * as QUERY from "./lightbox/query.gql";
 

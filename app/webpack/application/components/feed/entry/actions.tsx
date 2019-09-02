@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Buttons } from "@application/components/bulma";
+import { Buttons } from "tights";
 
 import { IFeedEntry } from "@application/types";
 
