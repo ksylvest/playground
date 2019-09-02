@@ -7,7 +7,7 @@ import {
   Status,
 } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import { Dialog } from "./destroy/dialog";
 
@@ -30,7 +30,7 @@ export const Destroy: React.FC<{
   source,
   onClose,
 }) => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const variables = { id: source.id };
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
 

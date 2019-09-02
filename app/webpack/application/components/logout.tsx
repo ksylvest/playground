@@ -2,7 +2,7 @@ import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
 
-import { Context } from "./context";
+import { World } from "@application/contexts";
 
 import * as MUTATION from "./logout/mutation.gql";
 
@@ -18,7 +18,7 @@ export const Logout: React.FC<{
     logout(): void;
   }): React.ReactElement;
 }> = ({ children }) => {
-  const { deauth } = useContext(Context);
+  const { deauth } = useContext(World);
   const [submit, { loading }] = useMutation<IMutationData>(MUTATION);
 
   return children({

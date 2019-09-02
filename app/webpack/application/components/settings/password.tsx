@@ -6,7 +6,7 @@ import { Title } from "@application/components/helpers";
 
 import { IErrors, Status } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import { Fields } from "./password/fields";
 
@@ -27,7 +27,7 @@ interface IMutationVariables {
 }
 
 export const Password: React.FC = () => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   return (

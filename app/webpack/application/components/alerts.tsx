@@ -5,12 +5,12 @@ import {
 } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 
-import { Context } from "./context";
+import { World } from "@application/contexts";
 
 import { Notification } from "tights";
 
 const Alerts: React.FC<RouteComponentProps> = ({ location }) => {
-  const { flash, notify } = useContext(Context);
+  const { flash, notify } = useContext(World);
 
   useEffect(() => {
     notify(location.state ? location.state.flash : undefined);

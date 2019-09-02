@@ -8,7 +8,8 @@ import { useMutation } from "react-apollo";
 import { Status } from "@application/types";
 
 import { Button } from "tights";
-import { Context } from "@application/components/context";
+
+import { World } from "@application/contexts";
 
 import { Dialog } from "./detach/dialog";
 
@@ -27,7 +28,7 @@ export const Detach: React.FC<{
 }> = ({
   onSave,
 }) => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
   const [submit, { loading }] = useMutation<IMutationData>(MUTATION);
 

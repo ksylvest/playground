@@ -8,9 +8,10 @@ import {
   Switch,
 } from "react-router-dom";
 
+import { World } from "@application/contexts";
+
 import { Tabs } from "tights";
 
-import { Context } from "./context";
 import { Login } from "./login";
 import { Signup } from "./signup";
 
@@ -21,7 +22,7 @@ import {
 } from "@application/config/routes";
 
 const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
-  const { session } = useContext(Context);
+  const { session } = useContext(World);
   if (session) {
     return <Redirect to={location.state && location.state.back ? location.state.back : ROOT_URL} />;
   }

@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
+import { useContext } from "react";
 import { useMutation } from "react-apollo";
+
+import { World } from "@application/contexts";
 
 import { IFeedEntry, Status } from "@application/types";
 
@@ -11,6 +14,8 @@ import {
 
 import * as LIKE_MUTATION from "./like.gql";
 import * as UNLIKE_MUTATION from "./unlike.gql";
+
+import { useAuthentication } from "@application/hooks";
 
 interface IMutationData {
   result: {
@@ -39,9 +44,7 @@ export const Action: React.FC<{
     variables: { id },
   });
 
-  const onClick = async () => {
-    await execute();
-  };
+  const onClick = useAuthentication({ action: execute });
 
   return (
     <Button title={liked ? "Like" : "Unlike"} color="white" disabled={loading} onClick={onClick}>

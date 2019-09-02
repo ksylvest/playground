@@ -10,7 +10,8 @@ import {
   Navbar,
 } from "tights";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
+
 import { Logout } from "@application/components/logout";
 
 import {
@@ -24,7 +25,7 @@ import {
 const DEFAULT_ACTIVE = false;
 
 export const Header: React.FC = () => {
-  const { session, stats } = useContext(Context);
+  const { session, stats } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
 
   return (
