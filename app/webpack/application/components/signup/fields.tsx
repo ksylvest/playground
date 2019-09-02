@@ -9,7 +9,7 @@ import {
   Button,
   Form,
   Notification,
-} from "@application/components/bulma";
+} from "tights";
 
 import { Field } from "@application/components/field";
 

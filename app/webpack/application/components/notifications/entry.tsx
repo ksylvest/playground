@@ -4,11 +4,11 @@ import * as React from "react";
 
 import {
   Buttons,
-  Colors,
   Column,
   Columns,
+  Icon,
   Message,
-} from "@application/components/bulma";
+} from "tights";
 
 import { Destroy } from "./destroy";
 import { Read } from "./read";
@@ -26,9 +26,9 @@ export const Entry: React.FC<{
       <Message.Body>
         <Columns mobile desktop vcentered>
           <Column narrow>
-            <Colors text={color}>
+            <Icon color={color}>
               <FontAwesomeIcon icon="circle" />
-            </Colors>
+            </Icon>
           </Column>
           <Column>
             <small>{DateTime.fromISO(notification.sent).toLocaleString(DateTime.DATETIME_MED)}</small>

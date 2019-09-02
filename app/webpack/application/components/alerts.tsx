@@ -7,7 +7,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 
 import { Context } from "./context";
 
-import { Notification } from "./bulma";
+import { Notification } from "tights";
 
 const Alerts: React.FC<RouteComponentProps> = ({ location }) => {
   const { flash, notify } = useContext(Context);

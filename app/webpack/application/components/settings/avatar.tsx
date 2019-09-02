@@ -9,7 +9,7 @@ import {
   Column,
   Columns,
   Image,
-} from "@application/components/bulma";
+} from "tights";
 
 interface IQueryData {
   user: {

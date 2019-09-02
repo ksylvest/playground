@@ -13,7 +13,7 @@ import {
   Button,
   Buttons,
   Table,
-} from "@application/components/bulma";
+} from "tights";
 
 export const List: React.FC<{
   sources: IBillingSource[];

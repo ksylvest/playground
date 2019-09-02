@@ -9,7 +9,7 @@ import {
 import {
   Column,
   Columns,
-} from "@application/components/bulma";
+} from "tights";
 
 import { Menu } from "./settings/menu";
 

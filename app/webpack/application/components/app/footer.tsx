@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   Container,
   Content,
-} from "@application/components/bulma";
+} from "tights";
 
 export const Footer: React.FC = () => (
   <footer>

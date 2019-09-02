@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   Button,
   Buttons,
-} from "@application/components/bulma";
+} from "tights";
 
 import { Build } from "./sources/build";
 import { Default } from "./sources/default";

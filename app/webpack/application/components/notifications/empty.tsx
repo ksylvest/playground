@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Hero } from "@application/components/bulma";
+import { Hero } from "tights";
 
 export const Empty: React.FC = () => (
   <Hero color="light">

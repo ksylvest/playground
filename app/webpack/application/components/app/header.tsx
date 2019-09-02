@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import {
   Button,
   Navbar,
-} from "@application/components/bulma";
+} from "tights";
 
 import { Context } from "@application/components/context";
 import { Logout } from "@application/components/logout";

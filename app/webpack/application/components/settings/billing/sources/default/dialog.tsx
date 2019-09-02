@@ -10,7 +10,7 @@ import {
   Delete,
   Message,
   Modal,
-} from "@application/components/bulma";
+} from "tights";
 
 export const Dialog: React.FC<{
   source: IBillingSource;

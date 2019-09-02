@@ -7,7 +7,7 @@ import { useMutation } from "react-apollo";
 
 import { Status } from "@application/types";
 
-import { Button } from "@application/components/bulma";
+import { Button } from "tights";
 import { Context } from "@application/components/context";
 
 import { Dialog } from "./detach/dialog";

@@ -12,11 +12,11 @@ import { Context } from "@application/components/context";
 
 import {
   Button,
-  Colors,
   Column,
   Columns,
+  Icon,
   Message,
-} from "@application/components/bulma";
+} from "tights";
 
 export const Entry: React.FC<{
   session: ISession;
@@ -39,9 +39,9 @@ export const Entry: React.FC<{
       <Message.Body>
         <Columns mobile desktop vcentered>
           <Column narrow>
-            <Colors text={me && "info" || status}>
+            <Icon color={"info" || status}>
               <FontAwesomeIcon icon="circle" />
-            </Colors>
+            </Icon>
           </Column>
           <Column narrow>
             {session.ip}
