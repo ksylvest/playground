@@ -8,7 +8,7 @@ import {
   SessionStatus,
 } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import {
   Button,
@@ -25,7 +25,7 @@ export const Entry: React.FC<{
   session,
   onRevoke,
 }) => {
-  const { session: current } = useContext(Context);
+  const { session: current } = useContext(World);
   const me = current && session.id === current.id;
   const status = (() => {
     switch (session.status) {

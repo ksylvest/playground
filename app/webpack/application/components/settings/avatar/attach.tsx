@@ -4,7 +4,8 @@ import { useMutation } from "react-apollo";
 
 import { Status } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
+
 import { Uploader } from "@application/components/uploader";
 
 import * as MUTATION from "./attach/mutation.gql";
@@ -24,7 +25,7 @@ export const Attach: React.FC<{
 }> = ({
   onSave,
 }) => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   const onSelect = async (id: string) => {

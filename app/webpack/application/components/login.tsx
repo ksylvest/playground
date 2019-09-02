@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 
-import { Context } from "./context";
+import { World } from "@application/contexts";
 import { Title } from "./helpers";
 
 import { Controls } from "./login/controls";
@@ -9,7 +9,7 @@ import { Fields } from "./login/fields";
 import { Form } from "./login/form";
 
 export const Login: React.FC = () => {
-  const { auth } = useContext(Context);
+  const { auth } = useContext(World);
 
   return (
     <>

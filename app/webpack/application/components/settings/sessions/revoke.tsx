@@ -7,7 +7,7 @@ import {
   Status,
 } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import { Dialog } from "./revoke/dialog";
 
@@ -30,7 +30,7 @@ export const Revoke: React.FC<{
   session,
   onClose,
 }) => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const variables = { id: session.id };
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
 

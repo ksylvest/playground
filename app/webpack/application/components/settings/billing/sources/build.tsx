@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import { Dialog } from "./build/dialog";
 
@@ -10,7 +10,7 @@ export const Build: React.FC<{
 }> = ({
   onClose,
 }) => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
 
   const onCancel = () => {
     onClose();

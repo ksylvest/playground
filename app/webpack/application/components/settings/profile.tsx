@@ -9,7 +9,7 @@ import { Title } from "@application/components/helpers";
 
 import { IErrors, Status } from "@application/types";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 import { Fields } from "./profile/fields";
 
@@ -39,7 +39,7 @@ import * as MUTATION from "./profile/mutation.gql";
 import * as QUERY from "./profile/query.gql";
 
 export const Profile: React.FC = () => {
-  const { notify } = useContext(Context);
+  const { notify } = useContext(World);
   const { data: defaults, loading: querying } = useQuery<IQueryData>(QUERY);
   const [submit, { data, loading: mutating }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 

@@ -7,7 +7,7 @@ import { IFlash } from "@application/types";
 
 import { LOGIN_URL } from "@application/config/routes";
 
-import { Context } from "./context";
+import { World } from "@application/contexts";
 
 const AUTHORIZE_FLASH: IFlash = {
   kind: "alert",
@@ -15,7 +15,7 @@ const AUTHORIZE_FLASH: IFlash = {
 };
 
 const Authorize: React.FC<RouteComponentProps> = ({ children, location }) => {
-  const { session } = useContext(Context);
+  const { session } = useContext(World);
   if (!session) {
     const state = { flash: AUTHORIZE_FLASH, back: location };
     return <Redirect to={{ pathname: LOGIN_URL, state }} />;

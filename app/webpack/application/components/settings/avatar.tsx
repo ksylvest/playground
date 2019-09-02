@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Title } from "@application/components/helpers";
-
-import { Attach } from "./avatar/attach";
-import { Detach } from "./avatar/detach";
 
 import {
   Column,
   Columns,
   Image,
 } from "tights";
+
+import { Attach } from "./avatar/attach";
+import { Detach } from "./avatar/detach";
+
+import { Title } from "@application/components/helpers";
 
 interface IQueryData {
   user: {

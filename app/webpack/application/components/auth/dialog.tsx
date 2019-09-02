@@ -20,7 +20,7 @@ import { Fields as SignupFields } from "@application/components/signup/fields";
 import { Form as SignupForm } from "@application/components/signup/form";
 import { Submit as SignupSubmit } from "@application/components/signup/submit";
 
-import { Context } from "@application/components/context";
+import { World } from "@application/contexts";
 
 const Login = {
   Context: LoginContext,
@@ -41,7 +41,7 @@ enum Mode {
   Signup = "Signup",
 }
 
-const DEFAULT_MODE = Mode.Signup;
+const DEFAULT_MODE = Mode.Login;
 
 export const Dialog: React.FC<{
   onCancel(): void;
@@ -50,7 +50,7 @@ export const Dialog: React.FC<{
   onCancel,
   onAuth,
 }) => {
-  const { auth } = useContext(Context);
+  const { auth } = useContext(World);
   const [mode, setMode] = useState<Mode>(DEFAULT_MODE);
   const Auth = (() => {
     switch (mode) {
@@ -78,10 +78,28 @@ export const Dialog: React.FC<{
               <Tabs fullwidth>
                 <Tabs.List>
                   <Tabs.Item active={mode === Mode.Login}>
-                    <a onClick={() => setMode(Mode.Login)}>Login</a>
+                    <a
+                      href="#"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setMode(Mode.Login);
+                      }}
+                    >
+                      Login
+                    </a>
                   </Tabs.Item>
                   <Tabs.Item active={mode === Mode.Signup}>
-                    <a onClick={() => setMode(Mode.Signup)}>Signup</a>
+                    <a
+                      href="#"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setMode(Mode.Signup);
+                      }}
+                    >
+                      Signup
+                    </a>
                   </Tabs.Item>
                 </Tabs.List>
               </Tabs>

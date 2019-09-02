@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Title } from "@application/components/helpers";
 import {
   Redirect,
   Route,
@@ -10,6 +9,8 @@ import {
   Column,
   Columns,
 } from "tights";
+
+import { Title } from "@application/components/helpers";
 
 import { Menu } from "./settings/menu";
 
