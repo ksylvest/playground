@@ -1,7 +1,6 @@
 import { head } from "lodash";
 import * as React from "react";
-
-import { IFeedEntry } from "@application/types";
+import { Link } from "react-router-dom";
 
 import {
   Card,
@@ -10,14 +9,16 @@ import {
   Image,
 } from "tights";
 
+import { IFeedEntry } from "@application/types";
+
 import { Actions } from "./entry/actions";
+
+import { FEED_DETAILS_URL } from "@application/config/routes";
 
 export const Entry: React.FC<{
   entry: IFeedEntry;
-  onSelect(entry: IFeedEntry): void;
 }> = ({
   entry,
-  onSelect,
 }) => {
   const hero = head(entry.photos);
   const avatar = entry.user.avatar;
@@ -25,21 +26,14 @@ export const Entry: React.FC<{
   return (
     <Card>
       <Card.Image>
-        <a
-          href="#"
-          onClick={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            onSelect(entry);
-          }}
-        >
+        <Link to={FEED_DETAILS_URL(entry)}>
           {hero &&
             <Image
               square
               src={hero.url}
             />
           }
-        </a>
+        </Link>
       </Card.Image>
       <Card.Content>
         <Columns desktop tablet mobile vcentered gap={2}>

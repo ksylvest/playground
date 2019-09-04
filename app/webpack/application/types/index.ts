@@ -1,3 +1,4 @@
+export * from "./attached";
 export * from "./billing";
 export * from "./errors";
 export * from "./flash";

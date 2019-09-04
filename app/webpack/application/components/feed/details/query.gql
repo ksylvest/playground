@@ -1,0 +1,22 @@
+query FeedEntry($id: ID!) {
+  feed {
+    entry(id: $id) {
+      id
+      tags
+      liked
+      likes
+      photos {
+        id
+        url: variant(l: 1280, w: 1280, format: JPG, resize: FILL)
+      }
+      user {
+        id
+        name
+        avatar {
+          id
+          url: variant(l: 320, w: 320, format: JPG)
+        }
+      }
+    }
+  }
+}

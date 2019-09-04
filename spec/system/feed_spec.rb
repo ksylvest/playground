@@ -14,13 +14,6 @@ RSpec.describe 'feed', type: :system do
       expect(page).to have_text(user.name)
       find('.card-image').click
     end
-
-    within('.modal') do
-      expect(page).to have_css('img')
-      expect(page).to have_css('.modal-background')
-      expect(page).to have_css('.modal-content')
-      find('.modal-close').click
-    end
   end
 
   it 'lets a user like and unlike an entry' do
@@ -38,6 +31,20 @@ RSpec.describe 'feed', type: :system do
       within('[title="Like"]') do
         expect(page).to have_text('0')
       end
+    end
+  end
+
+  it 'details a feed entry' do
+    visit feed_entry_path(entry)
+    expect(page).to have_title('Feed - Details | Playground')
+
+    within('.breadcrumb') do
+      expect(page).to have_link('Home')
+      expect(page).to have_text('Details')
+    end
+
+    within('.card') do
+      expect(page).to have_text("by #{user.name}")
     end
   end
 end

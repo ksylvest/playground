@@ -28,9 +28,9 @@ import { Notifications } from "./notifications";
 import { Settings } from "./settings";
 
 import {
+  FEED_URL,
   LOGIN_URL,
   NOTIFICATIONS_URL,
-  ROOT_URL,
   SETTINGS_URL,
   SIGNUP_URL,
 } from "@application/config/routes";
@@ -58,7 +58,8 @@ export const App: React.FC = () => {
           <Section>
             <Alerts />
             <Switch>
-              <Route exact path={ROOT_URL} component={Feed} />
+              <Route exact path="/" component={Feed} />
+              <Route path="/feed" component={Feed} />
               <Route exact path={LOGIN_URL} component={Authenticator} />
               <Route exact path={SIGNUP_URL} component={Authenticator} />
               <Authorize>

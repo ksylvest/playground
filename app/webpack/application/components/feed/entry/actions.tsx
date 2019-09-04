@@ -4,14 +4,16 @@ import { Buttons } from "tights";
 
 import { IFeedEntry } from "@application/types";
 
-import { Action as LikeAction } from "./like/action";
+import { Like } from "./like";
 
 export const Actions: React.FC<{
-  entry: IFeedEntry;
+  entry?: IFeedEntry;
+  outlined?: boolean;
 }> = ({
   entry,
+  outlined,
 }) => (
   <Buttons addons>
-    <LikeAction entry={entry} />
+    <Like outlined={outlined} entry={entry} />
   </Buttons>
 );

@@ -28,7 +28,7 @@ import {
   SETTINGS_SESSIONS_URL,
 } from "@application/config/routes";
 
-const SESSIONS_DEFAULT_URL = SETTINGS_PROFILE_URL;
+const SETTINGS_DEFAULT_URL = SETTINGS_PROFILE_URL;
 
 export const Settings: React.FC = () => (
   <>
@@ -60,7 +60,7 @@ export const Settings: React.FC = () => (
             path={SETTINGS_SESSIONS_URL}
             component={Sessions}
           />
-          <Redirect to={SESSIONS_DEFAULT_URL} />
+          <Redirect to={SETTINGS_DEFAULT_URL} />
         </Switch>
       </Column>
     </Columns>
