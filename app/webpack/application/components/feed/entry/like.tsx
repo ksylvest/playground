@@ -1,9 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { useContext } from "react";
 import { useMutation } from "react-apollo";
-
-import { World } from "@application/contexts";
 
 import { IFeedEntry, Status } from "@application/types";
 
@@ -30,28 +27,32 @@ interface IMutationVariables {
 const ON_COLOR = "hsl(348, 100%, 61%)";
 const OFF_COLOR = "hsl(0, 0%, 48%)";
 
-export const Action: React.FC<{
-  entry: IFeedEntry;
+export const Like: React.FC<{
+  entry?: IFeedEntry;
+  outlined?: boolean;
 }> = ({
-  entry: {
-    id,
-    liked,
-    likes,
-  },
+  entry,
+  outlined,
 }) => {
+  const liked = entry && entry.liked;
+  const likes = entry && entry.likes;
+  const id = entry && entry.id;
+
   const MUTATION = liked ? UNLIKE_MUTATION : LIKE_MUTATION;
   const [execute, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, {
-    variables: { id },
+    variables: { id: id! },
   });
 
+  const disabled = !id || loading;
+  const title = liked ? "Like" : "Unlike";
   const onClick = useAuthentication({ action: execute });
 
   return (
-    <Button title={liked ? "Like" : "Unlike"} color="white" disabled={loading} onClick={onClick}>
+    <Button outlined={outlined} title={title} disabled={disabled} onClick={onClick}>
       <Icon>
         <FontAwesomeIcon icon="heart" color={liked ? ON_COLOR : OFF_COLOR} />
       </Icon>
-      <span>{likes}</span>
+      <span>{likes !== undefined ? likes : "-"}</span>
     </Button>
   );
 };

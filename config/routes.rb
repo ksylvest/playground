@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     ].each do |path|
       get path, to: 'main#index', as: path
     end
+
+    get 'feed/entries/:id', to: 'main#index', as: :feed_entry
   end
 end

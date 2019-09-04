@@ -13,7 +13,7 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <Title>Settings - Login | Playground</Title>
+      <Title>Login | Playground</Title>
 
       <Form onAuth={auth}>
         <Fields />

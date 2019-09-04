@@ -13,7 +13,7 @@ export const Signup: React.FC = () => {
 
   return (
     <>
-      <Title>Settings - Signup | Playground</Title>
+      <Title>Signup | Playground</Title>
 
       <Form onAuth={auth}>
         <Fields />

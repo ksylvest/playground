@@ -1,27 +1,34 @@
 import * as React from "react";
-import { useQuery } from "react-apollo";
+import {
+  Route,
+  Switch,
+} from "react-router-dom";
 
-import { Title } from "@application/components/helpers";
-
+import { Details } from "./feed/details";
 import { List } from "./feed/list";
 
-import { IFeed } from "@application/types";
-
-import * as QUERY from "./feed/query.gql";
-
-interface IQueryData {
-  feed: IFeed;
-}
+import {
+  FEED_DETAILS_URL,
+  FEED_LIST_URL,
+} from "@application/config/routes";
 
 export const Feed: React.FC = () => {
-  const { data } = useQuery<IQueryData>(QUERY);
   return (
     <>
-      <Title>Feed | Playground</Title>
-
-      <h2 className="title">Feed</h2>
-      <hr />
-      {data && data.feed && <List entries={data.feed.entries} />}
+      <Switch>
+        <Route
+          exact
+          path={FEED_LIST_URL}
+          component={List}
+        />
+        <Route
+          exact
+          path={FEED_DETAILS_URL({ id: ":id" })}
+          render={({ match }) => (
+            <Details id={match.params.id} />
+          )}
+        />
+      </Switch>
     </>
   );
 };
