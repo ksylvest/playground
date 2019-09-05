@@ -1,3 +1,7 @@
+import {
+  faEnvelope,
+  faInfo,
+} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import {
   useEffect,
@@ -59,7 +63,7 @@ export const Fields: React.FC<{
       }
 
       <Field
-        icon="info"
+        icon={faInfo}
         type="text"
         field="name"
         value={name || ""}
@@ -70,7 +74,7 @@ export const Fields: React.FC<{
       />
 
       <Field
-        icon="envelope"
+        icon={faEnvelope}
         type="email"
         field="email"
         value={email || ""}

@@ -1,3 +1,7 @@
+import {
+  faCheck,
+  faCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { useMutation } from "react-apollo";
@@ -39,7 +43,7 @@ export const Read: React.FC<{
   return (
     <Button outlined rounded disabled={read} loading={loading} onClick={onClick}>
       <Icon>
-        <FontAwesomeIcon icon={read ? "circle" : "check"} />
+        <FontAwesomeIcon icon={read ? faCircle : faCheck} />
       </Icon>
       <span>Read</span>
     </Button>

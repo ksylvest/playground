@@ -1,3 +1,4 @@
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { useMutation } from "react-apollo";
@@ -37,7 +38,7 @@ export const Destroy: React.FC<{
   return (
     <Button rounded loading={loading} onClick={onClick}>
       <Icon>
-        <FontAwesomeIcon icon="times" />
+        <FontAwesomeIcon icon={faTimes} />
       </Icon>
       <span>Clear</span>
     </Button>

@@ -1,3 +1,4 @@
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useState } from "react";
 
@@ -45,7 +46,7 @@ export const Fields: React.FC<{
       }
 
       <Field
-        icon="lock"
+        icon={faLock}
         type="password"
         field="current"
         value={current}
@@ -56,7 +57,7 @@ export const Fields: React.FC<{
       />
 
       <Field
-        icon="lock"
+        icon={faLock}
         type="password"
         field="replacement"
         value={replacement}

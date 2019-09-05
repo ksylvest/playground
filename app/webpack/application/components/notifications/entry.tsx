@@ -1,3 +1,4 @@
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DateTime } from "luxon";
 import * as React from "react";
@@ -27,7 +28,7 @@ export const Entry: React.FC<{
         <Columns mobile desktop vcentered>
           <Column narrow>
             <Icon color={color}>
-              <FontAwesomeIcon icon="circle" />
+              <FontAwesomeIcon icon={faCircle} />
             </Icon>
           </Column>
           <Column>

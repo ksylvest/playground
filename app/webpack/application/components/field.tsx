@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 
@@ -8,7 +11,7 @@ import { sentence } from "@application/utilities";
 import { Form, Icon } from "tights";
 
 export const Field: React.FC<{
-  icon: "envelope" | "lock" | "info";
+  icon: IconProp;
   type: "email" | "password" | "text";
   field: string;
   value: string;
@@ -48,8 +51,8 @@ export const Field: React.FC<{
         />
         <Icon size="small" alignment="left"><FontAwesomeIcon icon={icon} /></Icon>
         <Icon size="small" alignment="right">
-          {valid && <FontAwesomeIcon icon="check-square" />}
-          {invalid && <FontAwesomeIcon icon="exclamation-circle" />}
+          {valid && <FontAwesomeIcon icon={faCheckSquare} />}
+          {invalid && <FontAwesomeIcon icon={faExclamationCircle} />}
         </Icon>
         {help && <Form.Help color="danger">{help}</Form.Help>}
       </Form.Control>

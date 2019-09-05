@@ -1,3 +1,7 @@
+import {
+  faSpinner,
+  faUpload,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import {
@@ -47,7 +51,7 @@ export const Uploader: React.FC<{
           <Form.File.Input accept={accept} name={name} onChange={onChange} />
           <Form.File.CTA>
             <Form.File.Icon>
-              <FontAwesomeIcon icon={uploader ? "spinner" : "upload"} spin={!!uploader} />
+              <FontAwesomeIcon icon={uploader ? faSpinner : faUpload} spin={!!uploader} />
             </Form.File.Icon>
             Choose
           </Form.File.CTA>
