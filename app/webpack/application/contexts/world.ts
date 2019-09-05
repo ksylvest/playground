@@ -14,7 +14,13 @@ export const World = createContext<{
   deauth(): void;
   notify(flash: IFlash): void;
 }>({
-  auth: (_: ISession) => { /* noop */ },
-  deauth: () => { /* noop */ },
-  notify: (_: IFlash) => { /* noop */ },
+  auth: (_: ISession) => {
+    /* noop */
+  },
+  deauth: () => {
+    /* noop */
+  },
+  notify: (_: IFlash) => {
+    /* noop */
+  },
 });

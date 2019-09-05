@@ -13,10 +13,7 @@ interface IMutationData {
 }
 
 export const Logout: React.FC<{
-  children(props: {
-    loading: boolean;
-    logout(): void;
-  }): React.ReactElement;
+  children(props: { loading: boolean; logout(): void }): React.ReactElement;
 }> = ({ children }) => {
   const { deauth } = useContext(World);
   const [submit, { loading }] = useMutation<IMutationData>(MUTATION);
@@ -24,7 +21,9 @@ export const Logout: React.FC<{
   return children({
     loading,
     logout: async () => {
-      if (loading) { return; }
+      if (loading) {
+        return;
+      }
       await submit();
       deauth();
     },

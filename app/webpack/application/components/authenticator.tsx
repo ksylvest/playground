@@ -1,12 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
-import {
-  Link,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { Link, Redirect, Route, Switch } from "react-router-dom";
 
 import { World } from "@application/contexts";
 
@@ -15,16 +10,13 @@ import { Tabs } from "tights";
 import { Login } from "./login";
 import { Signup } from "./signup";
 
-import {
-  LOGIN_URL,
-  ROOT_URL,
-  SIGNUP_URL,
-} from "@application/config/routes";
+import { LOGIN_URL, ROOT_URL, SIGNUP_URL } from "@application/config/routes";
 
 const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
   const { session } = useContext(World);
+  const { state } = location;
   if (session) {
-    return <Redirect to={location.state && location.state.back ? location.state.back : ROOT_URL} />;
+    return <Redirect to={state && state.back ? state.back : ROOT_URL} />;
   }
   return (
     <>
@@ -39,14 +31,8 @@ const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
         </Tabs.List>
       </Tabs>
       <Switch>
-        <Route
-          path={LOGIN_URL}
-          component={Login}
-        />
-        <Route
-          path={SIGNUP_URL}
-          component={Signup}
-        />
+        <Route path={LOGIN_URL} component={Login} />
+        <Route path={SIGNUP_URL} component={Signup} />
       </Switch>
     </>
   );

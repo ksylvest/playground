@@ -5,9 +5,11 @@ import { IBillingSource } from "@application/types";
 
 export const BillingSourceExpiration: React.FC<{
   source: IBillingSource;
-}> = ({
-  source,
-}) => {
+}> = ({ source }) => {
   const expiration = DateTime.fromISO(source.exp);
-  return <>{expiration > DateTime.local() ? "expires" : "expired"} {expiration.year}-{expiration.month}</>;
+  return (
+    <>
+      {expiration > DateTime.local() ? "expires" : "expired"} {expiration.year}-{expiration.month}
+    </>
+  );
 };

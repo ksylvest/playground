@@ -1,9 +1,6 @@
 import { createContext } from "react";
 
-import {
-  IErrors,
-  ILoginInput,
-} from "@application/types";
+import { IErrors, ILoginInput } from "@application/types";
 
 export const Context = createContext<{
   input: ILoginInput;
@@ -16,5 +13,7 @@ export const Context = createContext<{
     password: "",
   },
   loading: false,
-  onChange: () => { /* noop */ },
+  onChange: () => {
+    /* noop */
+  },
 });

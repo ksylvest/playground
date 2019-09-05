@@ -3,13 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import {
-  Breadcrumb,
-  Card,
-  Column,
-  Columns,
-  Image,
-} from "tights";
+import { Breadcrumb, Card, Column, Columns, Image } from "tights";
 
 import { useKey } from "@application/hooks";
 
@@ -19,10 +13,7 @@ import { Carousel } from "./details/carousel";
 
 import { IFeedEntry } from "@application/types";
 
-import {
-  FEED_DETAILS_URL,
-  FEED_LIST_URL,
-} from "@application/config/routes";
+import { FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
 
 import * as QUERY from "./details/query.gql";
 
@@ -40,11 +31,9 @@ const PREV_KEY = "ArrowLeft";
 
 export const Details: React.FC<{
   id: string;
-}> = ({
-  id,
-}) => {
+}> = ({ id }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
-  const { data } = useQuery<IQueryData>(QUERY, { variables: { id }});
+  const { data } = useQuery<IQueryData>(QUERY, { variables: { id } });
   const entry = data && data.feed && data.feed.entry;
 
   const photos = entry && entry.photos;
@@ -52,7 +41,9 @@ export const Details: React.FC<{
   const avatar = user && user.avatar;
 
   const onGo = (offset: number) => {
-    if (!photos) { return; }
+    if (!photos) {
+      return;
+    }
     setIndex((index + photos.length + offset) % photos.length);
   };
 
@@ -78,26 +69,24 @@ export const Details: React.FC<{
       <Card>
         <Card.Content>
           <Columns>
+            <Column>{photos && <Carousel photos={photos} />}</Column>
             <Column>
-              {photos && <Carousel photos={photos} />}
-            </Column>
-            <Column>
-            <Columns desktop tablet mobile vcentered gap={2}>
-              <Column narrow>
-                <Image
-                  rounded
-                  square
-                  dimensions={64}
-                  src={avatar ? avatar.url : require("@application/assets/avatar/placeholder.svg")}
-                />
-              </Column>
-              <Column>
-                <span>by</span> <strong>{user && user.name || "-"}</strong>
-              </Column>
-              <Column narrow>
-                <Actions outlined entry={entry} />
-              </Column>
-            </Columns>
+              <Columns desktop tablet mobile vcentered gap={2}>
+                <Column narrow>
+                  <Image
+                    rounded
+                    square
+                    dimensions={64}
+                    src={avatar ? avatar.url : require("@application/assets/avatar/placeholder.svg")}
+                  />
+                </Column>
+                <Column>
+                  <span>by</span> <strong>{(user && user.name) || "-"}</strong>
+                </Column>
+                <Column narrow>
+                  <Actions outlined entry={entry} />
+                </Column>
+              </Columns>
             </Column>
           </Columns>
         </Card.Content>

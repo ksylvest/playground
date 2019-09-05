@@ -9,29 +9,29 @@ import {
   BillingSourceNumber,
 } from "@application/components/helpers";
 
-import {
-  Button,
-  Buttons,
-  Table,
-} from "tights";
+import { Button, Buttons, Table } from "tights";
 
 export const List: React.FC<{
   sources: IBillingSource[];
   onDestroy(source: IBillingSource): void;
   onDefault(source: IBillingSource): void;
-}> = ({
-  sources,
-  onDestroy,
-  onDefault,
-}) => (
+}> = ({ sources, onDestroy, onDefault }) => (
   <Table fullwidth hoverable striped>
     <tbody>
       {sources.map((source) => (
         <tr key={source.id}>
-          <td><BillingSourceIcon source={source} /></td>
-          <td><BillingSourceNumber source={source} /></td>
-          <td><BillingSourceBrand source={source} /></td>
-          <td><BillingSourceExpiration source={source} /></td>
+          <td>
+            <BillingSourceIcon source={source} />
+          </td>
+          <td>
+            <BillingSourceNumber source={source} />
+          </td>
+          <td>
+            <BillingSourceBrand source={source} />
+          </td>
+          <td>
+            <BillingSourceExpiration source={source} />
+          </td>
           <td>
             <Buttons alignment="right">
               <Button outlined color="danger" onClick={() => onDestroy(source)}>

@@ -1,22 +1,12 @@
-import {
-  faEnvelope,
-  faInfo,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import { IErrors } from "@application/types";
 
 import { sentence } from "@application/utilities";
 
-import {
-  Button,
-  Form,
-  Notification,
-} from "tights";
+import { Button, Form, Notification } from "tights";
 
 import { Field } from "@application/components/field";
 
@@ -26,22 +16,16 @@ export const Fields: React.FC<{
   defaults?: {
     email: string;
     name: string;
-  }
-  save(variables: {
-    email: string;
-    name: string;
-  }): void;
-}> = ({
-  loading,
-  errors,
-  defaults,
-  save,
-}) => {
+  };
+  save(variables: { email: string; name: string }): void;
+}> = ({ loading, errors, defaults, save }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
   useEffect(() => {
-    if (!defaults) { return; }
+    if (!defaults) {
+      return;
+    }
     setName(defaults.name);
     setEmail(defaults.email);
   }, [defaults]);
@@ -58,9 +42,7 @@ export const Fields: React.FC<{
 
   return (
     <Form onSubmit={onSubmit}>
-      {errors && errors.messages.base &&
-        <Notification color="danger">{sentence(errors.messages.base)}</Notification>
-      }
+      {errors && errors.messages.base && <Notification color="danger">{sentence(errors.messages.base)}</Notification>}
 
       <Field
         icon={faInfo}
@@ -86,7 +68,9 @@ export const Fields: React.FC<{
 
       <Form.Field>
         <Form.Control>
-          <Button type="submit" disabled={loading} loading={loading} color="primary">Save</Button>
+          <Button type="submit" disabled={loading} loading={loading} color="primary">
+            Save
+          </Button>
         </Form.Control>
       </Form.Field>
     </Form>

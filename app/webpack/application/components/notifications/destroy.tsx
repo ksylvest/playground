@@ -5,10 +5,7 @@ import { useMutation } from "react-apollo";
 
 import { INotification } from "@application/types";
 
-import {
-  Button,
-  Icon,
-} from "tights";
+import { Button, Icon } from "tights";
 
 import * as MUTATION from "./destroy/mutation.gql";
 
@@ -24,14 +21,14 @@ interface IMutationVariables {
 
 export const Destroy: React.FC<{
   notification: INotification;
-}> = ({
-  notification,
-}) => {
+}> = ({ notification }) => {
   const variables = { id: notification.id };
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
 
   const onClick = async () => {
-    if (loading) { return; }
+    if (loading) {
+      return;
+    }
     await submit();
   };
 

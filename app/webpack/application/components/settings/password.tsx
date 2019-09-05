@@ -15,7 +15,7 @@ import * as MUTATION from "./password/mutation.gql";
 interface IMutationData {
   changePassword: {
     status: Status;
-    errors: IErrors
+    errors: IErrors;
   };
 }
 
@@ -40,11 +40,15 @@ export const Password: React.FC = () => {
         loading={loading}
         errors={data && data.changePassword && data.changePassword.errors}
         save={async (input) => {
-          if (loading) { return; }
+          if (loading) {
+            return;
+          }
           const result = await submit({
             variables: { input },
           });
-          if (!result || !result.data || result.data.changePassword.status !== Status.OK) { return; }
+          if (!result || !result.data || result.data.changePassword.status !== Status.OK) {
+            return;
+          }
           notify({
             kind: "notice",
             message: "Your password has been saved.",

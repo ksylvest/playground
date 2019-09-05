@@ -2,12 +2,7 @@ import { head } from "lodash";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  Card,
-  Column,
-  Columns,
-  Image,
-} from "tights";
+import { Card, Column, Columns, Image } from "tights";
 
 import { IFeedEntry } from "@application/types";
 
@@ -17,23 +12,14 @@ import { FEED_DETAILS_URL } from "@application/config/routes";
 
 export const Entry: React.FC<{
   entry: IFeedEntry;
-}> = ({
-  entry,
-}) => {
+}> = ({ entry }) => {
   const hero = head(entry.photos);
   const avatar = entry.user.avatar;
 
   return (
     <Card>
       <Card.Image>
-        <Link to={FEED_DETAILS_URL(entry)}>
-          {hero &&
-            <Image
-              square
-              src={hero.url}
-            />
-          }
-        </Link>
+        <Link to={FEED_DETAILS_URL(entry)}>{hero && <Image square src={hero.url} />}</Link>
       </Card.Image>
       <Card.Content>
         <Columns desktop tablet mobile vcentered gap={2}>

@@ -28,10 +28,7 @@ export const Billing: React.FC = () => {
       <h2 className="title">Billing</h2>
       <hr />
 
-      <Sources
-        sources={sources || []}
-        refetch={refetch}
-      />
+      <Sources sources={sources || []} refetch={refetch} />
     </>
   );
 };

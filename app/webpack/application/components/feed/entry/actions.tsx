@@ -9,10 +9,7 @@ import { Like } from "./like";
 export const Actions: React.FC<{
   entry?: IFeedEntry;
   outlined?: boolean;
-}> = ({
-  entry,
-  outlined,
-}) => (
+}> = ({ entry, outlined }) => (
   <Buttons addons>
     <Like outlined={outlined} entry={entry} />
   </Buttons>

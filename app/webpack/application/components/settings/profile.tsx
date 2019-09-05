@@ -1,9 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import {
-  useMutation,
-  useQuery,
-} from "react-apollo";
+import { useMutation, useQuery } from "react-apollo";
 
 import { Title } from "@application/components/helpers";
 
@@ -52,9 +49,13 @@ export const Profile: React.FC = () => {
       <Fields
         defaults={defaults && defaults.user}
         save={async (input) => {
-          if (querying || mutating) { return; }
+          if (querying || mutating) {
+            return;
+          }
           const result = await submit({ variables: { input } });
-          if (!result || !result.data || result.data.changeProfile.status !== Status.OK) { return; }
+          if (!result || !result.data || result.data.changeProfile.status !== Status.OK) {
+            return;
+          }
           notify({
             kind: "notice",
             message: "Your profile has been saved.",

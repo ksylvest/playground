@@ -6,9 +6,7 @@ interface IProps {
   action(): void;
 }
 
-export const useAuthentication = ({
-  action,
-}: IProps) => {
+export const useAuthentication = ({ action }: IProps) => {
   const { location, history, session } = useContext(World);
 
   return () => {

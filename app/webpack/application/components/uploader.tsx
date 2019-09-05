@@ -1,13 +1,7 @@
-import {
-  faSpinner,
-  faUpload,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 
 import { useActiveStorageDirectUpload } from "@application/hooks";
 
@@ -17,24 +11,26 @@ export const Uploader: React.FC<{
   accept?: string;
   name: string;
   onSelect(id: string): void;
-}> = ({
-  accept,
-  name,
-  onSelect,
-}) => {
+}> = ({ accept, name, onSelect }) => {
   const form = useRef<HTMLFormElement>(null);
   const [file, setFile] = useState<File | undefined>(undefined);
   const uploader = useActiveStorageDirectUpload(file, ({ blob }) => {
-    if (!blob) { return; }
+    if (!blob) {
+      return;
+    }
     setFile(undefined);
     onSelect(blob.signed_id);
   });
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files) { return; }
+    if (!event.target.files) {
+      return;
+    }
     for (let index = 0; index < event.target.files.length; index++) {
       const selection = event.target.files.item(index);
-      if (!selection) { continue; }
+      if (!selection) {
+        continue;
+      }
       setFile(selection);
       break;
     }

@@ -7,13 +7,11 @@ import { Entry } from "./entry";
 export const List: React.FC<{
   sessions?: ISession[];
   onRevoke(session: ISession): void;
-}> = ({
-  sessions,
-  onRevoke,
-}) => (
+}> = ({ sessions, onRevoke }) => (
   <>
-    {sessions && sessions.filter(({ deleted }) => !deleted).map((session) => (
-      <Entry key={session.id} session={session} onRevoke={onRevoke} />
-    ))}
+    {sessions &&
+      sessions
+        .filter(({ deleted }) => !deleted)
+        .map((session) => <Entry key={session.id} session={session} onRevoke={onRevoke} />)}
   </>
 );

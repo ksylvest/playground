@@ -6,26 +6,15 @@ import { IErrors } from "@application/types";
 
 import { sentence } from "@application/utilities";
 
-import {
-  Button,
-  Form,
-  Notification,
-} from "tights";
+import { Button, Form, Notification } from "tights";
 
 import { Field } from "@application/components/field";
 
 export const Fields: React.FC<{
   loading: boolean;
   errors?: IErrors;
-  save(variables: {
-    current: string;
-    replacement: string;
-  }): void;
-}> = ({
-  loading,
-  errors,
-  save,
-}) => {
+  save(variables: { current: string; replacement: string }): void;
+}> = ({ loading, errors, save }) => {
   const [current, setCurrent] = useState<string>("");
   const [replacement, setReplacement] = useState<string>("");
 
@@ -41,9 +30,7 @@ export const Fields: React.FC<{
 
   return (
     <Form onSubmit={onSubmit}>
-      {errors && errors.messages.base &&
-        <Notification color="danger">{sentence(errors.messages.base)}</Notification>
-      }
+      {errors && errors.messages.base && <Notification color="danger">{sentence(errors.messages.base)}</Notification>}
 
       <Field
         icon={faLock}
@@ -69,7 +56,9 @@ export const Fields: React.FC<{
 
       <Form.Field>
         <Form.Control>
-          <Button type="submit" disabled={loading} loading={loading} color="primary">Change</Button>
+          <Button type="submit" disabled={loading} loading={loading} color="primary">
+            Change
+          </Button>
         </Form.Control>
       </Form.Field>
     </Form>

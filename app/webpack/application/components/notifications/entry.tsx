@@ -3,13 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DateTime } from "luxon";
 import * as React from "react";
 
-import {
-  Buttons,
-  Column,
-  Columns,
-  Icon,
-  Message,
-} from "tights";
+import { Buttons, Column, Columns, Icon, Message } from "tights";
 
 import { Destroy } from "./destroy";
 import { Read } from "./read";
@@ -18,9 +12,7 @@ import { INotification } from "@application/types";
 
 export const Entry: React.FC<{
   notification: INotification;
-}> = ({
-  notification,
-}) => {
+}> = ({ notification }) => {
   const color = notification.read ? "light" : "info";
   return (
     <Message color={color}>

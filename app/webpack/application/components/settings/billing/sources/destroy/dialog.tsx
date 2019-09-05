@@ -4,25 +4,14 @@ import { IBillingSource } from "@application/types";
 
 import { BillingSourceSummary } from "@application/components/helpers";
 
-import {
-  Button,
-  Content,
-  Delete,
-  Message,
-  Modal,
-} from "tights";
+import { Button, Content, Delete, Message, Modal } from "tights";
 
 export const Dialog: React.FC<{
   source: IBillingSource;
   loading: boolean;
   onContinue(): void;
   onCancel(): void;
-}> = ({
-  source,
-  loading,
-  onContinue,
-  onCancel,
-}) => (
+}> = ({ source, loading, onContinue, onCancel }) => (
   <Modal>
     <Modal.Background onClick={onCancel} />
     <Modal.Content>
@@ -42,8 +31,12 @@ export const Dialog: React.FC<{
           </Content>
         </Modal.Card.Body>
         <Modal.Card.Foot>
-          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>Confirm</Button>
-          <Button disabled={loading} onClick={onCancel}>Cancel</Button>
+          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>
+            Confirm
+          </Button>
+          <Button disabled={loading} onClick={onCancel}>
+            Cancel
+          </Button>
         </Modal.Card.Foot>
       </Modal.Card>
     </Modal.Content>

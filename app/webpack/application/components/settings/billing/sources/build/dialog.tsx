@@ -2,19 +2,9 @@ import * as React from "react";
 import { useState } from "react";
 import { useMutation } from "react-apollo";
 
-import {
-  Element,
-  useAdapter,
-  useElement,
-} from "@application/libraries/stripe";
+import { Element, useAdapter, useElement } from "@application/libraries/stripe";
 
-import {
-  Button,
-  Content,
-  Delete,
-  Form,
-  Modal,
-} from "tights";
+import { Button, Content, Delete, Form, Modal } from "tights";
 
 import * as MUTATION from "./mutation.gql";
 
@@ -31,10 +21,7 @@ interface IDialogProps {
   onSave(): void;
 }
 
-export const Dialog: React.FC<IDialogProps> = ({
-  onCancel,
-  onSave,
-}) => {
+export const Dialog: React.FC<IDialogProps> = ({ onCancel, onSave }) => {
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
   const [tokenizer, setTokenizer] = useState<Promise<stripe.ITokenResponse> | undefined>(undefined);
   const adapter = useAdapter();
@@ -46,15 +33,16 @@ export const Dialog: React.FC<IDialogProps> = ({
     event.preventDefault();
     event.stopPropagation();
 
-    if (saving) { return; }
+    if (saving) {
+      return;
+    }
     const attempt = adapter.tokenize(await element);
     setTokenizer(attempt);
-    const {
-      error,
-      token,
-    } = await attempt;
+    const { error, token } = await attempt;
     setTokenizer(undefined);
-    if (error) { return; }
+    if (error) {
+      return;
+    }
 
     await submit({
       variables: {
@@ -80,8 +68,12 @@ export const Dialog: React.FC<IDialogProps> = ({
               </Content>
             </Modal.Card.Body>
             <Modal.Card.Foot>
-              <Button type="submit" loading={saving} disabled={saving} color="info">Save</Button>
-              <Button type="button" disabled={saving} onClick={onCancel}>Cancel</Button>
+              <Button type="submit" loading={saving} disabled={saving} color="info">
+                Save
+              </Button>
+              <Button type="button" disabled={saving} onClick={onCancel}>
+                Cancel
+              </Button>
             </Modal.Card.Foot>
           </Modal.Card>
         </Form>

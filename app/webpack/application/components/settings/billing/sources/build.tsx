@@ -7,9 +7,7 @@ import { Dialog } from "./build/dialog";
 
 export const Build: React.FC<{
   onClose(): void;
-}> = ({
-  onClose,
-}) => {
+}> = ({ onClose }) => {
   const { notify } = useContext(World);
 
   const onCancel = () => {
