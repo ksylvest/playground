@@ -1,15 +1,7 @@
 import * as React from "react";
-import {
-  useContext,
-  useState,
-} from "react";
+import { useContext, useState } from "react";
 
-import {
-  Button,
-  Delete,
-  Modal,
-  Tabs,
-} from "tights";
+import { Button, Delete, Modal, Tabs } from "tights";
 
 import { Context as LoginContext } from "@application/components/login/context";
 import { Fields as LoginFields } from "@application/components/login/fields";
@@ -46,16 +38,15 @@ const DEFAULT_MODE = Mode.Login;
 export const Dialog: React.FC<{
   onCancel(): void;
   onAuth(): void;
-}> = ({
-  onCancel,
-  onAuth,
-}) => {
+}> = ({ onCancel, onAuth }) => {
   const { auth } = useContext(World);
   const [mode, setMode] = useState<Mode>(DEFAULT_MODE);
   const Auth = (() => {
     switch (mode) {
-      case Mode.Login: return Login;
-      case Mode.Signup: return Signup;
+      case Mode.Login:
+        return Login;
+      case Mode.Signup:
+        return Signup;
     }
   })();
 
@@ -109,8 +100,12 @@ export const Dialog: React.FC<{
               <Auth.Context.Consumer
                 children={({ loading }) => (
                   <>
-                    <Button type="submit" loading={loading} disabled={loading} color="primary">{mode}</Button>
-                    <Button type="button" disabled={loading} onClick={onCancel}>Close</Button>
+                    <Button type="submit" loading={loading} disabled={loading} color="primary">
+                      {mode}
+                    </Button>
+                    <Button type="button" disabled={loading} onClick={onCancel}>
+                      Close
+                    </Button>
                   </>
                 )}
               />

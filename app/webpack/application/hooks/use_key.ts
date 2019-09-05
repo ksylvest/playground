@@ -7,7 +7,9 @@ type Event = "keydown" | "keyup";
 export const useKey = (callback: Callback, key: string, type: Event = "keyup") => {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key !== key) { return; }
+      if (event.key !== key) {
+        return;
+      }
       callback();
     };
 

@@ -3,9 +3,7 @@ import { useEffect } from "react";
 
 export const Title: React.FC<{
   children: string;
-}> = ({
-  children,
-}) => {
+}> = ({ children }) => {
   useEffect(() => {
     document.title = children;
   }, [children]);

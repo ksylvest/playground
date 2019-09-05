@@ -47,7 +47,10 @@
     "webpack": "^4.39.2"
   },
   "devDependencies": {
+    "prettier": "^1.18.2",
     "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0",
     "webpack-dev-server": "^3.8.0"
   }

@@ -1,7 +1,4 @@
-import {
-  faEnvelope,
-  faLock,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useContext } from "react";
 
@@ -17,9 +14,7 @@ export const Fields: React.FC = () => {
   const { input, errors, onChange } = useContext(Context);
   return (
     <>
-      {errors && errors.messages.base &&
-        <Notification color="danger">{sentence(errors.messages.base)}</Notification>
-      }
+      {errors && errors.messages.base && <Notification color="danger">{sentence(errors.messages.base)}</Notification>}
 
       <Field
         icon={faEnvelope}

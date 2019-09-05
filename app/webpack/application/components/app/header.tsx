@@ -1,32 +1,22 @@
 import * as React from "react";
-import {
-  useContext,
-  useState,
-} from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import {
-  Button,
-  Navbar,
-} from "tights";
+import { Button, Navbar } from "tights";
 
 import { World } from "@application/contexts";
 
 import { Logout } from "@application/components/logout";
 
-import {
-  LOGIN_URL,
-  NOTIFICATIONS_URL,
-  ROOT_URL,
-  SETTINGS_URL,
-  SIGNUP_URL,
-} from "@application/config/routes";
+import { LOGIN_URL, NOTIFICATIONS_URL, ROOT_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
 const DEFAULT_ACTIVE = false;
 
 export const Header: React.FC = () => {
   const { session, stats } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
+
+  const onToggle = () => setActive(!active);
 
   return (
     <header>
@@ -35,14 +25,14 @@ export const Header: React.FC = () => {
           <NavLink className="navbar-item" to={ROOT_URL} activeClassName="is-active">
             Playground
           </NavLink>
-          <Navbar.Burger active={active} onClick={() => setActive(!active)} />
+          <Navbar.Burger active={active} onClick={onToggle} />
         </Navbar.Brand>
         <Navbar.Menu active={active}>
           <Navbar.Start>
             <NavLink exact to={ROOT_URL} className="navbar-item" activeClassName="is-active">
               Home
             </NavLink>
-            {session &&
+            {session && (
               <>
                 <NavLink to={SETTINGS_URL} className="navbar-item" activeClassName="is-active">
                   Settings
@@ -51,10 +41,10 @@ export const Header: React.FC = () => {
                   Notifications {stats && !!stats.notifications && <>({stats.notifications})</>}
                 </NavLink>
               </>
-            }
+            )}
           </Navbar.Start>
           <Navbar.End>
-            {!session &&
+            {!session && (
               <>
                 <NavLink exact to={LOGIN_URL} className="navbar-item" activeClassName="is-active">
                   Login
@@ -63,8 +53,8 @@ export const Header: React.FC = () => {
                   Signup
                 </NavLink>
               </>
-            }
-            {session &&
+            )}
+            {session && (
               <>
                 <Navbar.Item dropdown hoverable>
                   <Navbar.Link>Me</Navbar.Link>
@@ -76,14 +66,16 @@ export const Header: React.FC = () => {
                     <Logout>
                       {({ logout }) => (
                         <Navbar.Item>
-                          <Button type="button" onClick={logout}>Logout</Button>
+                          <Button type="button" onClick={logout}>
+                            Logout
+                          </Button>
                         </Navbar.Item>
                       )}
                     </Logout>
                   </Navbar.Dropdown>
                 </Navbar.Item>
               </>
-            }
+            )}
           </Navbar.End>
         </Navbar.Menu>
       </Navbar>

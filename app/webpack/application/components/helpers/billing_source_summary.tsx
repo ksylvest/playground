@@ -8,14 +8,9 @@ import { BillingSourceNumber } from "./billing_source_number";
 
 export const BillingSourceSummary: React.FC<{
   source: IBillingSource;
-}> = ({
-  source,
-}) => (
+}> = ({ source }) => (
   <>
-    <BillingSourceNumber source={source} />
-    {" "}
-    <BillingSourceBrand source={source} />
-    {" "}
+    <BillingSourceNumber source={source} /> <BillingSourceBrand source={source} />{" "}
     <BillingSourceExpiration source={source} />
   </>
 );

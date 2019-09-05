@@ -6,15 +6,9 @@ import { Config } from "./config";
 
 import { useActionCableSubscription } from "@application/hooks";
 
-import {
-  Container,
-  Section,
-} from "tights";
+import { Container, Section } from "tights";
 
-import {
-  IFlash,
-  ISession,
-} from "@application/types";
+import { IFlash, ISession } from "@application/types";
 
 import { Footer } from "./app/footer";
 import { Header } from "./app/header";
@@ -27,12 +21,7 @@ import { Feed } from "./feed";
 import { Notifications } from "./notifications";
 import { Settings } from "./settings";
 
-import {
-  LOGIN_URL,
-  NOTIFICATIONS_URL,
-  SETTINGS_URL,
-  SIGNUP_URL,
-} from "@application/config/routes";
+import { LOGIN_URL, NOTIFICATIONS_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
 declare const CONFIG: { session?: ISession };
 const SESSION = CONFIG.session;
@@ -47,7 +36,9 @@ export const App: React.FC = () => {
   const deauth = () => auth(undefined);
 
   useActionCableSubscription(STATS_CHANNEL, setStats);
-  useActionCableSubscription(PRESENCE_CHANNEL, () => { /* noop */ });
+  useActionCableSubscription(PRESENCE_CHANNEL, () => {
+    /* noop */
+  });
 
   return (
     <Router>

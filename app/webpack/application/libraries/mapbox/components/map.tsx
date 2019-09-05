@@ -1,9 +1,5 @@
 import * as React from "react";
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Context } from "../context";
 
@@ -20,26 +16,36 @@ export const Map: React.FC<{
   const ready = useLoadJS("mapboxgl");
 
   useEffect(() => {
-    if (!ready) { return; }
-    if (!ref.current) { return; }
-    setMap(new mapboxgl.Map({
-      center,
-      container: ref.current,
-      style: STYLE,
-    }));
+    if (!ready) {
+      return;
+    }
+    if (!ref.current) {
+      return;
+    }
+    setMap(
+      new mapboxgl.Map({
+        center,
+        container: ref.current,
+        style: STYLE,
+      }),
+    );
     return () => {
       setMap(undefined);
     };
   }, [ready, ref]);
 
   useEffect(() => {
-    if (!map) { return; }
+    if (!map) {
+      return;
+    }
     return () => {
       map.remove();
     };
   }, [map]);
 
-  if (!ready) { return null; }
+  if (!ready) {
+    return null;
+  }
 
   return (
     <>

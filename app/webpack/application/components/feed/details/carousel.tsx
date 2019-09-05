@@ -1,16 +1,10 @@
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { times } from "lodash";
 import * as React from "react";
 import { useState } from "react";
 
-import {
-  Image,
-  Pagination,
-} from "tights";
+import { Image, Pagination } from "tights";
 
 import { useKey } from "@application/hooks";
 
@@ -24,15 +18,15 @@ const CHAR_CODE_OFFSET = 65; // i.e. 'A', 'B', 'C', ...
 
 export const Carousel: React.FC<{
   photos: IAttached[];
-}> = ({
-  photos,
-}) => {
+}> = ({ photos }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
   const total = photos.length;
 
   const go = (offset: number) => {
-    if (!photos) { return; }
+    if (!photos) {
+      return;
+    }
     setIndex((index + total + offset) % total);
   };
 

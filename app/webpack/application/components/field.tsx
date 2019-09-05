@@ -19,16 +19,7 @@ export const Field: React.FC<{
   placeholder: string;
   errors?: IErrors;
   onValue(value: string): void;
-}> = ({
-  icon,
-  type,
-  field,
-  value,
-  label,
-  placeholder,
-  errors,
-  onValue,
-}) => {
+}> = ({ icon, type, field, value, label, placeholder, errors, onValue }) => {
   const messages = errors ? errors.messages[field] : undefined;
   const help = messages ? sentence(messages) : undefined;
   const invalid = !!errors && !!messages;
@@ -49,7 +40,9 @@ export const Field: React.FC<{
           placeholder={placeholder}
           onChange={onChange}
         />
-        <Icon size="small" alignment="left"><FontAwesomeIcon icon={icon} /></Icon>
+        <Icon size="small" alignment="left">
+          <FontAwesomeIcon icon={icon} />
+        </Icon>
         <Icon size="small" alignment="right">
           {valid && <FontAwesomeIcon icon={faCheckSquare} />}
           {invalid && <FontAwesomeIcon icon={faExclamationCircle} />}

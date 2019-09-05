@@ -1,21 +1,12 @@
 import * as React from "react";
 
-import {
-  Button,
-  Content,
-  Delete,
-  Modal,
-} from "tights";
+import { Button, Content, Delete, Modal } from "tights";
 
 export const Dialog: React.FC<{
   loading: boolean;
   onContinue(): void;
   onCancel(): void;
-}> = ({
-  loading,
-  onContinue,
-  onCancel,
-}) => (
+}> = ({ loading, onContinue, onCancel }) => (
   <Modal>
     <Modal.Background onClick={onCancel} />
     <Modal.Content>
@@ -30,8 +21,12 @@ export const Dialog: React.FC<{
           </Content>
         </Modal.Card.Body>
         <Modal.Card.Foot>
-          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>Continue</Button>
-          <Button disabled={loading} onClick={onCancel}>Cancel</Button>
+          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>
+            Continue
+          </Button>
+          <Button disabled={loading} onClick={onCancel}>
+            Cancel
+          </Button>
         </Modal.Card.Foot>
       </Modal.Card>
     </Modal.Content>

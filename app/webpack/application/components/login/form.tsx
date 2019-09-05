@@ -2,11 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useMutation } from "react-apollo";
 
-import {
-  IErrors,
-  ISession,
-  Status,
-} from "@application/types";
+import { IErrors, ISession, Status } from "@application/types";
 
 import { ILoginInput } from "@application/types";
 
@@ -28,10 +24,7 @@ interface IMutationVariables {
 
 export const Form: React.FC<{
   onAuth(session: ISession): void;
-}> = ({
-  onAuth,
-  children,
-}) => {
+}> = ({ onAuth, children }) => {
   const [input, setInput] = useState<ILoginInput>({
     email: "",
     password: "",
@@ -50,10 +43,7 @@ export const Form: React.FC<{
 
   return (
     <Context.Provider value={{ input, errors, loading, onChange: setInput }}>
-      <form
-        onSubmit={onSubmit}
-        children={children}
-      />
+      <form onSubmit={onSubmit} children={children} />
     </Context.Provider>
   );
 };

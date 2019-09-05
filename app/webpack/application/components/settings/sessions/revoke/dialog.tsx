@@ -2,12 +2,7 @@ import * as React from "react";
 
 import { ISession } from "@application/types";
 
-import {
-  Button,
-  Content,
-  Delete,
-  Modal,
-} from "tights";
+import { Button, Content, Delete, Modal } from "tights";
 
 import { Geography } from "./geography";
 
@@ -16,12 +11,7 @@ export const Dialog: React.FC<{
   loading: boolean;
   onContinue(): void;
   onCancel(): void;
-}> = ({
-  session,
-  loading,
-  onContinue,
-  onCancel,
-}) => (
+}> = ({ session, loading, onContinue, onCancel }) => (
   <Modal>
     <Modal.Background onClick={onCancel} />
     <Modal.Content>
@@ -34,13 +24,19 @@ export const Dialog: React.FC<{
           <Content>
             <p>Are you sure you want to revoke this session?</p>
             <p>Devices using this session will be need to re-authenticate.</p>
-            <p><strong>{session.ip}</strong></p>
+            <p>
+              <strong>{session.ip}</strong>
+            </p>
             {session.geography && <Geography geography={session.geography} />}
           </Content>
         </Modal.Card.Body>
         <Modal.Card.Foot>
-          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>Continue</Button>
-          <Button disabled={loading} onClick={onCancel}>Cancel</Button>
+          <Button loading={loading} disabled={loading} color="danger" onClick={onContinue}>
+            Continue
+          </Button>
+          <Button disabled={loading} onClick={onCancel}>
+            Cancel
+          </Button>
         </Modal.Card.Foot>
       </Modal.Card>
     </Modal.Content>

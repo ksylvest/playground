@@ -7,16 +7,12 @@ import { INotification } from "@application/types";
 
 export const List: React.FC<{
   notifications?: INotification[];
-}> = ({
-  notifications,
-}) => (
+}> = ({ notifications }) => (
   <>
-    {notifications && notifications.filter(({ deleted }) => !deleted).map((notification) => (
-      <Entry
-        key={notification.id}
-        notification={notification}
-      />
-    ))}
+    {notifications &&
+      notifications
+        .filter(({ deleted }) => !deleted)
+        .map((notification) => <Entry key={notification.id} notification={notification} />)}
     {notifications && !notifications.some(({ deleted }) => !deleted) && <Empty />}
   </>
 );

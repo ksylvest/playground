@@ -22,14 +22,14 @@ interface IMutationVariables {
 
 export const Attach: React.FC<{
   onSave(): void;
-}> = ({
-  onSave,
-}) => {
+}> = ({ onSave }) => {
   const { notify } = useContext(World);
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
 
   const onSelect = async (id: string) => {
-    if (loading) { return; }
+    if (loading) {
+      return;
+    }
     await submit({ variables: { id } });
     notify({
       kind: "alert",
@@ -38,7 +38,5 @@ export const Attach: React.FC<{
     onSave();
   };
 
-  return (
-    <Uploader name="avatar" onSelect={onSelect} />
-  );
+  return <Uploader name="avatar" onSelect={onSelect} />;
 };

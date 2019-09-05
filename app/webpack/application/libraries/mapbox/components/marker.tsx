@@ -14,7 +14,9 @@ export const Marker: React.FC<{
   }, [coordinate]);
 
   useEffect(() => {
-    if (!map) { return; }
+    if (!map) {
+      return;
+    }
     marker.addTo(map);
     return () => {
       marker.remove();

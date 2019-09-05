@@ -4,8 +4,4 @@ import { IBillingSource } from "@application/types";
 
 export const BillingSourceNumber: React.FC<{
   source: IBillingSource;
-}> = ({
-  source,
-}) => (
-  <>•••• {source.number}</>
-);
+}> = ({ source }) => <>•••• {source.number}</>;

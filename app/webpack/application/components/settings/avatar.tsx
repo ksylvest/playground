@@ -1,11 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
 
-import {
-  Column,
-  Columns,
-  Image,
-} from "tights";
+import { Column, Columns, Image } from "tights";
 
 import { Attach } from "./avatar/attach";
 import { Detach } from "./avatar/detach";
@@ -18,7 +14,7 @@ interface IQueryData {
     avatar?: {
       id: string;
       url: string;
-    }
+    };
   };
 }
 

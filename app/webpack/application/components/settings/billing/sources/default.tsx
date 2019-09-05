@@ -2,10 +2,7 @@ import * as React from "react";
 import { useContext } from "react";
 import { useMutation } from "react-apollo";
 
-import {
-  IBillingSource,
-  Status,
-} from "@application/types";
+import { IBillingSource, Status } from "@application/types";
 
 import { World } from "@application/contexts";
 
@@ -26,16 +23,15 @@ interface IMutationData {
 export const Default: React.FC<{
   source: IBillingSource;
   onClose(): void;
-}> = ({
-  source,
-  onClose,
-}) => {
+}> = ({ source, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: source.id };
   const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
 
   const onContinue = async () => {
-    if (loading) { return; }
+    if (loading) {
+      return;
+    }
     await submit();
     onClose();
     notify({
@@ -44,12 +40,5 @@ export const Default: React.FC<{
     });
   };
 
-  return (
-    <Dialog
-      source={source}
-      loading={loading}
-      onContinue={onContinue}
-      onCancel={onClose}
-    />
-  );
+  return <Dialog source={source} loading={loading} onContinue={onContinue} onCancel={onClose} />;
 };

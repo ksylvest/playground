@@ -17,7 +17,7 @@ declare namespace stripe {
   interface ITokenResponse {
     token?: IToken;
     error?: IError;
-}
+  }
 
   interface IElement {
     mount(element: HTMLElement): void;

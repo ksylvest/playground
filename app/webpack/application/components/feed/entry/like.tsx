@@ -5,10 +5,7 @@ import { useMutation } from "react-apollo";
 
 import { IFeedEntry, Status } from "@application/types";
 
-import {
-  Button,
-  Icon,
-} from "tights";
+import { Button, Icon } from "tights";
 
 import * as LIKE_MUTATION from "./like.gql";
 import * as UNLIKE_MUTATION from "./unlike.gql";
@@ -31,10 +28,7 @@ const OFF_COLOR = "hsl(0, 0%, 48%)";
 export const Like: React.FC<{
   entry?: IFeedEntry;
   outlined?: boolean;
-}> = ({
-  entry,
-  outlined,
-}) => {
+}> = ({ entry, outlined }) => {
   const liked = entry && entry.liked;
   const likes = entry && entry.likes;
   const id = entry && entry.id;
