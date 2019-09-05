@@ -1,3 +1,8 @@
+import {
+  faEnvelope,
+  faInfo,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useContext } from "react";
 
@@ -18,7 +23,7 @@ export const Fields: React.FC = () => {
       }
 
       <Field
-        icon="info"
+        icon={faInfo}
         type="text"
         field="name"
         value={input.name}
@@ -29,7 +34,7 @@ export const Fields: React.FC = () => {
       />
 
       <Field
-        icon="envelope"
+        icon={faEnvelope}
         type="email"
         field="email"
         value={input.email}
@@ -40,7 +45,7 @@ export const Fields: React.FC = () => {
       />
 
       <Field
-        icon="lock"
+        icon={faLock}
         type="password"
         field="password"
         value={input.password}

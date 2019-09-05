@@ -1,4 +1,12 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCcAmex,
+  faCcDinersClub,
+  faCcDiscover,
+  faCcJcb,
+  faCcMastercard,
+  faCcVisa,
+} from "@fortawesome/free-brands-svg-icons";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 
@@ -12,15 +20,15 @@ export const BillingSourceIcon: React.FC<{
 }> = ({
   source,
 }) => {
-  const icon = ((): IconProp => {
+  const icon = (() => {
     switch (source.brand) {
-      case BillingBrand.AmericanExpress: return ["fab", "cc-amex"];
-      case BillingBrand.DinersClub: return ["fab", "cc-diners-club"];
-      case BillingBrand.Discover: return ["fab", "cc-discover"];
-      case BillingBrand.JapanCreditBureau: return ["fab", "cc-jcb"];
-      case BillingBrand.Mastercard: return ["fab", "cc-mastercard"];
-      case BillingBrand.Visa: return ["fab", "cc-visa"];
-      default: return "credit-card";
+      case BillingBrand.AmericanExpress: return faCcAmex;
+      case BillingBrand.DinersClub: return faCcDinersClub;
+      case BillingBrand.Discover: return faCcDiscover;
+      case BillingBrand.JapanCreditBureau: return faCcJcb;
+      case BillingBrand.Mastercard: return faCcMastercard;
+      case BillingBrand.Visa: return faCcVisa;
+      default: return faCreditCard;
     }
   })();
   return <FontAwesomeIcon icon={icon} />;

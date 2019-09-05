@@ -1,3 +1,4 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { useMutation } from "react-apollo";
@@ -50,7 +51,7 @@ export const Like: React.FC<{
   return (
     <Button outlined={outlined} title={title} disabled={disabled} onClick={onClick}>
       <Icon>
-        <FontAwesomeIcon icon="heart" color={liked ? ON_COLOR : OFF_COLOR} />
+        <FontAwesomeIcon icon={faHeart} color={liked ? ON_COLOR : OFF_COLOR} />
       </Icon>
       <span>{likes !== undefined ? likes : "-"}</span>
     </Button>
