@@ -84,7 +84,7 @@ export const Details: React.FC<{
                   <span>by</span> <strong>{(user && user.name) || "-"}</strong>
                 </Column>
                 <Column narrow>
-                  <Actions outlined entry={entry} />
+                  <Actions entry={entry} />
                 </Column>
               </Columns>
             </Column>

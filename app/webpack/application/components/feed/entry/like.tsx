@@ -27,8 +27,7 @@ const OFF_COLOR = "hsl(0, 0%, 48%)";
 
 export const Like: React.FC<{
   entry?: IFeedEntry;
-  outlined?: boolean;
-}> = ({ entry, outlined }) => {
+}> = ({ entry }) => {
   const liked = entry && entry.liked;
   const likes = entry && entry.likes;
   const id = entry && entry.id;
@@ -43,7 +42,7 @@ export const Like: React.FC<{
   const onClick = useAuthentication({ action: execute });
 
   return (
-    <Button outlined={outlined} title={title} disabled={disabled} onClick={onClick}>
+    <Button title={title} disabled={disabled} onClick={onClick}>
       <Icon>
         <FontAwesomeIcon icon={faHeart} color={liked ? ON_COLOR : OFF_COLOR} />
       </Icon>
