@@ -28,7 +28,6 @@ import { Notifications } from "./notifications";
 import { Settings } from "./settings";
 
 import {
-  FEED_URL,
   LOGIN_URL,
   NOTIFICATIONS_URL,
   SETTINGS_URL,
