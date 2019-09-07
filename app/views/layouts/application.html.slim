@@ -18,6 +18,7 @@ html
       CONFIG = #{{JSON.generate(config)}};
       ENVIRONMENT = #{{JSON.generate(Rails.env)}};
       RELEASE = #{{JSON.generate(release)}};
+      MAPBOX_ACCESS_TOKEN = #{{JSON.generate(Rails.application.credentials.mapbox_access_token)}};
       SENTRY_DSN = #{{JSON.generate(Rails.application.credentials.sentry_dsn)}};
       STRIPE_PUBLISHABLE_KEY = #{{JSON.generate(Rails.application.credentials.stripe_publishable_key)}};
 

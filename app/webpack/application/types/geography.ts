@@ -5,6 +5,6 @@ export interface IGeography {
   country: string;
   continent: string;
   zip: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
 }

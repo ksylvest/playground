@@ -4,6 +4,7 @@
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,
     "jsx-boolean-value": ["never"],
-    "no-namespace": [true, "allow-declarations"]
+    "no-namespace": [true, "allow-declarations"],
+    "max-classes-per-file": [true, "exclude-class-expressions"]
   }
 }
