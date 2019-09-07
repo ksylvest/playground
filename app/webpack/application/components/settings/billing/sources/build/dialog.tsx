@@ -6,7 +6,7 @@ import {
   Element,
   useAdapter,
   useElement,
-} from "@application/components/libraries/stripe";
+} from "@application/libraries/stripe";
 
 import {
   Button,
