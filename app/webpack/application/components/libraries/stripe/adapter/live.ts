@@ -1,18 +1,22 @@
+import * as loadjs from "loadjs";
 import { memoize } from "lodash";
 
 import { IBase } from "./base";
 
 declare const STRIPE_PUBLISHABLE_KEY: string;
 
+const STRIPE_URL = "https://js.stripe.com/v3/";
+loadjs(STRIPE_URL, "stripe");
+
 const LIBRARY = new Promise<stripe.ILibrary>((
   resolve,
   reject,
 ) => {
-  Object.assign(window, {
-    STRIPE_ONERROR: () => {
+  loadjs.ready("stripe", {
+    error: () => {
       reject();
     },
-    STRIPE_ONLOAD: () => {
+    success: () => {
       resolve(Stripe);
     },
   });
