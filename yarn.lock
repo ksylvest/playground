@@ -953,6 +953,11 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
   integrity sha512-cS5owqtwzLN5kY+l+KgKdRJ/Cee8tlmQoGQuIE9tWnSmS3JMKzmxo2HIAk2wODMifGwO20d62xZQLYz+RLfXmw==
 
+"@types/loadjs@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@types/loadjs/-/loadjs-3.5.0.tgz#0a8957275de94001e7e47c63f05c4bf7a461cfe9"
+  integrity sha512-IG/WaQ6rKKUs9Ir2a0pP9RDm9Glu6VXVHMMV2eeW8REsI4ijnkMTQpMFL3HUTPpP4P1iT+CiM2el5mtAGi1wbA==
+
 "@types/lodash@^4.14.136":
   version "4.14.138"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.138.tgz#34f52640d7358230308344e579c15b378d91989e"
@@ -4298,6 +4303,11 @@ loader-utils@1.2.3, loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.
     big.js "^5.2.2"
     emojis-list "^2.0.0"
     json5 "^1.0.1"
+
+loadjs@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/loadjs/-/loadjs-3.6.1.tgz#1e756ccd4f4c5ed4988085b330e1b4ad9b6a8340"
+  integrity sha512-AZEBw2GWdJk2IzBgQ+Wohoao5j+t0rajqK8dJu8jQqgYxDTxhmCt0ayMo/vCa0ZAMvZxnJcam6uLICfnVd8KAw==
 
 locate-path@^3.0.0:
   version "3.0.0"

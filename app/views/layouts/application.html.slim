@@ -24,10 +24,5 @@ html
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
 
-    = javascript_include_tag 'https://js.stripe.com/v3/',
-      onload: 'window.STRIPE_ONLOAD()',
-      onerror: 'window.STRIPE_ONERROR()',
-      async: 'async'
-
   body
     == yield
