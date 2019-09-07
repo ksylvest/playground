@@ -9,6 +9,8 @@ import {
   Modal,
 } from "tights";
 
+import { Geography } from "./geography";
+
 export const Dialog: React.FC<{
   session: ISession;
   loading: boolean;
@@ -31,10 +33,9 @@ export const Dialog: React.FC<{
         <Modal.Card.Body>
           <Content>
             <p>Are you sure you want to revoke this session?</p>
-            <p><strong>{session.ip}</strong></p>
-            {session.geography &&
-              <p><strong>{session.geography.city}, {session.geography.region}, {session.geography.country}</strong></p>}
             <p>Devices using this session will be need to re-authenticate.</p>
+            <p><strong>{session.ip}</strong></p>
+            {session.geography && <Geography geography={session.geography} />}
           </Content>
         </Modal.Card.Body>
         <Modal.Card.Foot>
