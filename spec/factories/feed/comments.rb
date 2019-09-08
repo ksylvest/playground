@@ -3,5 +3,6 @@ FactoryBot.define do
     user
     association(:entry, factory: :feed_entry)
     message { 'The quick brown fox jumped over the lazy dog.' }
+    sent_at { Time.current }
   end
 end
