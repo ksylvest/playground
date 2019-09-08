@@ -1,0 +1,12 @@
+#import "@application/fragments/feed/comment.gql"
+
+query FeedComments($id: ID!) {
+  feed {
+    entry(id: $id) {
+      id
+      comments {
+        ...feed__comment
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+#import "@application/fragments/feed/comment.gql"
+
+mutation BuildFeedComment($input: Feed__CommentInput!) {
+  buildFeedComment(input: $input) {
+    status
+    errors {
+      messages
+    }
+    comment {
+      ...feed__comment
+    }
+  }
+}
