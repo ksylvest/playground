@@ -18,6 +18,11 @@ RSpec.describe Types::FeedType do
               comments {
                 id
                 message
+                sent
+                user {
+                  id
+                  name
+                }
               }
               photos {
                 id
