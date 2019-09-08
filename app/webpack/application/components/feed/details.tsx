@@ -9,6 +9,7 @@ import { useKey } from "@application/hooks";
 
 import { Title } from "@application/components/helpers";
 
+import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
 
 import { IFeedEntry } from "@application/types";
@@ -87,6 +88,7 @@ export const Details: React.FC<{
                   <Actions entry={entry} />
                 </Column>
               </Columns>
+              <Comments entryID={id} />
             </Column>
           </Columns>
         </Card.Content>

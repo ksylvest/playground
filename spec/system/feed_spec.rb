@@ -17,13 +17,20 @@ RSpec.describe 'feed', type: :system do
   end
 
   it 'lets a user like and unlike an entry' do
-    visit login_path
-    login(user)
-
+    visit root_path
     expect(page).to have_title('Feed | Playground')
 
     within('.card') do
       find('button').click
+    end
+
+    within('.modal') do
+      login(user)
+    end
+
+    within('.card') do
+      find('button').click
+
       within('[title="Unlike"]') do
         expect(page).to have_text('1')
       end
@@ -45,6 +52,26 @@ RSpec.describe 'feed', type: :system do
 
     within('.card') do
       expect(page).to have_text("by #{user.name}")
+    end
+  end
+
+  it 'lets a user comment on a feed entry' do
+    visit feed_entry_path(entry)
+    expect(page).to have_title('Feed - Details | Playground')
+
+    fill_in('Add a comment...', with: 'The quick brown fox jumped over the lazy dog.')
+
+    click_button('Comment')
+
+    within('.modal') do
+      login(user)
+    end
+
+    click_button('Comment')
+
+    within('.media') do
+      expect(page).to have_text(user.name)
+      expect(page).to have_text('The quick brown fox jumped over the lazy dog.')
     end
   end
 end
