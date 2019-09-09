@@ -1,0 +1,4 @@
+fragment attached on Attached {
+  id
+  filename
+}

@@ -16,7 +16,6 @@ RSpec.describe Types::UserType do
             email
             avatar {
               id
-              url: variant(l: 96, w: 96, format: JPG)
             }
           }
         }
@@ -33,7 +32,6 @@ RSpec.describe Types::UserType do
       expect(execute['data']['user']['email']).to eql(user.email)
       expect(execute['data']['user']['avatar']).to be_present
       expect(execute['data']['user']['avatar']['id']).to be_present
-      expect(execute['data']['user']['avatar']['url']).to be_present
     end
   end
 end

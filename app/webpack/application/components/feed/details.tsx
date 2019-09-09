@@ -14,7 +14,7 @@ import { Carousel } from "./details/carousel";
 
 import { IFeedEntry } from "@application/types";
 
-import { FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
+import { ATTACHMENT_URL, FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
 
 import * as QUERY from "./details/query.gql";
 
@@ -40,6 +40,9 @@ export const Details: React.FC<{
   const photos = entry && entry.photos;
   const user = entry && entry.user;
   const avatar = user && user.avatar;
+  const avatarURL = avatar
+    ? ATTACHMENT_URL(avatar.id, 128, 128, "fill")
+    : require("@application/assets/avatar/placeholder.svg");
 
   const onGo = (offset: number) => {
     if (!photos) {
@@ -74,12 +77,7 @@ export const Details: React.FC<{
             <Column>
               <Columns desktop tablet mobile vcentered gap={2}>
                 <Column narrow>
-                  <Image
-                    rounded
-                    square
-                    dimensions={64}
-                    src={avatar ? avatar.url : require("@application/assets/avatar/placeholder.svg")}
-                  />
+                  <Image rounded square dimensions={64} src={avatarURL} />
                 </Column>
                 <Column>
                   <span>by</span> <strong>{(user && user.name) || "-"}</strong>

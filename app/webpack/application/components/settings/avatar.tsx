@@ -20,9 +20,14 @@ interface IQueryData {
 
 import * as QUERY from "./avatar/query.gql";
 
+import { ATTACHMENT_URL } from "@application/config/routes";
+
 export const Avatar: React.FC = () => {
   const { data, refetch } = useQuery<IQueryData>(QUERY);
-  const avatarURL = data && data.user && data.user.avatar && data.user.avatar.url;
+  const avatar = data && data.user && data.user.avatar && data.user.avatar;
+  const avatarURL = avatar
+    ? ATTACHMENT_URL(avatar.id, 640, 640, "fill")
+    : require("@application/assets/avatar/placeholder.svg");
 
   return (
     <>
@@ -32,7 +37,7 @@ export const Avatar: React.FC = () => {
       <hr />
       <Columns>
         <Column size={3}>
-          <Image rounded square src={avatarURL || require("@application/assets/avatar/placeholder.svg")} />
+          <Image rounded square src={avatarURL} />
         </Column>
         <Column size={9}>
           <Attach onSave={refetch} />

@@ -1,0 +1,15 @@
+#import "@application/fragments/attached.gql"
+#import "@application/fragments/user.gql"
+
+fragment feed__entry on Feed__Entry {
+  id
+  tags
+  liked
+  likes
+  photos {
+    ...attached
+  }
+  user {
+    ...user
+  }
+}

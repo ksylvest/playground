@@ -3,7 +3,6 @@ query Avatar {
     id
     avatar {
       id
-      url: variant(l: 512, w: 512, format: JPG)
     }
   }
 }
