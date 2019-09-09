@@ -19,7 +19,7 @@ export const Comment: React.FC<{
   return (
     <Media>
       <Media.Left>
-        <Image square dimensions={48} src={avatarURL} />
+        <Image rounded square dimensions={48} src={avatarURL} />
       </Media.Left>
       <Media.Content>
         <Content>
