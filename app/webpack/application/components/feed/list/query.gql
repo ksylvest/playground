@@ -1,22 +1,9 @@
+#import "@application/fragments/feed/entry.gql"
+
 query Feed {
   feed {
     entries {
-      id
-      tags
-      liked
-      likes
-      photos {
-        id
-        url: variant(l: 640, w: 640, format: JPG, resize: FILL)
-      }
-      user {
-        id
-        name
-        avatar {
-          id
-          url: variant(l: 96, w: 96, format: JPG)
-        }
-      }
+      ...feed__entry
     }
   }
 }

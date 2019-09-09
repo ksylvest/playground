@@ -26,14 +26,12 @@ RSpec.describe Types::FeedType do
               }
               photos {
                 id
-                url: variant(l: 1280, w: 1280, format: JPG)
               }
               user {
                 id
                 name
                 avatar {
                   id
-                  url: variant(l: 96, w: 96, format: JPG)
                 }
               }
             }

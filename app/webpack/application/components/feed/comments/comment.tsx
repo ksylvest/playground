@@ -6,20 +6,20 @@ import { Age } from "@application/components/helpers";
 
 import { IFeedComment } from "@application/types";
 
+import { ATTACHMENT_URL } from "@application/config/routes";
+
 export const Comment: React.FC<{
   comment: IFeedComment;
 }> = ({ comment }) => {
   const avatar = comment.user.avatar;
+  const avatarURL = avatar
+    ? ATTACHMENT_URL(avatar.id, 96, 96, "fill")
+    : require("@application/assets/avatar/placeholder.svg");
 
   return (
     <Media>
       <Media.Left>
-        <Image
-          rounded
-          square
-          dimensions={48}
-          src={avatar ? avatar.url : require("@application/assets/avatar/placeholder.svg")}
-        />
+        <Image square dimensions={48} src={avatarURL} />
       </Media.Left>
       <Media.Content>
         <Content>

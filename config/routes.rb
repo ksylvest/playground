@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resource :robots, only: :show, defaults: { format: :text }
   resource :sitemap, only: :show, defaults: { format: :xml }
+  resources :attachments, only: :show
 
   constraints format: :html do
     %w[

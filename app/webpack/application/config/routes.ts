@@ -13,3 +13,16 @@ export const SETTINGS_SESSIONS_URL = "/settings/sessions";
 export const FEED_URL = "/(feed)";
 export const FEED_LIST_URL = "/";
 export const FEED_DETAILS_URL = ({ id }: { id: string }) => `/feed/entries/${id}`;
+
+export const ATTACHMENT_URL = (
+  id: string,
+  w: number,
+  h: number,
+  resize: "fit" | "fill",
+  format: "jpg" | "webp" | "heic" = "jpg",
+) => {
+  if (!id) {
+    return;
+  }
+  return `/attachments/${id}.${format}?resize=${resize}&w=${w}&h=${h}`;
+};

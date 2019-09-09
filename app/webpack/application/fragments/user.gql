@@ -1,8 +1,9 @@
+#import "@application/fragments/attached.gql"
+
 fragment user on User {
   id
   name
   avatar {
-    id
-    url: variant(l: 320, w: 320, format: JPG)
+    ...attached
   }
 }

@@ -10,6 +10,8 @@ import { useKey } from "@application/hooks";
 
 import { IAttached } from "@application/types";
 
+import { ATTACHMENT_URL } from "@application/config/routes";
+
 const DEFAULT_INDEX = 0;
 const NEXT_KEY = "ArrowRight";
 const PREV_KEY = "ArrowLeft";
@@ -22,6 +24,8 @@ export const Carousel: React.FC<{
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
   const total = photos.length;
+
+  const photoURL = ATTACHMENT_URL(photo.id, 1280, 1280, "fill");
 
   const go = (offset: number) => {
     if (!photos) {
@@ -38,7 +42,7 @@ export const Carousel: React.FC<{
 
   return (
     <>
-      <Image square src={photo.url} />
+      <Image square src={photoURL} />
       <br />
       <Pagination rounded>
         <Pagination.Prev
