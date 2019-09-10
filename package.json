@@ -40,7 +40,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "tights": "^1.3.1",
-    "ts-loader": "^6.0.4",
+    "ts-loader": "^6.1.0",
     "typescript": "^3.6.3",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
