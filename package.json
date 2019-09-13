@@ -44,7 +44,7 @@
     "typescript": "^3.6.3",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.40.0"
+    "webpack": "^4.40.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2",
