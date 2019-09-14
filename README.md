@@ -6,6 +6,15 @@
 ./bin/setup
 ```
 
+## Usage
+
+Changes to the GraphQL schema (`app/graphql`) require:
+
+```
+rake graphql:schema:generate
+yarn run graphql:codegen
+```
+
 ## Status
 
 [![CircleCI](https://circleci.com/gh/ksylvest/playground.svg?style=svg)](https://circleci.com/gh/ksylvest/playground)
