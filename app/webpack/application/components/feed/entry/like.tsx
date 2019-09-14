@@ -17,13 +17,10 @@ export const Like: React.FC<{
   const liked = entry && entry.liked;
   const likes = entry && entry.likes;
   const id = entry && entry.id;
+  const variables = { id: id! };
 
-  const [like, { loading: liking }] = useLikeFeedEntryMutation({
-    variables: { id: id! },
-  });
-  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation({
-    variables: { id: id! },
-  });
+  const [like, { loading: liking }] = useLikeFeedEntryMutation({ variables });
+  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation({ variables });
 
   const loading = liking || unliking;
   const execute = liked ? unlike : like;
