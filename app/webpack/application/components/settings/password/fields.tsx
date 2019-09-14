@@ -35,7 +35,7 @@ export const Fields: React.FC<{
       <Field
         icon={faLock}
         type="password"
-        field="current"
+        name="current"
         value={current}
         label="Current"
         placeholder="Current"
@@ -46,7 +46,7 @@ export const Fields: React.FC<{
       <Field
         icon={faLock}
         type="password"
-        field="replacement"
+        name="replacement"
         value={replacement}
         label="Replacement"
         placeholder="Replacement"
