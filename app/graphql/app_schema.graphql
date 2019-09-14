@@ -122,8 +122,8 @@ type Errors {
 }
 
 type Feed {
-  entries: [Feed__Entry!]
-  entry(id: ID!): Feed__Entry
+  entries: [Feed__Entry!]!
+  entry(id: ID!): Feed__Entry!
 }
 
 type Feed__Comment {
