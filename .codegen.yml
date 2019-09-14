@@ -1,0 +1,12 @@
+schema: "./app/graphql/app_schema.graphql"
+generates:
+  "app/webpack/app_schema.tsx":
+    documents: app/webpack/application/**/*.gql
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      scalars:
+        DateTime: string
+      withHooks: true

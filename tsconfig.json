@@ -12,6 +12,7 @@
     "target": "es5",
     "baseUrl": "./app/webpack",
     "paths": {
+      "@root/*": ["*"],
       "@application/*": ["application/*"]
     }
   },
