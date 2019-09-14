@@ -1,6 +1,9 @@
 {
   "name": "playground",
   "private": true,
+  "scripts": {
+    "graphql:codegen": "graphql-codegen --config .codegen.yml"
+  },
   "dependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
@@ -47,6 +50,11 @@
     "webpack": "^4.40.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.7.0",
+    "@graphql-codegen/introspection": "^1.7.0",
+    "@graphql-codegen/typescript": "^1.7.0",
+    "@graphql-codegen/typescript-operations": "^1.7.0",
+    "@graphql-codegen/typescript-react-apollo": "^1.7.0",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
