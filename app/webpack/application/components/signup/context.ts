@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
-import { IErrors, ISignupInput } from "@application/types";
+import { Errors, SignupInput } from "@root/app_schema";
 
 export const Context = createContext<{
-  input: ISignupInput;
-  errors?: IErrors;
+  input: SignupInput;
+  errors?: Errors;
   loading: boolean;
-  onChange(input: ISignupInput): void;
+  onChange(input: SignupInput): void;
 }>({
   input: {
     email: "",

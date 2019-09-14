@@ -1,0 +1,7 @@
+fragment notification on Notification {
+  id
+  message
+  deleted
+  read
+  sent
+}

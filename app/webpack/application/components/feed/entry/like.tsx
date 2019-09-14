@@ -1,41 +1,32 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { useMutation } from "react-apollo";
-
-import { IFeedEntry, Status } from "@application/types";
 
 import { Button, Icon } from "tights";
 
-import * as LIKE_MUTATION from "./like.gql";
-import * as UNLIKE_MUTATION from "./unlike.gql";
+import { Feed__EntryFragment, useLikeFeedEntryMutation, useUnlikeFeedEntryMutation } from "@root/app_schema";
 
 import { useAuthentication } from "@application/hooks";
-
-interface IMutationData {
-  result: {
-    status: Status;
-  };
-}
-
-interface IMutationVariables {
-  id: string;
-}
 
 const ON_COLOR = "hsl(348, 100%, 61%)";
 const OFF_COLOR = "hsl(0, 0%, 48%)";
 
 export const Like: React.FC<{
-  entry?: IFeedEntry;
+  entry?: Feed__EntryFragment;
 }> = ({ entry }) => {
   const liked = entry && entry.liked;
   const likes = entry && entry.likes;
   const id = entry && entry.id;
 
-  const MUTATION = liked ? UNLIKE_MUTATION : LIKE_MUTATION;
-  const [execute, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, {
+  const [like, { loading: liking }] = useLikeFeedEntryMutation({
     variables: { id: id! },
   });
+  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation({
+    variables: { id: id! },
+  });
+
+  const loading = liking || unliking;
+  const execute = liked ? unlike : like;
 
   const disabled = !id || loading;
   const title = liked ? "Like" : "Unlike";

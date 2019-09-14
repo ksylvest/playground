@@ -1,22 +1,13 @@
 import * as React from "react";
 import { useContext, useState } from "react";
-import { useMutation } from "react-apollo";
 
-import { Status } from "@application/types";
+import { useSettingsAvatarDetachMutation } from "@root/app_schema";
 
 import { Button } from "tights";
 
 import { World } from "@application/contexts";
 
 import { Dialog } from "./detach/dialog";
-
-import * as MUTATION from "./detach/mutation.gql";
-
-interface IMutationData {
-  detachAvatar: {
-    status: Status;
-  };
-}
 
 const DEFAULT_ACTIVE = false;
 
@@ -25,7 +16,7 @@ export const Detach: React.FC<{
 }> = ({ onSave }) => {
   const { notify } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
-  const [submit, { loading }] = useMutation<IMutationData>(MUTATION);
+  const [submit, { loading }] = useSettingsAvatarDetachMutation();
 
   const open = () => setActive(true);
   const close = () => setActive(false);

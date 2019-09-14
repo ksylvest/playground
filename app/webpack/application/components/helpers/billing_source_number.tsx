@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { IBillingSource } from "@application/types";
+import { Billing__Source } from "@root/app_schema";
 
 export const BillingSourceNumber: React.FC<{
-  source: IBillingSource;
+  source: Billing__Source;
 }> = ({ source }) => <>•••• {source.number}</>;

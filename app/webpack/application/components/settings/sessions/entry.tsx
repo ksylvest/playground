@@ -4,23 +4,23 @@ import { DateTime } from "luxon";
 import * as React from "react";
 import { useContext } from "react";
 
-import { ISession, SessionStatus } from "@application/types";
+import { SessionFragment, SessionStatusEnum } from "@root/app_schema";
 
 import { World } from "@application/contexts";
 
 import { Button, Column, Columns, Icon, Message } from "tights";
 
 export const Entry: React.FC<{
-  session: ISession;
-  onRevoke(session: ISession): void;
+  session: SessionFragment;
+  onRevoke(session: SessionFragment): void;
 }> = ({ session, onRevoke }) => {
   const { session: current } = useContext(World);
   const me = current && session.id === current.id;
   const status = (() => {
     switch (session.status) {
-      case SessionStatus.Online:
+      case SessionStatusEnum.Online:
         return "info";
-      case SessionStatus.Offline:
+      case SessionStatusEnum.Offline:
         return "light";
     }
   })();

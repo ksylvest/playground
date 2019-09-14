@@ -2,14 +2,14 @@ import * as React from "react";
 
 import { Content, Image, Media } from "tights";
 
-import { Age } from "@application/components/helpers";
+import { Feed__CommentFragment } from "@root/app_schema";
 
-import { IFeedComment } from "@application/types";
+import { Age } from "@application/components/helpers";
 
 import { ATTACHMENT_URL } from "@application/config/routes";
 
 export const Comment: React.FC<{
-  comment: IFeedComment;
+  comment: Feed__CommentFragment;
 }> = ({ comment }) => {
   const avatar = comment.user.avatar;
   const avatarURL = avatar

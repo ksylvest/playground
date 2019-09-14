@@ -1,20 +1,13 @@
 import * as React from "react";
-import { useQuery } from "react-apollo";
+
+import { useNotificationsQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
 
-import { INotification } from "@application/types";
-
 import { List } from "./notifications/list";
 
-import * as QUERY from "./notifications/query.gql";
-
-interface IQueryData {
-  notifications: INotification[];
-}
-
 export const Notifications: React.FC = () => {
-  const { data } = useQuery<IQueryData>(QUERY);
+  const { data } = useNotificationsQuery();
 
   return (
     <>

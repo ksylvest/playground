@@ -1,9 +1,7 @@
+#import "@application/fragments/notification.gql"
+
 query Notifications {
   notifications {
-    id
-    message
-    deleted
-    read
-    sent
+    ...notification
   }
 }

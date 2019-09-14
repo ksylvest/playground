@@ -1,32 +1,19 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation } from "react-apollo";
 
-import { ISession, Status } from "@application/types";
+import { SessionFragment, useSettingsSessionRevokeMutation } from "@root/app_schema";
 
 import { World } from "@application/contexts";
 
 import { Dialog } from "./revoke/dialog";
 
-import * as MUTATION from "./revoke/mutation.gql";
-
-interface IMutationVariables {
-  id: string;
-}
-
-interface IMutationData {
-  destroySession: {
-    status: Status;
-  };
-}
-
 export const Revoke: React.FC<{
-  session: ISession;
+  session: SessionFragment;
   onClose(): void;
 }> = ({ session, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: session.id };
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
+  const [submit, { loading }] = useSettingsSessionRevokeMutation({ variables });
 
   const onContinue = async () => {
     if (loading) {

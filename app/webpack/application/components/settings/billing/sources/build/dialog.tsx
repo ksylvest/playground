@@ -1,20 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-import { useMutation } from "react-apollo";
+
+import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
 
 import { Element, useAdapter, useElement } from "@application/libraries/stripe";
 
 import { Button, Content, Delete, Form, Modal } from "tights";
-
-import * as MUTATION from "./mutation.gql";
-
-interface IMutationData {
-  id: string;
-}
-
-interface IMutationVariables {
-  source: string;
-}
 
 interface IDialogProps {
   onCancel(): void;
@@ -22,7 +13,7 @@ interface IDialogProps {
 }
 
 export const Dialog: React.FC<IDialogProps> = ({ onCancel, onSave }) => {
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+  const [submit, { loading }] = useSettingsBillingSourceBuildMutation();
   const [tokenizer, setTokenizer] = useState<Promise<stripe.ITokenResponse> | undefined>(undefined);
   const adapter = useAdapter();
   const element = useElement(adapter, "card");

@@ -1,32 +1,19 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation } from "react-apollo";
 
-import { IBillingSource, Status } from "@application/types";
+import { Billing__Source, useSettingsBillingSourceDestroyMutation } from "@root/app_schema";
 
 import { World } from "@application/contexts";
 
 import { Dialog } from "./destroy/dialog";
 
-import * as MUTATION from "./destroy/mutation.gql";
-
-interface IMutationVariables {
-  id: string;
-}
-
-interface IMutationData {
-  destroyBillingSource: {
-    status: Status;
-  };
-}
-
 export const Destroy: React.FC<{
-  source: IBillingSource;
+  source: Billing__Source;
   onClose(): void;
 }> = ({ source, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: source.id };
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
+  const [submit, { loading }] = useSettingsBillingSourceDestroyMutation({ variables });
 
   const onContinue = async () => {
     if (loading) {

@@ -1,28 +1,15 @@
 import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { useMutation } from "react-apollo";
 
-import { INotification } from "@application/types";
+import { Notification, useReadNotificationMutation } from "@root/app_schema";
 
 import { Button, Icon } from "tights";
 
-import * as MUTATION from "./read/mutation.gql";
-
-interface IMutationData {
-  readNotification: {
-    notification: INotification;
-  };
-}
-
-interface IMutationVariables {
-  id: string;
-}
-
 export const Read: React.FC<{
-  notification: INotification;
+  notification: Notification;
 }> = ({ notification: { id, read } }) => {
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables: { id } });
+  const [submit, { loading }] = useReadNotificationMutation({ variables: { id } });
 
   const onClick = async () => {
     if (loading) {

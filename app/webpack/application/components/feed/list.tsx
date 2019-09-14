@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useQuery } from "react-apollo";
+
+import { useFeedQuery } from "@root/app_schema";
 
 import { Column, Columns } from "tights";
 
@@ -7,16 +8,8 @@ import { Title } from "@application/components/helpers";
 
 import { Entry } from "./entry";
 
-import { IFeed } from "@application/types";
-
-import * as QUERY from "./list/query.gql";
-
-interface IQueryData {
-  feed: IFeed;
-}
-
 export const List: React.FC = () => {
-  const { data } = useQuery<IQueryData>(QUERY);
+  const { data } = useFeedQuery();
   const entries = data && data.feed && data.feed.entries;
 
   return (

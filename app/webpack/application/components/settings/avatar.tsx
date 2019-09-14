@@ -1,29 +1,18 @@
 import * as React from "react";
-import { useQuery } from "react-apollo";
 
 import { Column, Columns, Image } from "tights";
+
+import { useSettingsAvatarQuery } from "@root/app_schema";
 
 import { Attach } from "./avatar/attach";
 import { Detach } from "./avatar/detach";
 
 import { Title } from "@application/components/helpers";
 
-interface IQueryData {
-  user: {
-    id: string;
-    avatar?: {
-      id: string;
-      url: string;
-    };
-  };
-}
-
-import * as QUERY from "./avatar/query.gql";
-
 import { ATTACHMENT_URL } from "@application/config/routes";
 
 export const Avatar: React.FC = () => {
-  const { data, refetch } = useQuery<IQueryData>(QUERY);
+  const { data, refetch } = useSettingsAvatarQuery();
   const avatar = data && data.user && data.user.avatar && data.user.avatar;
   const avatarURL = avatar
     ? ATTACHMENT_URL(avatar.id, 640, 640, "fill")

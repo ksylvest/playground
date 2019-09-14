@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { ISession } from "@application/types";
+import { SessionFragment } from "@root/app_schema";
 
 import { Entry } from "./entry";
 
 export const List: React.FC<{
-  sessions?: ISession[];
-  onRevoke(session: ISession): void;
+  sessions?: SessionFragment[];
+  onRevoke(session: SessionFragment): void;
 }> = ({ sessions, onRevoke }) => (
   <>
     {sessions &&

@@ -1,32 +1,19 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation } from "react-apollo";
 
-import { IBillingSource, Status } from "@application/types";
+import { Billing__Source, useSettingsBillingSourceDefaultMutation } from "@root/app_schema";
 
 import { World } from "@application/contexts";
 
 import { Dialog } from "./default/dialog";
 
-import * as MUTATION from "./default/mutation.gql";
-
-interface IMutationVariables {
-  id: string;
-}
-
-interface IMutationData {
-  defaultBillingSource: {
-    status: Status;
-  };
-}
-
 export const Default: React.FC<{
-  source: IBillingSource;
+  source: Billing__Source;
   onClose(): void;
 }> = ({ source, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: source.id };
-  const [submit, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, { variables });
+  const [submit, { loading }] = useSettingsBillingSourceDefaultMutation({ variables });
 
   const onContinue = async () => {
     if (loading) {

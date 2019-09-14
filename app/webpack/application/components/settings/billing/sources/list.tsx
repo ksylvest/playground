@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IBillingSource } from "@application/types";
+import { Billing__Source } from "@root/app_schema";
 
 import {
   BillingSourceBrand,
@@ -12,9 +12,9 @@ import {
 import { Button, Buttons, Table } from "tights";
 
 export const List: React.FC<{
-  sources: IBillingSource[];
-  onDestroy(source: IBillingSource): void;
-  onDefault(source: IBillingSource): void;
+  sources: Billing__Source[];
+  onDestroy(source: Billing__Source): void;
+  onDefault(source: Billing__Source): void;
 }> = ({ sources, onDestroy, onDefault }) => (
   <Table fullwidth hoverable striped>
     <tbody>
