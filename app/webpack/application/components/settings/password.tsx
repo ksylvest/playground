@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 
-import { useSettingsPasswordMutation } from "@root/app_schema";
+import { Status, useSettingsPasswordMutation } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
 
@@ -31,7 +31,7 @@ export const Password: React.FC = () => {
             variables: { input },
           });
           const status = result.data && result.data.changePassword && result.data.changePassword.status;
-          if (status === "OK") {
+          if (status === Status.Ok) {
             notify({
               kind: "notice",
               message: "Your password has been saved.",
