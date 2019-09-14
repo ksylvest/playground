@@ -1,12 +1,9 @@
 import * as React from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Breadcrumb, Card, Column, Columns, Image } from "tights";
 
 import { useFeedEntryQuery } from "@root/app_schema";
-
-import { useKey } from "@application/hooks";
 
 import { Title } from "@application/components/helpers";
 
@@ -17,14 +14,22 @@ import { ATTACHMENT_URL, FEED_DETAILS_URL, FEED_LIST_URL } from "@application/co
 
 import { Actions } from "./entry/actions";
 
-const DEFAULT_INDEX = 0;
-const NEXT_KEY = "ArrowRight";
-const PREV_KEY = "ArrowLeft";
+const Breadcrumbs: React.FC<{ id: string }> = ({ id }) => (
+  <Breadcrumb>
+    <Breadcrumb.List>
+      <Breadcrumb.Item>
+        <Link to={FEED_LIST_URL}>Home</Link>
+      </Breadcrumb.Item>
+      <Breadcrumb.Item active>
+        <Link to={FEED_DETAILS_URL({ id })}>Details</Link>
+      </Breadcrumb.Item>
+    </Breadcrumb.List>
+  </Breadcrumb>
+);
 
 export const Details: React.FC<{
   id: string;
 }> = ({ id }) => {
-  const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const { data } = useFeedEntryQuery({ variables: { id } });
   const entry = data && data.feed && data.feed.entry;
 
@@ -35,32 +40,10 @@ export const Details: React.FC<{
     ? ATTACHMENT_URL(avatar.id, 128, 128, "fill")
     : require("@application/assets/avatar/placeholder.svg");
 
-  const onGo = (offset: number) => {
-    if (!photos) {
-      return;
-    }
-    setIndex((index + photos.length + offset) % photos.length);
-  };
-
-  const onNext = () => onGo(+1);
-  const onPrev = () => onGo(-1);
-
-  useKey(onNext, NEXT_KEY);
-  useKey(onPrev, PREV_KEY);
-
   return (
     <>
       <Title>Feed - Details | Playground</Title>
-      <Breadcrumb>
-        <Breadcrumb.List>
-          <Breadcrumb.Item>
-            <Link to={FEED_LIST_URL}>Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item active>
-            <Link to={FEED_DETAILS_URL({ id })}>Details</Link>
-          </Breadcrumb.Item>
-        </Breadcrumb.List>
-      </Breadcrumb>
+      <Breadcrumbs id={id} />
       <Card>
         <Card.Content>
           <Columns>
