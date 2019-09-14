@@ -1,8 +1,5 @@
 import * as loadjs from "loadjs";
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 export const useLoadJS = (id: string) => {
   const [loaded, setLoaded] = useState(false);

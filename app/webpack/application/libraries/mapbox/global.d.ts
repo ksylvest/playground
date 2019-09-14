@@ -5,13 +5,8 @@ declare namespace mapboxgl {
     number, // lng
     number, // lat
   ];
-
   class Map {
-    constructor(_: {
-      container: HTMLElement,
-      center?: LngLat;
-      style?: string;
-    });
+    constructor(parameters: { container: HTMLElement; center?: LngLat; style?: string });
     public remove(): void;
   }
 
