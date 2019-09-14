@@ -22,8 +22,8 @@ export const Field: React.FC<{
   };
   onValue(value: string): void;
 }> = ({ icon, type, field, value, label, placeholder, errors, onValue }) => {
-  const messages = errors ? errors.messages[field] : undefined;
-  const help = messages ? sentence(messages) : undefined;
+  const messages = errors && errors.messages[field];
+  const help = messages && sentence(messages);
   const invalid = !!errors && !!messages;
   const valid = !!errors && !messages;
 
