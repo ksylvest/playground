@@ -17,8 +17,8 @@ export const Comments: React.FC<{
     variables: { id: entryID },
   });
   const [execute, { loading }] = useBuildFeedCommentMutation({
-    onCompleted: ({ buildFeedComment }) => {
-      if (buildFeedComment && buildFeedComment.status === Status.Ok) {
+    onCompleted: ({ result }) => {
+      if (result && result.status === Status.Ok) {
         refetch();
         setMessage("");
       }

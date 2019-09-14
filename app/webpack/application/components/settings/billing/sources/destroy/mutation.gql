@@ -1,5 +1,5 @@
 mutation SettingsBillingSourceDestroy($id: ID!) {
-  destroyBillingSource(id: $id) {
+  result: destroyBillingSource(id: $id) {
     status
   }
 }

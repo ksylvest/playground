@@ -11,8 +11,17 @@ import { Fields } from "./password/fields";
 
 export const Password: React.FC = () => {
   const { notify } = useContext(World);
-  const [submit, { loading, data }] = useSettingsPasswordMutation();
-  const errors = (data && data.changePassword && data.changePassword.errors) || undefined;
+  const [submit, { loading, data }] = useSettingsPasswordMutation({
+    onCompleted: ({ result }) => {
+      if (result && result.status === Status.Ok) {
+        notify({
+          kind: "notice",
+          message: "Your password has been saved.",
+        });
+      }
+    },
+  });
+  const errors = (data && data.result && data.result.errors) || undefined;
 
   return (
     <>
@@ -23,20 +32,10 @@ export const Password: React.FC = () => {
       <Fields
         loading={loading}
         errors={errors}
-        save={async (input) => {
-          if (loading) {
-            return;
-          }
-          const result = await submit({
+        save={(input) => {
+          submit({
             variables: { input },
           });
-          const status = result.data && result.data.changePassword && result.data.changePassword.status;
-          if (status === Status.Ok) {
-            notify({
-              kind: "notice",
-              message: "Your password has been saved.",
-            });
-          }
         }}
       />
     </>

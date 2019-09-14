@@ -1,5 +1,5 @@
 mutation SettingsBillingSourceBuild($source: String!) {
-  buildBillingSource(source: $source) {
+  result: buildBillingSource(source: $source) {
     status
   }
 }

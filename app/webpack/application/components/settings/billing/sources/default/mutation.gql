@@ -1,5 +1,5 @@
 mutation SettingsBillingSourceDefault($id: ID!) {
-  defaultBillingSource(id: $id) {
+  result: defaultBillingSource(id: $id) {
     status
   }
 }

@@ -1,7 +1,7 @@
 #import "@application/fragments/feed/comment.gql"
 
 mutation BuildFeedComment($input: Feed__CommentInput!) {
-  buildFeedComment(input: $input) {
+  result: buildFeedComment(input: $input) {
     status
     errors {
       messages

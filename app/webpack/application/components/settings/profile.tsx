@@ -12,8 +12,18 @@ import { Fields } from "./profile/fields";
 export const Profile: React.FC = () => {
   const { notify } = useContext(World);
   const { data: defaults, loading: querying } = useSettingsProfileQuery();
-  const [submit, { data, loading: mutating }] = useSettingsChangeProfileMutation();
-  const errors = (data && data.changeProfile && data.changeProfile.errors) || undefined;
+  const [submit, { data, loading: mutating }] = useSettingsChangeProfileMutation({
+    onCompleted: ({ result }) => {
+      if (result && result.status === Status.Ok) {
+        notify({
+          kind: "notice",
+          message: "Your profile has been saved.",
+        });
+      }
+    },
+  });
+  const errors = (data && data.result && data.result.errors) || undefined;
+  const loading = querying || mutating;
 
   return (
     <>
@@ -23,20 +33,13 @@ export const Profile: React.FC = () => {
       <hr />
       <Fields
         defaults={(defaults && defaults.user) || undefined}
-        save={async (input) => {
-          if (querying || mutating) {
+        save={(input) => {
+          if (loading) {
             return;
           }
-          const result = await submit({ variables: { input } });
-          const status = result.data && result.data.changeProfile && result.data.changeProfile.status;
-          if (status === Status.Ok) {
-            notify({
-              kind: "notice",
-              message: "Your profile has been saved.",
-            });
-          }
+          submit({ variables: { input } });
         }}
-        loading={querying || mutating}
+        loading={loading}
         errors={errors}
       />
     </>
