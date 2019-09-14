@@ -1,5 +1,5 @@
 mutation SettingsAvatarAttach($id: ID!) {
-  attachAvatar(id: $id) {
+  result: attachAvatar(id: $id) {
     status
   }
 }

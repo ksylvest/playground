@@ -385,7 +385,7 @@ export type BuildFeedCommentMutationVariables = {
 
 export type BuildFeedCommentMutation = (
   { __typename?: 'Mutation' }
-  & { buildFeedComment: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'BuildFeedCommentPayload' }
     & Pick<BuildFeedCommentPayload, 'status'>
     & { errors: Maybe<(
@@ -501,7 +501,7 @@ export type LogoutMutationVariables = {};
 
 export type LogoutMutation = (
   { __typename?: 'Mutation' }
-  & { logout: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'LogoutMutationPayload' }
     & Pick<LogoutMutationPayload, 'status'>
   )> }
@@ -514,7 +514,7 @@ export type DestroyNotificationMutationVariables = {
 
 export type DestroyNotificationMutation = (
   { __typename?: 'Mutation' }
-  & { destroyNotification: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'DestroyNotificationPayload' }
     & { notification: (
       { __typename?: 'Notification' }
@@ -540,7 +540,7 @@ export type ReadNotificationMutationVariables = {
 
 export type ReadNotificationMutation = (
   { __typename?: 'Mutation' }
-  & { readNotification: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'ReadNotificationPayload' }
     & { notification: (
       { __typename?: 'Notification' }
@@ -556,7 +556,7 @@ export type SettingsAvatarAttachMutationVariables = {
 
 export type SettingsAvatarAttachMutation = (
   { __typename?: 'Mutation' }
-  & { attachAvatar: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'AttachAvatarPayload' }
     & Pick<AttachAvatarPayload, 'status'>
   )> }
@@ -567,7 +567,7 @@ export type SettingsAvatarDetachMutationVariables = {};
 
 export type SettingsAvatarDetachMutation = (
   { __typename?: 'Mutation' }
-  & { detachAvatar: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'DetachAvatarPayload' }
     & Pick<DetachAvatarPayload, 'status'>
   )> }
@@ -613,7 +613,7 @@ export type SettingsBillingSourceBuildMutationVariables = {
 
 export type SettingsBillingSourceBuildMutation = (
   { __typename?: 'Mutation' }
-  & { buildBillingSource: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'BuildBillingSourcePayload' }
     & Pick<BuildBillingSourcePayload, 'status'>
   )> }
@@ -626,7 +626,7 @@ export type SettingsBillingSourceDefaultMutationVariables = {
 
 export type SettingsBillingSourceDefaultMutation = (
   { __typename?: 'Mutation' }
-  & { defaultBillingSource: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'DefaultBillingSourcePayload' }
     & Pick<DefaultBillingSourcePayload, 'status'>
   )> }
@@ -639,7 +639,7 @@ export type SettingsBillingSourceDestroyMutationVariables = {
 
 export type SettingsBillingSourceDestroyMutation = (
   { __typename?: 'Mutation' }
-  & { destroyBillingSource: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'DestroyBillingSourcePayload' }
     & Pick<DestroyBillingSourcePayload, 'status'>
   )> }
@@ -652,7 +652,7 @@ export type SettingsPasswordMutationVariables = {
 
 export type SettingsPasswordMutation = (
   { __typename?: 'Mutation' }
-  & { changePassword: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'ChangePasswordPayload' }
     & Pick<ChangePasswordPayload, 'status'>
     & { errors: Maybe<(
@@ -669,7 +669,7 @@ export type SettingsChangeProfileMutationVariables = {
 
 export type SettingsChangeProfileMutation = (
   { __typename?: 'Mutation' }
-  & { changeProfile: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'ChangeProfilePayload' }
     & Pick<ChangeProfilePayload, 'status'>
     & { errors: Maybe<(
@@ -707,7 +707,7 @@ export type SettingsSessionRevokeMutationVariables = {
 
 export type SettingsSessionRevokeMutation = (
   { __typename?: 'Mutation' }
-  & { destroySession: Maybe<(
+  & { result: Maybe<(
     { __typename?: 'DestroySessionPayload' }
     & { session: (
       { __typename?: 'Session' }
@@ -858,7 +858,7 @@ export const SessionFragmentDoc = gql`
     ${GeographyFragmentDoc}`;
 export const BuildFeedCommentDocument = gql`
     mutation BuildFeedComment($input: Feed__CommentInput!) {
-  buildFeedComment(input: $input) {
+  result: buildFeedComment(input: $input) {
     status
     errors {
       messages
@@ -1117,7 +1117,7 @@ export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation
 export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
-  logout {
+  result: logout {
     status
   }
 }
@@ -1149,7 +1149,7 @@ export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutati
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const DestroyNotificationDocument = gql`
     mutation DestroyNotification($id: ID!) {
-  destroyNotification(id: $id) {
+  result: destroyNotification(id: $id) {
     notification {
       id
       deleted
@@ -1218,7 +1218,7 @@ export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQue
 export type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const ReadNotificationDocument = gql`
     mutation ReadNotification($id: ID!) {
-  readNotification(id: $id) {
+  result: readNotification(id: $id) {
     notification {
       id
       read
@@ -1253,7 +1253,7 @@ export type ReadNotificationMutationResult = ApolloReactCommon.MutationResult<Re
 export type ReadNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<ReadNotificationMutation, ReadNotificationMutationVariables>;
 export const SettingsAvatarAttachDocument = gql`
     mutation SettingsAvatarAttach($id: ID!) {
-  attachAvatar(id: $id) {
+  result: attachAvatar(id: $id) {
     status
   }
 }
@@ -1285,7 +1285,7 @@ export type SettingsAvatarAttachMutationResult = ApolloReactCommon.MutationResul
 export type SettingsAvatarAttachMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>;
 export const SettingsAvatarDetachDocument = gql`
     mutation SettingsAvatarDetach {
-  detachAvatar {
+  result: detachAvatar {
     status
   }
 }
@@ -1398,7 +1398,7 @@ export type SettingsBillingQueryHookResult = ReturnType<typeof useSettingsBillin
 export type SettingsBillingQueryResult = ApolloReactCommon.QueryResult<SettingsBillingQuery, SettingsBillingQueryVariables>;
 export const SettingsBillingSourceBuildDocument = gql`
     mutation SettingsBillingSourceBuild($source: String!) {
-  buildBillingSource(source: $source) {
+  result: buildBillingSource(source: $source) {
     status
   }
 }
@@ -1430,7 +1430,7 @@ export type SettingsBillingSourceBuildMutationResult = ApolloReactCommon.Mutatio
 export type SettingsBillingSourceBuildMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>;
 export const SettingsBillingSourceDefaultDocument = gql`
     mutation SettingsBillingSourceDefault($id: ID!) {
-  defaultBillingSource(id: $id) {
+  result: defaultBillingSource(id: $id) {
     status
   }
 }
@@ -1462,7 +1462,7 @@ export type SettingsBillingSourceDefaultMutationResult = ApolloReactCommon.Mutat
 export type SettingsBillingSourceDefaultMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>;
 export const SettingsBillingSourceDestroyDocument = gql`
     mutation SettingsBillingSourceDestroy($id: ID!) {
-  destroyBillingSource(id: $id) {
+  result: destroyBillingSource(id: $id) {
     status
   }
 }
@@ -1494,7 +1494,7 @@ export type SettingsBillingSourceDestroyMutationResult = ApolloReactCommon.Mutat
 export type SettingsBillingSourceDestroyMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
 export const SettingsPasswordDocument = gql`
     mutation SettingsPassword($input: PasswordInput!) {
-  changePassword(input: $input) {
+  result: changePassword(input: $input) {
     status
     errors {
       messages
@@ -1529,7 +1529,7 @@ export type SettingsPasswordMutationResult = ApolloReactCommon.MutationResult<Se
 export type SettingsPasswordMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
 export const SettingsChangeProfileDocument = gql`
     mutation SettingsChangeProfile($input: UserInput!) {
-  changeProfile(input: $input) {
+  result: changeProfile(input: $input) {
     status
     errors {
       messages
@@ -1634,7 +1634,7 @@ export type SettingsSessionsQueryHookResult = ReturnType<typeof useSettingsSessi
 export type SettingsSessionsQueryResult = ApolloReactCommon.QueryResult<SettingsSessionsQuery, SettingsSessionsQueryVariables>;
 export const SettingsSessionRevokeDocument = gql`
     mutation SettingsSessionRevoke($id: String!) {
-  destroySession(id: $id) {
+  result: destroySession(id: $id) {
     session {
       id
       deleted

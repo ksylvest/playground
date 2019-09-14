@@ -1,5 +1,5 @@
 mutation SettingsSessionRevoke($id: String!) {
-  destroySession(id: $id) {
+  result: destroySession(id: $id) {
     session {
       id
       deleted

@@ -1,5 +1,5 @@
 mutation SettingsChangeProfile($input: UserInput!) {
-  changeProfile(input: $input) {
+  result: changeProfile(input: $input) {
     status
     errors {
       messages
