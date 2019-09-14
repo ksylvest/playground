@@ -1,4 +1,4 @@
-mutation DestroySession($id: String!) {
+mutation SettingsSessionRevoke($id: String!) {
   destroySession(id: $id) {
     session {
       id

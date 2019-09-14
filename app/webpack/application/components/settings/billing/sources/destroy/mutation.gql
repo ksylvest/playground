@@ -1,4 +1,4 @@
-mutation SettingsBillingSourceDestroyMutation($id: ID!) {
+mutation SettingsBillingSourceDestroy($id: ID!) {
   destroyBillingSource(id: $id) {
     status
   }

@@ -1,4 +1,4 @@
-mutation AttachAvatar($id: ID!) {
+mutation SettingsAvatarAttach($id: ID!) {
   attachAvatar(id: $id) {
     status
   }

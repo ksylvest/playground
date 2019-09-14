@@ -1,4 +1,4 @@
-mutation BuildBillingSource($source: String!) {
+mutation SettingsBillingSourceBuild($source: String!) {
   buildBillingSource(source: $source) {
     status
   }

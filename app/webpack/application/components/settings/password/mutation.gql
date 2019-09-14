@@ -1,4 +1,4 @@
-mutation Password($input: PasswordInput!) {
+mutation SettingsPassword($input: PasswordInput!) {
   changePassword(input: $input) {
     status
     errors {

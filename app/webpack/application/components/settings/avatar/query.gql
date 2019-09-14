@@ -1,4 +1,4 @@
-query Avatar {
+query SettingsAvatar {
   user {
     id
     avatar {

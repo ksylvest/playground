@@ -1,4 +1,4 @@
-mutation ChangeProfile($input: UserInput!) {
+mutation SettingsChangeProfile($input: UserInput!) {
   changeProfile(input: $input) {
     status
     errors {
