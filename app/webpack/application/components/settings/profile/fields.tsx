@@ -47,7 +47,7 @@ export const Fields: React.FC<{
       <Field
         icon={faInfo}
         type="text"
-        field="name"
+        name="name"
         value={name || ""}
         label="Name"
         placeholder="Name"
@@ -58,7 +58,7 @@ export const Fields: React.FC<{
       <Field
         icon={faEnvelope}
         type="email"
-        field="email"
+        name="email"
         value={email || ""}
         label="Email"
         placeholder="Email"

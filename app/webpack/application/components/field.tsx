@@ -10,19 +10,19 @@ import { Form, Icon } from "tights";
 
 export const Field: React.FC<{
   icon: IconProp;
-  type: "email" | "password" | "text";
-  field: string;
+  type: string;
+  name: string;
   value: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   errors?: {
     messages: {
       [key: string]: string[];
     };
   };
   onValue(value: string): void;
-}> = ({ icon, type, field, value, label, placeholder, errors, onValue }) => {
-  const messages = errors && errors.messages[field];
+}> = ({ icon, type, name, value, label, placeholder = label, errors, onValue }) => {
+  const messages = errors && errors.messages[name];
   const help = messages && sentence(messages);
   const invalid = !!errors && !!messages;
   const valid = !!errors && !messages;

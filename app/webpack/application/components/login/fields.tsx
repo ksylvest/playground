@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useContext } from "react";
@@ -10,33 +11,43 @@ import { Field } from "@application/components/field";
 
 import { Context } from "./context";
 
+interface IField {
+  icon: IconProp;
+  name: "email" | "password";
+  label: string;
+  type: string;
+}
+
+const FIELDS: IField[] = [
+  {
+    icon: faEnvelope,
+    label: "Email",
+    name: "email",
+    type: "email",
+  },
+  {
+    icon: faLock,
+    label: "Password",
+    name: "password",
+    type: "password",
+  },
+];
+
 export const Fields: React.FC = () => {
   const { input, errors, onChange } = useContext(Context);
   return (
     <>
       {errors && errors.messages.base && <Notification color="danger">{sentence(errors.messages.base)}</Notification>}
 
-      <Field
-        icon={faEnvelope}
-        type="email"
-        field="email"
-        value={input.email}
-        label="Email"
-        placeholder="Email"
-        errors={errors}
-        onValue={(email) => onChange({ ...input, email })}
-      />
-
-      <Field
-        icon={faLock}
-        type="password"
-        field="password"
-        value={input.password}
-        label="Password"
-        placeholder="Password"
-        errors={errors}
-        onValue={(password) => onChange({ ...input, password })}
-      />
+      {FIELDS.map((field, key) => (
+        <Field
+          key={key}
+          {...field}
+          errors={errors}
+          value={input[field.name]}
+          onValue={(value) => onChange({ ...input, [field.name]: value })}
+        />
+      ))}
     </>
   );
 };
