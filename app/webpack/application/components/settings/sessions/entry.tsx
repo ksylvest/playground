@@ -30,7 +30,7 @@ export const Entry: React.FC<{
       <Message.Body>
         <Columns mobile desktop vcentered>
           <Column narrow>
-            <Icon color={"info" || status}>
+            <Icon color={status}>
               <FontAwesomeIcon icon={faCircle} />
             </Icon>
           </Column>
