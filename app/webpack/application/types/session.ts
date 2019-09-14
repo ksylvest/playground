@@ -2,7 +2,7 @@ import { IGeography } from "./geography";
 
 export enum SessionStatus {
   Online = "ONLINE",
-  Offline = "Offline",
+  Offline = "OFFLINE",
 }
 
 export interface ISession {
