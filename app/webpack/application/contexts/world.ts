@@ -2,19 +2,18 @@ import { History, Location } from "history";
 import { createContext } from "react";
 
 import { IFlash } from "@application/types";
-import { ISession } from "@application/types";
 
 export const World = createContext<{
-  session?: ISession;
+  session?: { id: string };
   flash?: IFlash;
   history?: History;
   location?: Location;
   stats?: { notifications: number };
-  auth(_: ISession): void;
+  auth(_: { id: string }): void;
   deauth(): void;
   notify(flash: IFlash): void;
 }>({
-  auth: (_: ISession) => {
+  auth: (_: { id: string }) => {
     /* noop */
   },
   deauth: () => {
