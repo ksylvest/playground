@@ -4,11 +4,10 @@ import { useState } from "react";
 
 import { Errors } from "@root/app_schema";
 
-import { sentence } from "@application/utilities";
-
-import { Button, Form, Notification } from "tights";
+import { Button, Form } from "tights";
 
 import { Field } from "@application/components/field";
+import { Flashes } from "@application/components/flashes";
 
 export const Fields: React.FC<{
   loading: boolean;
@@ -30,7 +29,7 @@ export const Fields: React.FC<{
 
   return (
     <Form onSubmit={onSubmit}>
-      {errors && errors.messages.base && <Notification color="danger">{sentence(errors.messages.base)}</Notification>}
+      <Flashes errors={errors} />
 
       <Field
         icon={faLock}
