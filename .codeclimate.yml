@@ -3,3 +3,5 @@ exclude_patterns:
   - "postcss.config.js"
   - "tmp/**/*"
   - "log/**/*"
+  - "app/graphql/app_schema.graphql"
+  - "app/webpack/app_schema.tsx"
