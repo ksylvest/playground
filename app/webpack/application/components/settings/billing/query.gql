@@ -1,4 +1,4 @@
-query BillingSettings {
+query SettingsBilling {
   billing {
     customer {
       id

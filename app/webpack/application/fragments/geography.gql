@@ -1,0 +1,9 @@
+fragment geography on Geography {
+  id
+  city
+  region
+  country
+  zip
+  latitude
+  longitude
+}

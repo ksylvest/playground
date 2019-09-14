@@ -1,19 +1,7 @@
-query Sessions {
+#import "@application/fragments/session.gql"
+
+query SettingsSessions {
   sessions {
-    id
-    ip
-    deleted
-    seen
-    status
-    geography {
-      id
-      city
-      region
-      country
-      continent
-      zip
-      latitude
-      longitude
-    }
+    ...session
   }
 }

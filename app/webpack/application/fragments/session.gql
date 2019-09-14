@@ -1,0 +1,12 @@
+#import "@application/fragments/geography.gql"
+
+fragment session on Session {
+  id
+  ip
+  deleted
+  seen
+  status
+  geography {
+    ...geography
+  }
+}

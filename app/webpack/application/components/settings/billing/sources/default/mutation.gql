@@ -1,4 +1,4 @@
-mutation SettingsBillingSourceDefaultMutation($id: ID!) {
+mutation SettingsBillingSourceDefault($id: ID!) {
   defaultBillingSource(id: $id) {
     status
   }

@@ -1,4 +1,4 @@
-mutation DetachAvatar {
+mutation SettingsAvatarDetach {
   detachAvatar {
     status
   }

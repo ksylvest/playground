@@ -1,12 +1,10 @@
+#import "@application/fragments/session.gql"
+
 mutation Login($input: LoginInput!) {
   login(input: $input) {
     status
     session {
       id
-      user {
-        id
-        name
-      }
     }
     errors {
       messages
