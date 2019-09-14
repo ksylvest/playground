@@ -18,8 +18,8 @@ yarn run graphql:codegen
 ## Status
 
 [![CircleCI](https://circleci.com/gh/ksylvest/playground.svg?style=svg)](https://circleci.com/gh/ksylvest/playground)
-[![Code Climate GPA](https://codeclimate.com/github/ksylvest/playground/badges/gpa.svg)](https://codeclimate.com/github/ksylvest/playground)
-[![Code Climate Coverage](https://codeclimate.com/github/ksylvest/playground/badges/coverage.svg)](https://codeclimate.com/github/ksylvest/playground/coverage)
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/e4985e8f24d8b27623ba/maintainability)](https://codeclimate.com/github/ksylvest/playground/maintainability)
+[![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/e4985e8f24d8b27623ba/test_coverage)](https://codeclimate.com/github/ksylvest/playground/test_coverage)
 
 ## Copyright
 
