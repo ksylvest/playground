@@ -29,6 +29,19 @@ const SESSION = CONFIG.session;
 const STATS_CHANNEL = { channel: "StatsChannel" };
 const PRESENCE_CHANNEL = { channel: "PresenceChannel" };
 
+const Routes: React.FC = () => (
+  <Switch>
+    <Route exact path="/" component={Feed} />
+    <Route path="/feed" component={Feed} />
+    <Route exact path={LOGIN_URL} component={Authenticator} />
+    <Route exact path={SIGNUP_URL} component={Authenticator} />
+    <Authorize>
+      <Route exact path={NOTIFICATIONS_URL} component={Notifications} />
+      <Route path={SETTINGS_URL} component={Settings} />
+    </Authorize>
+  </Switch>
+);
+
 export const App: React.FC = () => {
   const [flash, notify] = useState<IFlash | undefined>(undefined);
   const [session, auth] = useState<{ id: string } | undefined>(SESSION);
@@ -47,16 +60,7 @@ export const App: React.FC = () => {
         <Container>
           <Section>
             <Alerts />
-            <Switch>
-              <Route exact path="/" component={Feed} />
-              <Route path="/feed" component={Feed} />
-              <Route exact path={LOGIN_URL} component={Authenticator} />
-              <Route exact path={SIGNUP_URL} component={Authenticator} />
-              <Authorize>
-                <Route exact path={NOTIFICATIONS_URL} component={Notifications} />
-                <Route path={SETTINGS_URL} component={Settings} />
-              </Authorize>
-            </Switch>
+            <Routes />
           </Section>
         </Container>
         <Footer />
