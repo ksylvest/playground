@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 
-import { useSettingsChangeProfileMutation, useSettingsProfileQuery } from "@root/app_schema";
+import { Status, useSettingsChangeProfileMutation, useSettingsProfileQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
 
@@ -29,7 +29,7 @@ export const Profile: React.FC = () => {
           }
           const result = await submit({ variables: { input } });
           const status = result.data && result.data.changeProfile && result.data.changeProfile.status;
-          if (status === "OK") {
+          if (status === Status.Ok) {
             notify({
               kind: "notice",
               message: "Your profile has been saved.",

@@ -7,7 +7,7 @@ import { useAuthentication } from "@application/hooks";
 
 import { Comment } from "./comments/comment";
 
-import { useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
+import { Status, useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
 
 export const Comments: React.FC<{
   entryID: string;
@@ -18,7 +18,7 @@ export const Comments: React.FC<{
   });
   const [execute, { loading }] = useBuildFeedCommentMutation({
     onCompleted: ({ buildFeedComment }) => {
-      if (buildFeedComment && buildFeedComment.status === "OK") {
+      if (buildFeedComment && buildFeedComment.status === Status.Ok) {
         refetch();
         setMessage("");
       }
