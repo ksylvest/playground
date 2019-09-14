@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
-import { useQuery } from "react-apollo";
 import { Link } from "react-router-dom";
 
 import { Breadcrumb, Card, Column, Columns, Image } from "tights";
+
+import { useFeedEntryQuery } from "@root/app_schema";
 
 import { useKey } from "@application/hooks";
 
@@ -12,19 +13,9 @@ import { Title } from "@application/components/helpers";
 import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
 
-import { IFeedEntry } from "@application/types";
-
 import { ATTACHMENT_URL, FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
 
-import * as QUERY from "./details/query.gql";
-
 import { Actions } from "./entry/actions";
-
-interface IQueryData {
-  feed: {
-    entry: IFeedEntry;
-  };
-}
 
 const DEFAULT_INDEX = 0;
 const NEXT_KEY = "ArrowRight";
@@ -34,7 +25,7 @@ export const Details: React.FC<{
   id: string;
 }> = ({ id }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
-  const { data } = useQuery<IQueryData>(QUERY, { variables: { id } });
+  const { data } = useFeedEntryQuery({ variables: { id } });
   const entry = data && data.feed && data.feed.entry;
 
   const photos = entry && entry.photos;

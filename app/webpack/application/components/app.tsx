@@ -8,7 +8,7 @@ import { useActionCableSubscription } from "@application/hooks";
 
 import { Container, Section } from "tights";
 
-import { IFlash, ISession } from "@application/types";
+import { IFlash } from "@application/types";
 
 import { Footer } from "./app/footer";
 import { Header } from "./app/header";
@@ -23,7 +23,7 @@ import { Settings } from "./settings";
 
 import { LOGIN_URL, NOTIFICATIONS_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
-declare const CONFIG: { session?: ISession };
+declare const CONFIG: { session?: { id: string } };
 const SESSION = CONFIG.session;
 
 const STATS_CHANNEL = { channel: "StatsChannel" };
@@ -31,7 +31,7 @@ const PRESENCE_CHANNEL = { channel: "PresenceChannel" };
 
 export const App: React.FC = () => {
   const [flash, notify] = useState<IFlash | undefined>(undefined);
-  const [session, auth] = useState<ISession | undefined>(SESSION);
+  const [session, auth] = useState<{ id: string } | undefined>(SESSION);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = () => auth(undefined);
 

@@ -2,7 +2,7 @@ import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-import { IErrors } from "@application/types";
+import { Errors } from "@root/app_schema";
 
 import { sentence } from "@application/utilities";
 
@@ -12,7 +12,7 @@ import { Field } from "@application/components/field";
 
 export const Fields: React.FC<{
   loading: boolean;
-  errors?: IErrors;
+  errors?: Errors;
   defaults?: {
     email: string;
     name: string;

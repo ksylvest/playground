@@ -8,17 +8,17 @@ import { Default } from "./sources/default";
 import { Destroy } from "./sources/destroy";
 import { List } from "./sources/list";
 
-import { IBillingSource } from "@application/types";
+import { Billing__Source } from "@root/app_schema";
 
 const DEFAULT_BUILDING = false;
 
 export const Sources: React.FC<{
-  sources: IBillingSource[];
+  sources: Billing__Source[];
   refetch(): void;
 }> = ({ sources, refetch }) => {
   const [building, setBuilding] = useState<boolean>(DEFAULT_BUILDING);
-  const [destroying, setDestroying] = useState<IBillingSource | undefined>();
-  const [defaulting, setDefaulting] = useState<IBillingSource | undefined>();
+  const [destroying, setDestroying] = useState<Billing__Source | undefined>();
+  const [defaulting, setDefaulting] = useState<Billing__Source | undefined>();
 
   const onClose = () => {
     setBuilding(DEFAULT_BUILDING);

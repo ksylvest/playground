@@ -1,53 +1,24 @@
 import * as React from "react";
 import { useState } from "react";
-import { useMutation } from "react-apollo";
-import { useQuery } from "react-apollo";
 
 import { Button, Form } from "tights";
 
 import { useAuthentication } from "@application/hooks";
 
-import { IErrors, IFeedComment, IFeedCommentInput, Status } from "@application/types";
-
 import { Comment } from "./comments/comment";
 
-import * as MUTATION from "./comments/mutation.gql";
-import * as QUERY from "./comments/query.gql";
-
-interface IQueryData {
-  feed: {
-    entry: {
-      comments: IFeedComment[];
-    };
-  };
-}
-
-interface IQueryVariables {
-  id: string;
-}
-
-interface IMutationData {
-  buildFeedComment: {
-    status: Status;
-    errors: IErrors;
-    comment: IFeedComment;
-  };
-}
-
-interface IMutationVariables {
-  input: IFeedCommentInput;
-}
+import { useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
 
 export const Comments: React.FC<{
   entryID: string;
 }> = ({ entryID }) => {
   const [message, setMessage] = useState<string>("");
-  const { data, refetch } = useQuery<IQueryData, IQueryVariables>(QUERY, {
+  const { data, refetch } = useFeedCommentsQuery({
     variables: { id: entryID },
   });
-  const [execute, { loading }] = useMutation<IMutationData, IMutationVariables>(MUTATION, {
-    onCompleted: ({ buildFeedComment: { status } }) => {
-      if (status === Status.OK) {
+  const [execute, { loading }] = useBuildFeedCommentMutation({
+    onCompleted: ({ buildFeedComment }) => {
+      if (buildFeedComment && buildFeedComment.status === "OK") {
         refetch();
         setMessage("");
       }

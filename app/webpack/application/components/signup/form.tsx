@@ -1,44 +1,28 @@
 import * as React from "react";
 import { useState } from "react";
-import { useMutation } from "react-apollo";
 
-import { IErrors, ISession, Status } from "@application/types";
-
-import { ISignupInput } from "@application/types";
+import { SignupInput, useSignupMutation } from "@root/app_schema";
 
 import { Context } from "./context";
 
-import * as MUTATION from "./mutation.gql";
-
-interface IMutationData {
-  signup: {
-    status: Status;
-    session?: ISession;
-    errors?: IErrors;
-  };
-}
-
-interface IMutationVariables {
-  input: ISignupInput;
-}
-
 export const Form: React.FC<{
-  onAuth(session: ISession): void;
+  onAuth(_: { id: string }): void;
 }> = ({ onAuth, children }) => {
-  const [input, setInput] = useState<ISignupInput>({
+  const [input, setInput] = useState<SignupInput>({
     email: "",
     name: "",
     password: "",
   });
-  const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
-  const errors = data && data.signup && data.signup.errors;
+  const [submit, { loading, data }] = useSignupMutation();
+  const errors = (data && data.signup && data.signup.errors) || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });
-    if (result && result.data && result.data.signup.session) {
-      onAuth(result.data.signup.session);
+    const session = result.data && result.data.signup && result.data.signup.session;
+    if (session) {
+      onAuth(session);
     }
   };
 

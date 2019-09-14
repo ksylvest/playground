@@ -2,7 +2,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { useState } from "react";
 
-import { IErrors } from "@application/types";
+import { Errors } from "@root/app_schema";
 
 import { sentence } from "@application/utilities";
 
@@ -12,7 +12,7 @@ import { Field } from "@application/components/field";
 
 export const Fields: React.FC<{
   loading: boolean;
-  errors?: IErrors;
+  errors?: Errors;
   save(variables: { current: string; replacement: string }): void;
 }> = ({ loading, errors, save }) => {
   const [current, setCurrent] = useState<string>("");

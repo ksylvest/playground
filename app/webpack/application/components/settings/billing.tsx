@@ -1,22 +1,13 @@
 import * as React from "react";
-import { useQuery } from "react-apollo";
+
+import { useSettingsBillingQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
 
 import { Sources } from "./billing/sources";
 
-import { IBillingCustomer } from "@application/types";
-
-import * as QUERY from "./billing/query.gql";
-
-interface IQueryData {
-  billing: {
-    customer?: IBillingCustomer;
-  };
-}
-
 export const Billing: React.FC = () => {
-  const { data, refetch } = useQuery<IQueryData>(QUERY);
+  const { data, refetch } = useSettingsBillingQuery();
   const billing = data && data.billing;
   const customer = billing && billing.customer;
   const sources = customer && customer.sources;

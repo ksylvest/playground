@@ -528,10 +528,9 @@ export type NotificationsQueryVariables = {};
 
 export type NotificationsQuery = (
   { __typename?: 'Query' }
-  & { notifications: Array<(
-    { __typename?: 'Notification' }
-    & Pick<Notification, 'id' | 'message' | 'deleted' | 'read' | 'sent'>
-  )> }
+  & { notifications: Array<{ __typename?: 'Notification' }
+    & NotificationFragment
+  > }
 );
 
 export type ReadNotificationMutationVariables = {
@@ -765,6 +764,11 @@ export type GeographyFragment = (
   & Pick<Geography, 'id' | 'city' | 'region' | 'country' | 'zip' | 'latitude' | 'longitude'>
 );
 
+export type NotificationFragment = (
+  { __typename?: 'Notification' }
+  & Pick<Notification, 'id' | 'message' | 'deleted' | 'read' | 'sent'>
+);
+
 export type SessionFragment = (
   { __typename?: 'Session' }
   & Pick<Session, 'id' | 'ip' | 'deleted' | 'seen' | 'status'>
@@ -820,6 +824,15 @@ export const Feed__EntryFragmentDoc = gql`
 }
     ${AttachedFragmentDoc}
 ${UserFragmentDoc}`;
+export const NotificationFragmentDoc = gql`
+    fragment notification on Notification {
+  id
+  message
+  deleted
+  read
+  sent
+}
+    `;
 export const GeographyFragmentDoc = gql`
     fragment geography on Geography {
   id
@@ -1172,14 +1185,10 @@ export type DestroyNotificationMutationOptions = ApolloReactCommon.BaseMutationO
 export const NotificationsDocument = gql`
     query Notifications {
   notifications {
-    id
-    message
-    deleted
-    read
-    sent
+    ...notification
   }
 }
-    `;
+    ${NotificationFragmentDoc}`;
 export type NotificationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<NotificationsQuery, NotificationsQueryVariables>, 'query'>;
 
     export const NotificationsComponent = (props: NotificationsComponentProps) => (

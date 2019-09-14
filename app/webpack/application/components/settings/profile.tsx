@@ -1,44 +1,19 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation, useQuery } from "react-apollo";
+
+import { useSettingsChangeProfileMutation, useSettingsProfileQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
-
-import { IErrors, Status } from "@application/types";
 
 import { World } from "@application/contexts";
 
 import { Fields } from "./profile/fields";
 
-interface IQueryData {
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
-}
-
-interface IMutationData {
-  changeProfile: {
-    status: Status;
-    errors?: IErrors;
-  };
-}
-
-interface IMutationVariables {
-  input: {
-    name: string;
-    email: string;
-  };
-}
-
-import * as MUTATION from "./profile/mutation.gql";
-import * as QUERY from "./profile/query.gql";
-
 export const Profile: React.FC = () => {
   const { notify } = useContext(World);
-  const { data: defaults, loading: querying } = useQuery<IQueryData>(QUERY);
-  const [submit, { data, loading: mutating }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+  const { data: defaults, loading: querying } = useSettingsProfileQuery();
+  const [submit, { data, loading: mutating }] = useSettingsChangeProfileMutation();
+  const errors = (data && data.changeProfile && data.changeProfile.errors) || undefined;
 
   return (
     <>
@@ -47,22 +22,22 @@ export const Profile: React.FC = () => {
       <h2 className="title">Profile</h2>
       <hr />
       <Fields
-        defaults={defaults && defaults.user}
+        defaults={(defaults && defaults.user) || undefined}
         save={async (input) => {
           if (querying || mutating) {
             return;
           }
           const result = await submit({ variables: { input } });
-          if (!result || !result.data || result.data.changeProfile.status !== Status.OK) {
-            return;
+          const status = result.data && result.data.changeProfile && result.data.changeProfile.status;
+          if (status === "OK") {
+            notify({
+              kind: "notice",
+              message: "Your profile has been saved.",
+            });
           }
-          notify({
-            kind: "notice",
-            message: "Your profile has been saved.",
-          });
         }}
         loading={querying || mutating}
-        errors={data && data.changeProfile && data.changeProfile.errors}
+        errors={errors}
       />
     </>
   );

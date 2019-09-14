@@ -4,8 +4,6 @@ import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 
-import { IErrors } from "@application/types";
-
 import { sentence } from "@application/utilities";
 
 import { Form, Icon } from "tights";
@@ -17,7 +15,11 @@ export const Field: React.FC<{
   value: string;
   label: string;
   placeholder: string;
-  errors?: IErrors;
+  errors?: {
+    messages: {
+      [key: string]: string[];
+    };
+  };
   onValue(value: string): void;
 }> = ({ icon, type, field, value, label, placeholder, errors, onValue }) => {
   const messages = errors ? errors.messages[field] : undefined;

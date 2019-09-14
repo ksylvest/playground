@@ -1,34 +1,18 @@
 import * as React from "react";
 import { useContext } from "react";
-import { useMutation } from "react-apollo";
+
+import { useSettingsPasswordMutation } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
-
-import { IErrors, Status } from "@application/types";
 
 import { World } from "@application/contexts";
 
 import { Fields } from "./password/fields";
 
-import * as MUTATION from "./password/mutation.gql";
-
-interface IMutationData {
-  changePassword: {
-    status: Status;
-    errors: IErrors;
-  };
-}
-
-interface IMutationVariables {
-  input: {
-    current: string;
-    replacement: string;
-  };
-}
-
 export const Password: React.FC = () => {
   const { notify } = useContext(World);
-  const [submit, { loading, data }] = useMutation<IMutationData, IMutationVariables>(MUTATION);
+  const [submit, { loading, data }] = useSettingsPasswordMutation();
+  const errors = (data && data.changePassword && data.changePassword.errors) || undefined;
 
   return (
     <>
@@ -38,7 +22,7 @@ export const Password: React.FC = () => {
       <hr />
       <Fields
         loading={loading}
-        errors={data && data.changePassword && data.changePassword.errors}
+        errors={errors}
         save={async (input) => {
           if (loading) {
             return;
@@ -46,13 +30,13 @@ export const Password: React.FC = () => {
           const result = await submit({
             variables: { input },
           });
-          if (!result || !result.data || result.data.changePassword.status !== Status.OK) {
-            return;
+          const status = result.data && result.data.changePassword && result.data.changePassword.status;
+          if (status === "OK") {
+            notify({
+              kind: "notice",
+              message: "Your password has been saved.",
+            });
           }
-          notify({
-            kind: "notice",
-            message: "Your password has been saved.",
-          });
         }}
       />
     </>

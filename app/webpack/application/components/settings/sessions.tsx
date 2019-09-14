@@ -1,25 +1,18 @@
 import * as React from "react";
 import { useState } from "react";
-import { useQuery } from "react-apollo";
+
+import { SessionFragment, useSettingsSessionsQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers";
 
 import { useActionCableSubscription } from "@application/hooks";
 
-import { ISession } from "@application/types";
-
 import { List } from "./sessions/list";
 import { Revoke } from "./sessions/revoke";
 
-import * as QUERY from "./sessions/query.gql";
-
-interface IQueryData {
-  sessions: ISession[];
-}
-
 export const Sessions: React.FC = () => {
-  const [revoking, setRevoking] = useState<ISession | undefined>();
-  const { data, refetch } = useQuery<IQueryData>(QUERY);
+  const [revoking, setRevoking] = useState<SessionFragment | undefined>();
+  const { data, refetch } = useSettingsSessionsQuery();
   const sessions = data ? data.sessions : undefined;
 
   useActionCableSubscription({ channel: "PresenceChannel" }, refetch);

@@ -5,6 +5,11 @@
     "tslint-config-prettier",
     "tslint-plugin-prettier"
   ],
+  "linterOptions": {
+    "exclude": [
+      "app/webpack/app_schema.tsx"
+    ]
+  },
   "rules": {
     "jsx-no-lambda": false,
     "jsx-boolean-value": ["never"],

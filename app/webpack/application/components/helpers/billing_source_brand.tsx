@@ -1,23 +1,23 @@
 import * as React from "react";
 
-import { BillingBrand, IBillingSource } from "@application/types";
+import { Billing__Brand, Billing__Source } from "@root/app_schema";
 
 export const BillingSourceBrand: React.FC<{
-  source: IBillingSource;
+  source: Billing__Source;
 }> = ({ source }) => {
   const text = (() => {
     switch (source.brand) {
-      case BillingBrand.AmericanExpress:
+      case Billing__Brand.AmericanExpress:
         return "American Express";
-      case BillingBrand.DinersClub:
+      case Billing__Brand.DinersClub:
         return "Diners Club";
-      case BillingBrand.Discover:
+      case Billing__Brand.Discover:
         return "Discover";
-      case BillingBrand.JapanCreditBureau:
+      case Billing__Brand.Jcb:
         return "JCB";
-      case BillingBrand.Mastercard:
+      case Billing__Brand.Mastercard:
         return "Mastercard";
-      case BillingBrand.Visa:
+      case Billing__Brand.Visa:
         return "Visa";
       default:
         return "Unknown";

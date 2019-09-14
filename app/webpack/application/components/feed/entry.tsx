@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 import { Card, Column, Columns, Image } from "tights";
 
-import { IFeedEntry } from "@application/types";
+import { Feed__EntryFragment } from "@root/app_schema";
 
 import { Actions } from "./entry/actions";
 
 import { ATTACHMENT_URL, FEED_DETAILS_URL } from "@application/config/routes";
 
 export const Entry: React.FC<{
-  entry: IFeedEntry;
+  entry: Feed__EntryFragment;
 }> = ({ entry }) => {
   const hero = head(entry.photos)!;
   const avatar = entry.user.avatar;

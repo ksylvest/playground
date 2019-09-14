@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { ISession } from "@application/types";
+import { SessionFragment } from "@root/app_schema";
 
 import { Button, Content, Delete, Modal } from "tights";
 
 import { Geography } from "./geography";
 
 export const Dialog: React.FC<{
-  session: ISession;
+  session: SessionFragment;
   loading: boolean;
   onContinue(): void;
   onCancel(): void;

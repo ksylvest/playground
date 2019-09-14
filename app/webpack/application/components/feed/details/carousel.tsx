@@ -6,9 +6,9 @@ import { useState } from "react";
 
 import { Image, Pagination } from "tights";
 
-import { useKey } from "@application/hooks";
+import { Attached } from "@root/app_schema";
 
-import { IAttached } from "@application/types";
+import { useKey } from "@application/hooks";
 
 import { ATTACHMENT_URL } from "@application/config/routes";
 
@@ -19,7 +19,7 @@ const PREV_KEY = "ArrowLeft";
 const CHAR_CODE_OFFSET = 65; // i.e. 'A', 'B', 'C', ...
 
 export const Carousel: React.FC<{
-  photos: IAttached[];
+  photos: Attached[];
 }> = ({ photos }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
