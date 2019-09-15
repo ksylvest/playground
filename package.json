@@ -42,7 +42,7 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "tights": "^1.4.0",
+    "tights": "^1.4.1",
     "ts-loader": "^6.1.0",
     "typescript": "^3.6.3",
     "unfetch": "^4.1.0",
