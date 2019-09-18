@@ -3,62 +3,78 @@ version: 2.1
 executors:
   default:
     docker:
-      -
-        image: circleci/ruby:2.6.3-node-browsers
-      -
-        image: circleci/postgres:11.4-alpine-ram
+      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/postgres:11.4-alpine-ram
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: playground_test
-      -
-        image: circleci/redis:5.0.5-alpine
+      - image: circleci/redis:5.0.5-alpine
     environment:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 4
       BUNDLE_PATH: vendor/bundle
+      BUNDLER_VERSION: 2.0.2
       RAILS_ENV: test
       RACK_ENV: test
       PGHOST: localhost
 
-commands:
+jobs:
   bundle:
+    executor: default
     steps:
-      -
-        restore_cache:
+      - checkout
+      - restore_cache:
           keys:
             - bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-      -
-        run: gem update --system
-      -
-        run: gem install bundler
-      -
-        run: bundle check || bundle install && bundle clean
-      -
-        save_cache:
+      - run: gem install bundler
+      - run: bundle check || bundle install && bundle clean
+      - save_cache:
           key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - persist_to_workspace:
+          root: .
+          paths:
+            - vendor/bundle
+
   yarn:
+    executor: default
     steps:
-      -
-        restore_cache:
+      - checkout
+      - restore_cache:
           keys:
             - yarn-{{ arch }}-{{ checksum "yarn.lock" }}
-      -
-        run: yarn install
-      -
-        save_cache:
+      - run: yarn install
+      - save_cache:
           key: yarn-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
 
-jobs:
+  compile:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: gem install bundler
+      - run: bundle exec rails webpacker:compile
+      - persist_to_workspace:
+          root: .
+          paths:
+            - tmp/cache/webpacker
+            - public/packs*
+
   tslint:
     executor: default
     steps:
       - checkout
-      - yarn
+      - attach_workspace:
+          at: .
       - run:
           command: yarn run tslint ./app/**/*.ts*
 
@@ -66,11 +82,12 @@ jobs:
     executor: default
     steps:
       - checkout
-      - bundle
+      - attach_workspace:
+          at: .
+      - run: gem install bundler
       - run:
           command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
-      -
-        store_artifacts:
+      - store_artifacts:
           path: tmp/rubocop.html
           destination: rubocop.html
 
@@ -78,12 +95,12 @@ jobs:
     executor: default
     steps:
       - checkout
-      - bundle
-      -
-        run:
+      - attach_workspace:
+          at: .
+      - run: gem install bundler
+      - run:
           command: bundle exec brakeman -z --format html --output tmp/brakeman.html
-      -
-        store_artifacts:
+      - store_artifacts:
           path: tmp/brakeman.html
           destination: brakeman.html
 
@@ -91,13 +108,12 @@ jobs:
     executor: default
     steps:
       - checkout
-      - bundle
-      - yarn
-      - run: sudo apt-get install imagemagick
+      - attach_workspace:
+          at: .
+      - run: gem install bundler
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
-      -
-        run:
+      - run:
           command: |
             bundle exec rspec \
               --profile \
@@ -105,19 +121,15 @@ jobs:
               --out tmp/results/rspec.xml \
               --format progress \
               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-      -
-        store_test_results:
+      - store_test_results:
           path: tmp/results
-      -
-        store_artifacts:
+      - store_artifacts:
           path: coverage
           destination: coverage
-      -
-        store_artifacts:
+      - store_artifacts:
           path: tmp/screenshots
           destination: screenshots
-      -
-        store_artifacts:
+      - store_artifacts:
           path: log
           destination: log
       -
@@ -132,7 +144,21 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - tslint
-      - brakeman
-      - rubocop
-      - rspec
+      - bundle
+      - yarn
+      - compile:
+          requires:
+            - bundle
+            - yarn
+      - tslint:
+          requires:
+            - yarn
+      - brakeman:
+          requires:
+            - bundle
+      - rubocop:
+          requires:
+            - bundle
+      - rspec:
+          requires:
+            - compile
