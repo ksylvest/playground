@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, StaticRouter, Switch } from "react-router-dom";
 
 import { Config } from "./config";
 
@@ -23,11 +23,18 @@ import { Settings } from "./settings";
 
 import { LOGIN_URL, NOTIFICATIONS_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
-declare const CONFIG: { session?: { id: string } };
-const SESSION = CONFIG.session;
-
 const STATS_CHANNEL = { channel: "StatsChannel" };
 const PRESENCE_CHANNEL = { channel: "PresenceChannel" };
+
+const Router: React.FC<{
+  location?: string;
+}> = ({ location, children }) => {
+  return typeof window !== "undefined" ? (
+    <BrowserRouter children={children} />
+  ) : (
+    <StaticRouter children={children} location={location} />
+  );
+};
 
 const Routes: React.FC = () => (
   <Switch>
@@ -42,9 +49,26 @@ const Routes: React.FC = () => (
   </Switch>
 );
 
-export const App: React.FC = () => {
+const Layout: React.FC = () => (
+  <>
+    <Header />
+    <Container>
+      <Section>
+        <Alerts />
+        <Routes />
+      </Section>
+    </Container>
+    <Footer />
+    <Auth />
+  </>
+);
+
+export const App: React.FC<{
+  location?: string;
+  session?: { id: string };
+}> = (props) => {
   const [flash, notify] = useState<IFlash | undefined>(undefined);
-  const [session, auth] = useState<{ id: string } | undefined>(SESSION);
+  const [session, auth] = useState<{ id: string } | undefined>(props.session);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = () => auth(undefined);
 
@@ -54,17 +78,9 @@ export const App: React.FC = () => {
   });
 
   return (
-    <Router>
+    <Router location={props.location}>
       <Config flash={flash} notify={notify} session={session} auth={auth} deauth={deauth} stats={stats}>
-        <Header />
-        <Container>
-          <Section>
-            <Alerts />
-            <Routes />
-          </Section>
-        </Container>
-        <Footer />
-        <Auth />
+        <Layout />
       </Config>
     </Router>
   );
