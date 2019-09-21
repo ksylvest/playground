@@ -19,6 +19,8 @@ gem 'webpacker'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 
+gem 'mini_racer'
+gem 'react-rails'
 gem 'slim-rails'
 
 gem 'bootsnap', require: false

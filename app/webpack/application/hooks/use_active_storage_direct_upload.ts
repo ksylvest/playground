@@ -1,4 +1,3 @@
-import { DirectUpload } from "@rails/activestorage";
 import { useEffect, useState } from "react";
 
 const URL = "/rails/active_storage/direct_uploads";
@@ -9,6 +8,8 @@ export const useActiveStorageDirectUpload = (file?: File, callback?: Callback) =
   const [result, setResult] = useState<any | undefined>(undefined);
 
   useEffect(() => {
+    const { DirectUpload } = require("@rails/activestorage");
+
     if (!file) {
       return;
     }

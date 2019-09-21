@@ -1,6 +1,8 @@
+import * as ActionCable from "@rails/actioncable";
 import { useEffect, useState } from "react";
 
-import { CLIENT } from "@application/libraries/actioncable";
+const URL = "/cable";
+const CLIENT = new ActionCable.Consumer(URL);
 
 export enum ActionCableSubscriptionStatus {
   Connected = "CONNECTED",
@@ -21,7 +23,5 @@ export const useActionCableSubscription = <T>(to: any, received: (data: T) => vo
     };
   }, [to]);
 
-  return {
-    status,
-  };
+  return { status };
 };
