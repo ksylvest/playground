@@ -1122,10 +1122,10 @@
   resolved "https://registry.yarnpkg.com/@types/loadjs/-/loadjs-3.5.0.tgz#0a8957275de94001e7e47c63f05c4bf7a461cfe9"
   integrity sha512-IG/WaQ6rKKUs9Ir2a0pP9RDm9Glu6VXVHMMV2eeW8REsI4ijnkMTQpMFL3HUTPpP4P1iT+CiM2el5mtAGi1wbA==
 
-"@types/lodash@^4.14.136":
-  version "4.14.138"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.138.tgz#34f52640d7358230308344e579c15b378d91989e"
-  integrity sha512-A4uJgHz4hakwNBdHNPdxOTkYmXNgmUAKLbXZ7PKGslgeV0Mb8P3BlbYfPovExek1qnod4pDfRbxuzcVs3dlFLg==
+"@types/lodash@^4.14.139":
+  version "4.14.139"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.139.tgz#b7b8a00d014a7debb29dc2dae4f91d3d3c6d5ab3"
+  integrity sha512-Z6pbDYaWpluqcF8+6qgv6STPEl0jIlyQmpYGwTrzhgwqok8ltBh/p7GAmYnz81wUhxQRhEr8MBpQrB4fQ/hwIA==
 
 "@types/luxon@^1.15.2":
   version "1.15.2"
