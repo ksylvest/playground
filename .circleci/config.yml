@@ -23,11 +23,11 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler --version "$BUNDLER_VERSION"
       - restore_cache:
           keys:
             - bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-      - run: gem install bundler
-      - run: bundle check || bundle install && bundle clean
+      - run: bundle check || bundle install  --clean --deployment
       - save_cache:
           key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -59,9 +59,9 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler --version "$BUNDLER_VERSION"
       - attach_workspace:
           at: .
-      - run: gem install bundler
       - run: bundle exec rails webpacker:compile
       - persist_to_workspace:
           root: .
@@ -82,9 +82,9 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler --version "$BUNDLER_VERSION"
       - attach_workspace:
           at: .
-      - run: gem install bundler
       - run:
           command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
       - store_artifacts:
@@ -95,9 +95,9 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler --version "$BUNDLER_VERSION"
       - attach_workspace:
           at: .
-      - run: gem install bundler
       - run:
           command: bundle exec brakeman -z --format html --output tmp/brakeman.html
       - store_artifacts:
@@ -108,9 +108,9 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler --version "$BUNDLER_VERSION"
       - attach_workspace:
           at: .
-      - run: gem install bundler
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - run:
