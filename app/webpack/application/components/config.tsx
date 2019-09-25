@@ -1,5 +1,4 @@
 import * as React from "react";
-import { RouteComponentProps, withRouter } from "react-router";
 
 import { ApolloProvider } from "react-apollo";
 
@@ -9,20 +8,15 @@ import { World } from "@application/contexts";
 
 import { IFlash } from "@application/types";
 
-const Config: React.FC<
-  RouteComponentProps & {
-    flash?: IFlash;
-    session?: { id: string };
-    stats?: { notifications: number };
-    notify(_: IFlash): void;
-    auth(_: { id: string }): void;
-    deauth(): void;
-  }
-> = ({ children, ...props }) => (
+export const Config: React.FC<{
+  flash?: IFlash;
+  session?: { id: string };
+  stats?: { notifications: number };
+  notify(_: IFlash): void;
+  auth(_: { id: string }): void;
+  deauth(): void;
+}> = ({ children, ...props }) => (
   <World.Provider value={props}>
     <ApolloProvider client={APOLLO_CLIENT} children={children} />
   </World.Provider>
 );
-
-const ConfigWithRouter = withRouter(Config);
-export { ConfigWithRouter as Config };

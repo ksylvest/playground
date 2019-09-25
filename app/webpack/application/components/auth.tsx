@@ -1,9 +1,11 @@
 import * as React from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useLocation, useHistory } from "react-router";
 
 import { Dialog } from "./auth/dialog";
 
-const Auth: React.FC<RouteComponentProps> = ({ location, history }) => {
+export const Auth: React.FC = () => {
+  const location = useLocation();
+  const history = useHistory();
   const { state } = location;
   if (!state || !state.auth) {
     return null;
@@ -13,6 +15,3 @@ const Auth: React.FC<RouteComponentProps> = ({ location, history }) => {
 
   return <Dialog onCancel={onChange} onAuth={onChange} />;
 };
-
-const AuthWithRouter = withRouter(Auth);
-export { AuthWithRouter as Auth };

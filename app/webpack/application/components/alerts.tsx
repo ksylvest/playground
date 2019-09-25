@@ -1,13 +1,14 @@
 import * as React from "react";
 import { useContext, useEffect } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useLocation } from "react-router";
 
 import { World } from "@application/contexts";
 
 import { Notification } from "tights";
 
-const Alerts: React.FC<RouteComponentProps> = ({ location }) => {
+export const Alerts: React.FC = () => {
   const { flash, notify } = useContext(World);
+  const location = useLocation();
 
   useEffect(() => {
     notify(location.state ? location.state.flash : undefined);
@@ -31,6 +32,3 @@ const Alerts: React.FC<RouteComponentProps> = ({ location }) => {
     />
   );
 };
-
-const AlertsWithRouter = withRouter(Alerts);
-export { AlertsWithRouter as Alerts };
