@@ -5043,10 +5043,10 @@ loader-utils@1.2.3, loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.
     emojis-list "^2.0.0"
     json5 "^1.0.1"
 
-loadjs@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/loadjs/-/loadjs-3.6.1.tgz#1e756ccd4f4c5ed4988085b330e1b4ad9b6a8340"
-  integrity sha512-AZEBw2GWdJk2IzBgQ+Wohoao5j+t0rajqK8dJu8jQqgYxDTxhmCt0ayMo/vCa0ZAMvZxnJcam6uLICfnVd8KAw==
+loadjs@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/loadjs/-/loadjs-4.0.0.tgz#e3a57cf055b3a4e291e4817874d3d514af1355ef"
+  integrity sha512-qQInxc5uVESmCQ4jAjxxITaz6rpWQwCxJpsgYofskuKuSUfC/zI8j5kknJaz2EPeIY/3mXKpFH99f9whU/aYkw==
 
 locate-path@^3.0.0:
   version "3.0.0"
