@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useLocation } from "react-router";
 import { Redirect } from "react-router-dom";
 
 import { IFlash } from "@application/types";
@@ -14,7 +14,8 @@ const AUTHORIZE_FLASH: IFlash = {
   message: "You must be authenticated to access this.",
 };
 
-const Authorize: React.FC<RouteComponentProps> = ({ children, location }) => {
+export const Authorize: React.FC = ({ children }) => {
+  const location = useLocation();
   const { session } = useContext(World);
   if (!session) {
     const state = { flash: AUTHORIZE_FLASH, back: location };
@@ -22,6 +23,3 @@ const Authorize: React.FC<RouteComponentProps> = ({ children, location }) => {
   }
   return <>{children}</>;
 };
-
-const AuthorizeWithRouter = withRouter(Authorize);
-export { AuthorizeWithRouter as Authorize };

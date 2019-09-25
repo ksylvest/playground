@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useLocation } from "react-router";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
 
 import { World } from "@application/contexts";
@@ -12,8 +12,9 @@ import { Signup } from "./signup";
 
 import { LOGIN_URL, ROOT_URL, SIGNUP_URL } from "@application/config/routes";
 
-const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
+export const Authenticator: React.FC = () => {
   const { session } = useContext(World);
+  const location = useLocation();
   const { state } = location;
   if (session) {
     return <Redirect to={state && state.back ? state.back : ROOT_URL} />;
@@ -37,6 +38,3 @@ const Authenticator: React.FC<RouteComponentProps> = ({ location }) => {
     </>
   );
 };
-
-const AuthenticatorWithRouter = withRouter(Authenticator);
-export { AuthenticatorWithRouter as Authenticator };
