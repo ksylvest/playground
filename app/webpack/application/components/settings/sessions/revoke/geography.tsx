@@ -2,21 +2,16 @@ import * as React from "react";
 
 import { GeographyFragment } from "@root/app_schema";
 
-import { Map, Marker } from "@application/libraries/mapbox";
+import { GeographyMap } from "@application/components/helpers";
+import { GeographySummary } from "@application/components/helpers";
 
-export const Geography: React.FC<{ geography: GeographyFragment }> = ({ geography }) => {
-  const coordinate: mapboxgl.LngLat = [geography.longitude, geography.latitude];
-
-  return (
-    <>
-      <p>
-        <strong>
-          {geography.city}, {geography.region}, {geography.country}
-        </strong>
-      </p>
-      <Map center={coordinate} style={{ height: "200px" }}>
-        <Marker coordinate={coordinate} />
-      </Map>
-    </>
-  );
-};
+export const Geography: React.FC<{ geography: GeographyFragment }> = ({ geography }) => (
+  <>
+    <p>
+      <strong>
+        <GeographySummary geography={geography} />
+      </strong>
+    </p>
+    <GeographyMap geography={geography} />
+  </>
+);

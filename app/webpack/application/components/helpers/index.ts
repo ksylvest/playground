@@ -4,4 +4,6 @@ export * from "./billing_source_expiration";
 export * from "./billing_source_icon";
 export * from "./billing_source_number";
 export * from "./billing_source_summary";
+export * from "./geography_map";
+export * from "./geography_summary";
 export * from "./title";
