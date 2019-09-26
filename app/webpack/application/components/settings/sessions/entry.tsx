@@ -4,11 +4,22 @@ import { DateTime } from "luxon";
 import * as React from "react";
 import { useContext } from "react";
 
+import { Button, Column, Columns, Icon, Message } from "tights";
+
 import { SessionFragment, SessionStatusEnum } from "@root/app_schema";
 
 import { World } from "@application/contexts";
 
-import { Button, Column, Columns, Icon, Message } from "tights";
+import { GeographySummary } from "@application/components/helpers";
+
+const color = (status: SessionStatusEnum) => {
+  switch (status) {
+    case SessionStatusEnum.Online:
+      return "info";
+    case SessionStatusEnum.Offline:
+      return "light";
+  }
+};
 
 export const Entry: React.FC<{
   session: SessionFragment;
@@ -16,33 +27,19 @@ export const Entry: React.FC<{
 }> = ({ session, onRevoke }) => {
   const { session: current } = useContext(World);
   const me = current && session.id === current.id;
-  const status = (() => {
-    switch (session.status) {
-      case SessionStatusEnum.Online:
-        return "info";
-      case SessionStatusEnum.Offline:
-        return "light";
-    }
-  })();
 
   return (
     <Message color={(me && "info") || undefined}>
       <Message.Body>
         <Columns mobile desktop vcentered>
           <Column narrow>
-            <Icon color={status}>
+            <Icon color={color(session.status)}>
               <FontAwesomeIcon icon={faCircle} />
             </Icon>
           </Column>
           <Column narrow>{session.ip}</Column>
           <Column>{DateTime.fromISO(session.seen).toLocaleString(DateTime.DATETIME_MED)}</Column>
-          <Column>
-            {session.geography && (
-              <>
-                {session.geography.city}, {session.geography.region}, {session.geography.country}
-              </>
-            )}
-          </Column>
+          <Column>{session.geography && <GeographySummary geography={session.geography} />}</Column>
           <Column narrow>
             {me ? (
               <Button outlined disabled>
