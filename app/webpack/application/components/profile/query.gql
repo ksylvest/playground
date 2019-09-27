@@ -1,0 +1,15 @@
+#import "@application/fragments/follow.gql"
+#import "@application/fragments/user.gql"
+#import "@application/fragments/feed/entry.gql"
+
+query Profile($id: ID!) {
+  user(id: $id) {
+    ...user
+    ...follow
+    feed {
+      entries {
+        ...feed__entry
+      }
+    }
+  }
+}

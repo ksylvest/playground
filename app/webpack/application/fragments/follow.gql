@@ -1,0 +1,5 @@
+fragment follow on User {
+  following
+  followed
+  follower
+}

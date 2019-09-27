@@ -19,9 +19,10 @@ import { Authenticator } from "./authenticator";
 import { Authorize } from "./authorize";
 import { Feed } from "./feed";
 import { Notifications } from "./notifications";
+import { Profile } from "./profile";
 import { Settings } from "./settings";
 
-import { LOGIN_URL, NOTIFICATIONS_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
+import { LOGIN_URL, NOTIFICATIONS_URL, PROFILE_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
 const STATS_CHANNEL = { channel: "StatsChannel" };
 const PRESENCE_CHANNEL = { channel: "PresenceChannel" };
@@ -40,6 +41,7 @@ const Routes: React.FC = () => (
   <Switch>
     <Route exact path="/" component={Feed} />
     <Route path="/feed" component={Feed} />
+    <Route exact path={PROFILE_URL({ id: ":id" })} component={Profile} />
     <Route exact path={LOGIN_URL} component={Authenticator} />
     <Route exact path={SIGNUP_URL} component={Authenticator} />
     <Authorize>

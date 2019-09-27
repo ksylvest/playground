@@ -1,0 +1,10 @@
+#import "@application/fragments/follow.gql"
+
+mutation UnfollowUser($id: ID!) {
+  result: unfollowUser(id: $id) {
+    user {
+      id
+      ...follow
+    }
+  }
+}

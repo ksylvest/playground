@@ -10,7 +10,7 @@ import { Attachment, Title } from "@application/components/helpers";
 import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
 
-import { FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
+import { FEED_DETAILS_URL, FEED_LIST_URL, PROFILE_URL } from "@application/config/routes";
 
 import { Actions } from "./entry/actions";
 
@@ -38,6 +38,7 @@ export const Details: React.FC<{
   const photos = entry && entry.photos;
   const user = entry && entry.user;
   const avatar = user && user.avatar;
+  const profileURL = user ? PROFILE_URL(user) : "#";
 
   return (
     <>
@@ -50,10 +51,12 @@ export const Details: React.FC<{
             <Column>
               <Columns desktop tablet mobile vcentered gap={2}>
                 <Column narrow>
-                  <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded w={64} h={64} />
+                  <Link to={profileURL}>
+                    <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded w={64} h={64} />
+                  </Link>
                 </Column>
                 <Column>
-                  <span>by</span> <strong>{(user && user.name) || "-"}</strong>
+                  <span>by</span> <Link to={profileURL}>{(user && user.name) || "-"}</Link>
                 </Column>
                 <Column narrow>
                   <Actions entry={entry} />

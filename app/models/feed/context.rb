@@ -1,5 +1,7 @@
 class Feed::Context
-  def entries
-    @entries ||= Feed::Entry.all
+  attr_accessor :entries
+
+  def initialize(entries: Feed::Entry.all)
+    @entries = entries
   end
 end

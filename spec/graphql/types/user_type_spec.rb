@@ -10,7 +10,7 @@ RSpec.describe Types::UserType do
     let(:gql) do
       <<~GQL
         query User {
-          user {
+          me {
             id
             name
             email
@@ -26,12 +26,12 @@ RSpec.describe Types::UserType do
 
     it 'resolves' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['user']).to be_present
-      expect(execute['data']['user']['id']).to eql(user.id)
-      expect(execute['data']['user']['name']).to eql(user.name)
-      expect(execute['data']['user']['email']).to eql(user.email)
-      expect(execute['data']['user']['avatar']).to be_present
-      expect(execute['data']['user']['avatar']['id']).to be_present
+      expect(execute['data']['me']).to be_present
+      expect(execute['data']['me']['id']).to eql(user.id)
+      expect(execute['data']['me']['name']).to eql(user.name)
+      expect(execute['data']['me']['email']).to eql(user.email)
+      expect(execute['data']['me']['avatar']).to be_present
+      expect(execute['data']['me']['avatar']['id']).to be_present
     end
   end
 end

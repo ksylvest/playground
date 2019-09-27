@@ -10,6 +10,8 @@ export const SETTINGS_PASSWORD_URL = "/settings/password";
 export const SETTINGS_PROFILE_URL = "/settings/profile";
 export const SETTINGS_SESSIONS_URL = "/settings/sessions";
 
+export const PROFILE_URL = ({ id }: { id: string }) => `/profile/${id}`;
+
 export const FEED_URL = "/(feed)";
 export const FEED_LIST_URL = "/";
 export const FEED_DETAILS_URL = ({ id }: { id: string }) => `/feed/entries/${id}`;
