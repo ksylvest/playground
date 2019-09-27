@@ -4,7 +4,10 @@ module Types
     field :feed, FeedType, null: false
     field :notifications, [NotificationType], null: false
     field :sessions, [SessionType], null: false
-    field :user, UserType, null: true
+    field :user, UserType, null: false do
+      argument :id, ID, required: true
+    end
+    field :me, UserType, null: true
 
     def billing
       ::Billing::Context.new(user: Current.user)
@@ -22,7 +25,11 @@ module Types
       Current.user.sessions.active.chronological
     end
 
-    def user
+    def user(id:)
+      User.find(id)
+    end
+
+    def me
       Current.user
     end
   end

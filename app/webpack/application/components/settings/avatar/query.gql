@@ -1,5 +1,5 @@
 query SettingsAvatar {
-  user {
+  me {
     id
     avatar {
       id

@@ -7,7 +7,7 @@ module Mutations
     field :session, ::Types::SessionType, null: true
 
     def resolve(input:)
-      user = User.new(input.to_h)
+      user = ::User.new(input.to_h)
       if user.save
         session = Current.auth!(user: user)
         { status: :ok, session: session }

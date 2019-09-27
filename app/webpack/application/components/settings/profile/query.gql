@@ -1,5 +1,5 @@
 query SettingsProfile {
-  user {
+  me {
     id
     name
     email

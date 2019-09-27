@@ -32,7 +32,7 @@ export const Profile: React.FC = () => {
       <h2 className="title">Profile</h2>
       <hr />
       <Fields
-        defaults={(defaults && defaults.user) || undefined}
+        defaults={(defaults && defaults.me) || undefined}
         save={(input) => {
           if (loading) {
             return;

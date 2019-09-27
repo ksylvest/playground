@@ -23,5 +23,8 @@ module Types
     field :build_feed_comment, mutation: ::Mutations::Feed::Comment::BuildMutation
     field :like_feed_entry, mutation: ::Mutations::Feed::Entry::LikeMutation
     field :unlike_feed_entry, mutation: ::Mutations::Feed::Entry::UnlikeMutation
+
+    field :follow_user, mutation: ::Mutations::User::FollowMutation
+    field :unfollow_user, mutation: ::Mutations::User::UnfollowMutation
   end
 end

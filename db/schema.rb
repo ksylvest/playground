@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_061304) do
+ActiveRecord::Schema.define(version: 2019_10_20_234054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 2019_08_27_061304) do
     t.index ["user_id"], name: "index_feed_likes_on_user_id"
   end
 
+  create_table "follows", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "followed_id", null: false
+    t.uuid "follower_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id", "follower_id"], name: "index_follows_on_followed_id_and_follower_id", unique: true
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "geo_ips", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.inet "ip", null: false
     t.string "city", null: false
@@ -147,6 +157,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_061304) do
   add_foreign_key "feed_entries", "users"
   add_foreign_key "feed_likes", "feed_entries", column: "entry_id"
   add_foreign_key "feed_likes", "users"
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "notifications", "users"
   add_foreign_key "sessions", "users"
 end
