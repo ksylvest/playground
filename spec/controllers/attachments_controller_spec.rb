@@ -11,27 +11,23 @@ RSpec.describe AttachmentsController, type: :request do
 
     let(:w) { 8 }
     let(:h) { 8 }
-    let(:format) { :jpg }
     let(:resize) { :fill }
 
-    it 'redirects to a variant' do
-      fetch
-      expect(response).to have_http_status(:redirect)
-    end
+    context 'with valid attributes' do
+      let(:format) { :jpg }
 
-    context 'with an invalid format' do
-      let(:format) { :gif }
-
-      it 'raises an "ArgumentError" with an invalid format' do
-        expect { fetch }.to raise_error(ArgumentError, 'invalid option for format: "gif"')
+      it 'redirects to a variant' do
+        fetch
+        expect(response).to have_http_status(:redirect)
       end
     end
 
-    context 'with an invalid resize' do
-      let(:resize) { :other }
+    context 'with invalid attributes' do
+      let(:format) { :gif }
 
-      it 'raises an "ArgumentError" with an invalid resize' do
-        expect { fetch }.to raise_error(ArgumentError, 'invalid option for resize: "other"')
+      it 'responds unprocessable' do
+        fetch
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end
