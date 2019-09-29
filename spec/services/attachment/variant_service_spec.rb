@@ -4,11 +4,11 @@ RSpec.describe Attachment::VariantService, type: :service do
   let(:user) { create(:user, :with_avatar) }
   let(:attachment) { user.avatar }
   let(:resize) { 'fit' }
-  let(:convert) { 'jpg' }
+  let(:format) { 'jpg' }
   let(:service) do
     Attachment::VariantService.new(
       attachment: attachment,
-      convert: convert,
+      format: format,
       resize: resize,
       size: [
         64,
@@ -33,10 +33,10 @@ RSpec.describe Attachment::VariantService, type: :service do
     end
 
     context 'with "convert" is "gif"' do
-      let(:convert) { 'gif' }
+      let(:format) { 'gif' }
 
       it 'raises an "ArgumentError"' do
-        expect { variant }.to raise_error(ArgumentError, 'invalid option for convert: "gif"')
+        expect { variant }.to raise_error(ArgumentError, 'invalid option for format: "gif"')
       end
     end
   end
