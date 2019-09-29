@@ -1,9 +1,8 @@
 class AttachmentsController < ApplicationController
-  # GET /attached/:id.(jpg|heic|webp)?l=:l&w=:w&resize=(fit|fill)
+  # GET /attached/:id.(jpg|webp)?l=:l&w=:w&resize=(fit|fill)
   def show
-    redirect_to variant.service_url(disposition: params[:disposition])
-  rescue ArgumentError
-    head :unauthorized
+    expires_in 2.years, public: !params[:fresh]
+    send_data(service.data, type: format, disposition: 'inline')
   end
 
 private
@@ -15,16 +14,24 @@ private
   def service
     Attachment::VariantService.new(
       attachment: attachment,
-      convert: params.fetch(:format),
-      resize: params.fetch(:resize),
-      size: [
-        Integer(params.fetch(:w)),
-        Integer(params.fetch(:h)),
-      ]
+      format: format,
+      resize: resize,
+      size: size
     )
   end
 
-  def variant
-    service.variant.processed
+  def size
+    [
+      Integer(params.fetch(:w)),
+      Integer(params.fetch(:h)),
+    ]
+  end
+
+  def format
+    params.fetch(:format)
+  end
+
+  def resize
+    params.fetch(:resize)
   end
 end
