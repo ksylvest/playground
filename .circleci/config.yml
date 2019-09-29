@@ -60,6 +60,7 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler --version "$BUNDLER_VERSION"
+      - run: bundle check || bundle install  --clean --deployment
       - attach_workspace:
           at: .
       - run: bundle exec rails webpacker:compile
@@ -83,6 +84,7 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler --version "$BUNDLER_VERSION"
+      - run: bundle check || bundle install  --clean --deployment
       - attach_workspace:
           at: .
       - run:
@@ -96,6 +98,7 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler --version "$BUNDLER_VERSION"
+      - run: bundle check || bundle install  --clean --deployment
       - attach_workspace:
           at: .
       - run:
@@ -109,6 +112,7 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler --version "$BUNDLER_VERSION"
+      - run: bundle check || bundle install  --clean --deployment
       - attach_workspace:
           at: .
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
