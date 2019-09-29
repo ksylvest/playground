@@ -19,7 +19,7 @@ export const ATTACHMENT_URL = (
   w: number,
   h: number,
   resize: "fit" | "fill",
-  format: "jpg" | "webp" | "heic" = "jpg",
+  format: "jpg" | "webp" = "jpg",
 ) => {
   if (!id) {
     return;
