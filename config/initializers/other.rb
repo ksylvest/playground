@@ -4,3 +4,7 @@ Rails.application.config.filter_parameters += [:password]
 ActiveSupport.on_load(:action_controller) do
   wrap_parameters format: [:json]
 end
+
+Mime::Type.register('image/heic', :heic)
+Mime::Type.register('image/heif', :heif)
+Mime::Type.register('image/webp', :webp)
