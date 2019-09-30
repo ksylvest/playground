@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Attachment::VariantService, type: :service do
   let(:user) { create(:user, :with_avatar) }
   let(:attachment) { user.avatar }
-  let(:resize) { 'fit' }
-  let(:format) { 'jpg' }
+  let(:resize) { 'fill' }
+  let(:format) { 'webp' }
   let(:service) do
     Attachment::VariantService.new(
       attachment: attachment,

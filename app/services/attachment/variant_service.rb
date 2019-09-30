@@ -1,6 +1,6 @@
 module Attachment
   class VariantService
-    FORMATS = %w[jpg webp].freeze
+    FORMATS = %w[jpeg heic heif webp].freeze
     RESIZES = %w[fit fill].freeze
     DEFAULTS = { strip: true }.freeze
     private_constant :FORMATS
