@@ -19,7 +19,7 @@
     "@types/loadjs": "^3.5.0",
     "@types/lodash": "^4.14.141",
     "@types/luxon": "^1.15.2",
-    "@types/react": "^16.9.3",
+    "@types/react": "^16.9.4",
     "@types/react-dom": "^16.9.1",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.1",
