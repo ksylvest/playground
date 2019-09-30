@@ -8167,7 +8167,7 @@ thunky@^1.0.2:
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.3.tgz#f5df732453407b09191dae73e2a8cc73f381a826"
   integrity sha512-YwT8pjmNcAXBZqrubu22P4FYsh2D4dxRmnWBOL8Jk8bUcRUtc5326kx32tuTmFDAZtLOGEVNl8POAR8j896Iow==
 
-tights@^1.4.1:
+tights@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/tights/-/tights-1.4.2.tgz#8375359ee5a5d0d8afc9331912fae9cff19147ae"
   integrity sha512-f/eIP+f7E5OV+M/O9nV0ydTmh7mSnoIxJvFomWh8w00b/7ZsxDp6UCqwQQpvvzC9dTwxQSrZ9fE18tkH/qa1cg==

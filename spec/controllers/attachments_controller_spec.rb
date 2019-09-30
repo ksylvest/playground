@@ -7,7 +7,7 @@ RSpec.describe AttachmentsController, type: :request do
   describe 'GET #show' do
     let(:w) { 8 }
     let(:h) { 8 }
-    let(:format) { :jpg }
+    let(:format) { :jpeg }
     let(:resize) { :fill }
 
     it 'responds with the variant' do

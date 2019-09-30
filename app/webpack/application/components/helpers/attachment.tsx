@@ -3,7 +3,14 @@ import { Image } from "tights";
 
 import { ATTACHMENT_URL } from "@application/config/routes";
 
-const SIZES = [2, 3, 4];
+type Resize = "fit" | "fill";
+type Format = "jpeg" | "heic" | "heif" | "webp";
+
+const SIZES = [2, 3];
+const FORMATS: Format[] = ["webp", "heic", "heif", "jpeg"];
+
+const SRC_SET_URLS = (id: string, w: number, h: number, resize: Resize, format: Format) =>
+  SIZES.map((s) => `${ATTACHMENT_URL(id, w * s, h * s, resize, format)} ${s}x`).join(", ");
 
 export const Attachment: React.FC<{
   placeholder?: string;
@@ -12,18 +19,17 @@ export const Attachment: React.FC<{
   square?: boolean;
   w: number;
   h: number;
-  resize?: "fit" | "fill";
+  resize?: Resize;
 }> = ({ attachment, placeholder, rounded, square, w, h, resize = "fill" }) => {
   const id = (attachment && attachment.id) || undefined;
+  const src = id ? ATTACHMENT_URL(id, w, h, resize) : placeholder;
 
   return (
-    <Image
-      rounded={rounded}
-      square={square}
-      src={id ? ATTACHMENT_URL(id, w, h, resize) : placeholder}
-      srcSet={id && SIZES.map((s) => `${ATTACHMENT_URL(id, w * s, h * s, resize)} ${s}x`).join(", ")}
-      height={h}
-      width={w}
-    />
+    <Image rounded={rounded} square={square} src={src} height={h} width={w}>
+      {id &&
+        FORMATS.map((format) => (
+          <source key={format} srcSet={SRC_SET_URLS(id, w, h, resize, format)} type={`image/${format}`} />
+        ))}
+    </Image>
   );
 };
