@@ -37,7 +37,7 @@ export const Carousel: React.FC<{
 
   return (
     <>
-      <Attachment attachment={photo} square w={1280} h={1280} />
+      <Attachment attachment={photo} square w={640} h={640} />
       <br />
       <Pagination rounded>
         <Pagination.Prev

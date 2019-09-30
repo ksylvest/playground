@@ -20,7 +20,7 @@ export const Entry: React.FC<{
   <Card>
     <Card.Image>
       <Link to={FEED_DETAILS_URL(entry)}>
-        <Attachment square attachment={head(entry.photos)} w={640} h={640} />
+        <Attachment square attachment={head(entry.photos)} w={320} h={320} />
       </Link>
     </Card.Image>
     <Card.Content>
