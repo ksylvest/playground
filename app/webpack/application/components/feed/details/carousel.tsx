@@ -4,13 +4,13 @@ import { times } from "lodash";
 import * as React from "react";
 import { useState } from "react";
 
-import { Image, Pagination } from "tights";
+import { Pagination } from "tights";
+
+import { Attachment } from "@application/components/helpers";
 
 import { Attached } from "@root/app_schema";
 
 import { useKey } from "@application/hooks";
-
-import { ATTACHMENT_URL } from "@application/config/routes";
 
 const DEFAULT_INDEX = 0;
 const NEXT_KEY = "ArrowRight";
@@ -25,12 +25,7 @@ export const Carousel: React.FC<{
   const photo = photos[index];
   const total = photos.length;
 
-  const photoURL = ATTACHMENT_URL(photo.id, 1280, 1280, "fill");
-
   const go = (offset: number) => {
-    if (!photos) {
-      return;
-    }
     setIndex((index + total + offset) % total);
   };
 
@@ -42,7 +37,7 @@ export const Carousel: React.FC<{
 
   return (
     <>
-      <Image square src={photoURL} />
+      <Attachment attachment={photo} square w={1280} h={1280} />
       <br />
       <Pagination rounded>
         <Pagination.Prev
