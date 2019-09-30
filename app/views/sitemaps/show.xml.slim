@@ -1,3 +1,6 @@
 = render 'entry', path: root_url, frequency: 'weekly', priority: 1.0
 = render 'entry', path: login_url, frequency: 'weekly', priority: 1.0
 = render 'entry', path: signup_url, frequency: 'weekly', priority: 1.0
+
+- @feed.entries.each do |entry|
+  = render 'entry', path: feed_entry_url(entry), frequency: 'monthly', priority: 0.8
