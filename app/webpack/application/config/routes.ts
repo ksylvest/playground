@@ -20,9 +20,4 @@ export const ATTACHMENT_URL = (
   h: number,
   resize: "fit" | "fill",
   format: "jpg" | "webp" = "jpg",
-) => {
-  if (!id) {
-    return;
-  }
-  return `/attachments/${id}.${format}?resize=${resize}&w=${w}&h=${h}`;
-};
+) => `/attachments/${id}.${format}?resize=${resize}&w=${w}&h=${h}`;

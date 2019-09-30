@@ -1,18 +1,20 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { Breadcrumb, Card, Column, Columns, Image } from "tights";
+import { Breadcrumb, Card, Column, Columns } from "tights";
 
 import { useFeedEntryQuery } from "@root/app_schema";
 
-import { Title } from "@application/components/helpers";
+import { Attachment, Title } from "@application/components/helpers";
 
 import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
 
-import { ATTACHMENT_URL, FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
+import { FEED_DETAILS_URL, FEED_LIST_URL } from "@application/config/routes";
 
 import { Actions } from "./entry/actions";
+
+import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
 const Breadcrumbs: React.FC<{ id: string }> = ({ id }) => (
   <Breadcrumb>
@@ -36,9 +38,6 @@ export const Details: React.FC<{
   const photos = entry && entry.photos;
   const user = entry && entry.user;
   const avatar = user && user.avatar;
-  const avatarURL = avatar
-    ? ATTACHMENT_URL(avatar.id, 128, 128, "fill")
-    : require("@application/assets/avatar/placeholder.svg");
 
   return (
     <>
@@ -51,7 +50,7 @@ export const Details: React.FC<{
             <Column>
               <Columns desktop tablet mobile vcentered gap={2}>
                 <Column narrow>
-                  <Image rounded square dimensions={64} src={avatarURL} />
+                  <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded w={64} h={64} />
                 </Column>
                 <Column>
                   <span>by</span> <strong>{(user && user.name) || "-"}</strong>

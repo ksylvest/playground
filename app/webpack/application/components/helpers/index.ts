@@ -1,4 +1,5 @@
 export * from "./age";
+export * from "./attachment";
 export * from "./billing_source_brand";
 export * from "./billing_source_expiration";
 export * from "./billing_source_icon";

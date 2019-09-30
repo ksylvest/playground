@@ -1,22 +1,19 @@
 import * as React from "react";
 
-import { Column, Columns, Image } from "tights";
+import { Column, Columns } from "tights";
 
 import { useSettingsAvatarQuery } from "@root/app_schema";
 
 import { Attach } from "./avatar/attach";
 import { Detach } from "./avatar/detach";
 
-import { Title } from "@application/components/helpers";
+import { Attachment, Title } from "@application/components/helpers";
 
-import { ATTACHMENT_URL } from "@application/config/routes";
+import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
 export const Avatar: React.FC = () => {
   const { data, refetch } = useSettingsAvatarQuery();
   const avatar = data && data.user && data.user.avatar && data.user.avatar;
-  const avatarURL = avatar
-    ? ATTACHMENT_URL(avatar.id, 640, 640, "fill")
-    : require("@application/assets/avatar/placeholder.svg");
 
   return (
     <>
@@ -26,7 +23,7 @@ export const Avatar: React.FC = () => {
       <hr />
       <Columns>
         <Column size={3}>
-          <Image rounded square src={avatarURL} />
+          <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded square w={320} h={320} />
         </Column>
         <Column size={9}>
           <Attach onSave={refetch} />
