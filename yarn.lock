@@ -8168,9 +8168,9 @@ thunky@^1.0.2:
   integrity sha512-YwT8pjmNcAXBZqrubu22P4FYsh2D4dxRmnWBOL8Jk8bUcRUtc5326kx32tuTmFDAZtLOGEVNl8POAR8j896Iow==
 
 tights@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/tights/-/tights-1.4.1.tgz#03ec1a4b5ea7336ec9989ef24c70914d4dd111a4"
-  integrity sha512-Nc19gA8p5EOnjwxsOP9CJf76Q4MWD9DlZ7sbCKh+cYDNKC+8XGnsuMD0PvxHnl7TFDaAeuCoVmuOQHlG2oCeiw==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/tights/-/tights-1.4.2.tgz#8375359ee5a5d0d8afc9331912fae9cff19147ae"
+  integrity sha512-f/eIP+f7E5OV+M/O9nV0ydTmh7mSnoIxJvFomWh8w00b/7ZsxDp6UCqwQQpvvzC9dTwxQSrZ9fE18tkH/qa1cg==
 
 timers-browserify@^2.0.4:
   version "2.0.11"
