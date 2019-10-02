@@ -51,7 +51,7 @@
     "webpack": "^4.41.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.7.0",
+    "@graphql-codegen/cli": "^1.8.0",
     "@graphql-codegen/introspection": "^1.8.0",
     "@graphql-codegen/typescript": "^1.7.0",
     "@graphql-codegen/typescript-operations": "^1.7.0",
