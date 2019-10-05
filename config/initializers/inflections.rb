@@ -1,4 +1,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.acronym 'JSON'
+  inflect.acronym 'HTTP'
   inflect.acronym 'IP'
+  inflect.acronym 'JSON'
 end
