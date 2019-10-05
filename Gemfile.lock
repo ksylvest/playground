@@ -333,6 +333,7 @@ DEPENDENCIES
   brakeman
   byebug
   capybara
+  connection_pool
   factory_bot_rails
   graphql
   graphql-batch

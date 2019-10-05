@@ -9,6 +9,7 @@ gem 'puma'
 
 gem 'bcrypt'
 gem 'byebug'
+gem 'connection_pool'
 gem 'graphql'
 gem 'graphql-batch'
 gem 'http'
