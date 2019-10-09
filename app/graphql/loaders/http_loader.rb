@@ -10,13 +10,13 @@ module Loaders
     end
 
     def perform(procs)
-      threads = procs.map do |proc|
-        Thread.new do
+      futures = procs.map do |proc|
+        Concurrent::Promises.future do
           pool.with { |connection| proc.call(connection) }
         end
       end
       procs.each_with_index.each do |proc, index|
-        fulfill(proc, threads[index].value)
+        fulfill(proc, futures[index].value)
       end
     end
 

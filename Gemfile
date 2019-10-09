@@ -9,6 +9,7 @@ gem 'puma'
 
 gem 'bcrypt'
 gem 'byebug'
+gem 'concurrent-ruby'
 gem 'connection_pool'
 gem 'graphql'
 gem 'graphql-batch'
