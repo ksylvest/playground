@@ -1,11 +1,7 @@
 import gql from 'graphql-tag';
 import * as ApolloReactCommon from '@apollo/react-common';
-import * as React from 'react';
-import * as ApolloReactComponents from '@apollo/react-components';
-import * as ApolloReactHoc from '@apollo/react-hoc';
 import * as ApolloReactHooks from '@apollo/react-hooks';
 export type Maybe<T> = T | null;
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string,
@@ -378,6 +374,7 @@ export type UserInput = {
   email: Scalars['String'],
   name: Scalars['String'],
 };
+
 export type BuildFeedCommentMutationVariables = {
   input: Feed__CommentInput
 };
@@ -391,9 +388,10 @@ export type BuildFeedCommentMutation = (
     & { errors: Maybe<(
       { __typename?: 'Errors' }
       & Pick<Errors, 'messages'>
-    )>, comment: Maybe<{ __typename?: 'Feed__Comment' }
+    )>, comment: Maybe<(
+      { __typename?: 'Feed__Comment' }
       & Feed__CommentFragment
-    > }
+    )> }
   )> }
 );
 
@@ -409,9 +407,10 @@ export type FeedCommentsQuery = (
     & { entry: (
       { __typename?: 'Feed__Entry' }
       & Pick<Feed__Entry, 'id'>
-      & { comments: Array<{ __typename?: 'Feed__Comment' }
+      & { comments: Array<(
+        { __typename?: 'Feed__Comment' }
         & Feed__CommentFragment
-      > }
+      )> }
     ) }
   ) }
 );
@@ -425,9 +424,10 @@ export type FeedEntryQuery = (
   { __typename?: 'Query' }
   & { feed: (
     { __typename?: 'Feed' }
-    & { entry: { __typename?: 'Feed__Entry' }
+    & { entry: (
+      { __typename?: 'Feed__Entry' }
       & Feed__EntryFragment
-     }
+    ) }
   ) }
 );
 
@@ -470,9 +470,10 @@ export type FeedQuery = (
   { __typename?: 'Query' }
   & { feed: (
     { __typename?: 'Feed' }
-    & { entries: Array<{ __typename?: 'Feed__Entry' }
+    & { entries: Array<(
+      { __typename?: 'Feed__Entry' }
       & Feed__EntryFragment
-    > }
+    )> }
   ) }
 );
 
@@ -501,7 +502,7 @@ export type LogoutMutationVariables = {};
 
 export type LogoutMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { logout: Maybe<(
     { __typename?: 'LogoutMutationPayload' }
     & Pick<LogoutMutationPayload, 'status'>
   )> }
@@ -528,9 +529,10 @@ export type NotificationsQueryVariables = {};
 
 export type NotificationsQuery = (
   { __typename?: 'Query' }
-  & { notifications: Array<{ __typename?: 'Notification' }
+  & { notifications: Array<(
+    { __typename?: 'Notification' }
     & NotificationFragment
-  > }
+  )> }
 );
 
 export type ReadNotificationMutationVariables = {
@@ -695,9 +697,10 @@ export type SettingsSessionsQueryVariables = {};
 
 export type SettingsSessionsQuery = (
   { __typename?: 'Query' }
-  & { sessions: Array<{ __typename?: 'Session' }
+  & { sessions: Array<(
+    { __typename?: 'Session' }
     & SessionFragment
-  > }
+  )> }
 );
 
 export type SettingsSessionRevokeMutationVariables = {
@@ -744,19 +747,22 @@ export type AttachedFragment = (
 export type Feed__CommentFragment = (
   { __typename?: 'Feed__Comment' }
   & Pick<Feed__Comment, 'id' | 'message' | 'sent'>
-  & { user: { __typename?: 'User' }
+  & { user: (
+    { __typename?: 'User' }
     & UserFragment
-   }
+  ) }
 );
 
 export type Feed__EntryFragment = (
   { __typename?: 'Feed__Entry' }
   & Pick<Feed__Entry, 'id' | 'tags' | 'liked' | 'likes'>
-  & { photos: Array<{ __typename?: 'Attached' }
+  & { photos: Array<(
+    { __typename?: 'Attached' }
     & AttachedFragment
-  >, user: { __typename?: 'User' }
+  )>, user: (
+    { __typename?: 'User' }
     & UserFragment
-   }
+  ) }
 );
 
 export type GeographyFragment = (
@@ -772,18 +778,21 @@ export type NotificationFragment = (
 export type SessionFragment = (
   { __typename?: 'Session' }
   & Pick<Session, 'id' | 'ip' | 'deleted' | 'seen' | 'status'>
-  & { geography: Maybe<{ __typename?: 'Geography' }
+  & { geography: Maybe<(
+    { __typename?: 'Geography' }
     & GeographyFragment
-  > }
+  )> }
 );
 
 export type UserFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id' | 'name'>
-  & { avatar: Maybe<{ __typename?: 'Attached' }
+  & { avatar: Maybe<(
+    { __typename?: 'Attached' }
     & AttachedFragment
-  > }
+  )> }
 );
+
 export const AttachedFragmentDoc = gql`
     fragment attached on Attached {
   id
@@ -870,27 +879,27 @@ export const BuildFeedCommentDocument = gql`
 }
     ${Feed__CommentFragmentDoc}`;
 export type BuildFeedCommentMutationFn = ApolloReactCommon.MutationFunction<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>;
-export type BuildFeedCommentComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>, 'mutation'>;
 
-    export const BuildFeedCommentComponent = (props: BuildFeedCommentComponentProps) => (
-      <ApolloReactComponents.Mutation<BuildFeedCommentMutation, BuildFeedCommentMutationVariables> mutation={BuildFeedCommentDocument} {...props} />
-    );
-    
-export type BuildFeedCommentProps<TChildProps = {}> = ApolloReactHoc.MutateProps<BuildFeedCommentMutation, BuildFeedCommentMutationVariables> & TChildProps;
-export function withBuildFeedComment<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BuildFeedCommentMutation,
-  BuildFeedCommentMutationVariables,
-  BuildFeedCommentProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, BuildFeedCommentMutation, BuildFeedCommentMutationVariables, BuildFeedCommentProps<TChildProps>>(BuildFeedCommentDocument, {
-      alias: 'buildFeedComment',
-      ...operationOptions
-    });
-};
-
-    export function useBuildFeedCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>) {
-      return ApolloReactHooks.useMutation<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>(BuildFeedCommentDocument, baseOptions);
-    }
+/**
+ * __useBuildFeedCommentMutation__
+ *
+ * To run a mutation, you first call `useBuildFeedCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBuildFeedCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [buildFeedCommentMutation, { data, loading, error }] = useBuildFeedCommentMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBuildFeedCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>(BuildFeedCommentDocument, baseOptions);
+      }
 export type BuildFeedCommentMutationHookResult = ReturnType<typeof useBuildFeedCommentMutation>;
 export type BuildFeedCommentMutationResult = ApolloReactCommon.MutationResult<BuildFeedCommentMutation>;
 export type BuildFeedCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>;
@@ -906,32 +915,31 @@ export const FeedCommentsDocument = gql`
   }
 }
     ${Feed__CommentFragmentDoc}`;
-export type FeedCommentsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<FeedCommentsQuery, FeedCommentsQueryVariables>, 'query'> & ({ variables: FeedCommentsQueryVariables; skip?: boolean; } | { skip: boolean; });
 
-    export const FeedCommentsComponent = (props: FeedCommentsComponentProps) => (
-      <ApolloReactComponents.Query<FeedCommentsQuery, FeedCommentsQueryVariables> query={FeedCommentsDocument} {...props} />
-    );
-    
-export type FeedCommentsProps<TChildProps = {}> = ApolloReactHoc.DataProps<FeedCommentsQuery, FeedCommentsQueryVariables> & TChildProps;
-export function withFeedComments<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  FeedCommentsQuery,
-  FeedCommentsQueryVariables,
-  FeedCommentsProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, FeedCommentsQuery, FeedCommentsQueryVariables, FeedCommentsProps<TChildProps>>(FeedCommentsDocument, {
-      alias: 'feedComments',
-      ...operationOptions
-    });
-};
-
-    export function useFeedCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
-      return ApolloReactHooks.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, baseOptions);
-    }
-      export function useFeedCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, baseOptions);
+/**
+ * __useFeedCommentsQuery__
+ *
+ * To run a query within a React component, call `useFeedCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedCommentsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFeedCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, baseOptions);
       }
-      
+export function useFeedCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, baseOptions);
+        }
 export type FeedCommentsQueryHookResult = ReturnType<typeof useFeedCommentsQuery>;
+export type FeedCommentsLazyQueryHookResult = ReturnType<typeof useFeedCommentsLazyQuery>;
 export type FeedCommentsQueryResult = ApolloReactCommon.QueryResult<FeedCommentsQuery, FeedCommentsQueryVariables>;
 export const FeedEntryDocument = gql`
     query FeedEntry($id: ID!) {
@@ -942,32 +950,31 @@ export const FeedEntryDocument = gql`
   }
 }
     ${Feed__EntryFragmentDoc}`;
-export type FeedEntryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<FeedEntryQuery, FeedEntryQueryVariables>, 'query'> & ({ variables: FeedEntryQueryVariables; skip?: boolean; } | { skip: boolean; });
 
-    export const FeedEntryComponent = (props: FeedEntryComponentProps) => (
-      <ApolloReactComponents.Query<FeedEntryQuery, FeedEntryQueryVariables> query={FeedEntryDocument} {...props} />
-    );
-    
-export type FeedEntryProps<TChildProps = {}> = ApolloReactHoc.DataProps<FeedEntryQuery, FeedEntryQueryVariables> & TChildProps;
-export function withFeedEntry<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  FeedEntryQuery,
-  FeedEntryQueryVariables,
-  FeedEntryProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, FeedEntryQuery, FeedEntryQueryVariables, FeedEntryProps<TChildProps>>(FeedEntryDocument, {
-      alias: 'feedEntry',
-      ...operationOptions
-    });
-};
-
-    export function useFeedEntryQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
-      return ApolloReactHooks.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, baseOptions);
-    }
-      export function useFeedEntryLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, baseOptions);
+/**
+ * __useFeedEntryQuery__
+ *
+ * To run a query within a React component, call `useFeedEntryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedEntryQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedEntryQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFeedEntryQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+        return ApolloReactHooks.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, baseOptions);
       }
-      
+export function useFeedEntryLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, baseOptions);
+        }
 export type FeedEntryQueryHookResult = ReturnType<typeof useFeedEntryQuery>;
+export type FeedEntryLazyQueryHookResult = ReturnType<typeof useFeedEntryLazyQuery>;
 export type FeedEntryQueryResult = ApolloReactCommon.QueryResult<FeedEntryQuery, FeedEntryQueryVariables>;
 export const LikeFeedEntryDocument = gql`
     mutation LikeFeedEntry($id: ID!) {
@@ -981,27 +988,27 @@ export const LikeFeedEntryDocument = gql`
 }
     `;
 export type LikeFeedEntryMutationFn = ApolloReactCommon.MutationFunction<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>;
-export type LikeFeedEntryComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>, 'mutation'>;
 
-    export const LikeFeedEntryComponent = (props: LikeFeedEntryComponentProps) => (
-      <ApolloReactComponents.Mutation<LikeFeedEntryMutation, LikeFeedEntryMutationVariables> mutation={LikeFeedEntryDocument} {...props} />
-    );
-    
-export type LikeFeedEntryProps<TChildProps = {}> = ApolloReactHoc.MutateProps<LikeFeedEntryMutation, LikeFeedEntryMutationVariables> & TChildProps;
-export function withLikeFeedEntry<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  LikeFeedEntryMutation,
-  LikeFeedEntryMutationVariables,
-  LikeFeedEntryProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, LikeFeedEntryMutation, LikeFeedEntryMutationVariables, LikeFeedEntryProps<TChildProps>>(LikeFeedEntryDocument, {
-      alias: 'likeFeedEntry',
-      ...operationOptions
-    });
-};
-
-    export function useLikeFeedEntryMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>) {
-      return ApolloReactHooks.useMutation<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>(LikeFeedEntryDocument, baseOptions);
-    }
+/**
+ * __useLikeFeedEntryMutation__
+ *
+ * To run a mutation, you first call `useLikeFeedEntryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikeFeedEntryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likeFeedEntryMutation, { data, loading, error }] = useLikeFeedEntryMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLikeFeedEntryMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>) {
+        return ApolloReactHooks.useMutation<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>(LikeFeedEntryDocument, baseOptions);
+      }
 export type LikeFeedEntryMutationHookResult = ReturnType<typeof useLikeFeedEntryMutation>;
 export type LikeFeedEntryMutationResult = ApolloReactCommon.MutationResult<LikeFeedEntryMutation>;
 export type LikeFeedEntryMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>;
@@ -1017,27 +1024,27 @@ export const UnlikeFeedEntryDocument = gql`
 }
     `;
 export type UnlikeFeedEntryMutationFn = ApolloReactCommon.MutationFunction<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
-export type UnlikeFeedEntryComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>, 'mutation'>;
 
-    export const UnlikeFeedEntryComponent = (props: UnlikeFeedEntryComponentProps) => (
-      <ApolloReactComponents.Mutation<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables> mutation={UnlikeFeedEntryDocument} {...props} />
-    );
-    
-export type UnlikeFeedEntryProps<TChildProps = {}> = ApolloReactHoc.MutateProps<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables> & TChildProps;
-export function withUnlikeFeedEntry<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  UnlikeFeedEntryMutation,
-  UnlikeFeedEntryMutationVariables,
-  UnlikeFeedEntryProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables, UnlikeFeedEntryProps<TChildProps>>(UnlikeFeedEntryDocument, {
-      alias: 'unlikeFeedEntry',
-      ...operationOptions
-    });
-};
-
-    export function useUnlikeFeedEntryMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>) {
-      return ApolloReactHooks.useMutation<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>(UnlikeFeedEntryDocument, baseOptions);
-    }
+/**
+ * __useUnlikeFeedEntryMutation__
+ *
+ * To run a mutation, you first call `useUnlikeFeedEntryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnlikeFeedEntryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [unlikeFeedEntryMutation, { data, loading, error }] = useUnlikeFeedEntryMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUnlikeFeedEntryMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>) {
+        return ApolloReactHooks.useMutation<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>(UnlikeFeedEntryDocument, baseOptions);
+      }
 export type UnlikeFeedEntryMutationHookResult = ReturnType<typeof useUnlikeFeedEntryMutation>;
 export type UnlikeFeedEntryMutationResult = ApolloReactCommon.MutationResult<UnlikeFeedEntryMutation>;
 export type UnlikeFeedEntryMutationOptions = ApolloReactCommon.BaseMutationOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
@@ -1050,32 +1057,30 @@ export const FeedDocument = gql`
   }
 }
     ${Feed__EntryFragmentDoc}`;
-export type FeedComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<FeedQuery, FeedQueryVariables>, 'query'>;
 
-    export const FeedComponent = (props: FeedComponentProps) => (
-      <ApolloReactComponents.Query<FeedQuery, FeedQueryVariables> query={FeedDocument} {...props} />
-    );
-    
-export type FeedProps<TChildProps = {}> = ApolloReactHoc.DataProps<FeedQuery, FeedQueryVariables> & TChildProps;
-export function withFeed<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  FeedQuery,
-  FeedQueryVariables,
-  FeedProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, FeedQuery, FeedQueryVariables, FeedProps<TChildProps>>(FeedDocument, {
-      alias: 'feed',
-      ...operationOptions
-    });
-};
-
-    export function useFeedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
-      return ApolloReactHooks.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
-    }
-      export function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+/**
+ * __useFeedQuery__
+ *
+ * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFeedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
+        return ApolloReactHooks.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
       }
-      
+export function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+        }
 export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
+export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
 export type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($input: LoginInput!) {
@@ -1091,59 +1096,58 @@ export const LoginDocument = gql`
 }
     `;
 export type LoginMutationFn = ApolloReactCommon.MutationFunction<LoginMutation, LoginMutationVariables>;
-export type LoginComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>, 'mutation'>;
 
-    export const LoginComponent = (props: LoginComponentProps) => (
-      <ApolloReactComponents.Mutation<LoginMutation, LoginMutationVariables> mutation={LoginDocument} {...props} />
-    );
-    
-export type LoginProps<TChildProps = {}> = ApolloReactHoc.MutateProps<LoginMutation, LoginMutationVariables> & TChildProps;
-export function withLogin<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  LoginMutation,
-  LoginMutationVariables,
-  LoginProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, LoginMutation, LoginMutationVariables, LoginProps<TChildProps>>(LoginDocument, {
-      alias: 'login',
-      ...operationOptions
-    });
-};
-
-    export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-      return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
-    }
+/**
+ * __useLoginMutation__
+ *
+ * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginMutation, { data, loading, error }] = useLoginMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
+      }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
 export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
-  result: logout {
+  logout {
     status
   }
 }
     `;
 export type LogoutMutationFn = ApolloReactCommon.MutationFunction<LogoutMutation, LogoutMutationVariables>;
-export type LogoutComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LogoutMutation, LogoutMutationVariables>, 'mutation'>;
 
-    export const LogoutComponent = (props: LogoutComponentProps) => (
-      <ApolloReactComponents.Mutation<LogoutMutation, LogoutMutationVariables> mutation={LogoutDocument} {...props} />
-    );
-    
-export type LogoutProps<TChildProps = {}> = ApolloReactHoc.MutateProps<LogoutMutation, LogoutMutationVariables> & TChildProps;
-export function withLogout<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  LogoutMutation,
-  LogoutMutationVariables,
-  LogoutProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, LogoutMutation, LogoutMutationVariables, LogoutProps<TChildProps>>(LogoutDocument, {
-      alias: 'logout',
-      ...operationOptions
-    });
-};
-
-    export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-      return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
-    }
+/**
+ * __useLogoutMutation__
+ *
+ * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
+      }
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
@@ -1158,27 +1162,27 @@ export const DestroyNotificationDocument = gql`
 }
     `;
 export type DestroyNotificationMutationFn = ApolloReactCommon.MutationFunction<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
-export type DestroyNotificationComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>, 'mutation'>;
 
-    export const DestroyNotificationComponent = (props: DestroyNotificationComponentProps) => (
-      <ApolloReactComponents.Mutation<DestroyNotificationMutation, DestroyNotificationMutationVariables> mutation={DestroyNotificationDocument} {...props} />
-    );
-    
-export type DestroyNotificationProps<TChildProps = {}> = ApolloReactHoc.MutateProps<DestroyNotificationMutation, DestroyNotificationMutationVariables> & TChildProps;
-export function withDestroyNotification<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DestroyNotificationMutation,
-  DestroyNotificationMutationVariables,
-  DestroyNotificationProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, DestroyNotificationMutation, DestroyNotificationMutationVariables, DestroyNotificationProps<TChildProps>>(DestroyNotificationDocument, {
-      alias: 'destroyNotification',
-      ...operationOptions
-    });
-};
-
-    export function useDestroyNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>) {
-      return ApolloReactHooks.useMutation<DestroyNotificationMutation, DestroyNotificationMutationVariables>(DestroyNotificationDocument, baseOptions);
-    }
+/**
+ * __useDestroyNotificationMutation__
+ *
+ * To run a mutation, you first call `useDestroyNotificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDestroyNotificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [destroyNotificationMutation, { data, loading, error }] = useDestroyNotificationMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDestroyNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>) {
+        return ApolloReactHooks.useMutation<DestroyNotificationMutation, DestroyNotificationMutationVariables>(DestroyNotificationDocument, baseOptions);
+      }
 export type DestroyNotificationMutationHookResult = ReturnType<typeof useDestroyNotificationMutation>;
 export type DestroyNotificationMutationResult = ApolloReactCommon.MutationResult<DestroyNotificationMutation>;
 export type DestroyNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
@@ -1189,32 +1193,30 @@ export const NotificationsDocument = gql`
   }
 }
     ${NotificationFragmentDoc}`;
-export type NotificationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<NotificationsQuery, NotificationsQueryVariables>, 'query'>;
 
-    export const NotificationsComponent = (props: NotificationsComponentProps) => (
-      <ApolloReactComponents.Query<NotificationsQuery, NotificationsQueryVariables> query={NotificationsDocument} {...props} />
-    );
-    
-export type NotificationsProps<TChildProps = {}> = ApolloReactHoc.DataProps<NotificationsQuery, NotificationsQueryVariables> & TChildProps;
-export function withNotifications<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  NotificationsQuery,
-  NotificationsQueryVariables,
-  NotificationsProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, NotificationsQuery, NotificationsQueryVariables, NotificationsProps<TChildProps>>(NotificationsDocument, {
-      alias: 'notifications',
-      ...operationOptions
-    });
-};
-
-    export function useNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-      return ApolloReactHooks.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
-    }
-      export function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+/**
+ * __useNotificationsQuery__
+ *
+ * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+        return ApolloReactHooks.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
       }
-      
+export function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+        }
 export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
+export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
 export type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const ReadNotificationDocument = gql`
     mutation ReadNotification($id: ID!) {
@@ -1227,27 +1229,27 @@ export const ReadNotificationDocument = gql`
 }
     `;
 export type ReadNotificationMutationFn = ApolloReactCommon.MutationFunction<ReadNotificationMutation, ReadNotificationMutationVariables>;
-export type ReadNotificationComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<ReadNotificationMutation, ReadNotificationMutationVariables>, 'mutation'>;
 
-    export const ReadNotificationComponent = (props: ReadNotificationComponentProps) => (
-      <ApolloReactComponents.Mutation<ReadNotificationMutation, ReadNotificationMutationVariables> mutation={ReadNotificationDocument} {...props} />
-    );
-    
-export type ReadNotificationProps<TChildProps = {}> = ApolloReactHoc.MutateProps<ReadNotificationMutation, ReadNotificationMutationVariables> & TChildProps;
-export function withReadNotification<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  ReadNotificationMutation,
-  ReadNotificationMutationVariables,
-  ReadNotificationProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, ReadNotificationMutation, ReadNotificationMutationVariables, ReadNotificationProps<TChildProps>>(ReadNotificationDocument, {
-      alias: 'readNotification',
-      ...operationOptions
-    });
-};
-
-    export function useReadNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ReadNotificationMutation, ReadNotificationMutationVariables>) {
-      return ApolloReactHooks.useMutation<ReadNotificationMutation, ReadNotificationMutationVariables>(ReadNotificationDocument, baseOptions);
-    }
+/**
+ * __useReadNotificationMutation__
+ *
+ * To run a mutation, you first call `useReadNotificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useReadNotificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [readNotificationMutation, { data, loading, error }] = useReadNotificationMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useReadNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ReadNotificationMutation, ReadNotificationMutationVariables>) {
+        return ApolloReactHooks.useMutation<ReadNotificationMutation, ReadNotificationMutationVariables>(ReadNotificationDocument, baseOptions);
+      }
 export type ReadNotificationMutationHookResult = ReturnType<typeof useReadNotificationMutation>;
 export type ReadNotificationMutationResult = ApolloReactCommon.MutationResult<ReadNotificationMutation>;
 export type ReadNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<ReadNotificationMutation, ReadNotificationMutationVariables>;
@@ -1259,27 +1261,27 @@ export const SettingsAvatarAttachDocument = gql`
 }
     `;
 export type SettingsAvatarAttachMutationFn = ApolloReactCommon.MutationFunction<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>;
-export type SettingsAvatarAttachComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>, 'mutation'>;
 
-    export const SettingsAvatarAttachComponent = (props: SettingsAvatarAttachComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables> mutation={SettingsAvatarAttachDocument} {...props} />
-    );
-    
-export type SettingsAvatarAttachProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables> & TChildProps;
-export function withSettingsAvatarAttach<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsAvatarAttachMutation,
-  SettingsAvatarAttachMutationVariables,
-  SettingsAvatarAttachProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables, SettingsAvatarAttachProps<TChildProps>>(SettingsAvatarAttachDocument, {
-      alias: 'settingsAvatarAttach',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsAvatarAttachMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>(SettingsAvatarAttachDocument, baseOptions);
-    }
+/**
+ * __useSettingsAvatarAttachMutation__
+ *
+ * To run a mutation, you first call `useSettingsAvatarAttachMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsAvatarAttachMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsAvatarAttachMutation, { data, loading, error }] = useSettingsAvatarAttachMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSettingsAvatarAttachMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>(SettingsAvatarAttachDocument, baseOptions);
+      }
 export type SettingsAvatarAttachMutationHookResult = ReturnType<typeof useSettingsAvatarAttachMutation>;
 export type SettingsAvatarAttachMutationResult = ApolloReactCommon.MutationResult<SettingsAvatarAttachMutation>;
 export type SettingsAvatarAttachMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsAvatarAttachMutation, SettingsAvatarAttachMutationVariables>;
@@ -1291,27 +1293,26 @@ export const SettingsAvatarDetachDocument = gql`
 }
     `;
 export type SettingsAvatarDetachMutationFn = ApolloReactCommon.MutationFunction<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>;
-export type SettingsAvatarDetachComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>, 'mutation'>;
 
-    export const SettingsAvatarDetachComponent = (props: SettingsAvatarDetachComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables> mutation={SettingsAvatarDetachDocument} {...props} />
-    );
-    
-export type SettingsAvatarDetachProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables> & TChildProps;
-export function withSettingsAvatarDetach<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsAvatarDetachMutation,
-  SettingsAvatarDetachMutationVariables,
-  SettingsAvatarDetachProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables, SettingsAvatarDetachProps<TChildProps>>(SettingsAvatarDetachDocument, {
-      alias: 'settingsAvatarDetach',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsAvatarDetachMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>(SettingsAvatarDetachDocument, baseOptions);
-    }
+/**
+ * __useSettingsAvatarDetachMutation__
+ *
+ * To run a mutation, you first call `useSettingsAvatarDetachMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsAvatarDetachMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsAvatarDetachMutation, { data, loading, error }] = useSettingsAvatarDetachMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsAvatarDetachMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>(SettingsAvatarDetachDocument, baseOptions);
+      }
 export type SettingsAvatarDetachMutationHookResult = ReturnType<typeof useSettingsAvatarDetachMutation>;
 export type SettingsAvatarDetachMutationResult = ApolloReactCommon.MutationResult<SettingsAvatarDetachMutation>;
 export type SettingsAvatarDetachMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>;
@@ -1325,32 +1326,30 @@ export const SettingsAvatarDocument = gql`
   }
 }
     `;
-export type SettingsAvatarComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>, 'query'>;
 
-    export const SettingsAvatarComponent = (props: SettingsAvatarComponentProps) => (
-      <ApolloReactComponents.Query<SettingsAvatarQuery, SettingsAvatarQueryVariables> query={SettingsAvatarDocument} {...props} />
-    );
-    
-export type SettingsAvatarProps<TChildProps = {}> = ApolloReactHoc.DataProps<SettingsAvatarQuery, SettingsAvatarQueryVariables> & TChildProps;
-export function withSettingsAvatar<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsAvatarQuery,
-  SettingsAvatarQueryVariables,
-  SettingsAvatarProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, SettingsAvatarQuery, SettingsAvatarQueryVariables, SettingsAvatarProps<TChildProps>>(SettingsAvatarDocument, {
-      alias: 'settingsAvatar',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsAvatarQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
-      return ApolloReactHooks.useQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, baseOptions);
-    }
-      export function useSettingsAvatarLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, baseOptions);
+/**
+ * __useSettingsAvatarQuery__
+ *
+ * To run a query within a React component, call `useSettingsAvatarQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsAvatarQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsAvatarQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
+        return ApolloReactHooks.useQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, baseOptions);
       }
-      
+export function useSettingsAvatarLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, baseOptions);
+        }
 export type SettingsAvatarQueryHookResult = ReturnType<typeof useSettingsAvatarQuery>;
+export type SettingsAvatarLazyQueryHookResult = ReturnType<typeof useSettingsAvatarLazyQuery>;
 export type SettingsAvatarQueryResult = ApolloReactCommon.QueryResult<SettingsAvatarQuery, SettingsAvatarQueryVariables>;
 export const SettingsBillingDocument = gql`
     query SettingsBilling {
@@ -1369,32 +1368,30 @@ export const SettingsBillingDocument = gql`
   }
 }
     `;
-export type SettingsBillingComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SettingsBillingQuery, SettingsBillingQueryVariables>, 'query'>;
 
-    export const SettingsBillingComponent = (props: SettingsBillingComponentProps) => (
-      <ApolloReactComponents.Query<SettingsBillingQuery, SettingsBillingQueryVariables> query={SettingsBillingDocument} {...props} />
-    );
-    
-export type SettingsBillingProps<TChildProps = {}> = ApolloReactHoc.DataProps<SettingsBillingQuery, SettingsBillingQueryVariables> & TChildProps;
-export function withSettingsBilling<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsBillingQuery,
-  SettingsBillingQueryVariables,
-  SettingsBillingProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, SettingsBillingQuery, SettingsBillingQueryVariables, SettingsBillingProps<TChildProps>>(SettingsBillingDocument, {
-      alias: 'settingsBilling',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsBillingQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
-      return ApolloReactHooks.useQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, baseOptions);
-    }
-      export function useSettingsBillingLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, baseOptions);
+/**
+ * __useSettingsBillingQuery__
+ *
+ * To run a query within a React component, call `useSettingsBillingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsBillingQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsBillingQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
+        return ApolloReactHooks.useQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, baseOptions);
       }
-      
+export function useSettingsBillingLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, baseOptions);
+        }
 export type SettingsBillingQueryHookResult = ReturnType<typeof useSettingsBillingQuery>;
+export type SettingsBillingLazyQueryHookResult = ReturnType<typeof useSettingsBillingLazyQuery>;
 export type SettingsBillingQueryResult = ApolloReactCommon.QueryResult<SettingsBillingQuery, SettingsBillingQueryVariables>;
 export const SettingsBillingSourceBuildDocument = gql`
     mutation SettingsBillingSourceBuild($source: String!) {
@@ -1404,27 +1401,27 @@ export const SettingsBillingSourceBuildDocument = gql`
 }
     `;
 export type SettingsBillingSourceBuildMutationFn = ApolloReactCommon.MutationFunction<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>;
-export type SettingsBillingSourceBuildComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>, 'mutation'>;
 
-    export const SettingsBillingSourceBuildComponent = (props: SettingsBillingSourceBuildComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables> mutation={SettingsBillingSourceBuildDocument} {...props} />
-    );
-    
-export type SettingsBillingSourceBuildProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables> & TChildProps;
-export function withSettingsBillingSourceBuild<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsBillingSourceBuildMutation,
-  SettingsBillingSourceBuildMutationVariables,
-  SettingsBillingSourceBuildProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables, SettingsBillingSourceBuildProps<TChildProps>>(SettingsBillingSourceBuildDocument, {
-      alias: 'settingsBillingSourceBuild',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsBillingSourceBuildMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>(SettingsBillingSourceBuildDocument, baseOptions);
-    }
+/**
+ * __useSettingsBillingSourceBuildMutation__
+ *
+ * To run a mutation, you first call `useSettingsBillingSourceBuildMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingSourceBuildMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsBillingSourceBuildMutation, { data, loading, error }] = useSettingsBillingSourceBuildMutation({
+ *   variables: {
+ *      source: // value for 'source'
+ *   },
+ * });
+ */
+export function useSettingsBillingSourceBuildMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>(SettingsBillingSourceBuildDocument, baseOptions);
+      }
 export type SettingsBillingSourceBuildMutationHookResult = ReturnType<typeof useSettingsBillingSourceBuildMutation>;
 export type SettingsBillingSourceBuildMutationResult = ApolloReactCommon.MutationResult<SettingsBillingSourceBuildMutation>;
 export type SettingsBillingSourceBuildMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceBuildMutation, SettingsBillingSourceBuildMutationVariables>;
@@ -1436,27 +1433,27 @@ export const SettingsBillingSourceDefaultDocument = gql`
 }
     `;
 export type SettingsBillingSourceDefaultMutationFn = ApolloReactCommon.MutationFunction<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>;
-export type SettingsBillingSourceDefaultComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>, 'mutation'>;
 
-    export const SettingsBillingSourceDefaultComponent = (props: SettingsBillingSourceDefaultComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables> mutation={SettingsBillingSourceDefaultDocument} {...props} />
-    );
-    
-export type SettingsBillingSourceDefaultProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables> & TChildProps;
-export function withSettingsBillingSourceDefault<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsBillingSourceDefaultMutation,
-  SettingsBillingSourceDefaultMutationVariables,
-  SettingsBillingSourceDefaultProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables, SettingsBillingSourceDefaultProps<TChildProps>>(SettingsBillingSourceDefaultDocument, {
-      alias: 'settingsBillingSourceDefault',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsBillingSourceDefaultMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>(SettingsBillingSourceDefaultDocument, baseOptions);
-    }
+/**
+ * __useSettingsBillingSourceDefaultMutation__
+ *
+ * To run a mutation, you first call `useSettingsBillingSourceDefaultMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingSourceDefaultMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsBillingSourceDefaultMutation, { data, loading, error }] = useSettingsBillingSourceDefaultMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSettingsBillingSourceDefaultMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>(SettingsBillingSourceDefaultDocument, baseOptions);
+      }
 export type SettingsBillingSourceDefaultMutationHookResult = ReturnType<typeof useSettingsBillingSourceDefaultMutation>;
 export type SettingsBillingSourceDefaultMutationResult = ApolloReactCommon.MutationResult<SettingsBillingSourceDefaultMutation>;
 export type SettingsBillingSourceDefaultMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>;
@@ -1468,27 +1465,27 @@ export const SettingsBillingSourceDestroyDocument = gql`
 }
     `;
 export type SettingsBillingSourceDestroyMutationFn = ApolloReactCommon.MutationFunction<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
-export type SettingsBillingSourceDestroyComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>, 'mutation'>;
 
-    export const SettingsBillingSourceDestroyComponent = (props: SettingsBillingSourceDestroyComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables> mutation={SettingsBillingSourceDestroyDocument} {...props} />
-    );
-    
-export type SettingsBillingSourceDestroyProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables> & TChildProps;
-export function withSettingsBillingSourceDestroy<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsBillingSourceDestroyMutation,
-  SettingsBillingSourceDestroyMutationVariables,
-  SettingsBillingSourceDestroyProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables, SettingsBillingSourceDestroyProps<TChildProps>>(SettingsBillingSourceDestroyDocument, {
-      alias: 'settingsBillingSourceDestroy',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsBillingSourceDestroyMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>(SettingsBillingSourceDestroyDocument, baseOptions);
-    }
+/**
+ * __useSettingsBillingSourceDestroyMutation__
+ *
+ * To run a mutation, you first call `useSettingsBillingSourceDestroyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingSourceDestroyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsBillingSourceDestroyMutation, { data, loading, error }] = useSettingsBillingSourceDestroyMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSettingsBillingSourceDestroyMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>(SettingsBillingSourceDestroyDocument, baseOptions);
+      }
 export type SettingsBillingSourceDestroyMutationHookResult = ReturnType<typeof useSettingsBillingSourceDestroyMutation>;
 export type SettingsBillingSourceDestroyMutationResult = ApolloReactCommon.MutationResult<SettingsBillingSourceDestroyMutation>;
 export type SettingsBillingSourceDestroyMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
@@ -1503,27 +1500,27 @@ export const SettingsPasswordDocument = gql`
 }
     `;
 export type SettingsPasswordMutationFn = ApolloReactCommon.MutationFunction<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
-export type SettingsPasswordComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>, 'mutation'>;
 
-    export const SettingsPasswordComponent = (props: SettingsPasswordComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsPasswordMutation, SettingsPasswordMutationVariables> mutation={SettingsPasswordDocument} {...props} />
-    );
-    
-export type SettingsPasswordProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsPasswordMutation, SettingsPasswordMutationVariables> & TChildProps;
-export function withSettingsPassword<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsPasswordMutation,
-  SettingsPasswordMutationVariables,
-  SettingsPasswordProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsPasswordMutation, SettingsPasswordMutationVariables, SettingsPasswordProps<TChildProps>>(SettingsPasswordDocument, {
-      alias: 'settingsPassword',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsPasswordMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsPasswordMutation, SettingsPasswordMutationVariables>(SettingsPasswordDocument, baseOptions);
-    }
+/**
+ * __useSettingsPasswordMutation__
+ *
+ * To run a mutation, you first call `useSettingsPasswordMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsPasswordMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsPasswordMutation, { data, loading, error }] = useSettingsPasswordMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSettingsPasswordMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsPasswordMutation, SettingsPasswordMutationVariables>(SettingsPasswordDocument, baseOptions);
+      }
 export type SettingsPasswordMutationHookResult = ReturnType<typeof useSettingsPasswordMutation>;
 export type SettingsPasswordMutationResult = ApolloReactCommon.MutationResult<SettingsPasswordMutation>;
 export type SettingsPasswordMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
@@ -1538,27 +1535,27 @@ export const SettingsChangeProfileDocument = gql`
 }
     `;
 export type SettingsChangeProfileMutationFn = ApolloReactCommon.MutationFunction<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>;
-export type SettingsChangeProfileComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>, 'mutation'>;
 
-    export const SettingsChangeProfileComponent = (props: SettingsChangeProfileComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables> mutation={SettingsChangeProfileDocument} {...props} />
-    );
-    
-export type SettingsChangeProfileProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables> & TChildProps;
-export function withSettingsChangeProfile<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsChangeProfileMutation,
-  SettingsChangeProfileMutationVariables,
-  SettingsChangeProfileProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables, SettingsChangeProfileProps<TChildProps>>(SettingsChangeProfileDocument, {
-      alias: 'settingsChangeProfile',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsChangeProfileMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>(SettingsChangeProfileDocument, baseOptions);
-    }
+/**
+ * __useSettingsChangeProfileMutation__
+ *
+ * To run a mutation, you first call `useSettingsChangeProfileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsChangeProfileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsChangeProfileMutation, { data, loading, error }] = useSettingsChangeProfileMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSettingsChangeProfileMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>(SettingsChangeProfileDocument, baseOptions);
+      }
 export type SettingsChangeProfileMutationHookResult = ReturnType<typeof useSettingsChangeProfileMutation>;
 export type SettingsChangeProfileMutationResult = ApolloReactCommon.MutationResult<SettingsChangeProfileMutation>;
 export type SettingsChangeProfileMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>;
@@ -1571,32 +1568,30 @@ export const SettingsProfileDocument = gql`
   }
 }
     `;
-export type SettingsProfileComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SettingsProfileQuery, SettingsProfileQueryVariables>, 'query'>;
 
-    export const SettingsProfileComponent = (props: SettingsProfileComponentProps) => (
-      <ApolloReactComponents.Query<SettingsProfileQuery, SettingsProfileQueryVariables> query={SettingsProfileDocument} {...props} />
-    );
-    
-export type SettingsProfileProps<TChildProps = {}> = ApolloReactHoc.DataProps<SettingsProfileQuery, SettingsProfileQueryVariables> & TChildProps;
-export function withSettingsProfile<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsProfileQuery,
-  SettingsProfileQueryVariables,
-  SettingsProfileProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, SettingsProfileQuery, SettingsProfileQueryVariables, SettingsProfileProps<TChildProps>>(SettingsProfileDocument, {
-      alias: 'settingsProfile',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
-      return ApolloReactHooks.useQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, baseOptions);
-    }
-      export function useSettingsProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, baseOptions);
+/**
+ * __useSettingsProfileQuery__
+ *
+ * To run a query within a React component, call `useSettingsProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsProfileQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+        return ApolloReactHooks.useQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, baseOptions);
       }
-      
+export function useSettingsProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, baseOptions);
+        }
 export type SettingsProfileQueryHookResult = ReturnType<typeof useSettingsProfileQuery>;
+export type SettingsProfileLazyQueryHookResult = ReturnType<typeof useSettingsProfileLazyQuery>;
 export type SettingsProfileQueryResult = ApolloReactCommon.QueryResult<SettingsProfileQuery, SettingsProfileQueryVariables>;
 export const SettingsSessionsDocument = gql`
     query SettingsSessions {
@@ -1605,32 +1600,30 @@ export const SettingsSessionsDocument = gql`
   }
 }
     ${SessionFragmentDoc}`;
-export type SettingsSessionsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SettingsSessionsQuery, SettingsSessionsQueryVariables>, 'query'>;
 
-    export const SettingsSessionsComponent = (props: SettingsSessionsComponentProps) => (
-      <ApolloReactComponents.Query<SettingsSessionsQuery, SettingsSessionsQueryVariables> query={SettingsSessionsDocument} {...props} />
-    );
-    
-export type SettingsSessionsProps<TChildProps = {}> = ApolloReactHoc.DataProps<SettingsSessionsQuery, SettingsSessionsQueryVariables> & TChildProps;
-export function withSettingsSessions<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsSessionsQuery,
-  SettingsSessionsQueryVariables,
-  SettingsSessionsProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, SettingsSessionsQuery, SettingsSessionsQueryVariables, SettingsSessionsProps<TChildProps>>(SettingsSessionsDocument, {
-      alias: 'settingsSessions',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsSessionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsSessionsQuery, SettingsSessionsQueryVariables>) {
-      return ApolloReactHooks.useQuery<SettingsSessionsQuery, SettingsSessionsQueryVariables>(SettingsSessionsDocument, baseOptions);
-    }
-      export function useSettingsSessionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsSessionsQuery, SettingsSessionsQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<SettingsSessionsQuery, SettingsSessionsQueryVariables>(SettingsSessionsDocument, baseOptions);
+/**
+ * __useSettingsSessionsQuery__
+ *
+ * To run a query within a React component, call `useSettingsSessionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsSessionsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsSessionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsSessionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SettingsSessionsQuery, SettingsSessionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<SettingsSessionsQuery, SettingsSessionsQueryVariables>(SettingsSessionsDocument, baseOptions);
       }
-      
+export function useSettingsSessionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SettingsSessionsQuery, SettingsSessionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SettingsSessionsQuery, SettingsSessionsQueryVariables>(SettingsSessionsDocument, baseOptions);
+        }
 export type SettingsSessionsQueryHookResult = ReturnType<typeof useSettingsSessionsQuery>;
+export type SettingsSessionsLazyQueryHookResult = ReturnType<typeof useSettingsSessionsLazyQuery>;
 export type SettingsSessionsQueryResult = ApolloReactCommon.QueryResult<SettingsSessionsQuery, SettingsSessionsQueryVariables>;
 export const SettingsSessionRevokeDocument = gql`
     mutation SettingsSessionRevoke($id: String!) {
@@ -1643,27 +1636,27 @@ export const SettingsSessionRevokeDocument = gql`
 }
     `;
 export type SettingsSessionRevokeMutationFn = ApolloReactCommon.MutationFunction<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>;
-export type SettingsSessionRevokeComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>, 'mutation'>;
 
-    export const SettingsSessionRevokeComponent = (props: SettingsSessionRevokeComponentProps) => (
-      <ApolloReactComponents.Mutation<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables> mutation={SettingsSessionRevokeDocument} {...props} />
-    );
-    
-export type SettingsSessionRevokeProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables> & TChildProps;
-export function withSettingsSessionRevoke<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SettingsSessionRevokeMutation,
-  SettingsSessionRevokeMutationVariables,
-  SettingsSessionRevokeProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables, SettingsSessionRevokeProps<TChildProps>>(SettingsSessionRevokeDocument, {
-      alias: 'settingsSessionRevoke',
-      ...operationOptions
-    });
-};
-
-    export function useSettingsSessionRevokeMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>) {
-      return ApolloReactHooks.useMutation<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>(SettingsSessionRevokeDocument, baseOptions);
-    }
+/**
+ * __useSettingsSessionRevokeMutation__
+ *
+ * To run a mutation, you first call `useSettingsSessionRevokeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsSessionRevokeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [settingsSessionRevokeMutation, { data, loading, error }] = useSettingsSessionRevokeMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSettingsSessionRevokeMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>) {
+        return ApolloReactHooks.useMutation<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>(SettingsSessionRevokeDocument, baseOptions);
+      }
 export type SettingsSessionRevokeMutationHookResult = ReturnType<typeof useSettingsSessionRevokeMutation>;
 export type SettingsSessionRevokeMutationResult = ApolloReactCommon.MutationResult<SettingsSessionRevokeMutation>;
 export type SettingsSessionRevokeMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>;
@@ -1681,27 +1674,27 @@ export const SignupDocument = gql`
 }
     `;
 export type SignupMutationFn = ApolloReactCommon.MutationFunction<SignupMutation, SignupMutationVariables>;
-export type SignupComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SignupMutation, SignupMutationVariables>, 'mutation'>;
 
-    export const SignupComponent = (props: SignupComponentProps) => (
-      <ApolloReactComponents.Mutation<SignupMutation, SignupMutationVariables> mutation={SignupDocument} {...props} />
-    );
-    
-export type SignupProps<TChildProps = {}> = ApolloReactHoc.MutateProps<SignupMutation, SignupMutationVariables> & TChildProps;
-export function withSignup<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SignupMutation,
-  SignupMutationVariables,
-  SignupProps<TChildProps>>) {
-    return ApolloReactHoc.withMutation<TProps, SignupMutation, SignupMutationVariables, SignupProps<TChildProps>>(SignupDocument, {
-      alias: 'signup',
-      ...operationOptions
-    });
-};
-
-    export function useSignupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
-      return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
-    }
+/**
+ * __useSignupMutation__
+ *
+ * To run a mutation, you first call `useSignupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSignupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [signupMutation, { data, loading, error }] = useSignupMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSignupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
+        return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
+      }
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
 export type SignupMutationResult = ApolloReactCommon.MutationResult<SignupMutation>;
 export type SignupMutationOptions = ApolloReactCommon.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
