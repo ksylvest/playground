@@ -3,6 +3,7 @@ class SitemapsController < ApplicationController
 
   def show
     @feed = Feed::Context.new
+    @users = User.all
 
     expires_in 5.minutes
   end
