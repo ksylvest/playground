@@ -1,33 +1,20 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { Breadcrumb, Card, Column, Columns } from "tights";
+import { Card, Column, Columns } from "tights";
 
 import { useFeedEntryQuery } from "@root/app_schema";
 
-import { Attachment, Title } from "@application/components/helpers";
+import { Attachment, Breadcrumbs, Title } from "@application/components/helpers";
 
 import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
 
-import { FEED_DETAILS_URL, FEED_LIST_URL, PROFILE_URL } from "@application/config/routes";
+import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 
 import { Actions } from "./entry/actions";
 
 import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
-
-const Breadcrumbs: React.FC<{ id: string }> = ({ id }) => (
-  <Breadcrumb>
-    <Breadcrumb.List>
-      <Breadcrumb.Item>
-        <Link to={FEED_LIST_URL}>Home</Link>
-      </Breadcrumb.Item>
-      <Breadcrumb.Item active>
-        <Link to={FEED_DETAILS_URL({ id })}>Details</Link>
-      </Breadcrumb.Item>
-    </Breadcrumb.List>
-  </Breadcrumb>
-);
 
 export const Details: React.FC<{
   id: string;
@@ -43,7 +30,7 @@ export const Details: React.FC<{
   return (
     <>
       <Title>Feed - Details | Playground</Title>
-      <Breadcrumbs id={id} />
+      <Breadcrumbs links={[{ name: "Details", to: FEED_DETAILS_URL({ id }) }]} />
       <Card>
         <Card.Content>
           <Columns>
