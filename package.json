@@ -42,7 +42,7 @@
     "react-router-dom": "^5.1.2",
     "react_ujs": "^2.6.0",
     "tights": "^1.4.4",
-    "ts-loader": "^6.2.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.6.4",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
