@@ -3,7 +3,7 @@
 = render 'entry', path: signup_url, frequency: 'weekly', priority: 1.0
 
 - @users.each do |user|
-  = render 'entry', path: profile_path(user), frequency: 'monthly', priority: 0.8
+  = render 'entry', path: profile_url(user), frequency: 'monthly', priority: 0.8
 
 - @feed.entries.each do |entry|
   = render 'entry', path: feed_entry_url(entry), frequency: 'monthly', priority: 0.8
