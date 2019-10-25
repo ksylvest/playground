@@ -61,9 +61,18 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - restore_cache:
+          keys:
+            - assets-{{ .Branch }}-{{ .Revision }}
+            - assets-{{ .Branch }}
       - run: gem install bundler --version "$BUNDLER_VERSION"
       - run: bundle check || bundle install  --clean --deployment
       - run: bundle exec rails webpacker:compile
+      - save_cache:
+          key: assets-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - public/packs-test
+            - tmp/cache/webpacker
       - persist_to_workspace:
           root: .
           paths:
