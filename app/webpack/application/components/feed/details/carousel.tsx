@@ -8,7 +8,7 @@ import { Pagination } from "tights";
 
 import { Attachment } from "@application/components/helpers";
 
-import { Attached } from "@root/app_schema";
+import { AttachedFragment } from "@root/app_schema";
 
 import { useKey } from "@application/hooks";
 
@@ -19,7 +19,7 @@ const PREV_KEY = "ArrowLeft";
 const CHAR_CODE_OFFSET = 65; // i.e. 'A', 'B', 'C', ...
 
 export const Carousel: React.FC<{
-  photos: Attached[];
+  photos: AttachedFragment[];
 }> = ({ photos }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
