@@ -13,7 +13,7 @@ private
 
   def service
     Attachment::VariantService.new(
-      attachment: attachment,
+      attachment,
       format: format,
       resize: resize,
       size: size
