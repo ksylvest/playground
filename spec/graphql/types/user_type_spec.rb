@@ -16,6 +16,7 @@ RSpec.describe Types::UserType do
             email
             avatar {
               id
+              variant(options: { w: 8, h: 8, resize: FILL, format: WEBP })
             }
           }
         }

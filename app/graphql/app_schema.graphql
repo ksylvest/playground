@@ -8,6 +8,7 @@ type AttachAvatarPayload {
 type Attached {
   filename: String!
   id: String!
+  variant(options: VariantInput!): DataURI
 }
 
 type Billing {
@@ -76,6 +77,11 @@ type ChangeProfilePayload {
   errors: Errors
   status: Status!
 }
+
+"""
+Represents a formatted data URI.
+"""
+scalar DataURI
 
 """
 An ISO 8601-encoded datetime
@@ -312,4 +318,21 @@ type User {
 input UserInput {
   email: String!
   name: String!
+}
+
+input VariantInput {
+  format: Variant__Format!
+  h: Int!
+  resize: Variant__Resize!
+  w: Int!
+}
+
+enum Variant__Format {
+  JPEG
+  WEBP
+}
+
+enum Variant__Resize {
+  FILL
+  FIT
 }
