@@ -7,7 +7,14 @@ module Attachment
     private_constant :RESIZES
     private_constant :DEFAULTS
 
-    def initialize(attachment:, format: 'jpg', quality: 90, resize: 'fill', size:)
+    delegate :key, to: :variant
+
+    # @param attachment [ActiveStorage::Attachment] an attachment to generate a variant for
+    # @param format [String] 'jpeg' or 'webp'
+    # @param resize [String] 'fit' or 'fill'
+    # @param quality [Integer] a numeric quality option ranging from 0 to 100
+    # @param size [Array] a l / w tuple
+    def initialize(attachment, format: 'jpeg', quality: 80, resize: 'fill', size:)
       raise ArgumentError, "invalid option for format: #{format.inspect}" if FORMATS.none?(format)
       raise ArgumentError, "invalid option for resize: #{resize.inspect}" if RESIZES.none?(resize)
 
@@ -18,11 +25,7 @@ module Attachment
       @size = size
     end
 
-    def data
-      variant.processed
-      variant.service.download(variant.key)
-    end
-
+    # @return [ActiveStorage::Variant] a memoized variant
     def variant
       @variant ||= @attachment.variant(
         "resize_to_#{@resize}": @size,
@@ -30,6 +33,17 @@ module Attachment
         quality: @quality,
         **DEFAULTS
       )
+    end
+
+    # @return [String] the processed data for the variant
+    def data
+      variant.processed
+      variant.service.download(key)
+    end
+
+    # @return [String] a mime type (i.e. image/jpeg or image/webp)
+    def type
+      Mime::Type.lookup_by_extension(@format)
     end
   end
 end
