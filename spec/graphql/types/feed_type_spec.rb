@@ -26,12 +26,14 @@ RSpec.describe Types::FeedType do
               }
               photos {
                 id
+                variant(options: { w: 8, h: 8, resize: FILL, format: WEBP })
               }
               user {
                 id
                 name
                 avatar {
                   id
+                  variant(options: { w: 8, h: 8, resize: FILL, format: WEBP })
                 }
               }
             }
