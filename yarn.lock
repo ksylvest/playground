@@ -825,10 +825,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.3.tgz#5b6b1c11d6a6dddf1f2fc996f74cf3b219644d78"
   integrity sha512-2Md9mH6mvo+ygq1trTeVp2uzAKwE2P7In0cRpD/M9Q70aH8L+rxMLbb3JCN2JoSWsV2O+DdFjfbbXoMoLBczow==
 
-"@emotion/serialize@^0.11.12":
-  version "0.11.12"
-  resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.11.12.tgz#a3de660eab40e030daf2daa722fec2968a378cd4"
-  integrity sha512-jUeLld8vocIvCZaE3ZErgW/ZUpzmEB7O2Az9VUlAm2OHoR3yYZjB6uyL9YF4n5qSTPGKlldm+ng71a+rh7WJwg==
+"@emotion/serialize@^0.11.12", "@emotion/serialize@^0.11.14":
+  version "0.11.14"
+  resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.11.14.tgz#56a6d8d04d837cc5b0126788b2134c51353c6488"
+  integrity sha512-6hTsySIuQTbDbv00AnUO6O6Xafdwo5GswRlMZ5hHqiFx+4pZ7uGWXUQFW46Kc2taGhP89uXMXn/lWQkdyTosPA==
   dependencies:
     "@emotion/hash" "0.7.3"
     "@emotion/memoize" "0.7.3"
