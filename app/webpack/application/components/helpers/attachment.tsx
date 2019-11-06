@@ -21,7 +21,7 @@ export const Attachment: React.FC<{
   h: number;
   resize?: Resize;
 }> = ({ attachment, placeholder, rounded, square, w, h, resize = "fill" }) => {
-  const id = (attachment && attachment.id) || undefined;
+  const id = attachment?.id;
   const src = id ? ATTACHMENT_URL(id, w, h, resize) : placeholder;
 
   return (

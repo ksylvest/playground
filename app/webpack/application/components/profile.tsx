@@ -14,8 +14,8 @@ import { PROFILE_URL } from "@application/config/routes";
 export const Profile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data } = useProfileQuery({ variables: { id } });
-  const user = data && data.user;
-  const entries = user && user.feed.entries;
+  const user = data?.user;
+  const entries = user?.feed.entries;
 
   return (
     <>

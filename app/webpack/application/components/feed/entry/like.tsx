@@ -14,9 +14,9 @@ const OFF_COLOR = "hsl(0, 0%, 48%)";
 export const Like: React.FC<{
   entry?: Feed__EntryFragment;
 }> = ({ entry }) => {
-  const liked = entry && entry.liked;
-  const likes = entry && entry.likes;
-  const id = entry && entry.id;
+  const liked = entry?.liked;
+  const likes = entry?.likes;
+  const id = entry?.id;
   const variables = { id: id! };
 
   const [like, { loading: liking }] = useLikeFeedEntryMutation({ variables });

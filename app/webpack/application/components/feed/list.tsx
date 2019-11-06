@@ -8,7 +8,7 @@ import { Entries } from "./entries";
 
 export const List: React.FC = () => {
   const { data } = useFeedQuery();
-  const entries = data && data.feed && data.feed.entries;
+  const entries = data?.feed?.entries;
 
   return (
     <>

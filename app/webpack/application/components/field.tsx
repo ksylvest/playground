@@ -22,7 +22,7 @@ export const Field: React.FC<{
   };
   onValue(value: string): void;
 }> = ({ icon, type, name, value, label, placeholder = label, errors, onValue }) => {
-  const messages = errors && errors.messages[name];
+  const messages = errors?.messages[name];
   const help = messages && sentence(messages);
   const invalid = !!errors && !!messages;
   const valid = !!errors && !messages;

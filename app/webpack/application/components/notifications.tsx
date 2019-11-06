@@ -15,7 +15,7 @@ export const Notifications: React.FC = () => {
 
       <h2 className="title">Notifications</h2>
       <hr />
-      <List notifications={data && data.notifications} />
+      <List notifications={data?.notifications} />
     </>
   );
 };

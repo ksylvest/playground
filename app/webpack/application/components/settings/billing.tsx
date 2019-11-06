@@ -8,9 +8,9 @@ import { Sources } from "./billing/sources";
 
 export const Billing: React.FC = () => {
   const { data, refetch } = useSettingsBillingQuery();
-  const billing = data && data.billing;
-  const customer = billing && billing.customer;
-  const sources = customer && customer.sources;
+  const billing = data?.billing;
+  const customer = billing?.customer;
+  const sources = customer?.sources;
 
   return (
     <>
