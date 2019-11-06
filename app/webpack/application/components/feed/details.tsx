@@ -20,11 +20,11 @@ export const Details: React.FC<{
   id: string;
 }> = ({ id }) => {
   const { data } = useFeedEntryQuery({ variables: { id } });
-  const entry = data && data.feed && data.feed.entry;
+  const entry = data?.feed?.entry;
 
-  const photos = entry && entry.photos;
-  const user = entry && entry.user;
-  const avatar = user && user.avatar;
+  const photos = entry?.photos;
+  const user = entry?.user;
+  const avatar = user?.avatar;
   const profileURL = user ? PROFILE_URL(user) : "#";
 
   return (

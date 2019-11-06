@@ -14,13 +14,13 @@ export const Form: React.FC<{
     password: "",
   });
   const [submit, { loading, data }] = useSignupMutation();
-  const errors = (data && data.signup && data.signup.errors) || undefined;
+  const errors = data?.signup?.errors || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });
-    const session = result.data && result.data.signup && result.data.signup.session;
+    const session = result.data?.signup?.session;
     if (session) {
       onAuth(session);
     }

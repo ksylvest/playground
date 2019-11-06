@@ -21,7 +21,7 @@ export const Password: React.FC = () => {
       }
     },
   });
-  const errors = (data && data.result && data.result.errors) || undefined;
+  const errors = data?.result?.errors || undefined;
 
   return (
     <>

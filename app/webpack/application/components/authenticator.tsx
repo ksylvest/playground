@@ -17,7 +17,7 @@ export const Authenticator: React.FC = () => {
   const location = useLocation();
   const { state } = location;
   if (session) {
-    return <Redirect to={state && state.back ? state.back : ROOT_URL} />;
+    return <Redirect to={state?.back || ROOT_URL} />;
   }
   return (
     <>

@@ -18,7 +18,7 @@ export const Comments: React.FC<{
   });
   const [execute, { loading }] = useBuildFeedCommentMutation({
     onCompleted: ({ result }) => {
-      if (result && result.status === Status.Ok) {
+      if (result?.status === Status.Ok) {
         refetch();
         setMessage("");
       }
@@ -26,7 +26,7 @@ export const Comments: React.FC<{
     variables: { input: { entryID, message } },
   });
   const save = useAuthentication({ action: execute });
-  const comments = data && data.feed && data.feed.entry.comments;
+  const comments = data?.feed?.entry.comments;
   const valid = !!message || loading;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,7 +41,7 @@ export const Comments: React.FC<{
 
   return (
     <>
-      {comments && comments.map((comment) => <Comment key={comment.id} comment={comment} />)}
+      {comments?.map((comment) => <Comment key={comment.id} comment={comment} />)}
       <Form onSubmit={onSubmit}>
         <Form.Field>
           <Form.Control>

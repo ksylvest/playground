@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 const reset = (form: React.RefObject<HTMLFormElement>) => {
-  if (form && form.current !== null) {
+  if (form.current !== null) {
     form.current.reset();
   }
 };
@@ -21,7 +21,7 @@ const select = (event: React.ChangeEvent<HTMLInputElement>) => {
   }
 
   return files;
-}
+};
 
 export const useFiles = () => {
   const form = useRef<HTMLFormElement>(null);

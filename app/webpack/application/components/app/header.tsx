@@ -45,7 +45,7 @@ const AuthenticateNavbarLinks: React.FC = () => (
 
 const NotificationsNavbarLink: React.FC = () => {
   const { stats } = useContext(World);
-  const count = stats && stats.notifications;
+  const count = stats?.notifications;
   return (
     <NavbarLink exact to={NOTIFICATIONS_URL}>
       Notifications {!!count && `(${count})`}

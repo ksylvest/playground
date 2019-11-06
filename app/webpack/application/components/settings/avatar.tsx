@@ -13,7 +13,7 @@ import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
 export const Avatar: React.FC = () => {
   const { data, refetch } = useSettingsAvatarQuery();
-  const avatar = data && data.me && data.me.avatar && data.me.avatar;
+  const avatar = data?.me?.avatar;
 
   return (
     <>

@@ -13,13 +13,13 @@ export const Form: React.FC<{
     password: "",
   });
   const [submit, { loading, data }] = useLoginMutation();
-  const errors = (data && data.login && data.login.errors) || undefined;
+  const errors = data?.login?.errors || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });
-    const session = result.data && result.data.login && result.data.login.session;
+    const session = result.data?.login?.session;
     if (session) {
       onAuth(session);
     }
