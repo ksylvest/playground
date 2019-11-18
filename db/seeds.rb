@@ -24,7 +24,15 @@ Feed::Entry.transaction do
   end
 end
 
-Stripe::Customer.list.each do |stripe_customer|
+customers = begin
+  Stripe::Customer.list
+rescue Stripe::StripeError => e
+  puts "Seeds will not include Stripe customers."
+  puts e
+  []
+end
+
+customers.each do |stripe_customer|
   user = User.find_by(email: stripe_customer.email)
   next unless user
 
