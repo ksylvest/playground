@@ -1,10 +1,10 @@
 import * as loadjs from "loadjs";
 
-declare const MAPBOX_ACCESS_TOKEN: string;
+declare const MAPBOX_ACCESS_TOKEN: string | null;
 
 const VERSION = "v1.4.1";
 
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && !!MAPBOX_ACCESS_TOKEN) {
   loadjs(
     [
       `https://api.mapbox.com/mapbox-gl-js/${VERSION}/mapbox-gl.js`,
