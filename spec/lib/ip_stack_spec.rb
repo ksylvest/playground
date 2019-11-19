@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe IPStack do
+  let(:fake_access_key) { SecureRandom.alphanumeric }
   let(:ip) { '0.0.0.0' }
 
   describe '.fetch!' do
     subject :fetch! do
-      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{IPStack.config.access_key}")
+      allow(IPStack.config).to receive(:access_key) { fake_access_key }
+      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
         .to_return(status: status, body: body)
       IPStack.fetch!(ip: ip)
     end
