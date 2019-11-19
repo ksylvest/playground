@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe GeoIPBuilderJob, type: :job do
+  let(:fake_access_key) { SecureRandom.alphanumeric }
   let(:ip) { '4.4.4.4' }
 
   describe '#perform' do
     subject :perform do
-      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{IPStack.config.access_key}")
+      allow(IPStack.config).to receive(:access_key) { fake_access_key }
+      stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
         .to_return(status: status, body: body)
       GeoIPBuilderJob.new.perform(ip)
     end
