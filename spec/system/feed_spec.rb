@@ -16,6 +16,7 @@ RSpec.describe 'feed', type: :system do
     end
   end
 
+  20.times do
   it 'lets a user like and unlike an entry' do
     visit root_path
     expect(page).to have_title('Feed | Playground')
@@ -39,6 +40,7 @@ RSpec.describe 'feed', type: :system do
         expect(page).to have_text('0')
       end
     end
+  end
   end
 
   it 'details a feed entry' do
