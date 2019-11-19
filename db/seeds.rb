@@ -1,5 +1,7 @@
 require 'open-uri'
 
+Rails.logger = Logger.new(STDOUT)
+
 User.transaction do
   YAML.load(File.open(Rails.root.join('db', 'seeds', 'users.yml'))).each do |data|
     next if User.exists?(id: data['id'])
@@ -24,20 +26,24 @@ Feed::Entry.transaction do
   end
 end
 
-Stripe::Customer.list.each do |stripe_customer|
-  user = User.find_by(email: stripe_customer.email)
-  next unless user
+if Stripe.api_key.present?
+  Stripe::Customer.list.each do |stripe_customer|
+    user = User.find_by(email: stripe_customer.email)
+    next unless user
 
-  customer = Billing::Customer.find_or_initialize_by(stripe_id: stripe_customer.id)
-  customer.user = user
-  customer.parse(stripe_customer)
-  customer.save!
+    customer = Billing::Customer.find_or_initialize_by(stripe_id: stripe_customer.id)
+    customer.user = user
+    customer.parse(stripe_customer)
+    customer.save!
 
-  stripe_customer.sources.each do |stripe_source|
-    source = Billing::Source.find_or_initialize_by(stripe_id: stripe_source.id)
-    source.customer = customer
-    source.default = stripe_source.id.eql?(stripe_customer.default_source)
-    source.parse(stripe_source)
-    source.save!
+    stripe_customer.sources.each do |stripe_source|
+      source = Billing::Source.find_or_initialize_by(stripe_id: stripe_source.id)
+      source.customer = customer
+      source.default = stripe_source.id.eql?(stripe_customer.default_source)
+      source.parse(stripe_source)
+      source.save!
+    end
   end
+else
+  Rails.logger.warn "[SKIP] Stripe::Customer due to missing 'config/master.key'"
 end
