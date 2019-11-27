@@ -55,7 +55,7 @@
     "@graphql-codegen/cli": "^1.9.0",
     "@graphql-codegen/introspection": "^1.8.3",
     "@graphql-codegen/typescript": "^1.9.0",
-    "@graphql-codegen/typescript-operations": "^1.8.3",
+    "@graphql-codegen/typescript-operations": "^1.9.0",
     "@graphql-codegen/typescript-react-apollo": "^1.8.3",
     "prettier": "^1.19.1",
     "tslint": "^5.20.1",
