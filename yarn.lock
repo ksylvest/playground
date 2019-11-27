@@ -1157,14 +1157,13 @@
     "@graphql-codegen/typescript" "1.8.3"
     "@graphql-codegen/visitor-plugin-common" "1.8.3"
 
-"@graphql-codegen/typescript-react-apollo@^1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-react-apollo/-/typescript-react-apollo-1.8.3.tgz#c9ab96ff0f9ae705bd515f9abf6bc89890be525b"
-  integrity sha512-hfNFaJm1l95uIgT/mZNhnyYuajtPa7mr3JnXBYmDLBh1ZgFfLcRBgQgKvabnznSuGtjEgDGy4vWlHDRIBGARug==
+"@graphql-codegen/typescript-react-apollo@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-react-apollo/-/typescript-react-apollo-1.9.0.tgz#0c45d4ef4c37404fcbb703f464cc5a747897ce7e"
+  integrity sha512-qMuEEmW+QVw10dgHZBBkfiMznW4l3FNAc8mexwTSzrWB546yqzbFLnlRRZmQKQgon5ZUJNpPG/5bqPOUEedtRA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "1.8.3"
     "@graphql-codegen/visitor-plugin-common" "1.8.3"
-    tslib "1.10.0"
 
 "@graphql-codegen/typescript@1.8.3":
   version "1.8.3"
