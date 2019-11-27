@@ -3,7 +3,7 @@ require 'open-uri'
 Rails.logger = Logger.new(STDOUT)
 
 User.transaction do
-  YAML.load(File.open(Rails.root.join('db', 'seeds', 'users.yml'))).each do |data|
+  YAML.load(File.open(Rails.root.join('db/seeds/users.yml'))).each do |data|
     next if User.exists?(id: data['id'])
 
     user = User.new(id: data['id'], name: data['name'], email: data['email'])
@@ -14,7 +14,7 @@ User.transaction do
 end
 
 Feed::Entry.transaction do
-  YAML.load(File.open(Rails.root.join('db', 'seeds', 'feed', 'entries.yml'))).each do |data|
+  YAML.load(File.open(Rails.root.join('db/seeds/feed/entries.yml'))).each do |data|
     next if Feed::Entry.exists?(id: data['id'])
 
     entry = Feed::Entry.new(id: data['id'])
