@@ -38,7 +38,7 @@
     "graphql-tag": "^2.10.1",
     "loadjs": "^4.0.1",
     "lodash": "^4.17.15",
-    "luxon": "^1.21.2",
+    "luxon": "^1.21.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.0.1",
