@@ -5,7 +5,7 @@ import { Column, Columns } from "tights";
 
 import { Title } from "@application/components/helpers";
 
-import { Menu } from "./settings/menu";
+import { Sidebar } from "./settings/sidebar";
 
 import { Avatar } from "./settings/avatar";
 import { Billing } from "./settings/billing";
@@ -29,7 +29,7 @@ export const Settings: React.FC = () => (
 
     <Columns>
       <Column size={3}>
-        <Menu />
+        <Sidebar />
       </Column>
       <Column size={9}>
         <Switch>
