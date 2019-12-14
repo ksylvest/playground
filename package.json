@@ -30,7 +30,7 @@
     "@types/webfontloader": "^1.6.29",
     "apollo-boost": "^0.4.4",
     "apollo-client": "^2.6.4",
-    "apollo-utilities": "^1.3.2",
+    "apollo-utilities": "^1.3.3",
     "babel-plugin-emotion": "^10.0.23",
     "bulma": "^0.8.0",
     "classnames": "^2.2.6",
