@@ -6,9 +6,14 @@ module Types
       field :id, ID, null: false
       field :currency, CurrencyType, null: true
       field :sources, [SourceType], null: false
+      field :subscriptions, [SubscriptionType], null: false
 
       def sources
         Loaders::AssociationLoader.for(:sources).load(object)
+      end
+
+      def subscriptions
+        Loaders::AssociationLoader.for(:subscriptions).load(object)
       end
     end
   end

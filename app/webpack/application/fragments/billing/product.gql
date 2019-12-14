@@ -1,0 +1,9 @@
+#import "./plan.gql"
+
+fragment billing__product on Billing__Product {
+  id
+  name
+  plans {
+    ...billing__plan
+  }
+}

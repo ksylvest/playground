@@ -1,15 +1,13 @@
+#import "@application/fragments/product.gql"
+#import "@application/fragments/customer.gql"
+
 query SettingsBilling {
   billing {
+    products {
+      ...billing__product
+    }
     customer {
-      id
-      currency
-      sources {
-        id
-        number
-        brand
-        exp
-        default
-      }
+      ...billing__customer
     }
   }
 }

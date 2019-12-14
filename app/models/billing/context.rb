@@ -6,4 +6,8 @@ class Billing::Context
   def customer
     @customer ||= Billing::Customer.find_by(user: @user)
   end
+
+  def products
+    @products ||= ::Billing::Product.all
+  end
 end

@@ -44,6 +44,19 @@ if Stripe.api_key.present?
       source.save!
     end
   end
+
+  Stripe::Product.list.each do |stripe_product|
+    product = Billing::Product.find_or_initialize_by(stripe_id: stripe_product.id)
+    product.parse(stripe_product)
+    product.save!
+  end
+
+  Stripe::Plan.list.each do |stripe_plan|
+    plan = Billing::Plan.find_or_initialize_by(stripe_id: stripe_plan.id)
+    plan.product = Billing::Product.find_by!(stripe_id: stripe_plan.product)
+    plan.parse(stripe_plan)
+    plan.save!
+  end
 else
   Rails.logger.warn "[SKIP] Stripe::Customer due to missing 'config/master.key'"
 end

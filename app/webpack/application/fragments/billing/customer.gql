@@ -1,0 +1,6 @@
+fragment billing__plan on Billing__Plan {
+  id
+  amount
+  currency
+  interval
+}
