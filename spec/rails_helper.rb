@@ -10,7 +10,7 @@ require 'webmock/rspec'
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 

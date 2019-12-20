@@ -28,6 +28,9 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
+Layout/LineLength:
+  Max: 120
+
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
@@ -63,9 +66,6 @@ Style/TrailingCommaInHashLiteral:
 
 Metrics/BlockLength:
   Enabled: false
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/MethodLength:
   Enabled: false
