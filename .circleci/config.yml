@@ -1,22 +1,22 @@
 version: 2.1
 
 orbs:
-  browser-tools: circleci/browser-tools@0.1.3
+  browser-tools: circleci/browser-tools@0.1.4
 
 executors:
   default:
     docker:
-      - image: circleci/ruby:2.6.5-node
-      - image: circleci/postgres:11.4-alpine-ram
+      - image: circleci/ruby:2.7.0-node
+      - image: circleci/postgres:12.1-alpine-ram
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: playground_test
-      - image: circleci/redis:5.0.5-alpine
+      - image: circleci/redis:5.0.7-alpine
     environment:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 4
       BUNDLE_PATH: vendor/bundle
-      BUNDLER_VERSION: 2.0.2
+      BUNDLER_VERSION: 2.1.2
       RAILS_ENV: test
       RACK_ENV: test
       PGHOST: localhost
