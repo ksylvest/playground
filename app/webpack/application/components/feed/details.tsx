@@ -39,7 +39,9 @@ export const Details: React.FC<{
               <Columns desktop tablet mobile vcentered gap={2}>
                 <Column narrow>
                   <Link to={profileURL}>
-                    {user && <Attachment attachment={avatar} rounded w={64} h={64} placeholder={PLACEHOLDER} />}
+                    {user && (
+                      <Attachment attachment={avatar} rounded dimensions={64} w={64} h={64} placeholder={PLACEHOLDER} />
+                    )}
                   </Link>
                 </Column>
                 <Column>
