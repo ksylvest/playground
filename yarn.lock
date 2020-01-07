@@ -9479,10 +9479,10 @@ thunky@^1.0.2:
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
 
-tights@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/tights/-/tights-1.4.4.tgz#0390c3d40c329cf742f03556897acfacf8bbd1c5"
-  integrity sha512-kP+Tzwe3evN1wZlvVRFptL8uYgp6DfKTxlpUhD4g88TMQBZRsQe9NnBH4hvIz46ArKAxY83Z+tf6A1Ba0HZVcw==
+tights@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/tights/-/tights-1.4.5.tgz#377b1ab2595c85e564f2e53e2a2981383899322c"
+  integrity sha512-B9oBhftA4ZX2x0UPpCZY0FF7fgbSKd8PW2au4n8QOF8ayNx95qUfyLhWt9LP1ZwEXhlNjfHV++7O9kDltoSoaQ==
 
 timers-browserify@^2.0.4:
   version "2.0.11"
