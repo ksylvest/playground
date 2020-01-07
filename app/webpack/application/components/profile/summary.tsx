@@ -20,7 +20,9 @@ export const Summary: React.FC<{
     <>
       <Columns desktop tablet mobile vcentered gap={2}>
         <Column narrow>
-          {profile && <Attachment rounded w={96} h={96} attachment={avatar} placeholder={PLACEHOLDER} />}
+          {profile && (
+            <Attachment square rounded dimensions={96} w={96} h={96} attachment={avatar} placeholder={PLACEHOLDER} />
+          )}
         </Column>
         <Column>
           <Title>{name}</Title>

@@ -19,13 +19,14 @@ export const Attachment: React.FC<{
   square?: boolean;
   w: number;
   h: number;
+  dimensions?: 16 | 24 | 32 | 48 | 64 | 96;
   resize?: Resize;
-}> = ({ attachment, placeholder, rounded, square, w, h, resize = "fill" }) => {
+}> = ({ attachment, placeholder, rounded, square, w, h, dimensions, resize = "fill" }) => {
   const id = attachment?.id;
   const src = id ? ATTACHMENT_URL(id, w, h, resize) : placeholder;
 
   return (
-    <Image rounded={rounded} square={square} src={src} height={h} width={w}>
+    <Image rounded={rounded} square={square} src={src} height={h} width={w} dimensions={dimensions}>
       {id &&
         FORMATS.map((format) => (
           <source key={format} srcSet={SRC_SET_URLS(id, w, h, resize, format)} type={`image/${format}`} />

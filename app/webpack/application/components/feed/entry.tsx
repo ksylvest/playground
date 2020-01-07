@@ -27,7 +27,15 @@ export const Entry: React.FC<{
       <Columns desktop tablet mobile vcentered gap={2}>
         <Column narrow>
           <Link to={PROFILE_URL(entry.user)}>
-            <Attachment rounded w={32} h={32} attachment={entry.user.avatar} placeholder={PLACEHOLDER} />
+            <Attachment
+              square
+              rounded
+              dimensions={32}
+              w={32}
+              h={32}
+              attachment={entry.user.avatar}
+              placeholder={PLACEHOLDER}
+            />
           </Link>
         </Column>
         <Column>

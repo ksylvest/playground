@@ -16,7 +16,7 @@ export const Comment: React.FC<{
   return (
     <Media>
       <Media.Left>
-        <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded square w={48} h={48} />
+        <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded square dimensions={48} w={48} h={48} />
       </Media.Left>
       <Media.Content>
         <Content>
