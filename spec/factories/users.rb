@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    name { 'Kevin Sylvestre' }
+    sequence(:name) { |index| "User ##{index}" }
     sequence(:email) { |index| "user#{index}@playground.test" }
     password { 'secret' }
 
