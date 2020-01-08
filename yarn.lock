@@ -1256,13 +1256,23 @@
     camel-case "4.1.1"
     tslib "1.10.0"
 
-"@graphql-codegen/typescript@1.11.0", "@graphql-codegen/typescript@^1.11.0":
+"@graphql-codegen/typescript@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.11.0.tgz#47913a249b33cedfe6b5631daf6975d251176b82"
   integrity sha512-dwzwjX+TnviYE3uHLMGAtHpkpb1IM/m9UiIB4kQoj/8lfGRjJ9/2wVRIOf1d+LE43EI/mMzCAUHA+fcfFoBWxg==
   dependencies:
     "@graphql-codegen/plugin-helpers" "1.11.0"
     "@graphql-codegen/visitor-plugin-common" "1.11.0"
+    auto-bind "4.0.0"
+    tslib "1.10.0"
+
+"@graphql-codegen/typescript@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.11.1.tgz#2413372e5378267f21224d51e9143d2cfbddd091"
+  integrity sha512-WegXx9DlLVmvyWCEAs481CWY2PDaD9UttRxQ8ZdMNpj+JhsAWhxmgInD93yR9qX11ZzKFVhIDnlSXI0tVmCMvA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.11.1"
+    "@graphql-codegen/visitor-plugin-common" "1.11.1"
     auto-bind "4.0.0"
     tslib "1.10.0"
 
