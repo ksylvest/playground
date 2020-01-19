@@ -1,3 +1,11 @@
+PATH
+  remote: engines/billing
+  specs:
+    billing (0.1.0)
+      pg
+      rails
+      stripe
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -339,6 +347,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bcrypt
+  billing!
   bootsnap
   brakeman
   byebug

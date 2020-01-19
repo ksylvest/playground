@@ -12,6 +12,12 @@ AllCops:
     - vendor/**/*
     - node_modules/**/*
     - spec/spec_helper.rb
+    - engines/*/bin/**/*
+    - engines/*/tmp/**/*
+    - engines/*/vendor/**/*
+    - engines/*/spec/dummy/config/environments/*
+    - engines/*/spec/dummy/db/schema.rb
+    - engines/*/spec/spec_helper.rb
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
