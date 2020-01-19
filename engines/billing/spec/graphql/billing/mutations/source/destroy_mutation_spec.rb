@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::Billing::Source::DefaultMutation do
+RSpec.describe Billing::Mutations::Source::DestroyMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user: user)
-      allow(Billing::DefaultSourceService).to receive(:perform!).with(user: user, id: id)
+      allow(Current).to receive(:user) { user }
+      allow(Billing::DestroySourceService).to receive(:perform!).with(user: user, id: id)
       AppSchema.execute(gql, variables: { id: id })
     end
 
     let(:gql) do
       <<~GQL
-        mutation DefaultBillingSource($id: ID!) {
-          defaultBillingSource(id: $id) {
+        mutation DestroyBillingSource($id: ID!) {
+          destroyBillingSource(id: $id) {
             status
           }
         }
@@ -23,7 +23,7 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
 
     it 'resolves "OK"' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['defaultBillingSource']['status']).to eql('OK')
+      expect(execute['data']['destroyBillingSource']['status']).to eql('OK')
     end
   end
 end

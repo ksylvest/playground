@@ -2,4 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'graphql'
+gem 'graphql-batch'
+
 gem 'stripe'

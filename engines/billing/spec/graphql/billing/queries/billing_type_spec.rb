@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Types::BillingType do
+RSpec.describe Billing do
   describe '#resolve' do
     subject(:execute) do
-      Current.auth!(user: user)
+      allow(Current).to receive(:user) { user }
       AppSchema.execute(gql)
     end
 

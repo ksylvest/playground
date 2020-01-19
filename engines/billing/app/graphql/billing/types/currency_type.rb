@@ -1,5 +1,5 @@
-module Types
-  module Billing
+module Billing
+  module Types
     class CurrencyType < GraphQL::Schema::Enum
       graphql_name 'Billing__Currency'
 

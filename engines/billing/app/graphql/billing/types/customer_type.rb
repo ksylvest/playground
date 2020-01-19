@@ -1,5 +1,5 @@
-module Types
-  module Billing
+module Billing
+  module Types
     class CustomerType < GraphQL::Schema::Object
       graphql_name 'Billing__Customer'
 
@@ -8,7 +8,7 @@ module Types
       field :sources, [SourceType], null: false
 
       def sources
-        Loaders::AssociationLoader.for(:sources).load(object)
+        ::Billing::Loaders::ActiveRecordAssociationLoader.for(:sources).load(object)
       end
     end
   end

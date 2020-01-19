@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::Billing::Source::BuildMutation do
+RSpec.describe Billing::Mutations::Source::BuildMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user: user)
+      allow(Current).to receive(:user) { user }
       allow(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: source)
       AppSchema.execute(gql, variables: { source: source })
     end

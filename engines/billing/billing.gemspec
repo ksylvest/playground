@@ -14,6 +14,8 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'Rakefile']
 
+  spec.add_dependency 'graphql'
+  spec.add_dependency 'graphql-batch'
   spec.add_dependency 'pg'
   spec.add_dependency 'rails'
   spec.add_dependency 'stripe'

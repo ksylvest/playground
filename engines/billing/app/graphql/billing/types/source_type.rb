@@ -1,5 +1,5 @@
-module Types
-  module Billing
+module Billing
+  module Types
     class SourceType < GraphQL::Schema::Object
       graphql_name 'Billing__Source'
 

@@ -1,5 +1,7 @@
 module Types
   class MutationType < GraphQL::Schema::Object
+    implements(Billing::Interfaces::MutationInterface)
+
     field :login, mutation: ::Mutations::LoginMutation
     field :logout, mutation: ::Mutations::LogoutMutation
     field :signup, mutation: ::Mutations::SignupMutation
@@ -15,10 +17,6 @@ module Types
 
     field :attach_avatar, mutation: ::Mutations::Avatar::AttachMutation
     field :detach_avatar, mutation: ::Mutations::Avatar::DetachMutation
-
-    field :build_billing_source, mutation: ::Mutations::Billing::Source::BuildMutation
-    field :destroy_billing_source, mutation: ::Mutations::Billing::Source::DestroyMutation
-    field :default_billing_source, mutation: ::Mutations::Billing::Source::DefaultMutation
 
     field :build_feed_comment, mutation: ::Mutations::Feed::Comment::BuildMutation
     field :like_feed_entry, mutation: ::Mutations::Feed::Entry::LikeMutation

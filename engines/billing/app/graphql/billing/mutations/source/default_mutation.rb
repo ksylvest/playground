@@ -1,10 +1,12 @@
-module Mutations
-  module Billing
+require 'graphql'
+
+module Billing
+  module Mutations
     module Source
       class DefaultMutation < GraphQL::Schema::Mutation
         graphql_name 'DefaultBillingSource'
         argument :id, ID, required: true
-        field :status, ::Types::StatusType, null: false
+        field :status, Types::StatusType, null: false
 
         def resolve(id:)
           ::Billing::DefaultSourceService.perform!(user: Current.user, id: id)

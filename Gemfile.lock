@@ -2,6 +2,8 @@ PATH
   remote: engines/billing
   specs:
     billing (0.1.0)
+      graphql
+      graphql-batch
       pg
       rails
       stripe

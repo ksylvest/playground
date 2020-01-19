@@ -1,6 +1,7 @@
 module Types
   class QueryType < GraphQL::Schema::Object
-    field :billing, BillingType, null: false
+    implements(Billing::Interfaces::QueryInterface)
+
     field :feed, FeedType, null: false
     field :notifications, [NotificationType], null: false
     field :sessions, [SessionType], null: false

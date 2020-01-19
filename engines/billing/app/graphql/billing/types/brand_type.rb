@@ -1,5 +1,5 @@
-module Types
-  module Billing
+module Billing
+  module Types
     class BrandType < GraphQL::Schema::Enum
       graphql_name 'Billing__Brand'
 
