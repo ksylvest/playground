@@ -149,6 +149,20 @@ jobs:
             ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
             ./cc-test-reporter upload-coverage
 
+  codegen:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: gem install bundler --version "$BUNDLER_VERSION"
+      - run: bundle check || bundle install  --clean --deployment
+      - run: bundle exec rake graphql:schema:generate
+      - run: yarn run graphql:codegen
+      - store_artifacts:
+          path: tmp/brakeman.html
+          destination: brakeman.html
+
 workflows:
   version: 2.1
   build:
@@ -169,5 +183,8 @@ workflows:
           requires:
             - bundle
       - rspec:
+          requires:
+            - compile
+      - codegen:
           requires:
             - compile
