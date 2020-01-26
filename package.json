@@ -34,7 +34,7 @@
     "babel-plugin-emotion": "^10.0.27",
     "bulma": "^0.8.0",
     "classnames": "^2.2.6",
-    "graphql": "^14.5.8",
+    "graphql": "^14.6.0",
     "graphql-tag": "^2.10.1",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.15",
