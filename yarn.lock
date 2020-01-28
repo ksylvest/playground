@@ -1281,6 +1281,16 @@
     auto-bind "4.0.0"
     tslib "1.10.0"
 
+"@graphql-codegen/typescript@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.12.0.tgz#b8c9a85829a4602e9878697fc5357e7eaacd7e4a"
+  integrity sha512-CS/KjJr9r/JpIxvGg5/dmi37Nfqd/UUOVXUos0dC9XlYCihQAgNkx6sB/oCO+GX8/sWV2k8RYCvP3korRFBRPw==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.12.0"
+    "@graphql-codegen/visitor-plugin-common" "1.12.0"
+    auto-bind "4.0.0"
+    tslib "1.10.0"
+
 "@graphql-codegen/visitor-plugin-common@1.11.2":
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.11.2.tgz#10789c94c19a89080e0c56067a381dab997b3760"
@@ -1291,6 +1301,19 @@
     dependency-graph "0.8.1"
     graphql-tag "2.10.1"
     relay-compiler "8.0.0"
+    tslib "1.10.0"
+
+"@graphql-codegen/visitor-plugin-common@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.12.0.tgz#89e018dee17d1eb5e2b7a2151413d4c4b83a39a1"
+  integrity sha512-2jINlz+lxLgTz00SjlHFigxaSBNm0EqFo6VrW9NjOVfOyNh67ncS9eOQxVbMzd3plPsMGa1W06fU/CBl/EzphA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.12.0"
+    "@graphql-toolkit/relay-operation-optimizer" "0.9.6"
+    auto-bind "4.0.0"
+    dependency-graph "0.8.1"
+    graphql-tag "2.10.1"
+    pascal-case "3.1.1"
     tslib "1.10.0"
 
 "@graphql-toolkit/code-file-loader@0.7.4":
@@ -1411,6 +1434,14 @@
     "@graphql-toolkit/common" "0.7.4"
     is-valid-path "0.1.1"
     tslib "1.10.0"
+
+"@graphql-toolkit/relay-operation-optimizer@0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/relay-operation-optimizer/-/relay-operation-optimizer-0.9.6.tgz#048d5b0773d62c21f7e07d9814d9d2ae37087f23"
+  integrity sha512-4JGoWs/pkUyqnLmMZRKQdZSb4E4JFd/nPoPCqf1p2eNUoJNnYZddj9IC93985AFCvrtTwFoabVHnNH4lPyiFuQ==
+  dependencies:
+    "@graphql-toolkit/common" "0.9.6"
+    relay-compiler "8.0.0"
 
 "@graphql-toolkit/schema-merging@0.6.2":
   version "0.6.2"
