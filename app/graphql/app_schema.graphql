@@ -14,6 +14,7 @@ type Attached {
 type Billing {
   customer: Billing__Customer
   id: ID!
+  products: [Billing__Product!]!
 }
 
 enum Billing__Brand {
@@ -37,6 +38,25 @@ type Billing__Customer {
   currency: Billing__Currency
   id: ID!
   sources: [Billing__Source!]!
+  subscription: Billing__Subscription
+}
+
+enum Billing__Interval {
+  MONTH
+  YEAR
+}
+
+type Billing__Plan {
+  amount: Int!
+  currency: Billing__Currency!
+  id: ID!
+  interval: Billing__Interval!
+}
+
+type Billing__Product {
+  id: ID!
+  name: String!
+  plans: [Billing__Plan!]!
 }
 
 type Billing__Source {
@@ -45,6 +65,11 @@ type Billing__Source {
   exp: String!
   id: ID!
   number: String!
+}
+
+type Billing__Subscription {
+  id: ID!
+  plan: Billing__Plan!
 }
 
 """
