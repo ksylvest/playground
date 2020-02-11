@@ -49,7 +49,7 @@
     "typescript": "^3.7.5",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.41.4"
+    "webpack": "^4.41.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.12.2",
