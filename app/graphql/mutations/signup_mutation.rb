@@ -1,5 +1,5 @@
 module Mutations
-  class SignupMutation < GraphQL::Schema::Mutation
+  class SignupMutation < BaseMutation
     argument :input, ::Types::SignupInput, required: true
 
     field :status, ::Types::StatusType, null: false

@@ -1,7 +1,7 @@
 module Mutations
   module Feed
     module Entry
-      class UnlikeMutation < GraphQL::Schema::Mutation
+      class UnlikeMutation < BaseMutation
         graphql_name 'UnlikeFeedEntry'
         argument :id, ID, required: true
         field :entry, ::Types::Feed::EntryType, null: false

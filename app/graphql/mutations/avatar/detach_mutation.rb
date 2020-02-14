@@ -1,6 +1,6 @@
 module Mutations
   module Avatar
-    class DetachMutation < GraphQL::Schema::Mutation
+    class DetachMutation < BaseMutation
       graphql_name 'DetachAvatar'
       field :status, ::Types::StatusType, null: false
 

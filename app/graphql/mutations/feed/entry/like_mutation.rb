@@ -1,7 +1,7 @@
 module Mutations
   module Feed
     module Entry
-      class LikeMutation < GraphQL::Schema::Mutation
+      class LikeMutation < BaseMutation
         graphql_name 'LikeFeedEntry'
         argument :id, ID, required: true
         field :entry, ::Types::Feed::EntryType, null: false

@@ -1,6 +1,6 @@
 module Mutations
   module Session
-    class DestroyMutation < GraphQL::Schema::Mutation
+    class DestroyMutation < BaseMutation
       graphql_name 'DestroySession'
       argument :id, ::String, required: true
       field :session, ::Types::SessionType, null: false

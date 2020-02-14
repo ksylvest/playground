@@ -206,24 +206,24 @@ type LogoutMutationPayload {
 }
 
 type Mutation {
-  attachAvatar(id: ID!): AttachAvatarPayload
-  buildBillingSource(source: String!): BuildBillingSourcePayload
-  buildFeedComment(input: Feed__CommentInput!): BuildFeedCommentPayload
-  changePassword(input: PasswordInput!): ChangePasswordPayload
-  changeProfile(input: UserInput!): ChangeProfilePayload
-  defaultBillingSource(id: ID!): DefaultBillingSourcePayload
-  destroyBillingSource(id: ID!): DestroyBillingSourcePayload
-  destroyNotification(id: ID!): DestroyNotificationPayload
-  destroySession(id: String!): DestroySessionPayload
-  detachAvatar: DetachAvatarPayload
-  followUser(id: ID!): FollowUserPayload
-  likeFeedEntry(id: ID!): LikeFeedEntryPayload
-  login(input: LoginInput!): LoginMutationPayload
-  logout: LogoutMutationPayload
-  readNotification(id: ID!): ReadNotificationPayload
-  signup(input: SignupInput!): SignupMutationPayload
-  unfollowUser(id: ID!): UnfollowUserPayload
-  unlikeFeedEntry(id: ID!): UnlikeFeedEntryPayload
+  attachAvatar(id: ID!): AttachAvatarPayload!
+  buildBillingSource(source: String!): BuildBillingSourcePayload!
+  buildFeedComment(input: Feed__CommentInput!): BuildFeedCommentPayload!
+  changePassword(input: PasswordInput!): ChangePasswordPayload!
+  changeProfile(input: UserInput!): ChangeProfilePayload!
+  defaultBillingSource(id: ID!): DefaultBillingSourcePayload!
+  destroyBillingSource(id: ID!): DestroyBillingSourcePayload!
+  destroyNotification(id: ID!): DestroyNotificationPayload!
+  destroySession(id: String!): DestroySessionPayload!
+  detachAvatar: DetachAvatarPayload!
+  followUser(id: ID!): FollowUserPayload!
+  likeFeedEntry(id: ID!): LikeFeedEntryPayload!
+  login(input: LoginInput!): LoginMutationPayload!
+  logout: LogoutMutationPayload!
+  readNotification(id: ID!): ReadNotificationPayload!
+  signup(input: SignupInput!): SignupMutationPayload!
+  unfollowUser(id: ID!): UnfollowUserPayload!
+  unlikeFeedEntry(id: ID!): UnlikeFeedEntryPayload!
 }
 
 type Notification {
