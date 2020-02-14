@@ -1,6 +1,6 @@
 module Mutations
   module User
-    class UnfollowMutation < GraphQL::Schema::Mutation
+    class UnfollowMutation < BaseMutation
       graphql_name 'UnfollowUser'
       argument :id, ID, required: true
       field :user, ::Types::UserType, null: false

@@ -1,6 +1,6 @@
 module Mutations
   module User
-    class FollowMutation < GraphQL::Schema::Mutation
+    class FollowMutation < BaseMutation
       graphql_name 'FollowUser'
       argument :id, ID, required: true
       field :user, ::Types::UserType, null: false

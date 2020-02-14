@@ -219,24 +219,24 @@ export type LogoutMutationPayload = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  attachAvatar?: Maybe<AttachAvatarPayload>,
-  buildBillingSource?: Maybe<BuildBillingSourcePayload>,
-  buildFeedComment?: Maybe<BuildFeedCommentPayload>,
-  changePassword?: Maybe<ChangePasswordPayload>,
-  changeProfile?: Maybe<ChangeProfilePayload>,
-  defaultBillingSource?: Maybe<DefaultBillingSourcePayload>,
-  destroyBillingSource?: Maybe<DestroyBillingSourcePayload>,
-  destroyNotification?: Maybe<DestroyNotificationPayload>,
-  destroySession?: Maybe<DestroySessionPayload>,
-  detachAvatar?: Maybe<DetachAvatarPayload>,
-  followUser?: Maybe<FollowUserPayload>,
-  likeFeedEntry?: Maybe<LikeFeedEntryPayload>,
-  login?: Maybe<LoginMutationPayload>,
-  logout?: Maybe<LogoutMutationPayload>,
-  readNotification?: Maybe<ReadNotificationPayload>,
-  signup?: Maybe<SignupMutationPayload>,
-  unfollowUser?: Maybe<UnfollowUserPayload>,
-  unlikeFeedEntry?: Maybe<UnlikeFeedEntryPayload>,
+  attachAvatar: AttachAvatarPayload,
+  buildBillingSource: BuildBillingSourcePayload,
+  buildFeedComment: BuildFeedCommentPayload,
+  changePassword: ChangePasswordPayload,
+  changeProfile: ChangeProfilePayload,
+  defaultBillingSource: DefaultBillingSourcePayload,
+  destroyBillingSource: DestroyBillingSourcePayload,
+  destroyNotification: DestroyNotificationPayload,
+  destroySession: DestroySessionPayload,
+  detachAvatar: DetachAvatarPayload,
+  followUser: FollowUserPayload,
+  likeFeedEntry: LikeFeedEntryPayload,
+  login: LoginMutationPayload,
+  logout: LogoutMutationPayload,
+  readNotification: ReadNotificationPayload,
+  signup: SignupMutationPayload,
+  unfollowUser: UnfollowUserPayload,
+  unlikeFeedEntry: UnlikeFeedEntryPayload,
 };
 
 
@@ -442,7 +442,7 @@ export type BuildFeedCommentMutationVariables = {
 
 export type BuildFeedCommentMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'BuildFeedCommentPayload' }
     & Pick<BuildFeedCommentPayload, 'status'>
     & { errors: Maybe<(
@@ -452,7 +452,7 @@ export type BuildFeedCommentMutation = (
       { __typename?: 'Feed__Comment' }
       & Feed__CommentFragment
     )> }
-  )> }
+  ) }
 );
 
 export type FeedCommentsQueryVariables = {
@@ -498,13 +498,13 @@ export type LikeFeedEntryMutationVariables = {
 
 export type LikeFeedEntryMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'LikeFeedEntryPayload' }
     & { entry: (
       { __typename?: 'Feed__Entry' }
       & Pick<Feed__Entry, 'id' | 'liked' | 'likes'>
     ) }
-  )> }
+  ) }
 );
 
 export type UnlikeFeedEntryMutationVariables = {
@@ -514,13 +514,13 @@ export type UnlikeFeedEntryMutationVariables = {
 
 export type UnlikeFeedEntryMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'UnlikeFeedEntryPayload' }
     & { entry: (
       { __typename?: 'Feed__Entry' }
       & Pick<Feed__Entry, 'id' | 'liked' | 'likes'>
     ) }
-  )> }
+  ) }
 );
 
 export type FeedQueryVariables = {};
@@ -544,7 +544,7 @@ export type LoginMutationVariables = {
 
 export type LoginMutation = (
   { __typename?: 'Mutation' }
-  & { login: Maybe<(
+  & { login: (
     { __typename?: 'LoginMutationPayload' }
     & Pick<LoginMutationPayload, 'status'>
     & { session: Maybe<(
@@ -554,7 +554,7 @@ export type LoginMutation = (
       { __typename?: 'Errors' }
       & Pick<Errors, 'messages'>
     )> }
-  )> }
+  ) }
 );
 
 export type LogoutMutationVariables = {};
@@ -562,10 +562,10 @@ export type LogoutMutationVariables = {};
 
 export type LogoutMutation = (
   { __typename?: 'Mutation' }
-  & { logout: Maybe<(
+  & { logout: (
     { __typename?: 'LogoutMutationPayload' }
     & Pick<LogoutMutationPayload, 'status'>
-  )> }
+  ) }
 );
 
 export type DestroyNotificationMutationVariables = {
@@ -575,13 +575,13 @@ export type DestroyNotificationMutationVariables = {
 
 export type DestroyNotificationMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'DestroyNotificationPayload' }
     & { notification: (
       { __typename?: 'Notification' }
       & Pick<Notification, 'id' | 'deleted'>
     ) }
-  )> }
+  ) }
 );
 
 export type NotificationsQueryVariables = {};
@@ -602,13 +602,13 @@ export type ReadNotificationMutationVariables = {
 
 export type ReadNotificationMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'ReadNotificationPayload' }
     & { notification: (
       { __typename?: 'Notification' }
       & Pick<Notification, 'id' | 'read'>
     ) }
-  )> }
+  ) }
 );
 
 export type FollowUserMutationVariables = {
@@ -618,14 +618,14 @@ export type FollowUserMutationVariables = {
 
 export type FollowUserMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'FollowUserPayload' }
     & { user: (
       { __typename?: 'User' }
       & Pick<User, 'id'>
       & FollowFragment
     ) }
-  )> }
+  ) }
 );
 
 export type ProfileQueryVariables = {
@@ -656,14 +656,14 @@ export type UnfollowUserMutationVariables = {
 
 export type UnfollowUserMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'UnfollowUserPayload' }
     & { user: (
       { __typename?: 'User' }
       & Pick<User, 'id'>
       & FollowFragment
     ) }
-  )> }
+  ) }
 );
 
 export type SettingsAvatarAttachMutationVariables = {
@@ -673,10 +673,10 @@ export type SettingsAvatarAttachMutationVariables = {
 
 export type SettingsAvatarAttachMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'AttachAvatarPayload' }
     & Pick<AttachAvatarPayload, 'status'>
-  )> }
+  ) }
 );
 
 export type SettingsAvatarDetachMutationVariables = {};
@@ -684,10 +684,10 @@ export type SettingsAvatarDetachMutationVariables = {};
 
 export type SettingsAvatarDetachMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'DetachAvatarPayload' }
     & Pick<DetachAvatarPayload, 'status'>
-  )> }
+  ) }
 );
 
 export type SettingsAvatarQueryVariables = {};
@@ -730,10 +730,10 @@ export type SettingsBillingSourceBuildMutationVariables = {
 
 export type SettingsBillingSourceBuildMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'BuildBillingSourcePayload' }
     & Pick<BuildBillingSourcePayload, 'status'>
-  )> }
+  ) }
 );
 
 export type SettingsBillingSourceDefaultMutationVariables = {
@@ -743,10 +743,10 @@ export type SettingsBillingSourceDefaultMutationVariables = {
 
 export type SettingsBillingSourceDefaultMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'DefaultBillingSourcePayload' }
     & Pick<DefaultBillingSourcePayload, 'status'>
-  )> }
+  ) }
 );
 
 export type SettingsBillingSourceDestroyMutationVariables = {
@@ -756,10 +756,10 @@ export type SettingsBillingSourceDestroyMutationVariables = {
 
 export type SettingsBillingSourceDestroyMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'DestroyBillingSourcePayload' }
     & Pick<DestroyBillingSourcePayload, 'status'>
-  )> }
+  ) }
 );
 
 export type SettingsPasswordMutationVariables = {
@@ -769,14 +769,14 @@ export type SettingsPasswordMutationVariables = {
 
 export type SettingsPasswordMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'ChangePasswordPayload' }
     & Pick<ChangePasswordPayload, 'status'>
     & { errors: Maybe<(
       { __typename?: 'Errors' }
       & Pick<Errors, 'messages'>
     )> }
-  )> }
+  ) }
 );
 
 export type SettingsChangeProfileMutationVariables = {
@@ -786,14 +786,14 @@ export type SettingsChangeProfileMutationVariables = {
 
 export type SettingsChangeProfileMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'ChangeProfilePayload' }
     & Pick<ChangeProfilePayload, 'status'>
     & { errors: Maybe<(
       { __typename?: 'Errors' }
       & Pick<Errors, 'messages'>
     )> }
-  )> }
+  ) }
 );
 
 export type SettingsProfileQueryVariables = {};
@@ -825,13 +825,13 @@ export type SettingsSessionRevokeMutationVariables = {
 
 export type SettingsSessionRevokeMutation = (
   { __typename?: 'Mutation' }
-  & { result: Maybe<(
+  & { result: (
     { __typename?: 'DestroySessionPayload' }
     & { session: (
       { __typename?: 'Session' }
       & Pick<Session, 'id' | 'deleted'>
     ) }
-  )> }
+  ) }
 );
 
 export type SignupMutationVariables = {
@@ -841,7 +841,7 @@ export type SignupMutationVariables = {
 
 export type SignupMutation = (
   { __typename?: 'Mutation' }
-  & { signup: Maybe<(
+  & { signup: (
     { __typename?: 'SignupMutationPayload' }
     & Pick<SignupMutationPayload, 'status'>
     & { session: Maybe<(
@@ -851,7 +851,7 @@ export type SignupMutation = (
       { __typename?: 'Errors' }
       & Pick<Errors, 'messages'>
     )> }
-  )> }
+  ) }
 );
 
 export type AttachedFragment = (

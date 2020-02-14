@@ -1,6 +1,6 @@
 module Mutations
   module Avatar
-    class AttachMutation < GraphQL::Schema::Mutation
+    class AttachMutation < BaseMutation
       graphql_name 'AttachAvatar'
       argument :id, ID, required: true
       field :status, ::Types::StatusType, null: false

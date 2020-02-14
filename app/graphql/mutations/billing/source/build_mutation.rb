@@ -1,7 +1,7 @@
 module Mutations
   module Billing
     module Source
-      class BuildMutation < GraphQL::Schema::Mutation
+      class BuildMutation < BaseMutation
         graphql_name 'BuildBillingSource'
         argument :source, String, required: true
         field :status, ::Types::StatusType, null: false

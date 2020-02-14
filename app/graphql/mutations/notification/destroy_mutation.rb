@@ -1,6 +1,6 @@
 module Mutations
   module Notification
-    class DestroyMutation < GraphQL::Schema::Mutation
+    class DestroyMutation < BaseMutation
       graphql_name 'DestroyNotification'
       argument :id, ID, required: true
       field :notification, ::Types::NotificationType, null: false
