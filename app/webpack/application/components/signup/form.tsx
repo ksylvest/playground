@@ -14,7 +14,7 @@ export const Form: React.FC<{
     password: "",
   });
   const [submit, { loading, data }] = useSignupMutation();
-  const errors = data?.signup?.errors || undefined;
+  const errors = data?.signup.errors || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -13,7 +13,7 @@ export const Form: React.FC<{
     password: "",
   });
   const [submit, { loading, data }] = useLoginMutation();
-  const errors = data?.login?.errors || undefined;
+  const errors = data?.login.errors || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
