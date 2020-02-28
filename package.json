@@ -46,7 +46,7 @@
     "react_ujs": "^2.6.1",
     "tights": "^1.5.0",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.8.2",
+    "typescript": "^3.8.3",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
     "webpack": "^4.41.6"
