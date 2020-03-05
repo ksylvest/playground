@@ -13,7 +13,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@rails/actioncable": "^6.0.2",
     "@rails/activestorage": "^6.0.2",
     "@rails/webpacker": "^4.2.2",
