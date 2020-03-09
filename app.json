@@ -1,18 +1,18 @@
 {
   "name": "ksylvest",
   "env": {
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
     "NODE_ENV": {
-      "required": true
+      "value": "PRODUCTION"
     },
     "RACK_ENV": {
-      "required": true
+      "value": "PRODUCTION",
     },
     "RAILS_ENV": {
-      "required": true
+      "value": "PRODUCTION",
     },
+    "RAILS_LOG_TO_STDOUT": {
+      "value": "enabled",
+    }
     "RAILS_MASTER_KEY": {
       "required": true
     },
