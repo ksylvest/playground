@@ -340,6 +340,7 @@ export type Query = {
   me?: Maybe<User>,
   notifications: Array<Notification>,
   sessions: Array<Session>,
+  sign: Scalars['String'],
   user: User,
 };
 
@@ -832,6 +833,14 @@ export type SettingsSessionRevokeMutation = (
       & Pick<Session, 'id' | 'deleted'>
     ) }
   ) }
+);
+
+export type SignQueryVariables = {};
+
+
+export type SignQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'sign'>
 );
 
 export type SignupMutationVariables = {
@@ -1898,6 +1907,36 @@ export function useSettingsSessionRevokeMutation(baseOptions?: ApolloReactHooks.
 export type SettingsSessionRevokeMutationHookResult = ReturnType<typeof useSettingsSessionRevokeMutation>;
 export type SettingsSessionRevokeMutationResult = ApolloReactCommon.MutationResult<SettingsSessionRevokeMutation>;
 export type SettingsSessionRevokeMutationOptions = ApolloReactCommon.BaseMutationOptions<SettingsSessionRevokeMutation, SettingsSessionRevokeMutationVariables>;
+export const SignDocument = gql`
+    query Sign {
+  sign
+}
+    `;
+
+/**
+ * __useSignQuery__
+ *
+ * To run a query within a React component, call `useSignQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSignQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSignQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSignQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SignQuery, SignQueryVariables>) {
+        return ApolloReactHooks.useQuery<SignQuery, SignQueryVariables>(SignDocument, baseOptions);
+      }
+export function useSignLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SignQuery, SignQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SignQuery, SignQueryVariables>(SignDocument, baseOptions);
+        }
+export type SignQueryHookResult = ReturnType<typeof useSignQuery>;
+export type SignLazyQueryHookResult = ReturnType<typeof useSignLazyQuery>;
+export type SignQueryResult = ApolloReactCommon.QueryResult<SignQuery, SignQueryVariables>;
 export const SignupDocument = gql`
     mutation Signup($input: SignupInput!) {
   signup(input: $input) {

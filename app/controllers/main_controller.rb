@@ -1,8 +1,6 @@
 class MainController < ApplicationController
-  per_request_react_rails_prerenderer
-
   def index
-    render(component: 'App', props: props)
+    render(component: 'App', props: props, prerender: false)
   end
 
 private
