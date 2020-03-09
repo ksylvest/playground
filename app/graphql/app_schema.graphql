@@ -245,6 +245,7 @@ type Query {
   me: User
   notifications: [Notification!]!
   sessions: [Session!]!
+  sign: String!
   user(id: ID!): User!
 }
 

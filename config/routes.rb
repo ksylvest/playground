@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       settings/password
       settings/profile
       settings/sessions
+      sign
     ].each do |path|
       get path, to: 'main#index', as: path
     end

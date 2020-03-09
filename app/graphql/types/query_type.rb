@@ -9,6 +9,8 @@ module Types
     end
     field :me, UserType, null: true
 
+    field :sign, String, null: false
+
     def billing
       ::Billing::Context.new(user: Current.user)
     end
@@ -31,6 +33,11 @@ module Types
 
     def me
       Current.user
+    end
+
+    def sign
+      url, = Sign::Request.new.urls
+      url
     end
   end
 end

@@ -21,6 +21,7 @@ import { Feed } from "./feed";
 import { Notifications } from "./notifications";
 import { Profile } from "./profile";
 import { Settings } from "./settings";
+import { Sign } from "./sign";
 
 import { LOGIN_URL, NOTIFICATIONS_URL, PROFILE_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
@@ -40,6 +41,7 @@ const Router: React.FC<{
 const Routes: React.FC = () => (
   <Switch>
     <Route exact path="/" component={Feed} />
+    <Route exact path="/sign" component={Sign} />
     <Route path="/feed" component={Feed} />
     <Route exact path={PROFILE_URL({ id: ":id" })} component={Profile} />
     <Route exact path={LOGIN_URL} component={Authenticator} />
