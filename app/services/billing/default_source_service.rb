@@ -27,7 +27,7 @@ module Billing
     end
 
     def customer
-      @customer ||= BuildCustomerService.new(user: @user).perform!
+      @customer ||= BuildCustomerService.perform!(user: @user)
     end
   end
 end
