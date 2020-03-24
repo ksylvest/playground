@@ -16,7 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@rails/actioncable": "^6.0.2",
     "@rails/activestorage": "^6.0.2",
-    "@rails/webpacker": "^5.0.0",
+    "@rails/webpacker": "^5.0.1",
     "@sentry/browser": "^5.15.0",
     "@types/classnames": "^2.2.10",
     "@types/loadjs": "^4.0.0",
