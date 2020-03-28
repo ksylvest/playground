@@ -12,11 +12,11 @@ import {
 import { Menu } from "tights";
 
 const LINKS = [
-  { text: 'Avatar', to: SETTINGS_AVATAR_URL },
-  { text: 'Billing', to: SETTINGS_BILLING_URL },
-  { text: 'Password', to: SETTINGS_PASSWORD_URL },
-  { text: 'Profile', to: SETTINGS_PROFILE_URL },
-  { text: 'Sessions', to: SETTINGS_SESSIONS_URL },
+  { text: "Avatar", to: SETTINGS_AVATAR_URL },
+  { text: "Billing", to: SETTINGS_BILLING_URL },
+  { text: "Password", to: SETTINGS_PASSWORD_URL },
+  { text: "Profile", to: SETTINGS_PROFILE_URL },
+  { text: "Sessions", to: SETTINGS_SESSIONS_URL },
 ];
 
 export const Sidebar: React.FC = () => (

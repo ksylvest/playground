@@ -9,6 +9,10 @@ export const List: React.FC<{
   onRevoke(session: SessionFragment): void;
 }> = ({ sessions, onRevoke }) => (
   <>
-    {sessions?.filter(({ deleted }) => !deleted).map((session) => <Entry key={session.id} session={session} onRevoke={onRevoke} />)}
+    {sessions
+      ?.filter(({ deleted }) => !deleted)
+      .map((session) => (
+        <Entry key={session.id} session={session} onRevoke={onRevoke} />
+      ))}
   </>
 );
