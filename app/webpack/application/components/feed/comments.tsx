@@ -41,7 +41,9 @@ export const Comments: React.FC<{
 
   return (
     <>
-      {comments?.map((comment) => <Comment key={comment.id} comment={comment} />)}
+      {comments?.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
       <Form onSubmit={onSubmit}>
         <Form.Field>
           <Form.Control>
