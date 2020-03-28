@@ -27,7 +27,7 @@ export const Map: React.FC<{
         center,
         container: ref.current,
         style: STYLE,
-      }),
+      })
     );
     return () => {
       setMap(undefined);
