@@ -1,6 +1,6 @@
 module Types
   module Feed
-    class EntryType < GraphQL::Schema::Object
+    class EntryType < BaseObject
       graphql_name 'Feed__Entry'
 
       field :id, ID, null: false

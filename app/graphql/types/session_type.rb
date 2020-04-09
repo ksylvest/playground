@@ -1,5 +1,5 @@
 module Types
-  class SessionType < GraphQL::Schema::Object
+  class SessionType < BaseObject
     field :id, ID, null: false
     field :ip, String, null: false
     field :status, SessionStatusEnum, null: false

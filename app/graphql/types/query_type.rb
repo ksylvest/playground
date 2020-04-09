@@ -1,5 +1,5 @@
 module Types
-  class QueryType < GraphQL::Schema::Object
+  class QueryType < BaseObject
     field :billing, BillingType, null: false
     field :feed, FeedType, null: false
     field :notifications, [NotificationType], null: false

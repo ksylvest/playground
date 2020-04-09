@@ -1,5 +1,5 @@
 module Types
-  class FeedType < GraphQL::Schema::Object
+  class FeedType < BaseObject
     field :entry, Types::Feed::EntryType, null: false do
       argument :id, ID, required: true
     end

@@ -1,5 +1,5 @@
 module Types
-  class LoginInput < GraphQL::Schema::InputObject
+  class LoginInput < BaseInputObject
     argument :email, String, required: true
     argument :password, String, required: true
   end

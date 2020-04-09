@@ -1,5 +1,5 @@
 module Types
-  class PasswordInput < GraphQL::Schema::InputObject
+  class PasswordInput < BaseInputObject
     argument :current, String, required: true
     argument :replacement, String, required: true
   end

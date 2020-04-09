@@ -1,5 +1,5 @@
 module Types
-  class NotificationType < GraphQL::Schema::Object
+  class NotificationType < BaseObject
     field :id, ID, null: false
     field :message, String, null: false
     field :read, Boolean, null: false, method: :read_at?
