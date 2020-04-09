@@ -1,5 +1,5 @@
 module Types
-  class DataURIType < GraphQL::Schema::Scalar
+  class DataURIType < BaseScalar
     description 'Represents a formatted data URI.'
 
     def self.coerce_result(value, _ctx = nil)
