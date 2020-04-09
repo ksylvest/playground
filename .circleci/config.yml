@@ -1,12 +1,9 @@
 version: 2.1
 
-orbs:
-  browser-tools: circleci/browser-tools@0.1.4
-
 executors:
   default:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.1-node-browsers
       - image: circleci/postgres:12.1-alpine-ram
         environment:
           POSTGRES_USER: circleci
@@ -118,8 +115,6 @@ jobs:
           at: .
       - run: gem install bundler --version "$BUNDLER_VERSION"
       - run: bundle check || bundle install  --clean --deployment
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - run:
