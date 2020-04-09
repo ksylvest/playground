@@ -1,6 +1,6 @@
 module Types
   module Billing
-    class CustomerType < GraphQL::Schema::Object
+    class CustomerType < BaseObject
       graphql_name 'Billing__Customer'
 
       field :id, ID, null: false

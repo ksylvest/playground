@@ -1,6 +1,6 @@
 module Types
   module Billing
-    class CurrencyType < GraphQL::Schema::Enum
+    class CurrencyType < BaseEnum
       graphql_name 'Billing__Currency'
 
       value 'CAD', value: 'cad'

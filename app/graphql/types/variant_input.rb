@@ -1,5 +1,5 @@
 module Types
-  class VariantInput < GraphQL::Schema::InputObject
+  class VariantInput < BaseInputObject
     argument :w, Int, required: true
     argument :h, Int, required: true
     argument :format, Variant::FormatEnum, required: true

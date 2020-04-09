@@ -1,6 +1,6 @@
 module Types
   module Variant
-    class FormatEnum < GraphQL::Schema::Enum
+    class FormatEnum < BaseEnum
       graphql_name 'Variant__Format'
 
       value 'JPEG', value: 'jpeg'

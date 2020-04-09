@@ -1,5 +1,5 @@
 module Types
-  class StatusType < GraphQL::Schema::Enum
+  class StatusType < BaseEnum
     value 'OK', value: :ok
     value 'UNPROCESSABLE', value: :unprocessable
   end

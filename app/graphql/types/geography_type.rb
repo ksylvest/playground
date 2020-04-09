@@ -1,5 +1,5 @@
 module Types
-  class GeographyType < GraphQL::Schema::Object
+  class GeographyType < BaseObject
     field :id, ID, null: false
     field :city, String, null: false
     field :region, String, null: false

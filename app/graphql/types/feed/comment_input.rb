@@ -1,6 +1,6 @@
 module Types
   module Feed
-    class CommentInput < GraphQL::Schema::InputObject
+    class CommentInput < BaseInputObject
       graphql_name 'Feed__CommentInput'
 
       argument :entryID, ID, required: true, as: :entry_id

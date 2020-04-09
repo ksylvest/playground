@@ -1,5 +1,5 @@
 module Types
-  class AttachedType < GraphQL::Schema::Object
+  class AttachedType < BaseObject
     field :id, String, null: false
     field :filename, String, null: false
     field :variant, DataURIType, null: true do

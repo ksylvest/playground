@@ -1,5 +1,5 @@
 module Types
-  class UserType < GraphQL::Schema::Object
+  class UserType < BaseObject
     field :id, ID, null: false
     field :email, String, null: false
     field :name, String, null: false

@@ -1,6 +1,6 @@
 module Types
   module Feed
-    class CommentType < GraphQL::Schema::Object
+    class CommentType < BaseObject
       graphql_name 'Feed__Comment'
 
       field :id, ID, null: false

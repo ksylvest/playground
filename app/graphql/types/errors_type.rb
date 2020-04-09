@@ -1,5 +1,5 @@
 module Types
-  class ErrorsType < GraphQL::Schema::Object
+  class ErrorsType < BaseObject
     field :messages, GraphQL::Types::JSON, null: false
   end
 end
