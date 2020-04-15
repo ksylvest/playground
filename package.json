@@ -45,7 +45,7 @@
     "react-router-dom": "^5.1.2",
     "react_ujs": "^2.6.1",
     "tights": "^1.5.0",
-    "ts-loader": "^6.2.2",
+    "ts-loader": "^7.0.0",
     "typescript": "^3.8.3",
     "unfetch": "^4.1.0",
     "webfontloader": "^1.6.28",
