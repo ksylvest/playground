@@ -1,4 +1,7 @@
 version: 2.1
+orbs:
+  ruby: circleci/ruby@0.2.1
+  node: circleci/node@2.0.3
 
 executors:
   default:
@@ -23,15 +26,9 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - restore_cache:
-          keys:
-            - bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-      - run: bundle check || bundle install  --clean --deployment
-      - save_cache:
-          key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      - ruby/load-cache
+      - ruby/install-deps
+      - ruby/save-cache
       - persist_to_workspace:
           root: .
           paths:
@@ -41,15 +38,9 @@ jobs:
     executor: default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - yarn-{{ arch }}-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - save_cache:
-          key: yarn-{{ arch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - node_modules
+      - node/install-packages:
+          cache-key: yarn.lock
+          pkg-manager: yarn
       - persist_to_workspace:
           root: .
           paths:
@@ -61,8 +52,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
       - run: bundle exec rails webpacker:compile
       - persist_to_workspace:
           root: .
@@ -85,8 +74,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
       - run:
           command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
       - store_artifacts:
@@ -99,8 +86,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
       - run:
           command: bundle exec brakeman -z --format html --output tmp/brakeman.html
       - store_artifacts:
@@ -113,8 +98,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - run:
@@ -150,8 +133,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
       - run: bundle exec rake graphql:schema:generate
       - run: yarn run graphql:codegen
       - store_artifacts:
