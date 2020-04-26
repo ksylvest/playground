@@ -29,7 +29,7 @@ export const Fields: React.FC<{
     setEmail(defaults.email);
   }, [defaults]);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     event.stopPropagation();
 

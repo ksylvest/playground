@@ -3,7 +3,7 @@ declare namespace mapboxgl {
 
   type LngLat = [
     number, // lng
-    number, // lat
+    number // lat
   ];
   class Map {
     constructor(parameters: { container: HTMLElement; center?: LngLat; style?: string });

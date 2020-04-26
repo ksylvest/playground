@@ -27,7 +27,7 @@ export const Field: React.FC<{
   const invalid = !!errors && !!messages;
   const valid = !!errors && !messages;
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     onValue(event.target.value);
   };
 

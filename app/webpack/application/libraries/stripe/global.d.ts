@@ -1,35 +1,35 @@
-declare var Stripe: stripe.ILibrary;
+declare let Stripe: stripe.Library;
 
 declare namespace stripe {
-  interface ILibrary {
-    (token: string): IStripe;
+  interface Library {
+    (token: string): Stripe;
     version: number;
   }
 
-  interface IToken {
+  interface Token {
     id: string;
   }
 
-  interface IError {
+  interface Error {
     message?: string;
   }
 
-  interface ITokenResponse {
-    token?: IToken;
-    error?: IError;
+  interface TokenResponse {
+    token?: Token;
+    error?: Error;
   }
 
-  interface IElement {
+  interface Element {
     mount(element: HTMLElement): void;
     unmount(): void;
   }
 
-  interface IElements {
-    create(type: "card"): IElement;
+  interface Elements {
+    create(type: "card"): Element;
   }
 
-  interface IStripe {
-    elements(): IElements;
-    createToken(element: IElement): Promise<ITokenResponse>;
+  interface Stripe {
+    elements(): Elements;
+    createToken(element: Element): Promise<TokenResponse>;
   }
 }

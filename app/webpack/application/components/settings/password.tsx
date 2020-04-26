@@ -32,7 +32,7 @@ export const Password: React.FC = () => {
       <Fields
         loading={loading}
         errors={errors}
-        save={(input) => {
+        save={(input): void => {
           submit({
             variables: { input },
           });

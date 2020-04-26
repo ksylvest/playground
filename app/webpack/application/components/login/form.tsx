@@ -15,7 +15,7 @@ export const Form: React.FC<{
   const [submit, { loading, data }] = useLoginMutation();
   const errors = data?.login.errors || undefined;
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });

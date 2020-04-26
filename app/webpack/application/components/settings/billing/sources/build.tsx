@@ -10,11 +10,11 @@ export const Build: React.FC<{
 }> = ({ onClose }) => {
   const { notify } = useContext(World);
 
-  const onCancel = () => {
+  const onCancel = (): void => {
     onClose();
   };
 
-  const onSave = () => {
+  const onSave = (): void => {
     notify({
       kind: "alert",
       message: `Thanks.`,

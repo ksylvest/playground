@@ -11,7 +11,7 @@ export const Feed: React.FC = () => {
     <>
       <Switch>
         <Route exact path={FEED_LIST_URL} component={List} />
-        <Route exact path={FEED_DETAILS_URL({ id: ":id" })} render={({ match }) => <Details id={match.params.id} />} />
+        <Route exact path={FEED_DETAILS_URL({ id: ":id" })} component={Details} />
       </Switch>
     </>
   );

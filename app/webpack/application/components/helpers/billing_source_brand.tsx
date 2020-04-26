@@ -5,7 +5,7 @@ import { Billing__Brand, Billing__Source } from "@root/app_schema";
 export const BillingSourceBrand: React.FC<{
   source: Billing__Source;
 }> = ({ source }) => {
-  const text = (() => {
+  const text = ((): string => {
     switch (source.brand) {
       case Billing__Brand.AmericanExpress:
         return "American Express";

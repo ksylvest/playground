@@ -15,7 +15,7 @@ export const Default: React.FC<{
   const variables = { id: source.id };
   const [submit, { loading }] = useSettingsBillingSourceDefaultMutation({ variables });
 
-  const onContinue = async () => {
+  const onContinue = async (): Promise<void> => {
     if (loading) {
       return;
     }

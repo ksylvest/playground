@@ -13,7 +13,7 @@ export const Attach: React.FC<{
   const { notify } = useContext(World);
   const [submit, { loading }] = useSettingsAvatarAttachMutation();
 
-  const onSelect = async (id: string) => {
+  const onSelect = async (id: string): Promise<void> => {
     if (loading) {
       return;
     }

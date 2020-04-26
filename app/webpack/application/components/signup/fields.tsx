@@ -8,14 +8,12 @@ import { Flashes } from "@application/components/flashes";
 
 import { Context } from "./context";
 
-interface IField {
+const FIELDS: Array<{
   icon: IconProp;
   label: string;
   name: "name" | "email" | "password";
   type: string;
-}
-
-const FIELDS: IField[] = [
+}> = [
   {
     icon: faInfo,
     label: "Name",
@@ -48,7 +46,7 @@ export const Fields: React.FC = () => {
           {...field}
           errors={errors}
           value={input[field.name]}
-          onValue={(value) => onChange({ ...input, [field.name]: value })}
+          onValue={(value): void => onChange({ ...input, [field.name]: value })}
         />
       ))}
     </>

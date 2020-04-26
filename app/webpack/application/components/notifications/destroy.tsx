@@ -12,7 +12,7 @@ export const Destroy: React.FC<{
   const variables = { id: notification.id };
   const [submit, { loading }] = useDestroyNotificationMutation({ variables });
 
-  const onClick = async () => {
+  const onClick = async (): Promise<void> => {
     if (loading) {
       return;
     }

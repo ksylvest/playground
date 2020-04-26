@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
   faCcAmex,
   faCcDinersClub,
@@ -15,7 +16,7 @@ import { Billing__Brand, Billing__Source } from "@root/app_schema";
 export const BillingSourceIcon: React.FC<{
   source: Billing__Source;
 }> = ({ source }) => {
-  const icon = (() => {
+  const icon = ((): IconProp => {
     switch (source.brand) {
       case Billing__Brand.AmericanExpress:
         return faCcAmex;

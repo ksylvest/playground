@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Card, Column, Columns } from "tights";
 
@@ -16,9 +16,8 @@ import { Actions } from "./entry/actions";
 
 import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
-export const Details: React.FC<{
-  id: string;
-}> = ({ id }) => {
+export const Details: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const { data } = useFeedEntryQuery({ variables: { id } });
   const entry = data?.feed?.entry;
 

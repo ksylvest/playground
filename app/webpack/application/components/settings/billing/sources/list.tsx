@@ -34,10 +34,10 @@ export const List: React.FC<{
           </td>
           <td>
             <Buttons alignment="right">
-              <Button outlined color="danger" onClick={() => onDestroy(source)}>
+              <Button outlined color="danger" onClick={(): void => onDestroy(source)}>
                 Remove
               </Button>
-              <Button outlined color="info" onClick={() => onDefault(source)} disabled={source.default}>
+              <Button outlined color="info" onClick={(): void => onDefault(source)} disabled={source.default}>
                 Default
               </Button>
             </Buttons>

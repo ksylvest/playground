@@ -68,15 +68,15 @@ const MeNavbarItem: React.FC = () => (
     <Navbar.Dropdown direction="right">
       <MainNavbarLinks />
       <Navbar.Divider />
-      <Logout>
-        {({ logout }) => (
+      <Logout
+        children={({ logout }): React.ReactElement => (
           <Navbar.Item>
             <Button type="button" onClick={logout}>
               Logout
             </Button>
           </Navbar.Item>
         )}
-      </Logout>
+      />
     </Navbar.Dropdown>
   </Navbar.Item>
 );
@@ -84,7 +84,7 @@ const MeNavbarItem: React.FC = () => (
 export const Header: React.FC = () => {
   const { session } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
-  const onToggle = () => setActive(!active);
+  const onToggle = (): void => setActive(!active);
 
   return (
     <header>

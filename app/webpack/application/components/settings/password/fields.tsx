@@ -17,7 +17,7 @@ export const Fields: React.FC<{
   const [current, setCurrent] = useState<string>("");
   const [replacement, setReplacement] = useState<string>("");
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     event.stopPropagation();
 

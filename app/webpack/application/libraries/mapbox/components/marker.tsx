@@ -18,7 +18,7 @@ export const Marker: React.FC<{
       return;
     }
     marker.addTo(map);
-    return () => {
+    return (): void => {
       marker.remove();
     };
   }, [map]);

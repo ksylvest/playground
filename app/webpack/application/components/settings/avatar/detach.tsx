@@ -18,17 +18,17 @@ export const Detach: React.FC<{
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
   const [submit, { loading }] = useSettingsAvatarDetachMutation();
 
-  const open = () => setActive(true);
-  const close = () => setActive(false);
+  const open = (): void => setActive(true);
+  const close = (): void => setActive(false);
 
-  const onCancel = () => {
+  const onCancel = (): void => {
     if (loading) {
       return;
     }
     close();
   };
 
-  const onContinue = async () => {
+  const onContinue = async (): Promise<void> => {
     if (loading) {
       return;
     }

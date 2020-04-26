@@ -10,14 +10,18 @@ export const Follow: React.FC<{
   profile?: FollowFragment & UserFragment;
 }> = ({ profile }) => {
   const following = profile && profile.following;
-  const id = profile && profile.id;
-  const variables = { id: id! };
+  const id = profile?.id;
 
-  const [follow, { loading: saving }] = useFollowUserMutation({ variables });
-  const [unfollow, { loading: unsaving }] = useUnfollowUserMutation({ variables });
+  const [follow, { loading: saving }] = useFollowUserMutation();
+  const [unfollow, { loading: unsaving }] = useUnfollowUserMutation();
 
   const loading = saving || unsaving;
-  const execute = following ? unfollow : follow;
+  const execute = (): void => {
+    if (!id) {
+      throw new Error("undefined 'id'");
+    }
+    (following ? unfollow : follow)({ variables: { id } });
+  };
 
   const disabled = !id || loading;
   const title = following ? "Following" : "Follow";

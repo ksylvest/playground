@@ -12,7 +12,7 @@ import { World } from "@application/contexts";
 
 import { GeographySummary } from "@application/components/helpers";
 
-const color = (status: SessionStatusEnum) => {
+const color = (status: SessionStatusEnum): "info" | "light" => {
   switch (status) {
     case SessionStatusEnum.Online:
       return "info";
@@ -46,7 +46,7 @@ export const Entry: React.FC<{
                 Current
               </Button>
             ) : (
-              <Button outlined color="danger" onClick={() => onRevoke(session)}>
+              <Button outlined color="danger" onClick={(): void => onRevoke(session)}>
                 Revoke
               </Button>
             )}

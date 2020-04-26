@@ -1,7 +1,7 @@
 import * as loadjs from "loadjs";
 import { useEffect, useState } from "react";
 
-export const useLoadJS = (id: string) => {
+export const useLoadJS = (id: string): boolean => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const useLoadJS = (id: string) => {
       }
     });
 
-    return () => {
+    return (): void => {
       aborted = true;
     };
   }, [id]);
