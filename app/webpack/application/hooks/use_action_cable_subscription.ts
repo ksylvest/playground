@@ -9,7 +9,10 @@ export enum ActionCableSubscriptionStatus {
   Disconnected = "DISCONNECTED",
 }
 
-export const useActionCableSubscription = <T>(to: any, received: (data: T) => void) => {
+export const useActionCableSubscription = <T>(
+  to: { channel: string },
+  received: (data: T) => void
+): { status?: ActionCableSubscriptionStatus } => {
   const [status, setStatus] = useState<ActionCableSubscriptionStatus | undefined>(undefined);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ export const useActionCableSubscription = <T>(to: any, received: (data: T) => vo
       disconnected: () => setStatus(ActionCableSubscriptionStatus.Disconnected),
       received,
     });
-    return () => {
+    return (): void => {
       subscription.unsubscribe();
     };
   }, [to]);

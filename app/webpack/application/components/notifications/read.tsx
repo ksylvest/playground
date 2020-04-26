@@ -11,7 +11,7 @@ export const Read: React.FC<{
 }> = ({ notification: { id, read } }) => {
   const [submit, { loading }] = useReadNotificationMutation({ variables: { id } });
 
-  const onClick = async () => {
+  const onClick = async (): Promise<void> => {
     if (loading) {
       return;
     }

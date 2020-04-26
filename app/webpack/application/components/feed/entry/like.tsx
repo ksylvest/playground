@@ -17,13 +17,17 @@ export const Like: React.FC<{
   const liked = entry?.liked;
   const likes = entry?.likes;
   const id = entry?.id;
-  const variables = { id: id! };
 
-  const [like, { loading: liking }] = useLikeFeedEntryMutation({ variables });
-  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation({ variables });
+  const [like, { loading: liking }] = useLikeFeedEntryMutation();
+  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation();
 
   const loading = liking || unliking;
-  const execute = liked ? unlike : like;
+  const execute = (): void => {
+    if (!id) {
+      throw new Error("undefined 'id'");
+    }
+    (liked ? unlike : like)({ variables: { id } });
+  };
 
   const disabled = !id || loading;
   const title = liked ? "Like" : "Unlike";

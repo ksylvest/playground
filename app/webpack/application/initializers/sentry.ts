@@ -2,7 +2,7 @@ declare const ENVIRONMENT: string;
 declare const RELEASE: string;
 declare const SENTRY_DSN: string | null;
 
-(() => {
+((): void => {
   if (typeof window !== "undefined") {
     const Sentry = require("@sentry/browser");
 

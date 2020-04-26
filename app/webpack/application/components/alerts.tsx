@@ -6,13 +6,18 @@ import { Notification } from "tights";
 
 import { World } from "@application/contexts";
 
-import { IFlash } from "@application/types";
+import { Flash } from "@application/types";
+
+const COLORS: { [key: string]: "info" | "warning" } = {
+  alert: "warning",
+  notice: "info",
+};
 
 export const Alerts: React.FC = () => {
   const { flash, notify } = useContext(World);
-  const location = useLocation<{ flash?: IFlash }>();
+  const location = useLocation<{ flash?: Flash }>();
 
-  useEffect(() => {
+  useEffect((): void => {
     notify(location.state ? location.state.flash : undefined);
   }, [location]);
 
@@ -20,17 +25,5 @@ export const Alerts: React.FC = () => {
     return null;
   }
 
-  return (
-    <Notification
-      children={flash.message}
-      color={(() => {
-        switch (flash.kind) {
-          case "alert":
-            return "warning";
-          case "notice":
-            return "info";
-        }
-      })()}
-    />
-  );
+  return <Notification children={flash.message} color={COLORS[flash.kind]} />;
 };

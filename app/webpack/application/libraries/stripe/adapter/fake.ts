@@ -1,9 +1,9 @@
-import { IBase } from "./base";
+import { Base } from "./base";
 
-declare const STRIPE_FAKE_TOKEN_RESPONSE: stripe.ITokenResponse;
+declare const STRIPE_FAKE_TOKEN_RESPONSE: stripe.TokenResponse;
 
-export class Fake implements IBase {
-  public element = () =>
+export class Fake implements Base {
+  public element = (): Promise<stripe.Element> =>
     Promise.resolve({
       mount: () => {
         /* noop */
@@ -12,7 +12,7 @@ export class Fake implements IBase {
         /* noop */
       },
     });
-  public tokenize = async () => {
+  public tokenize = async (): Promise<stripe.TokenResponse> => {
     if (typeof STRIPE_FAKE_TOKEN_RESPONSE === "undefined") {
       throw new Error('"STRIPE_FAKE_TOKEN_RESPONSE" must be configured when testing.');
     }

@@ -25,12 +25,12 @@ export const Carousel: React.FC<{
   const photo = photos[index];
   const total = photos.length;
 
-  const go = (offset: number) => {
+  const go = (offset: number): void => {
     setIndex((index + total + offset) % total);
   };
 
-  const next = () => go(+1);
-  const prev = () => go(-1);
+  const next = (): void => go(+1);
+  const prev = (): void => go(-1);
 
   useKey(next, NEXT_KEY);
   useKey(prev, PREV_KEY);
@@ -41,7 +41,7 @@ export const Carousel: React.FC<{
       <br />
       <Pagination rounded>
         <Pagination.Prev
-          onClick={(event) => {
+          onClick={(event): void => {
             event.preventDefault();
             event.stopPropagation();
             prev();
@@ -50,7 +50,7 @@ export const Carousel: React.FC<{
           <FontAwesomeIcon icon={faChevronLeft} />
         </Pagination.Prev>
         <Pagination.Next
-          onClick={(event) => {
+          onClick={(event): void => {
             event.preventDefault();
             event.stopPropagation();
             next();
@@ -65,7 +65,7 @@ export const Carousel: React.FC<{
               key={page}
               current={page === index}
               href="#"
-              onClick={(event) => {
+              onClick={(event): void => {
                 event.preventDefault();
                 event.stopPropagation();
                 setIndex(page);

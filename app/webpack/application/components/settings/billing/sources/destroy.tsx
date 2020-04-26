@@ -15,7 +15,7 @@ export const Destroy: React.FC<{
   const variables = { id: source.id };
   const [submit, { loading }] = useSettingsBillingSourceDestroyMutation({ variables });
 
-  const onContinue = async () => {
+  const onContinue = async (): Promise<void> => {
     if (loading) {
       return;
     }

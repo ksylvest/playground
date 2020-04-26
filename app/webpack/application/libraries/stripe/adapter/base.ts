@@ -1,4 +1,4 @@
-export interface IBase {
-  element(type: "card"): Promise<stripe.IElement>;
-  tokenize(element: stripe.IElement): Promise<stripe.ITokenResponse>;
+export interface Base {
+  element(type: "card"): Promise<stripe.Element>;
+  tokenize(element: stripe.Element): Promise<stripe.TokenResponse>;
 }

@@ -33,7 +33,7 @@ export const Profile: React.FC = () => {
       <hr />
       <Fields
         defaults={(defaults && defaults.me) || undefined}
-        save={(input) => {
+        save={(input): void => {
           if (loading) {
             return;
           }

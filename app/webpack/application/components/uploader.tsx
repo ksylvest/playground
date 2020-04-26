@@ -14,7 +14,7 @@ export const Uploader: React.FC<{
 }> = ({ accept, name, onSelect }) => {
   const { files, onChange, onReset } = useFiles();
   const [file] = files;
-  const uploader = useActiveStorageDirectUpload(file, ({ blob }) => {
+  const { uploading } = useActiveStorageDirectUpload(file, ({ blob }) => {
     if (blob) {
       onReset();
       onSelect(blob.signed_id);
@@ -28,7 +28,7 @@ export const Uploader: React.FC<{
           <Form.File.Input accept={accept} name={name} onChange={onChange} disabled={!!file} />
           <Form.File.CTA>
             <Form.File.Icon>
-              <FontAwesomeIcon icon={uploader ? faSpinner : faUpload} spin={!!uploader} />
+              <FontAwesomeIcon icon={uploading ? faSpinner : faUpload} spin={uploading} />
             </Form.File.Icon>
             Choose
           </Form.File.CTA>

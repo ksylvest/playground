@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { useLocation } from "react-router";
 import { Redirect } from "react-router-dom";
 
-import { IFlash } from "@application/types";
+import { Flash } from "@application/types";
 
 import { LOGIN_URL } from "@application/config/routes";
 
 import { World } from "@application/contexts";
 
-const AUTHORIZE_FLASH: IFlash = {
+const AUTHORIZE_FLASH: Flash = {
   kind: "alert",
   message: "You must be authenticated to access this.",
 };

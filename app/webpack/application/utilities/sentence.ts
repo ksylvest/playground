@@ -5,7 +5,7 @@ const FINAL = " and ";
 const TERMINATOR = ".";
 
 export const sentence = (phrases: string[]): string => {
-  const phrase = (() => {
+  const phrase = ((): string => {
     if (phrases.length > 2) {
       return initial(phrases).join(MULTI) + FINAL + last(phrases);
     } else {

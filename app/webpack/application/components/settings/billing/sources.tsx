@@ -20,7 +20,7 @@ export const Sources: React.FC<{
   const [destroying, setDestroying] = useState<Billing__Source | undefined>();
   const [defaulting, setDefaulting] = useState<Billing__Source | undefined>();
 
-  const onClose = () => {
+  const onClose = (): void => {
     setBuilding(DEFAULT_BUILDING);
     setDestroying(undefined);
     setDefaulting(undefined);
@@ -31,7 +31,7 @@ export const Sources: React.FC<{
     <>
       <List sources={sources} onDestroy={setDestroying} onDefault={setDefaulting} />
       <Buttons>
-        <Button fullwidth color="primary" onClick={() => setBuilding(!building)}>
+        <Button fullwidth color="primary" onClick={(): void => setBuilding(!building)}>
           Add a Card
         </Button>
       </Buttons>

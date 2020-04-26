@@ -8,7 +8,7 @@ import { useActionCableSubscription } from "@application/hooks";
 
 import { Container, Section } from "tights";
 
-import { IFlash } from "@application/types";
+import { Flash } from "@application/types";
 
 import { Footer } from "./app/footer";
 import { Header } from "./app/header";
@@ -69,10 +69,10 @@ export const App: React.FC<{
   location?: string;
   session?: { id: string };
 }> = (props) => {
-  const [flash, notify] = useState<IFlash | undefined>(undefined);
+  const [flash, notify] = useState<Flash | undefined>(undefined);
   const [session, auth] = useState<{ id: string } | undefined>(props.session);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
-  const deauth = () => auth(undefined);
+  const deauth = (): void => auth(undefined);
 
   useActionCableSubscription(STATS_CHANNEL, setStats);
   useActionCableSubscription(PRESENCE_CHANNEL, () => {

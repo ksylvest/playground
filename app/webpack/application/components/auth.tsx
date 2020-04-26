@@ -11,7 +11,7 @@ export const Auth: React.FC = () => {
     return null;
   }
 
-  const onChange = () => history.replace(location.pathname);
+  const onChange = (): void => history.replace(location.pathname);
 
   return <Dialog onCancel={onChange} onAuth={onChange} />;
 };

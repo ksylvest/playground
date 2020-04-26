@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 
-const reset = (form: React.RefObject<HTMLFormElement>) => {
+const reset = (form: React.RefObject<HTMLFormElement>): void => {
   if (form.current !== null) {
     form.current.reset();
   }
 };
 
-const select = (event: React.ChangeEvent<HTMLInputElement>) => {
+const select = (event: React.ChangeEvent<HTMLInputElement>): Array<File> => {
   const files = [];
 
   if (!event.target.files) {
@@ -23,18 +23,22 @@ const select = (event: React.ChangeEvent<HTMLInputElement>) => {
   return files;
 };
 
-export const useFiles = () => {
+export const useFiles = (): {
+  files: File[];
+  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onReset(): void;
+} => {
   const form = useRef<HTMLFormElement>(null);
   const [files, setFiles] = useState<File[]>([]);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setFiles([...files, ...select(event)]);
   };
 
   return {
     files,
     onChange,
-    onReset: () => {
+    onReset: (): void => {
       reset(form);
       setFiles([]);
     },

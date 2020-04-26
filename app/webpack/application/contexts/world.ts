@@ -1,14 +1,14 @@
 import { createContext } from "react";
 
-import { IFlash } from "@application/types";
+import { Flash } from "@application/types";
 
 export const World = createContext<{
   session?: { id: string };
-  flash?: IFlash;
+  flash?: Flash;
   stats?: { notifications: number };
   auth(_: { id: string }): void;
   deauth(): void;
-  notify(flash?: IFlash): void;
+  notify(flash?: Flash): void;
 }>({
   auth: (_: { id: string }) => {
     /* noop */
@@ -16,7 +16,7 @@ export const World = createContext<{
   deauth: () => {
     /* noop */
   },
-  notify: (_: IFlash) => {
+  notify: (_: Flash) => {
     /* noop */
   },
 });

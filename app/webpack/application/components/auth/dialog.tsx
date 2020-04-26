@@ -35,27 +35,25 @@ enum Mode {
 
 const DEFAULT_MODE = Mode.Login;
 
+const AUTHS = {
+  [Mode.Login]: Login,
+  [Mode.Signup]: Signup,
+};
+
 export const Dialog: React.FC<{
   onCancel(): void;
   onAuth(): void;
 }> = ({ onCancel, onAuth }) => {
   const { auth } = useContext(World);
   const [mode, setMode] = useState<Mode>(DEFAULT_MODE);
-  const Auth = (() => {
-    switch (mode) {
-      case Mode.Login:
-        return Login;
-      case Mode.Signup:
-        return Signup;
-    }
-  })();
+  const Auth = AUTHS[mode];
 
   return (
     <Modal>
       <Modal.Background onClick={onCancel} />
       <Modal.Content>
         <Auth.Form
-          onAuth={(session) => {
+          onAuth={(session): void => {
             auth(session);
             onAuth();
           }}
@@ -71,7 +69,7 @@ export const Dialog: React.FC<{
                   <Tabs.Item active={mode === Mode.Login}>
                     <a
                       href="#"
-                      onClick={(event) => {
+                      onClick={(event): void => {
                         event.preventDefault();
                         event.stopPropagation();
                         setMode(Mode.Login);
@@ -83,7 +81,7 @@ export const Dialog: React.FC<{
                   <Tabs.Item active={mode === Mode.Signup}>
                     <a
                       href="#"
-                      onClick={(event) => {
+                      onClick={(event): void => {
                         event.preventDefault();
                         event.stopPropagation();
                         setMode(Mode.Signup);
@@ -98,7 +96,7 @@ export const Dialog: React.FC<{
             </Modal.Card.Body>
             <Modal.Card.Foot>
               <Auth.Context.Consumer
-                children={({ loading }) => (
+                children={({ loading }): React.ReactNode => (
                   <>
                     <Button type="submit" loading={loading} disabled={loading} color="primary">
                       {mode}

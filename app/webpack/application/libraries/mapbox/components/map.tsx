@@ -29,7 +29,7 @@ export const Map: React.FC<{
         style: STYLE,
       })
     );
-    return () => {
+    return (): void => {
       setMap(undefined);
     };
   }, [ready, ref]);
@@ -38,7 +38,7 @@ export const Map: React.FC<{
     if (!map) {
       return;
     }
-    return () => {
+    return (): void => {
       map.remove();
     };
   }, [map]);

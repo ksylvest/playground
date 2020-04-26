@@ -7,20 +7,18 @@ import { Element, useAdapter, useElement } from "@application/libraries/stripe";
 
 import { Button, Content, Delete, Form, Modal } from "tights";
 
-interface IDialogProps {
+export const Dialog: React.FC<{
   onCancel(): void;
   onSave(): void;
-}
-
-export const Dialog: React.FC<IDialogProps> = ({ onCancel, onSave }) => {
+}> = ({ onCancel, onSave }) => {
   const [submit, { loading }] = useSettingsBillingSourceBuildMutation();
-  const [tokenizer, setTokenizer] = useState<Promise<stripe.ITokenResponse> | undefined>(undefined);
+  const [tokenizer, setTokenizer] = useState<Promise<stripe.TokenResponse> | undefined>(undefined);
   const adapter = useAdapter();
   const element = useElement(adapter, "card");
 
   const saving = loading || !!tokenizer;
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -31,13 +29,13 @@ export const Dialog: React.FC<IDialogProps> = ({ onCancel, onSave }) => {
     setTokenizer(attempt);
     const { error, token } = await attempt;
     setTokenizer(undefined);
-    if (error) {
+    if (error || !token) {
       return;
     }
 
     await submit({
       variables: {
-        source: token!.id,
+        source: token.id,
       },
     });
     onSave();

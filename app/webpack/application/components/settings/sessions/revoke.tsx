@@ -15,7 +15,7 @@ export const Revoke: React.FC<{
   const variables = { id: session.id };
   const [submit, { loading }] = useSettingsSessionRevokeMutation({ variables });
 
-  const onContinue = async () => {
+  const onContinue = async (): Promise<void> => {
     if (loading) {
       return;
     }

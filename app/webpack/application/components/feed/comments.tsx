@@ -29,7 +29,7 @@ export const Comments: React.FC<{
   const comments = data?.feed?.entry.comments;
   const valid = !!message || loading;
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     event.stopPropagation();
     if (!valid) {
@@ -49,7 +49,7 @@ export const Comments: React.FC<{
           <Form.Control>
             <Form.Textarea
               value={message}
-              onChange={(event) => setMessage(event.target.value)}
+              onChange={(event): void => setMessage(event.target.value)}
               placeholder="Add a comment..."
             />
           </Form.Control>

@@ -59,14 +59,14 @@ jobs:
             - tmp/cache/webpacker
             - public/packs*
 
-  tslint:
+  eslint:
     executor: default
     steps:
       - checkout
       - attach_workspace:
           at: .
       - run:
-          command: yarn run tslint ./app/**/*.ts*
+          command: yarn run eslint ./app/webpack --ext .js,.jsx,.ts,.tsx
 
   rubocop:
     executor: default
@@ -149,7 +149,7 @@ workflows:
           requires:
             - bundle
             - yarn
-      - tslint:
+      - eslint:
           requires:
             - yarn
       - brakeman:

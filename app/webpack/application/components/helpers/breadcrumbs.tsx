@@ -6,14 +6,14 @@ import { Breadcrumb } from "tights";
 
 import { ROOT_URL } from "@application/config/routes";
 
-interface ILink {
-  name: string;
-  to: string;
-}
+const HOME_LINK = { name: "Home", to: ROOT_URL };
 
-const HOME_LINK: ILink = { name: "Home", to: ROOT_URL };
-
-export const Breadcrumbs: React.FC<{ links: ILink[] }> = ({ links }) => {
+export const Breadcrumbs: React.FC<{
+  links: Array<{
+    name: string;
+    to: string;
+  }>;
+}> = ({ links }) => {
   const location = useLocation();
   return (
     <Breadcrumb>

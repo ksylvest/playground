@@ -13,7 +13,7 @@ if (typeof window !== "undefined" && !!MAPBOX_ACCESS_TOKEN) {
     "mapboxgl",
     () => {
       mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-    },
+    }
   );
 }
 
