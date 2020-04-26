@@ -14,7 +14,7 @@ import { LOGIN_URL, ROOT_URL, SIGNUP_URL } from "@application/config/routes";
 
 export const Authenticator: React.FC = () => {
   const { session } = useContext(World);
-  const location = useLocation();
+  const location = useLocation<{ back?: string }>();
   const { state } = location;
   if (session) {
     return <Redirect to={state?.back || ROOT_URL} />;

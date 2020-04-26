@@ -4,7 +4,7 @@ import { useLocation, useHistory } from "react-router";
 import { Dialog } from "./auth/dialog";
 
 export const Auth: React.FC = () => {
-  const location = useLocation();
+  const location = useLocation<{ auth: boolean }>();
   const history = useHistory();
   const { state } = location;
   if (!state || !state.auth) {
