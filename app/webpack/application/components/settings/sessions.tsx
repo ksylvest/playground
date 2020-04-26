@@ -15,7 +15,7 @@ export const Sessions: React.FC = () => {
   const { data, refetch } = useSettingsSessionsQuery();
   const sessions = data ? data.sessions : undefined;
 
-  useActionCableSubscription({ channel: "PresenceChannel" }, refetch);
+  useActionCableSubscription("PresenceChannel", refetch);
 
   const onClose = (): void => {
     setRevoking(undefined);

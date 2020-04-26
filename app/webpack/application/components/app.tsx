@@ -24,8 +24,8 @@ import { Settings } from "./settings";
 
 import { LOGIN_URL, NOTIFICATIONS_URL, PROFILE_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
 
-const STATS_CHANNEL = { channel: "StatsChannel" };
-const PRESENCE_CHANNEL = { channel: "PresenceChannel" };
+const STATS_CHANNEL = "StatsChannel";
+const PRESENCE_CHANNEL = "PresenceChannel";
 
 const Router: React.FC<{
   location?: string;
@@ -75,9 +75,7 @@ export const App: React.FC<{
   const deauth = (): void => auth(undefined);
 
   useActionCableSubscription(STATS_CHANNEL, setStats);
-  useActionCableSubscription(PRESENCE_CHANNEL, () => {
-    /* noop */
-  });
+  useActionCableSubscription(PRESENCE_CHANNEL);
 
   return (
     <Router location={props.location}>

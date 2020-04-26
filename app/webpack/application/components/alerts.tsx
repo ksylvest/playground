@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
 import { Notification } from "tights";
@@ -19,7 +19,7 @@ export const Alerts: React.FC = () => {
 
   useEffect((): void => {
     notify(location.state ? location.state.flash : undefined);
-  }, [location]);
+  }, [location, notify]);
 
   if (!flash) {
     return null;
