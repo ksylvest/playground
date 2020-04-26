@@ -8,7 +8,7 @@ export const World = createContext<{
   stats?: { notifications: number };
   auth(_: { id: string }): void;
   deauth(): void;
-  notify(flash: IFlash): void;
+  notify(flash?: IFlash): void;
 }>({
   auth: (_: { id: string }) => {
     /* noop */

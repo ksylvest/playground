@@ -2,13 +2,15 @@ import * as React from "react";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router";
 
+import { Notification } from "tights";
+
 import { World } from "@application/contexts";
 
-import { Notification } from "tights";
+import { IFlash } from "@application/types";
 
 export const Alerts: React.FC = () => {
   const { flash, notify } = useContext(World);
-  const location = useLocation();
+  const location = useLocation<{ flash?: IFlash }>();
 
   useEffect(() => {
     notify(location.state ? location.state.flash : undefined);
