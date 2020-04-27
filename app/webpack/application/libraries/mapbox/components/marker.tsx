@@ -9,9 +9,10 @@ export const Marker: React.FC<{
 }> = ({ coordinate }) => {
   const { map } = useContext(Context);
   const [marker] = useState(() => new mapboxgl.Marker());
+
   useEffect(() => {
     marker.setLngLat(coordinate);
-  }, [coordinate]);
+  }, [marker, coordinate]);
 
   useEffect(() => {
     if (!map) {
@@ -21,7 +22,7 @@ export const Marker: React.FC<{
     return (): void => {
       marker.remove();
     };
-  }, [map]);
+  }, [map, marker]);
 
   return null;
 };

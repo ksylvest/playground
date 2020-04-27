@@ -16,32 +16,22 @@ export const Map: React.FC<{
   const ready = useLoadJS("mapboxgl");
 
   useEffect(() => {
-    if (!ready) {
+    if (!ready || !ref.current) {
       return;
     }
-    if (!ref.current) {
-      return;
-    }
-    setMap(
-      new mapboxgl.Map({
-        center,
-        container: ref.current,
-        style: STYLE,
-      })
-    );
-    return (): void => {
-      setMap(undefined);
-    };
-  }, [ready, ref]);
 
-  useEffect(() => {
-    if (!map) {
-      return;
-    }
+    const map = new mapboxgl.Map({
+      center: center,
+      container: ref.current,
+      style: STYLE,
+    });
+    setMap(map);
+
     return (): void => {
       map.remove();
+      setMap(undefined);
     };
-  }, [map]);
+  }, [ready, ref, center]);
 
   if (!ready) {
     return null;
