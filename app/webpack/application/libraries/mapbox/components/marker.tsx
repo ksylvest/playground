@@ -1,3 +1,4 @@
+import * as mapboxgl from "mapbox-gl";
 import * as React from "react";
 import { useContext, useEffect, useState } from "react";
 export * from "./marker";

@@ -1,11 +1,12 @@
+import * as mapboxgl from "mapbox-gl";
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { Context } from "../context";
 
-import { useLoadJS } from "@application/libraries/loadjs";
-
 const STYLE = "mapbox://styles/mapbox/streets-v11";
+
+declare const MAPBOX_ACCESS_TOKEN: string | undefined;
 
 export const Map: React.FC<{
   style?: React.CSSProperties;
@@ -13,14 +14,14 @@ export const Map: React.FC<{
 }> = ({ center, children, style }) => {
   const [map, setMap] = useState<mapboxgl.Map | undefined>();
   const ref = useRef<HTMLDivElement>(null);
-  const ready = useLoadJS("mapboxgl");
 
   useEffect(() => {
-    if (!ready || !ref.current) {
+    if (!ref.current) {
       return;
     }
 
     const map = new mapboxgl.Map({
+      accessToken: MAPBOX_ACCESS_TOKEN,
       center: center,
       container: ref.current,
       style: STYLE,
@@ -31,11 +32,7 @@ export const Map: React.FC<{
       map.remove();
       setMap(undefined);
     };
-  }, [ready, ref, center]);
-
-  if (!ready) {
-    return null;
-  }
+  }, [ref, center]);
 
   return (
     <>
