@@ -1,8 +1,9 @@
 class AttachmentsController < ApplicationController
   # GET /attached/:id.(jpg|webp)?l=:l&w=:w&resize=(fit|fill)
   def show
-    expires_in 2.years, public: !params[:fresh]
-    send_data(service.data, type: Mime::Type.lookup_by_extension(format), disposition: 'inline')
+    http_cache_forever(public: !params[:fresh]) do
+      send_data(service.data, type: Mime::Type.lookup_by_extension(format), disposition: 'inline')
+    end
   end
 
 private
