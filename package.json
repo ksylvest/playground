@@ -44,7 +44,7 @@
     "luxon": "^1.24.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router": "^5.0.1",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.1.2",
     "react_ujs": "^2.6.1",
     "tights": "^1.6.0",
