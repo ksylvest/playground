@@ -2,6 +2,7 @@
 
 query SettingsBilling {
   billing {
+    id
     customer {
       id
       currency

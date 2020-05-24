@@ -7,7 +7,7 @@ import { Title } from "@application/components/helpers";
 import { Sources } from "./billing/sources";
 
 export const Billing: React.FC = () => {
-  const { data, refetch } = useSettingsBillingQuery();
+  const { data } = useSettingsBillingQuery();
   const billing = data?.billing;
   const customer = billing?.customer;
   const sources = customer?.sources;
@@ -19,7 +19,7 @@ export const Billing: React.FC = () => {
       <h2 className="title">Billing</h2>
       <hr />
 
-      <Sources sources={sources || []} refetch={refetch} />
+      <Sources sources={sources ?? []} />
     </>
   );
 };

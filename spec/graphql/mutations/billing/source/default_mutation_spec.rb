@@ -11,8 +11,20 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
     let(:gql) do
       <<~GQL
         mutation DefaultBillingSource($id: ID!) {
-          defaultBillingSource(id: $id) {
-            status
+          result: defaultBillingSource(id: $id) {
+            billing {
+              id
+              customer {
+                id
+                sources {
+                  id
+                  number
+                  brand
+                  exp
+                  default
+                }
+              }
+            }
           }
         }
       GQL
@@ -21,9 +33,9 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
     let(:user) { create(:user) }
     let(:id) { 'fake_id' }
 
-    it 'resolves "OK"' do
+    it 'resolves without errors' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['defaultBillingSource']['status']).to eql('OK')
+      expect(execute['data']['result']['billing']).to be_present
     end
   end
 end

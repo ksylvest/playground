@@ -11,8 +11,20 @@ RSpec.describe Mutations::Billing::Source::DestroyMutation do
     let(:gql) do
       <<~GQL
         mutation DestroyBillingSource($id: ID!) {
-          destroyBillingSource(id: $id) {
-            status
+          result: destroyBillingSource(id: $id) {
+            billing {
+              id
+              customer {
+                id
+                sources {
+                  id
+                  number
+                  brand
+                  exp
+                  default
+                }
+              }
+            }
           }
         }
       GQL
@@ -21,9 +33,9 @@ RSpec.describe Mutations::Billing::Source::DestroyMutation do
     let(:user) { create(:user) }
     let(:id) { 'fake_id' }
 
-    it 'resolves "OK"' do
+    it 'resolves without errors' do
       expect(execute['errors']).to be_nil
-      expect(execute['data']['destroyBillingSource']['status']).to eql('OK')
+      expect(execute['data']['result']['billing']).to be_present
     end
   end
 end

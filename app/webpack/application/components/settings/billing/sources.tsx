@@ -14,8 +14,7 @@ const DEFAULT_BUILDING = false;
 
 export const Sources: React.FC<{
   sources: Billing__Source[];
-  refetch(): void;
-}> = ({ sources, refetch }) => {
+}> = ({ sources }) => {
   const [building, setBuilding] = useState<boolean>(DEFAULT_BUILDING);
   const [destroying, setDestroying] = useState<Billing__Source | undefined>();
   const [defaulting, setDefaulting] = useState<Billing__Source | undefined>();
@@ -24,7 +23,6 @@ export const Sources: React.FC<{
     setBuilding(DEFAULT_BUILDING);
     setDestroying(undefined);
     setDefaulting(undefined);
-    refetch();
   };
 
   return (

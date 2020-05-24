@@ -6,4 +6,6 @@ class Billing::Context
   def customer
     @customer ||= Billing::Customer.find_by(user: @user)
   end
+
+  delegate :id, to: :@user
 end

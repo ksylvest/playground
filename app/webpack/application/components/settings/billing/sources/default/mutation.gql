@@ -1,5 +1,15 @@
+#import "@application/fragments/billing/source.gql"
+
 mutation SettingsBillingSourceDefault($id: ID!) {
   result: defaultBillingSource(id: $id) {
-    status
+    billing {
+      id
+      customer {
+        id
+        sources {
+          ...billing__source
+        }
+      }
+    }
   }
 }

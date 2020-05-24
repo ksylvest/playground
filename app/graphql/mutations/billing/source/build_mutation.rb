@@ -4,11 +4,13 @@ module Mutations
       class BuildMutation < BaseMutation
         graphql_name 'BuildBillingSource'
         argument :source, String, required: true
-        field :status, ::Types::StatusType, null: false
+        field :billing, ::Types::BillingType, null: false
 
         def resolve(source:)
-          ::Billing::BuildSourceService.perform!(user: Current.user, source: source)
-          { status: :ok }
+          user = Current.user
+          ::Billing::BuildSourceService.perform!(user: user, source: source)
+
+          { billing: ::Billing::Context.new(user: user) }
         end
       end
     end
