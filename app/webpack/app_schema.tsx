@@ -717,7 +717,7 @@ export type SettingsBillingQuery = (
       & Pick<Billing__Customer, 'id' | 'currency'>
       & { sources: Array<(
         { __typename?: 'Billing__Source' }
-        & Pick<Billing__Source, 'id' | 'number' | 'brand' | 'exp' | 'default'>
+        & Billing__SourceFragment
       )> }
     )> }
   ) }
@@ -859,6 +859,11 @@ export type AttachedFragment = (
   & Pick<Attached, 'id' | 'filename'>
 );
 
+export type Billing__SourceFragment = (
+  { __typename?: 'Billing__Source' }
+  & Pick<Billing__Source, 'id' | 'number' | 'brand' | 'exp' | 'default'>
+);
+
 export type Feed__CommentFragment = (
   { __typename?: 'Feed__Comment' }
   & Pick<Feed__Comment, 'id' | 'message' | 'sent'>
@@ -913,6 +918,15 @@ export type UserFragment = (
   )> }
 );
 
+export const Billing__SourceFragmentDoc = gql`
+    fragment billing__source on Billing__Source {
+  id
+  number
+  brand
+  exp
+  default
+}
+    `;
 export const AttachedFragmentDoc = gql`
     fragment attached on Attached {
   id
@@ -1596,16 +1610,12 @@ export const SettingsBillingDocument = gql`
       id
       currency
       sources {
-        id
-        number
-        brand
-        exp
-        default
+        ...billing__source
       }
     }
   }
 }
-    `;
+    ${Billing__SourceFragmentDoc}`;
 
 /**
  * __useSettingsBillingQuery__
