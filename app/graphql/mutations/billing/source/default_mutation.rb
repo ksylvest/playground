@@ -4,11 +4,13 @@ module Mutations
       class DefaultMutation < BaseMutation
         graphql_name 'DefaultBillingSource'
         argument :id, ID, required: true
-        field :status, ::Types::StatusType, null: false
+        field :billing, ::Types::BillingType, null: false
 
         def resolve(id:)
-          ::Billing::DefaultSourceService.perform!(user: Current.user, id: id)
-          { status: :ok }
+          user = Current.user
+          ::Billing::DefaultSourceService.perform!(user: user, id: id)
+
+          { billing: ::Billing::Context.new(user: user) }
         end
       end
     end

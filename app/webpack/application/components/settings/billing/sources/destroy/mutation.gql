@@ -1,5 +1,15 @@
+#import "@application/fragments/billing/source.gql"
+
 mutation SettingsBillingSourceDestroy($id: ID!) {
   result: destroyBillingSource(id: $id) {
-    status
+    billing {
+      id
+      customer {
+        id
+        sources {
+          ...billing__source
+        }
+      }
+    }
   }
 }
