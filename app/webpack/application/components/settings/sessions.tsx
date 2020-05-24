@@ -13,7 +13,7 @@ import { Revoke } from "./sessions/revoke";
 export const Sessions: React.FC = () => {
   const [revoking, setRevoking] = useState<SessionFragment | undefined>();
   const { data, refetch } = useSettingsSessionsQuery();
-  const sessions = data ? data.sessions : undefined;
+  const sessions = data?.sessions;
 
   useActionCableSubscription("PresenceChannel", refetch);
 
