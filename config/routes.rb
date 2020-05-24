@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       settings
       settings/avatar
       settings/billing
+      settings/billing/sources
+      settings/billing/subscription
       settings/password
       settings/profile
       settings/sessions

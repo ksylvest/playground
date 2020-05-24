@@ -1,0 +1,5 @@
+mutation BuildBillingSubscription($planID: ID!) {
+  buildBillingSubscription(planID: $planID) {
+    status
+  }
+}

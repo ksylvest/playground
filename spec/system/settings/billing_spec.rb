@@ -97,4 +97,37 @@ RSpec.describe 'settings/billing', type: :system do
       expect(page).to have_text('"•••• 4242" is default.')
     end
   end
+
+  context 'when managing subscriptions' do
+    let!(:product) { create(:billing_product) }
+    let!(:plan_cad_month) { create(:billing_plan, product: product, currency: :cad, amount: 900, interval: :month) }
+    let!(:plan_usd_month) { create(:billing_plan, product: product, currency: :usd, amount: 800, interval: :month) }
+    let!(:plan_cad_year) { create(:billing_plan, product: product, currency: :cad, amount: 9000, interval: :year) }
+    let!(:plan_usd_year) { create(:billing_plan, product: product, currency: :usd, amount: 8000, interval: :year) }
+
+    it 'lets a user manage a subscription' do
+      visit settings_billing_path
+      login(user)
+
+      click_link('EUR')
+
+      within('.card', text: 'Student') do
+        expect(page).to have_text('Unavailable')
+      end
+
+      click_link('CAD')
+
+      within('.card', text: 'Student') do
+        expect(page).to have_text('$9.00 / month')
+        expect(page).to have_text('$90.00 / year')
+      end
+
+      click_link('USD')
+
+      within('.card', text: 'Student') do
+        expect(page).to have_text('$8.00 / month')
+        expect(page).to have_text('$80.00 / year')
+      end
+    end
+  end
 end

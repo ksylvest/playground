@@ -1,0 +1,12 @@
+#import "./billing/customer.gql"
+#import "./billing/product.gql"
+
+fragment billing on Billing {
+  id
+  customer {
+    ...billing__customer
+  }
+  products {
+    ...billing__product
+  }
+}

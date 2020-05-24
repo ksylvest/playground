@@ -1,0 +1,13 @@
+#import "./source.gql"
+#import "./subscription.gql"
+
+fragment billing__customer on Billing__Customer {
+  id
+  currency
+  sources {
+    ...billing__source
+  }
+  subscription {
+    ...billing__subscription
+  }
+}

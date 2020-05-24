@@ -1,14 +1,7 @@
-#import "@application/fragments/billing/source.gql"
+#import "@application/fragments/billing.gql"
 
 query SettingsBilling {
   billing {
-    id
-    customer {
-      id
-      currency
-      sources {
-        ...billing__source
-      }
-    }
+    ...billing
   }
 }
