@@ -1,7 +1,10 @@
-import ApolloClient from "apollo-boost";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 import fetch from "unfetch";
 
 export const CLIENT = new ApolloClient({
-  fetch,
-  uri: "/graphql",
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: "/graphql",
+    fetch,
+  }),
 });
