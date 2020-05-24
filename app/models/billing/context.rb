@@ -1,4 +1,6 @@
 class Billing::Context
+  delegate :id, to: :@user
+
   def initialize(user:)
     @user = user
   end
@@ -7,5 +9,4 @@ class Billing::Context
     @customer ||= Billing::Customer.find_by(user: @user)
   end
 
-  delegate :id, to: :@user
 end
