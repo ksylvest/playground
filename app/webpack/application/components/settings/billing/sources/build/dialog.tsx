@@ -18,7 +18,7 @@ export const Dialog: React.FC<{
 
   const saving = loading || !!tokenizer;
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): void => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     event.stopPropagation();
 
