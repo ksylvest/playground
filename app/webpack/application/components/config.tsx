@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloProvider } from "@apollo/client";
 
 import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
