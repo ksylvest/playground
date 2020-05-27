@@ -29,7 +29,7 @@
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.7",
     "@types/react-router-dom": "^5.1.5",
-    "@types/webfontloader": "^1.6.31",
+    "@types/webfontloader": "^1.6.32",
     "babel-plugin-emotion": "^10.0.33",
     "bulma": "^0.8.2",
     "classnames": "^2.2.6",
