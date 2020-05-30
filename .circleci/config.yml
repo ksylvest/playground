@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.2.1
-  node: circleci/node@2.0.3
+  ruby: circleci/ruby@1.0.0
+  node: circleci/node@2.1.1
 
 executors:
   default:
@@ -11,7 +11,7 @@ executors:
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: playground_test
-      - image: circleci/redis:5.0.7-alpine
+      - image: circleci/redis:6.0.4-alpine
     environment:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 4
@@ -26,9 +26,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - ruby/load-cache
       - ruby/install-deps
-      - ruby/save-cache
       - persist_to_workspace:
           root: .
           paths:
@@ -52,7 +50,17 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: bundle exec rails webpacker:compile
+      - restore_cache:
+          keys:
+            - compile-{{ .Branch }}-{{ .Revision }}
+            - compile-{{ .Branch }}
+            - compile
+      - run: bundle exec rails webpacker:compile webpacker:clean
+      - save_cache:
+          key: compile-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - tmp/cache/webpacker
+            - public/packs*
       - persist_to_workspace:
           root: .
           paths:
@@ -100,25 +108,7 @@ jobs:
           at: .
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
-      - run:
-          command: |
-            bundle exec rspec \
-              --profile \
-              --format RspecJunitFormatter \
-              --out tmp/results/rspec.xml \
-              --format progress \
-              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-      - store_test_results:
-          path: tmp/results
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-      - store_artifacts:
-          path: tmp/screenshots
-          destination: screenshots
-      - store_artifacts:
-          path: log
-          destination: log
+      - ruby/rspec-test
       -
         run:
           command: |
