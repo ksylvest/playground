@@ -125,9 +125,15 @@ jobs:
           at: .
       - run: bundle exec rake graphql:schema:generate
       - run: yarn run graphql:codegen
-      - store_artifacts:
-          path: tmp/brakeman.html
-          destination: brakeman.html
+      - run:
+          name: "git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx"
+          command: |
+            if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
+            echo '`bundle exec rake graphql:schema:generate`'
+            echo '`yarn run graphql:codegen`'
+            git git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
+            exit 1
+            fi
 
 workflows:
   version: 2.1
