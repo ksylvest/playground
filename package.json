@@ -34,7 +34,7 @@
     "bulma": "^0.8.2",
     "classnames": "^2.2.6",
     "fork-ts-checker-webpack-plugin": "^4.1.6",
-    "graphql": "^15.0.0",
+    "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.15",
