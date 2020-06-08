@@ -31,7 +31,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/webfontloader": "^1.6.32",
     "babel-plugin-emotion": "^10.0.33",
-    "bulma": "^0.8.2",
+    "bulma": "^0.9.0",
     "classnames": "^2.2.6",
     "fork-ts-checker-webpack-plugin": "^4.1.6",
     "graphql": "^15.1.0",
