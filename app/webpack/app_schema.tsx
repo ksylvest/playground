@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -436,9 +437,9 @@ export enum Variant__Resize {
   Fit = 'FIT'
 }
 
-export type BuildFeedCommentMutationVariables = {
+export type BuildFeedCommentMutationVariables = Exact<{
   input: Feed__CommentInput;
-};
+}>;
 
 
 export type BuildFeedCommentMutation = (
@@ -456,9 +457,9 @@ export type BuildFeedCommentMutation = (
   ) }
 );
 
-export type FeedCommentsQueryVariables = {
+export type FeedCommentsQueryVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type FeedCommentsQuery = (
@@ -476,9 +477,9 @@ export type FeedCommentsQuery = (
   ) }
 );
 
-export type FeedEntryQueryVariables = {
+export type FeedEntryQueryVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type FeedEntryQuery = (
@@ -492,9 +493,9 @@ export type FeedEntryQuery = (
   ) }
 );
 
-export type LikeFeedEntryMutationVariables = {
+export type LikeFeedEntryMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type LikeFeedEntryMutation = (
@@ -508,9 +509,9 @@ export type LikeFeedEntryMutation = (
   ) }
 );
 
-export type UnlikeFeedEntryMutationVariables = {
+export type UnlikeFeedEntryMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type UnlikeFeedEntryMutation = (
@@ -538,9 +539,9 @@ export type FeedQuery = (
   ) }
 );
 
-export type LoginMutationVariables = {
+export type LoginMutationVariables = Exact<{
   input: LoginInput;
-};
+}>;
 
 
 export type LoginMutation = (
@@ -569,9 +570,9 @@ export type LogoutMutation = (
   ) }
 );
 
-export type DestroyNotificationMutationVariables = {
+export type DestroyNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type DestroyNotificationMutation = (
@@ -596,9 +597,9 @@ export type NotificationsQuery = (
   )> }
 );
 
-export type ReadNotificationMutationVariables = {
+export type ReadNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type ReadNotificationMutation = (
@@ -612,9 +613,9 @@ export type ReadNotificationMutation = (
   ) }
 );
 
-export type FollowUserMutationVariables = {
+export type FollowUserMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type FollowUserMutation = (
@@ -629,9 +630,9 @@ export type FollowUserMutation = (
   ) }
 );
 
-export type ProfileQueryVariables = {
+export type ProfileQueryVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type ProfileQuery = (
@@ -650,9 +651,9 @@ export type ProfileQuery = (
   ) }
 );
 
-export type UnfollowUserMutationVariables = {
+export type UnfollowUserMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type UnfollowUserMutation = (
@@ -667,9 +668,9 @@ export type UnfollowUserMutation = (
   ) }
 );
 
-export type SettingsAvatarAttachMutationVariables = {
+export type SettingsAvatarAttachMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type SettingsAvatarAttachMutation = (
@@ -725,9 +726,9 @@ export type SettingsBillingQuery = (
   ) }
 );
 
-export type SettingsBillingSourceBuildMutationVariables = {
+export type SettingsBillingSourceBuildMutationVariables = Exact<{
   source: Scalars['String'];
-};
+}>;
 
 
 export type SettingsBillingSourceBuildMutation = (
@@ -749,9 +750,9 @@ export type SettingsBillingSourceBuildMutation = (
   ) }
 );
 
-export type SettingsBillingSourceDefaultMutationVariables = {
+export type SettingsBillingSourceDefaultMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type SettingsBillingSourceDefaultMutation = (
@@ -773,9 +774,9 @@ export type SettingsBillingSourceDefaultMutation = (
   ) }
 );
 
-export type SettingsBillingSourceDestroyMutationVariables = {
+export type SettingsBillingSourceDestroyMutationVariables = Exact<{
   id: Scalars['ID'];
-};
+}>;
 
 
 export type SettingsBillingSourceDestroyMutation = (
@@ -797,9 +798,9 @@ export type SettingsBillingSourceDestroyMutation = (
   ) }
 );
 
-export type SettingsPasswordMutationVariables = {
+export type SettingsPasswordMutationVariables = Exact<{
   input: PasswordInput;
-};
+}>;
 
 
 export type SettingsPasswordMutation = (
@@ -814,9 +815,9 @@ export type SettingsPasswordMutation = (
   ) }
 );
 
-export type SettingsChangeProfileMutationVariables = {
+export type SettingsChangeProfileMutationVariables = Exact<{
   input: UserInput;
-};
+}>;
 
 
 export type SettingsChangeProfileMutation = (
@@ -853,9 +854,9 @@ export type SettingsSessionsQuery = (
   )> }
 );
 
-export type SettingsSessionRevokeMutationVariables = {
+export type SettingsSessionRevokeMutationVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type SettingsSessionRevokeMutation = (
@@ -869,9 +870,9 @@ export type SettingsSessionRevokeMutation = (
   ) }
 );
 
-export type SignupMutationVariables = {
+export type SignupMutationVariables = Exact<{
   input: SignupInput;
-};
+}>;
 
 
 export type SignupMutation = (
