@@ -129,10 +129,10 @@ jobs:
           name: "git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx"
           command: |
             if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
-            echo '`bundle exec rake graphql:schema:generate`'
-            echo '`yarn run graphql:codegen`'
-            git git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
-            exit 1
+              echo '`bundle exec rake graphql:schema:generate`'
+              echo '`yarn run graphql:codegen`'
+              git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
+              exit 1
             fi
 
 workflows:
