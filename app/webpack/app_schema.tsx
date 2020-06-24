@@ -525,7 +525,7 @@ export type UnlikeFeedEntryMutation = (
   ) }
 );
 
-export type FeedQueryVariables = {};
+export type FeedQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type FeedQuery = (
@@ -559,7 +559,7 @@ export type LoginMutation = (
   ) }
 );
 
-export type LogoutMutationVariables = {};
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LogoutMutation = (
@@ -586,7 +586,7 @@ export type DestroyNotificationMutation = (
   ) }
 );
 
-export type NotificationsQueryVariables = {};
+export type NotificationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type NotificationsQuery = (
@@ -681,7 +681,7 @@ export type SettingsAvatarAttachMutation = (
   ) }
 );
 
-export type SettingsAvatarDetachMutationVariables = {};
+export type SettingsAvatarDetachMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SettingsAvatarDetachMutation = (
@@ -692,7 +692,7 @@ export type SettingsAvatarDetachMutation = (
   ) }
 );
 
-export type SettingsAvatarQueryVariables = {};
+export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SettingsAvatarQuery = (
@@ -707,7 +707,7 @@ export type SettingsAvatarQuery = (
   )> }
 );
 
-export type SettingsBillingQueryVariables = {};
+export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SettingsBillingQuery = (
@@ -832,7 +832,7 @@ export type SettingsChangeProfileMutation = (
   ) }
 );
 
-export type SettingsProfileQueryVariables = {};
+export type SettingsProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SettingsProfileQuery = (
@@ -843,7 +843,7 @@ export type SettingsProfileQuery = (
   )> }
 );
 
-export type SettingsSessionsQueryVariables = {};
+export type SettingsSessionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SettingsSessionsQuery = (
