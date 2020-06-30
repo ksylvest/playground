@@ -55,7 +55,7 @@
     "@graphql-codegen/introspection": "1.15.4",
     "@graphql-codegen/typescript": "1.15.4",
     "@graphql-codegen/typescript-operations": "1.16.0",
-    "@graphql-codegen/typescript-react-apollo": "1.15.4",
+    "@graphql-codegen/typescript-react-apollo": "1.16.0",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.5.0",
     "eslint": "^7.3.1",
