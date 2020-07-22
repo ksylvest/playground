@@ -21,7 +21,7 @@
     "@sentry/browser": "^5.20.0",
     "@types/classnames": "^2.2.10",
     "@types/loadjs": "^4.0.0",
-    "@types/lodash": "^4.14.157",
+    "@types/lodash": "^4.14.158",
     "@types/luxon": "^1.24.2",
     "@types/node-fetch": "^2.5.7",
     "@types/react": "^16.9.43",
