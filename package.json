@@ -18,7 +18,7 @@
     "@rails/actioncable": "^6.0.3",
     "@rails/activestorage": "^6.0.3",
     "@rails/webpacker": "^5.1.1",
-    "@sentry/browser": "^5.20.0",
+    "@sentry/browser": "^5.20.1",
     "@types/classnames": "^2.2.10",
     "@types/loadjs": "^4.0.0",
     "@types/lodash": "^4.14.158",
