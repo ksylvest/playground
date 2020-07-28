@@ -35,7 +35,7 @@
     "classnames": "^2.2.6",
     "fork-ts-checker-webpack-plugin": "^5.0.12",
     "graphql": "^15.3.0",
-    "graphql-tag": "^2.10.4",
+    "graphql-tag": "^2.11.0",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.19",
     "luxon": "^1.24.1",
