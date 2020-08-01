@@ -33,7 +33,7 @@
     "babel-plugin-emotion": "^10.0.33",
     "bulma": "^0.9.0",
     "classnames": "^2.2.6",
-    "fork-ts-checker-webpack-plugin": "^5.0.12",
+    "fork-ts-checker-webpack-plugin": "^5.0.13",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "loadjs": "^4.2.0",
