@@ -8,6 +8,8 @@ module Playground
   class Application < Rails::Application
     config.load_defaults 6.0
 
+    config.hosts << 'playground.test' if Rails.env.development?
+
     config.server_renderer_timeout = 4 # seconds
     config.react.server_renderer_extensions = %w[jsx js tsx ts]
     config.react.server_renderer_directories = %w[/app/assets/webpack]
