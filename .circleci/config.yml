@@ -1,12 +1,12 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.0.0
-  node: circleci/node@2.1.1
+  ruby: circleci/ruby@1.1.1
+  node: circleci/node@4.1.0
 
 executors:
   default:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers
+      - image: circleci/ruby:2.7.2-node-browsers
       - image: circleci/postgres:12.1-alpine-ram
         environment:
           POSTGRES_USER: circleci
@@ -37,7 +37,6 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          cache-key: yarn.lock
           pkg-manager: yarn
       - persist_to_workspace:
           root: .
@@ -109,8 +108,7 @@ jobs:
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - ruby/rspec-test
-      -
-        run:
+      - run:
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
             chmod +x ./cc-test-reporter
