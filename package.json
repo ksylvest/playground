@@ -28,7 +28,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.8",
-    "@types/react-router-dom": "^5.1.5",
+    "@types/react-router-dom": "^5.1.6",
     "@types/webfontloader": "^1.6.32",
     "babel-plugin-emotion": "^10.0.33",
     "bulma": "^0.9.1",
