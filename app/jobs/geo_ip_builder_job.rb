@@ -18,6 +18,7 @@ private
       city: result.city,
       region: result.region.name,
       country: result.country.name,
+      continent: result.continent.name,
       zip: result.zip,
       latitude: result.latitude,
       longitude: result.longitude,
