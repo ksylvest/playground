@@ -19,7 +19,7 @@
     "@rails/activestorage": "^6.0.3",
     "@rails/webpacker": "^5.2.1",
     "@sentry/browser": "^5.27.2",
-    "@types/classnames": "^2.2.10",
+    "@types/classnames": "^2.2.11",
     "@types/loadjs": "^4.0.0",
     "@types/lodash": "^4.14.162",
     "@types/luxon": "^1.25.0",
