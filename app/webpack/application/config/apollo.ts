@@ -5,6 +5,6 @@ export const CLIENT = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: "/graphql",
-    fetch,
+    fetch: fetch as any,
   }),
 });

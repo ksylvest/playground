@@ -1108,7 +1108,7 @@ export const FeedCommentsDocument = gql`
  *   },
  * });
  */
-export function useFeedCommentsQuery(baseOptions?: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+export function useFeedCommentsQuery(baseOptions: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
         return Apollo.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, baseOptions);
       }
 export function useFeedCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
@@ -1143,7 +1143,7 @@ export const FeedEntryDocument = gql`
  *   },
  * });
  */
-export function useFeedEntryQuery(baseOptions?: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+export function useFeedEntryQuery(baseOptions: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
         return Apollo.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, baseOptions);
       }
 export function useFeedEntryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
@@ -1496,7 +1496,7 @@ ${Feed__EntryFragmentDoc}`;
  *   },
  * });
  */
-export function useProfileQuery(baseOptions?: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+export function useProfileQuery(baseOptions: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
         return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, baseOptions);
       }
 export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
