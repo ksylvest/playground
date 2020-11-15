@@ -33,7 +33,7 @@
     "@types/webfontloader": "^1.6.32",
     "bulma": "^0.9.1",
     "classnames": "^2.2.6",
-    "fork-ts-checker-webpack-plugin": "^6.0.1",
+    "fork-ts-checker-webpack-plugin": "^6.0.2",
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "loadjs": "^4.2.0",
