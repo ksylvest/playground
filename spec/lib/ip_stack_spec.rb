@@ -36,7 +36,7 @@ RSpec.describe IPStack do
       it 'fetches from the ipstack API' do
         expect(fetch!.ip).to eql(ip)
         expect(fetch!.city).to eql('Saratoga Springs')
-        expect(fetch!.zip).to eql('12000')
+        expect(fetch!.postal).to eql('12000')
         expect(fetch!.region.code).to eql('NY')
         expect(fetch!.region.name).to eql('New York')
         expect(fetch!.country.code).to eql('US')

@@ -19,7 +19,7 @@ private
       region: result.region.name,
       country: result.country.name,
       continent: result.continent.name,
-      zip: result.zip,
+      postal: result.postal,
       latitude: result.latitude,
       longitude: result.longitude,
     }

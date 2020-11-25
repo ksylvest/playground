@@ -5,7 +5,7 @@ module Types
     field :region, String, null: false
     field :country, String, null: false
     field :continent, String, null: false
-    field :zip, String, null: false
+    field :postal, String, null: false
     field :latitude, Float, null: false
     field :longitude, Float, null: false
   end

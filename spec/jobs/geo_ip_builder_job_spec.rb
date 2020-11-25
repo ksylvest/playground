@@ -34,7 +34,7 @@ RSpec.describe GeoIPBuilderJob, type: :job do
 
     it 'builds a geo IP entry' do
       expect { perform }
-        .to change { GeoIP.where(ip: ip, latitude: 43.2, longitude: -73.8, zip: '12000').count }
+        .to change { GeoIP.where(ip: ip, latitude: 43.2, longitude: -73.8, postal: '12000').count }
     end
   end
 end
