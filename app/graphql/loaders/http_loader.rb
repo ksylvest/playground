@@ -4,6 +4,7 @@ module Loaders
     # @param size [Integer] the size of the pool used for fetching.
     # @param timeout [Integer] a timeout for applied to the pool used for fetching.
     def initialize(host:, size: 4, timeout: 4)
+      super()
       @host = host
       @size = size
       @timeout = timeout

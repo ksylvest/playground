@@ -1,6 +1,7 @@
 module Loaders
   class AssociationLoader < GraphQL::Batch::Loader
     def initialize(name)
+      super()
       @name = name
     end
 
