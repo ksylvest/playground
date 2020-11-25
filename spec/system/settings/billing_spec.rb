@@ -38,7 +38,7 @@ RSpec.describe 'settings/billing', type: :system do
     let(:source) { create(:billing_source, customer: customer) }
 
     it 'saves a source with a valid number, expiration, and CVC' do
-      expect(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: 'fake') { source }
+      allow(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: 'fake') { source }
       perform
       expect(page).to have_text('•••• 4242 Visa expires 3000-12')
     end
@@ -48,7 +48,7 @@ RSpec.describe 'settings/billing', type: :system do
     let!(:source) { create(:billing_source, customer: customer) }
 
     it 'lets a user destroy a source' do
-      expect(Billing::DestroySourceService).to receive(:perform!) { source.destroy! }
+      allow(Billing::DestroySourceService).to receive(:perform!) { source.destroy! }
 
       visit settings_billing_path
       login(user)
@@ -75,7 +75,7 @@ RSpec.describe 'settings/billing', type: :system do
     let!(:source) { create(:billing_source, customer: customer) }
 
     it 'lets a user change the default source' do
-      expect(Billing::DefaultSourceService).to receive(:perform!) { source }
+      allow(Billing::DefaultSourceService).to receive(:perform!) { source }
 
       visit settings_billing_path
       login(user)

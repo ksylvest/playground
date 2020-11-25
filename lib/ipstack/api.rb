@@ -9,6 +9,7 @@ module IPStack
     private_constant :TIMEOUT
 
     class NetworkError < StandardError; end
+
     class RequestError < StandardError; end
 
     def initialize(config:)

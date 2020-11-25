@@ -1,6 +1,7 @@
 module Loaders
   class CounterLoader < GraphQL::Batch::Loader
     def initialize(model, key:)
+      super()
       @model = model
       @key = key
     end

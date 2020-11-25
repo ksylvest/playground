@@ -1,6 +1,7 @@
 module Loaders
   class ActiveStorageAttachmentLoader < GraphQL::Batch::Loader
     def initialize(name, kind: :attachment)
+      super()
       @name = name
       @kind = kind
     end

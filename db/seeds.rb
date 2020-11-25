@@ -1,6 +1,6 @@
 require 'open-uri'
 
-Rails.logger = Logger.new(STDOUT)
+Rails.logger = Logger.new($stdout)
 
 User.transaction do
   YAML.load(File.open(Rails.root.join('db/seeds/users.yml'))).each do |data|
