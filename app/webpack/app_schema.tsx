@@ -188,8 +188,8 @@ export type Geography = {
   id: Scalars['ID'];
   latitude: Scalars['Float'];
   longitude: Scalars['Float'];
+  postal: Scalars['String'];
   region: Scalars['String'];
-  zip: Scalars['String'];
 };
 
 
@@ -927,7 +927,7 @@ export type FollowFragment = (
 
 export type GeographyFragment = (
   { __typename?: 'Geography' }
-  & Pick<Geography, 'id' | 'city' | 'region' | 'country' | 'zip' | 'latitude' | 'longitude'>
+  & Pick<Geography, 'id' | 'city' | 'region' | 'country' | 'postal' | 'latitude' | 'longitude'>
 );
 
 export type NotificationFragment = (
@@ -1024,7 +1024,7 @@ export const GeographyFragmentDoc = gql`
   city
   region
   country
-  zip
+  postal
   latitude
   longitude
 }

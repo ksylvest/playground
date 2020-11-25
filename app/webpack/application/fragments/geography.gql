@@ -3,7 +3,7 @@ fragment geography on Geography {
   city
   region
   country
-  zip
+  postal
   latitude
   longitude
 }

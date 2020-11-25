@@ -5,7 +5,7 @@ FactoryBot.define do
     region { 'New York' }
     country { 'United States' }
     continent { 'North America' }
-    zip { '12000' }
+    postal { '12000' }
     latitude { 43.2 }
     longitude { -73.8 }
   end

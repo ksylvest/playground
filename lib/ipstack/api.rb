@@ -1,6 +1,6 @@
 module IPStack
   Location = Struct.new(:code, :name)
-  Response = Struct.new(:ip, :city, :zip, :latitude, :longitude, :continent, :country, :region)
+  Response = Struct.new(:ip, :city, :postal, :latitude, :longitude, :continent, :country, :region)
 
   class API
     HOST = 'http://api.ipstack.com'.freeze

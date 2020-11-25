@@ -169,8 +169,8 @@ type Geography {
   id: ID!
   latitude: Float!
   longitude: Float!
+  postal: String!
   region: String!
-  zip: String!
 }
 
 """
