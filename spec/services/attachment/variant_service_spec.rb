@@ -39,7 +39,7 @@ RSpec.describe Attachment::VariantService, type: :service do
     subject(:variant) { service.variant }
 
     it 'generates a variant for an attachment' do
-      expect(service.variant).to be_kind_of(ActiveStorage::Variant)
+      expect(service.variant).to be_kind_of(ActiveStorage::VariantWithRecord)
     end
   end
 
