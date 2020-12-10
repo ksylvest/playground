@@ -38,7 +38,7 @@ module Attachment
     # @return [String] the processed data for the variant
     def data
       variant.processed
-      variant.service.download(key)
+      variant.download
     end
 
     # @return [String] a mime type (i.e. image/jpeg or image/webp)

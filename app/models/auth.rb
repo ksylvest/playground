@@ -1,6 +1,9 @@
 class Auth
   include ActiveModel::Model
 
+  INVALID_EMAIL_OR_PASSWORD_MESSAGE = 'the email and password entered did not match our records'.freeze
+  private_constant :INVALID_EMAIL_OR_PASSWORD_MESSAGE
+
   attr_accessor :email
   attr_accessor :password
 
@@ -9,7 +12,7 @@ class Auth
   validates :password, presence: true
 
   validate do
-    errors[:base] << 'the email and password entered did not match any records' if errors.blank? && !authed?
+    errors.add(:base, :invalid, message: INVALID_EMAIL_OR_PASSWORD_MESSAGE) if errors.blank? && !authed?
   end
 
   def authenticate

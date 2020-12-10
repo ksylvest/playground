@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Playground
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     config.server_renderer_timeout = 4 # seconds
     config.react.server_renderer_extensions = %w[jsx js tsx ts]

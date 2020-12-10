@@ -7,9 +7,12 @@ module Password
     private_constant :INVALID_CURRENT
     private_constant :INVALID_REPLACEMENT
 
+    attr_accessor :current
+    attr_accessor :replacement
+
     validate do
-      errors[:current] << INVALID_CURRENT unless @user.authenticate(@current)
-      errors[:replacement] << INVALID_REPLACEMENT if @replacement.blank?
+      errors.add(:current, :invalid, message: INVALID_CURRENT) unless @user.authenticate(@current)
+      errors.add(:replacement, :invalid, message: INVALID_REPLACEMENT) if @replacement.blank?
     end
 
     def initialize(current:, replacement:, user:)
