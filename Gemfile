@@ -24,7 +24,7 @@ gem 'image_processing'
 
 gem 'mini_racer'
 gem 'react-rails'
-gem 'sentry-raven'
+gem 'sentry-rails'
 gem 'slim-rails'
 
 gem 'bootsnap', require: false
