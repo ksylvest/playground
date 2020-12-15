@@ -211,7 +211,7 @@ type Mutation {
   attachAvatar(id: ID!): AttachAvatarPayload!
   buildBillingSource(source: String!): BuildBillingSourcePayload!
   buildFeedComment(input: Feed__CommentInput!): BuildFeedCommentPayload!
-  changePassword(input: PasswordInput!): ChangePasswordPayload!
+  changePassword(password: PasswordInput!): ChangePasswordPayload!
   changeProfile(input: UserInput!): ChangeProfilePayload!
   defaultBillingSource(id: ID!): DefaultBillingSourcePayload!
   destroyBillingSource(id: ID!): DestroyBillingSourcePayload!

@@ -4,13 +4,13 @@ RSpec.describe Mutations::Password::ChangeMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      AppSchema.execute(gql, variables: { input: input })
+      AppSchema.execute(gql, variables: { password: password })
     end
 
     let(:gql) do
       <<~GQL
-        mutation ChangePassword($input: PasswordInput!) {
-          changePassword(input: $input) {
+        mutation ChangePassword($password: PasswordInput!) {
+          changePassword(password: $password) {
             status
           }
         }
@@ -20,7 +20,7 @@ RSpec.describe Mutations::Password::ChangeMutation do
     let(:user) { create(:user) }
 
     context 'with valid input' do
-      let(:input) do
+      let(:password) do
         {
           current: user.password,
           replacement: user.password.reverse,
@@ -34,7 +34,7 @@ RSpec.describe Mutations::Password::ChangeMutation do
     end
 
     context 'with invalid input' do
-      let(:input) do
+      let(:password) do
         {
           current: user.password.reverse,
           replacement: user.password,
