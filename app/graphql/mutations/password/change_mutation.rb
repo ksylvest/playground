@@ -2,13 +2,13 @@ module Mutations
   module Password
     class ChangeMutation < BaseMutation
       graphql_name 'ChangePassword'
-      argument :input, ::Types::PasswordInput, required: true
+      argument :password, ::Types::PasswordInput, required: true
       field :status, ::Types::StatusType, null: false
       field :errors, ::Types::ErrorsType, null: true
 
-      def resolve(input:)
+      def resolve(password:)
         user = Current.user
-        change = ::Password::Change.new(current: input[:current], replacement: input[:replacement], user: user)
+        change = ::Password::Change.new(current: password[:current], replacement: password[:replacement], user: user)
 
         if change.save!
           { status: :ok }

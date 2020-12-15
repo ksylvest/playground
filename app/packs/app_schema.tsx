@@ -260,7 +260,7 @@ export type MutationBuildFeedCommentArgs = {
 
 
 export type MutationChangePasswordArgs = {
-  input: PasswordInput;
+  password: PasswordInput;
 };
 
 
@@ -804,7 +804,7 @@ export type SettingsBillingSourceDestroyMutation = (
 );
 
 export type SettingsPasswordMutationVariables = Exact<{
-  input: PasswordInput;
+  password: PasswordInput;
 }>;
 
 
@@ -1807,8 +1807,8 @@ export type SettingsBillingSourceDestroyMutationHookResult = ReturnType<typeof u
 export type SettingsBillingSourceDestroyMutationResult = Apollo.MutationResult<SettingsBillingSourceDestroyMutation>;
 export type SettingsBillingSourceDestroyMutationOptions = Apollo.BaseMutationOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
 export const SettingsPasswordDocument = gql`
-    mutation SettingsPassword($input: PasswordInput!) {
-  result: changePassword(input: $input) {
+    mutation SettingsPassword($password: PasswordInput!) {
+  result: changePassword(password: $password) {
     status
     errors {
       messages
@@ -1831,7 +1831,7 @@ export type SettingsPasswordMutationFn = Apollo.MutationFunction<SettingsPasswor
  * @example
  * const [settingsPasswordMutation, { data, loading, error }] = useSettingsPasswordMutation({
  *   variables: {
- *      input: // value for 'input'
+ *      password: // value for 'password'
  *   },
  * });
  */
