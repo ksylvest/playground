@@ -11,6 +11,3 @@ generates:
     config:
       scalars:
         DateTime: string
-      withComponent: false
-      withHooks: true
-      withHOC: false
