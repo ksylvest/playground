@@ -1,8 +1,6 @@
 const { environment } = require('@rails/webpacker');
-const graphql =  require('./loaders/graphql');
-const path = require('path');
 
-environment.loaders.prepend('graphql', graphql);
+const path = require('path');
 
 const root = path.join(__dirname, '..', '..', 'app', 'webpack');
 
