@@ -16,6 +16,7 @@ gem 'graphql-batch'
 gem 'http'
 gem 'kaminari'
 gem 'redis'
+gem 'skylight'
 gem 'stripe'
 gem 'webpacker'
 
