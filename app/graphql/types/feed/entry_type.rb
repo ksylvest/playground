@@ -28,7 +28,7 @@ module Types
       end
 
       def liked
-        Current.authed? && ::Feed::Like.exists?(user: Current.user, entry: object)
+        Current.authed? && ::Loaders::Feed::LikedLoader.for(Current.user).load(object)
       end
     end
   end
