@@ -2,7 +2,7 @@ module Types
   class DataURIType < BaseScalar
     description 'Represents a formatted data URI.'
 
-    DATA_URI_REGEX = /\Adata:(?<type>.*);base64,(?<data>.*)\Z/.freeze
+    DATA_URI_REGEX = /\Adata:(?<type>.*);base64,(?<data>.*)\Z/
 
     def self.coerce_result(value, _ctx = nil)
       "data:#{value[:type]};base64,#{Base64.encode64(value[:data])}"

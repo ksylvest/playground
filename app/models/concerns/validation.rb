@@ -1,3 +1,3 @@
 module Validation
-  EMAIL = /\A([^\s]+)@([^\s]+).([^\s]+)\Z/i.freeze
+  EMAIL = /\A([^\s]+)@([^\s]+).([^\s]+)\Z/i
 end
