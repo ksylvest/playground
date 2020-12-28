@@ -1,7 +1,7 @@
 module Billing
   class BuildCustomerService
-    def self.perform!(*args)
-      new(*args).perform!
+    def self.perform!(...)
+      new(...).perform!
     end
 
     def initialize(user:)
