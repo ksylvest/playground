@@ -7,7 +7,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:2.7.2-browsers
+      - image: cimg/ruby:2.7.2-node
       - image: circleci/postgres:13-ram
         environment:
           POSTGRES_USER: circleci
@@ -45,58 +45,27 @@ jobs:
           paths:
             - node_modules
 
-  compile:
-    executor: default
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - restore_cache:
-          keys:
-            - compile-{{ .Branch }}-{{ .Revision }}
-            - compile-{{ .Branch }}
-            - compile
-      - run: bundle exec rails webpacker:compile webpacker:clean
-      - save_cache:
-          key: compile-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - tmp/cache/webpacker
-            - public/packs*
-      - persist_to_workspace:
-          root: .
-          paths:
-            - tmp/cache/webpacker
-            - public/packs*
-
   eslint:
     executor: default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          command: yarn run eslint ./app/webpack --ext .js,.jsx,.ts,.tsx
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn run eslint ./app/webpack --ext .js,.jsx,.ts,.tsx
 
   rubocop:
     executor: default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
-      - store_artifacts:
-          path: tmp/rubocop.html
-          destination: rubocop.html
+      - ruby/install-deps
+      - ruby/rubocop-check
 
   brakeman:
     executor: default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          command: bundle exec brakeman -z --format html --output tmp/brakeman.html
+      - ruby/install-deps
+      - run: bundle exec brakeman -z --format html --output tmp/brakeman.html
       - store_artifacts:
           path: tmp/brakeman.html
           destination: brakeman.html
@@ -109,35 +78,34 @@ jobs:
       - run: sudo apt-get install imagemagick
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - attach_workspace:
-          at: .
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - ruby/rspec-test
-      - run:
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
-            ./cc-test-reporter upload-coverage
+      - run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
+          ./cc-test-reporter upload-coverage
 
   codegen:
     executor: default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
       - run: bundle exec rake graphql:schema:generate
       - run: yarn run graphql:codegen
-      - run:
-          name: "git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx"
-          command: |
-            if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
-              echo '`bundle exec rake graphql:schema:generate`'
-              echo '`yarn run graphql:codegen`'
-              git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
-              exit 1
-            fi
+      - run: |
+          if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
+            echo '`bundle exec rake graphql:schema:generate`'
+            echo '`yarn run graphql:codegen`'
+            git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
+            exit 1
+          fi
 
 workflows:
   version: 2.1
@@ -145,22 +113,8 @@ workflows:
     jobs:
       - bundle
       - yarn
-      - compile:
-          requires:
-            - bundle
-            - yarn
-      - eslint:
-          requires:
-            - yarn
-      - brakeman:
-          requires:
-            - bundle
-      - rubocop:
-          requires:
-            - bundle
-      - rspec:
-          requires:
-            - compile
-      - codegen:
-          requires:
-            - compile
+      - eslint
+      - brakeman
+      - rubocop
+      - rspec
+      - codegen
