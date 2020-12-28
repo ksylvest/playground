@@ -10,7 +10,7 @@ module Mutations
       auth = Auth.new(input.to_h)
       user = auth.authenticate
       if user
-        session = Current.auth!(user: user)
+        session = Current.auth!(user)
         { status: :ok, session: session }
       else
         { status: :unprocessable, errors: auth.errors }

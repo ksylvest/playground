@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Notification::ReadMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user: user)
+      Current.auth!(user)
       AppSchema.execute(gql, variables: { id: notification.id })
     end
 
