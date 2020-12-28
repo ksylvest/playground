@@ -13,7 +13,7 @@ class Current < ActiveSupport::CurrentAttributes
     cookies.delete(:session_id) unless session
   end
 
-  def auth!(user:)
+  def auth!(user)
     self.session = user.sessions.build(ip: ip)
     session.save!
     cookies.permanent.encrypted[:session_id] = session.id if cookies

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Avatar::DetachMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user: user)
+      Current.auth!(user)
       AppSchema.execute(gql)
     end
 

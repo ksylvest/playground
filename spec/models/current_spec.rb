@@ -6,7 +6,7 @@ RSpec.describe Current, type: :model do
 
   describe '.auth!' do
     subject :auth! do
-      Current.auth!(user: user)
+      Current.auth!(user)
     end
 
     it 'generates a session' do

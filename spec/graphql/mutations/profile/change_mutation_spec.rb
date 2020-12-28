@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Profile::ChangeMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user: user)
+      Current.auth!(user)
       AppSchema.execute(gql, variables: { input: input })
     end
 
