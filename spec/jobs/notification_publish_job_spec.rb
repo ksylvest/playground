@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe NotificationPublishJob, type: :job do
-  let(:user) { build(:user) }
-  let(:notification) { build(:notification, user: user) }
+  let(:user) { create(:user) }
+  let(:notification) { create(:notification, user: user) }
 
   describe '#perform' do
+    subject(:perform) { described_class.new.perform(notification) }
+
     it 'broadcasts to the stats channels with a count' do
-      expect(StatsChannel).to receive(:broadcast_to).with(user, notifications: anything)
-      NotificationPublishJob.perform_now(notification)
+      expect { perform }
+        .to have_broadcasted_to(user)
+        .from_channel(StatsChannel)
+        .with(a_hash_including(notifications: anything))
     end
   end
 end

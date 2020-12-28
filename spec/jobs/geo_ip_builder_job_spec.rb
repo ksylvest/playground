@@ -9,7 +9,7 @@ RSpec.describe GeoIPBuilderJob, type: :job do
       allow(IPStack.config).to receive(:access_key) { fake_access_key }
       stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
         .to_return(status: status, body: body)
-      GeoIPBuilderJob.new.perform(ip)
+      described_class.new.perform(ip)
     end
 
     let(:status) { 200 }
