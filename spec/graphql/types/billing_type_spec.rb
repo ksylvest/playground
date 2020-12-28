@@ -11,6 +11,7 @@ RSpec.describe Types::BillingType do
       <<~GQL
         query Billing {
           billing {
+            id
             customer {
               id
               currency
