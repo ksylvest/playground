@@ -16,7 +16,7 @@ module Types
     end
 
     def feed
-      ::Feed::Context.new(entries: ::Feed::Entry.where(user: object))
+      ::Feed::Context.new(user: object)
     end
 
     def following

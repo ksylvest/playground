@@ -145,6 +145,7 @@ export type Feed = {
   __typename?: 'Feed';
   entries: Array<Feed__Entry>;
   entry: Feed__Entry;
+  id: Scalars['ID'];
 };
 
 
@@ -467,6 +468,7 @@ export type FeedCommentsQuery = (
   { __typename?: 'Query' }
   & { feed: (
     { __typename?: 'Feed' }
+    & Pick<Feed, 'id'>
     & { entry: (
       { __typename?: 'Feed__Entry' }
       & Pick<Feed__Entry, 'id'>
@@ -487,6 +489,7 @@ export type FeedEntryQuery = (
   { __typename?: 'Query' }
   & { feed: (
     { __typename?: 'Feed' }
+    & Pick<Feed, 'id'>
     & { entry: (
       { __typename?: 'Feed__Entry' }
       & Feed__EntryFragment
@@ -533,6 +536,7 @@ export type FeedQuery = (
   { __typename?: 'Query' }
   & { feed: (
     { __typename?: 'Feed' }
+    & Pick<Feed, 'id'>
     & { entries: Array<(
       { __typename?: 'Feed__Entry' }
       & Feed__EntryFragment
@@ -1084,6 +1088,7 @@ export type BuildFeedCommentMutationOptions = Apollo.BaseMutationOptions<BuildFe
 export const FeedCommentsDocument = gql`
     query FeedComments($id: ID!) {
   feed {
+    id
     entry(id: $id) {
       id
       comments {
@@ -1122,6 +1127,7 @@ export type FeedCommentsQueryResult = Apollo.QueryResult<FeedCommentsQuery, Feed
 export const FeedEntryDocument = gql`
     query FeedEntry($id: ID!) {
   feed {
+    id
     entry(id: $id) {
       ...feed__entry
     }
@@ -1229,6 +1235,7 @@ export type UnlikeFeedEntryMutationOptions = Apollo.BaseMutationOptions<UnlikeFe
 export const FeedDocument = gql`
     query Feed {
   feed {
+    id
     entries {
       ...feed__entry
     }
