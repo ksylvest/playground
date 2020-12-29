@@ -2,6 +2,7 @@
 
 query FeedEntry($id: ID!) {
   feed {
+    id
     entry(id: $id) {
       ...feed__entry
     }

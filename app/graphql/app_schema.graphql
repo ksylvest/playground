@@ -131,6 +131,7 @@ type Errors {
 type Feed {
   entries: [Feed__Entry!]!
   entry(id: ID!): Feed__Entry!
+  id: ID!
 }
 
 type Feed__Comment {

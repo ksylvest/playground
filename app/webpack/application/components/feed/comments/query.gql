@@ -2,6 +2,7 @@
 
 query FeedComments($id: ID!) {
   feed {
+    id
     entry(id: $id) {
       id
       comments {

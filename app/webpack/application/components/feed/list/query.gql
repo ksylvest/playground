@@ -2,6 +2,7 @@
 
 query Feed {
   feed {
+    id
     entries {
       ...feed__entry
     }
