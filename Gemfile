@@ -18,13 +18,12 @@ gem 'kaminari'
 gem 'redis'
 gem 'skylight'
 gem 'stripe'
-gem 'webpacker'
+gem 'webpacker', '6.0.0.beta.5'
 
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 
 gem 'mini_racer'
-gem 'react-rails'
 gem 'sentry-rails'
 gem 'slim-rails'
 

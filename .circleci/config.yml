@@ -51,7 +51,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - run: yarn run eslint ./app/webpack --ext .js,.jsx,.ts,.tsx
+      - run: yarn run eslint ./app/packs --ext .js,.jsx,.ts,.tsx
 
   rubocop:
     executor: default

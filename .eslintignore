@@ -1,2 +1,2 @@
 /config/**/*.js
-/app/webpack/app_schema.tsx
+/app/packs/app_schema.tsx

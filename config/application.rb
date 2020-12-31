@@ -8,11 +8,6 @@ module Playground
   class Application < Rails::Application
     config.load_defaults 6.1
 
-    config.server_renderer_timeout = 4 # seconds
-    config.react.server_renderer_extensions = %w[jsx js tsx ts]
-    config.react.server_renderer_directories = %w[/app/assets/webpack]
-    config.react.server_renderer_options = { files: %w[application.js] }
-
     config.skylight.probes += %w[graphql redis]
 
     config.generators do |g|
