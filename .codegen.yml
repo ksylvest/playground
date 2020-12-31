@@ -1,8 +1,8 @@
 schema: "./app/graphql/app_schema.graphql"
 generates:
-  "app/webpack/app_schema.tsx":
+  "app/packs/app_schema.tsx":
     documents:
-      - "app/webpack/application/**/*.gql":
+      - "app/packs/application/**/*.gql":
         skipGraphQLImport: true
     plugins:
       - typescript
