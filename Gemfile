@@ -18,7 +18,7 @@ gem 'kaminari'
 gem 'redis'
 gem 'skylight'
 gem 'stripe'
-gem 'webpacker', '6.0.0.beta.5'
+gem 'webpacker', '6.0.0.pre.2'
 
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
