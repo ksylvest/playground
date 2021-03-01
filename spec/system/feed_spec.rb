@@ -53,11 +53,6 @@ RSpec.describe 'feed', type: :system do
     within('.card') do
       expect(page).to have_text("by #{user.name}")
     end
-  end
-
-  it 'lets a user comment on a feed entry' do
-    visit feed_entry_path(entry)
-    expect(page).to have_title('Feed - Details | Playground')
 
     fill_in('Add a comment...', with: 'The quick brown fox jumped over the lazy dog.')
 

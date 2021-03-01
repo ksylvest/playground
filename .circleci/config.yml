@@ -15,36 +15,11 @@ executors:
           POSTGRES_HOST_AUTH_METHOD: trust
       - image: circleci/redis:6-alpine
     environment:
-      BUNDLE_JOBS: 4
-      BUNDLE_RETRY: 4
-      BUNDLE_PATH: vendor/bundle
-      BUNDLER_VERSION: 2.2.3
       RAILS_ENV: test
       RACK_ENV: test
       PGHOST: localhost
 
 jobs:
-  bundle:
-    executor: default
-    steps:
-      - checkout
-      - ruby/install-deps
-      - persist_to_workspace:
-          root: .
-          paths:
-            - vendor/bundle
-
-  yarn:
-    executor: default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - persist_to_workspace:
-          root: .
-          paths:
-            - node_modules
-
   eslint:
     executor: default
     steps:
@@ -111,8 +86,6 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - bundle
-      - yarn
       - eslint
       - brakeman
       - rubocop
