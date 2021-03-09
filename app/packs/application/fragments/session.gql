@@ -1,5 +1,3 @@
-#import "@application/fragments/geography.gql"
-
 fragment session on Session {
   id
   ip

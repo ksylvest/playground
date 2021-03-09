@@ -1,5 +1,3 @@
-#import "@application/fragments/attached.gql"
-
 fragment user on User {
   id
   name

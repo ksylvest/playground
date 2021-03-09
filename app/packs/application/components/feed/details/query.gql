@@ -1,5 +1,3 @@
-#import "@application/fragments/feed/entry.gql"
-
 query FeedEntry($id: ID!) {
   feed {
     id

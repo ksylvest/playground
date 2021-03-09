@@ -1,5 +1,3 @@
-#import "@application/fragments/billing/source.gql"
-
 query SettingsBilling {
   billing {
     id

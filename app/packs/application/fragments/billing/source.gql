@@ -1,5 +1,3 @@
-#import "@application/fragments/user.gql"
-
 fragment billing__source on Billing__Source {
   id
   number
