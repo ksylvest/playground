@@ -19,7 +19,7 @@ const PREV_KEY = "ArrowLeft";
 const CHAR_CODE_OFFSET = 65; // i.e. 'A', 'B', 'C', ...
 
 export const Carousel: React.FC<{
-  photos: AttachedFragment[];
+  photos: readonly AttachedFragment[];
 }> = ({ photos }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
