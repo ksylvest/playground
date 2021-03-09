@@ -1,5 +1,3 @@
-#import "@application/fragments/feed/comment.gql"
-
 query FeedComments($id: ID!) {
   feed {
     id

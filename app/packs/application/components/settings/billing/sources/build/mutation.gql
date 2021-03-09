@@ -1,5 +1,3 @@
-#import "@application/fragments/billing/source.gql"
-
 mutation SettingsBillingSourceBuild($source: String!) {
   result: buildBillingSource(source: $source) {
     billing {

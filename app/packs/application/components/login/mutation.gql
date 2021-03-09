@@ -1,5 +1,3 @@
-#import "@application/fragments/session.gql"
-
 mutation Login($input: LoginInput!) {
   login(input: $input) {
     status

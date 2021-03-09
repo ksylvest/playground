@@ -1,5 +1,3 @@
-#import "@application/fragments/notification.gql"
-
 query Notifications {
   notifications {
     ...notification

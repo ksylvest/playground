@@ -1,5 +1,3 @@
-#import "@application/fragments/follow.gql"
-
 mutation FollowUser($id: ID!) {
   result: followUser(id: $id) {
     user {

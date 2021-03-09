@@ -2,8 +2,7 @@ schema: "./app/graphql/app_schema.graphql"
 generates:
   "app/packs/app_schema.tsx":
     documents:
-      - "app/packs/application/**/*.gql":
-        skipGraphQLImport: true
+      - "app/packs/application/**/*.gql"
     plugins:
       - typescript
       - typescript-operations

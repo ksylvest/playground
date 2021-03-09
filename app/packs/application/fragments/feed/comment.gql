@@ -1,5 +1,3 @@
-#import "@application/fragments/user.gql"
-
 fragment feed__comment on Feed__Comment {
   id
   message
