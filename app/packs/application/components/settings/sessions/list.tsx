@@ -5,7 +5,7 @@ import { SessionFragment } from "@root/app_schema";
 import { Entry } from "./entry";
 
 export const List: React.FC<{
-  sessions?: SessionFragment[];
+  sessions?: readonly SessionFragment[];
   onRevoke(session: SessionFragment): void;
 }> = ({ sessions, onRevoke }) => (
   <>

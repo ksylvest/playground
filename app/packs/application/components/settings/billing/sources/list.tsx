@@ -12,7 +12,7 @@ import {
 import { Button, Buttons, Table } from "tights";
 
 export const List: React.FC<{
-  sources: Billing__Source[];
+  sources: readonly Billing__Source[];
   onDestroy(source: Billing__Source): void;
   onDefault(source: Billing__Source): void;
 }> = ({ sources, onDestroy, onDefault }) => (

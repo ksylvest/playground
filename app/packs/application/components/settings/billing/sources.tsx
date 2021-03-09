@@ -13,7 +13,7 @@ import { Billing__Source } from "@root/app_schema";
 const DEFAULT_BUILDING = false;
 
 export const Sources: React.FC<{
-  sources: Billing__Source[];
+  sources: readonly Billing__Source[];
 }> = ({ sources }) => {
   const [building, setBuilding] = useState<boolean>(DEFAULT_BUILDING);
   const [destroying, setDestroying] = useState<Billing__Source | undefined>();

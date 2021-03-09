@@ -6,7 +6,7 @@ import { Empty } from "./empty";
 import { Entry } from "./entry";
 
 export const List: React.FC<{
-  notifications?: Notification[];
+  notifications?: readonly Notification[];
 }> = ({ notifications }) => (
   <>
     {notifications &&

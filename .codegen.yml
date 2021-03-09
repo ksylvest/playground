@@ -8,5 +8,6 @@ generates:
       - typescript-operations
       - typescript-react-apollo
     config:
+      immutableTypes: true
       scalars:
         DateTime: string

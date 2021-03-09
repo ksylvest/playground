@@ -7,7 +7,7 @@ import { Entry } from "./entry";
 import { Feed__EntryFragment } from "@root/app_schema";
 
 export const Entries: React.FC<{
-  entries: Feed__EntryFragment[];
+  entries: readonly Feed__EntryFragment[];
 }> = ({ entries }) => (
   <Columns multiline mobile tablet desktop>
     {entries.map((entry) => (
