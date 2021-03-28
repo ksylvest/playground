@@ -82,6 +82,13 @@ jobs:
             exit 1
           fi
 
+  packwerk:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: bin/packwerk validate
+
 workflows:
   version: 2.1
   build:
@@ -91,3 +98,4 @@ workflows:
       - rubocop
       - rspec
       - codegen
+      - packwerk
