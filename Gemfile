@@ -52,3 +52,5 @@ group :development do
   gem 'spring-watcher-listen'
   gem 'web-console'
 end
+
+gem 'billing', path: 'components/billing'

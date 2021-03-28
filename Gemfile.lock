@@ -1,3 +1,9 @@
+PATH
+  remote: components/billing
+  specs:
+    billing (1.0.00)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -356,6 +362,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bcrypt
+  billing!
   bootsnap
   brakeman
   byebug
