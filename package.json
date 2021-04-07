@@ -49,7 +49,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.0",
     "tights": "^1.6.0",
-    "typescript": "^4.2.3",
+    "typescript": "^4.2.4",
     "unfetch": "^4.2.0",
     "webfontloader": "^1.6.28",
     "webpack": "^5.31.0",
