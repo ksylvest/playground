@@ -23,7 +23,7 @@
     "@types/classnames": "^2.2.11",
     "@types/loadjs": "^4.0.0",
     "@types/lodash": "^4.14.168",
-    "@types/luxon": "^1.26.3",
+    "@types/luxon": "^1.26.4",
     "@types/node-fetch": "^2.5.10",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
