@@ -37,7 +37,7 @@
     "css-minimizer-webpack-plugin": "^2.0.0",
     "fork-ts-checker-webpack-plugin": "^6.2.5",
     "graphql": "^15.5.0",
-    "graphql-tag": "^2.12.3",
+    "graphql-tag": "^2.12.4",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.21",
     "luxon": "^1.26.0",
