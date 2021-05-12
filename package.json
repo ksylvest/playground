@@ -22,7 +22,7 @@
     "@sentry/browser": "^6.3.6",
     "@types/classnames": "^2.3.1",
     "@types/loadjs": "^4.0.0",
-    "@types/lodash": "^4.14.168",
+    "@types/lodash": "^4.14.169",
     "@types/luxon": "^1.26.5",
     "@types/node-fetch": "^2.5.10",
     "@types/react": "^17.0.5",
