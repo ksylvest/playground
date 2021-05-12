@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.17",
-    "@babel/core": "^7.14.0",
+    "@babel/core": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@emotion/babel-plugin": "^11.3.0",
