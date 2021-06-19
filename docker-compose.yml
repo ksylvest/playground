@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+
+  web:
+    build: .
+    image: app
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bin/rails server --port 3000 --binding 0.0.0.0"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:password@db
+      WEBPACKER_DEV_SERVER_HOST: webpack
+    volumes:
+      - .:/app
+
+  webpacker:
+    image: app
+    command: ./bin/webpack-dev-server
+    ports:
+      - "3035:3035"
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    volumes:
+      - .:/app
