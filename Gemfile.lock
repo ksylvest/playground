@@ -160,9 +160,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    libv8-node (15.14.0.0)
-    libv8-node (15.14.0.0-x86_64-darwin-20)
-    libv8-node (15.14.0.0-x86_64-linux)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -179,8 +176,6 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.0.3)
     mini_portile2 (2.5.3)
-    mini_racer (0.4.0)
-      libv8-node (~> 15.14.0.0)
     minitest (5.14.4)
     msgpack (1.4.2)
     multipart-post (2.1.1)
@@ -378,7 +373,6 @@ DEPENDENCIES
   image_processing
   kaminari
   listen
-  mini_racer
   pg
   puma
   rails
@@ -404,7 +398,7 @@ DEPENDENCIES
   webpacker (= 6.0.0.beta.5)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.12
+   2.2.15
