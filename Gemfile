@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.0'
+ruby '3.0.1'
 
 gem 'rails'
 
@@ -23,7 +23,6 @@ gem 'webpacker', '6.0.0.beta.5'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 
-gem 'mini_racer'
 gem 'sentry-rails'
 gem 'slim-rails'
 
