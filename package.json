@@ -21,7 +21,7 @@
     "@rails/webpacker": "^6.0.0-beta.7",
     "@sentry/browser": "^6.8.0",
     "@types/classnames": "^2.3.1",
-    "@types/loadjs": "^4.0.0",
+    "@types/loadjs": "^4.0.1",
     "@types/lodash": "^4.14.170",
     "@types/luxon": "^1.27.0",
     "@types/node-fetch": "^2.5.10",
