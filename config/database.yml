@@ -2,15 +2,34 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  variables:
+    statement_timeout: <%= Integer(ENV.fetch("POSTGRES_STATEMENT_TIMEOUT") { 15_000 }) %>
 
 development:
-  <<: *default
-  database: playground_development
+  primary:
+    <<: *default
+    database: playground_development
+  follower:
+    <<: *default
+    database: playground_test
+    replica: true
 
 test:
-  <<: *default
-  database: playground_test
+  primary:
+    <<: *default
+    database: playground_test
+  follower:
+    <<: *default
+    database: playground_test
+    replica: true
 
 production:
-  <<: *default
-  database: playground_production
+  primary:
+    url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
+    <<: *default
+    database: playground_production
+  follower:
+    url: <%= ENV.fetch('FOLLOWER_URL', '').sub(/^postgres/, "postgis") %>
+    <<: *default
+    variables:
+      statement_timeout: <%= Integer(ENV.fetch("POSTGRES_STATEMENT_TIMEOUT") { 30_000 }) %>
