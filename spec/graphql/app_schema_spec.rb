@@ -5,6 +5,6 @@ RSpec.describe AppSchema do
 
   it 'requires a "rake graphql:schema:generate" be run for changes' do
     expect(GraphQL::Schema::Printer.print_schema(AppSchema))
-      .to eq(schema), 'Mismatched GraphQL schema. Run "rake graphql:schema:dump"'
+      .to eq(schema), 'Mismatched GraphQL schema. Run "rake graphql:schema:generate"'
   end
 end
