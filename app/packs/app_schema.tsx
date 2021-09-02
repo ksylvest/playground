@@ -445,520 +445,191 @@ export type BuildFeedCommentMutationVariables = Exact<{
 }>;
 
 
-export type BuildFeedCommentMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'BuildFeedCommentPayload' }
-    & Pick<BuildFeedCommentPayload, 'status'>
-    & { readonly errors?: Maybe<(
-      { readonly __typename?: 'Errors' }
-      & Pick<Errors, 'messages'>
-    )>, readonly comment?: Maybe<(
-      { readonly __typename?: 'Feed__Comment' }
-      & Feed__CommentFragment
-    )> }
-  ) }
-);
+export type BuildFeedCommentMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'BuildFeedCommentPayload', readonly status: Status, readonly errors?: Maybe<{ readonly __typename?: 'Errors', readonly messages: any }>, readonly comment?: Maybe<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } }> } };
 
 export type FeedCommentsQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type FeedCommentsQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly feed: (
-    { readonly __typename?: 'Feed' }
-    & Pick<Feed, 'id'>
-    & { readonly entry: (
-      { readonly __typename?: 'Feed__Entry' }
-      & Pick<Feed__Entry, 'id'>
-      & { readonly comments: ReadonlyArray<(
-        { readonly __typename?: 'Feed__Comment' }
-        & Feed__CommentFragment
-      )> }
-    ) }
-  ) }
-);
+export type FeedCommentsQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly comments: ReadonlyArray<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } }> } } };
 
 export type FeedEntryQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type FeedEntryQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly feed: (
-    { readonly __typename?: 'Feed' }
-    & Pick<Feed, 'id'>
-    & { readonly entry: (
-      { readonly __typename?: 'Feed__Entry' }
-      & Feed__EntryFragment
-    ) }
-  ) }
-);
+export type FeedEntryQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } } } };
 
 export type LikeFeedEntryMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type LikeFeedEntryMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'LikeFeedEntryPayload' }
-    & { readonly entry: (
-      { readonly __typename?: 'Feed__Entry' }
-      & Pick<Feed__Entry, 'id' | 'liked' | 'likes'>
-    ) }
-  ) }
-);
+export type LikeFeedEntryMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'LikeFeedEntryPayload', readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly liked: boolean, readonly likes: number } } };
 
 export type UnlikeFeedEntryMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type UnlikeFeedEntryMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'UnlikeFeedEntryPayload' }
-    & { readonly entry: (
-      { readonly __typename?: 'Feed__Entry' }
-      & Pick<Feed__Entry, 'id' | 'liked' | 'likes'>
-    ) }
-  ) }
-);
+export type UnlikeFeedEntryMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnlikeFeedEntryPayload', readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly liked: boolean, readonly likes: number } } };
 
 export type FeedQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FeedQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly feed: (
-    { readonly __typename?: 'Feed' }
-    & Pick<Feed, 'id'>
-    & { readonly entries: ReadonlyArray<(
-      { readonly __typename?: 'Feed__Entry' }
-      & Feed__EntryFragment
-    )> }
-  ) }
-);
+export type FeedQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } }> } };
 
 export type LoginMutationVariables = Exact<{
   input: LoginInput;
 }>;
 
 
-export type LoginMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly login: (
-    { readonly __typename?: 'LoginMutationPayload' }
-    & Pick<LoginMutationPayload, 'status'>
-    & { readonly session?: Maybe<(
-      { readonly __typename?: 'Session' }
-      & Pick<Session, 'id'>
-    )>, readonly errors?: Maybe<(
-      { readonly __typename?: 'Errors' }
-      & Pick<Errors, 'messages'>
-    )> }
-  ) }
-);
+export type LoginMutation = { readonly __typename?: 'Mutation', readonly login: { readonly __typename?: 'LoginMutationPayload', readonly status: Status, readonly session?: Maybe<{ readonly __typename?: 'Session', readonly id: string }>, readonly errors?: Maybe<{ readonly __typename?: 'Errors', readonly messages: any }> } };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LogoutMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly logout: (
-    { readonly __typename?: 'LogoutMutationPayload' }
-    & Pick<LogoutMutationPayload, 'status'>
-  ) }
-);
+export type LogoutMutation = { readonly __typename?: 'Mutation', readonly logout: { readonly __typename?: 'LogoutMutationPayload', readonly status: Status } };
 
 export type DestroyNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type DestroyNotificationMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'DestroyNotificationPayload' }
-    & { readonly notification: (
-      { readonly __typename?: 'Notification' }
-      & Pick<Notification, 'id' | 'deleted'>
-    ) }
-  ) }
-);
+export type DestroyNotificationMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyNotificationPayload', readonly notification: { readonly __typename?: 'Notification', readonly id: string, readonly deleted: boolean } } };
 
 export type NotificationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type NotificationsQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly notifications: ReadonlyArray<(
-    { readonly __typename?: 'Notification' }
-    & NotificationFragment
-  )> }
-);
+export type NotificationsQuery = { readonly __typename?: 'Query', readonly notifications: ReadonlyArray<{ readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string }> };
 
 export type ReadNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type ReadNotificationMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'ReadNotificationPayload' }
-    & { readonly notification: (
-      { readonly __typename?: 'Notification' }
-      & Pick<Notification, 'id' | 'read'>
-    ) }
-  ) }
-);
+export type ReadNotificationMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ReadNotificationPayload', readonly notification: { readonly __typename?: 'Notification', readonly id: string, readonly read: boolean } } };
 
 export type FollowUserMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type FollowUserMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'FollowUserPayload' }
-    & { readonly user: (
-      { readonly __typename?: 'User' }
-      & Pick<User, 'id'>
-      & FollowFragment
-    ) }
-  ) }
-);
+export type FollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'FollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
 
 export type ProfileQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type ProfileQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly user: (
-    { readonly __typename?: 'User' }
-    & { readonly feed: (
-      { readonly __typename?: 'Feed' }
-      & { readonly entries: ReadonlyArray<(
-        { readonly __typename?: 'Feed__Entry' }
-        & Feed__EntryFragment
-      )> }
-    ) }
-    & UserFragment
-    & FollowFragment
-  ) }
-);
+export type ProfileQuery = { readonly __typename?: 'Query', readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly following: boolean, readonly followed: number, readonly follower: number, readonly feed: { readonly __typename?: 'Feed', readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } }> }, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } };
 
 export type UnfollowUserMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type UnfollowUserMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'UnfollowUserPayload' }
-    & { readonly user: (
-      { readonly __typename?: 'User' }
-      & Pick<User, 'id'>
-      & FollowFragment
-    ) }
-  ) }
-);
+export type UnfollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnfollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
 
 export type SettingsAvatarAttachMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type SettingsAvatarAttachMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'AttachAvatarPayload' }
-    & Pick<AttachAvatarPayload, 'status'>
-  ) }
-);
+export type SettingsAvatarAttachMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'AttachAvatarPayload', readonly status: Status } };
 
 export type SettingsAvatarDetachMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsAvatarDetachMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'DetachAvatarPayload' }
-    & Pick<DetachAvatarPayload, 'status'>
-  ) }
-);
+export type SettingsAvatarDetachMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DetachAvatarPayload', readonly status: Status } };
 
 export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsAvatarQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly me?: Maybe<(
-    { readonly __typename?: 'User' }
-    & Pick<User, 'id'>
-    & { readonly avatar?: Maybe<(
-      { readonly __typename?: 'Attached' }
-      & Pick<Attached, 'id'>
-    )> }
-  )> }
-);
+export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: Maybe<{ readonly __typename?: 'User', readonly id: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string }> }> };
 
 export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsBillingQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly billing: (
-    { readonly __typename?: 'Billing' }
-    & Pick<Billing, 'id'>
-    & { readonly customer?: Maybe<(
-      { readonly __typename?: 'Billing__Customer' }
-      & Pick<Billing__Customer, 'id' | 'currency'>
-      & { readonly sources: ReadonlyArray<(
-        { readonly __typename?: 'Billing__Source' }
-        & Billing__SourceFragment
-      )> }
-    )> }
-  ) }
-);
+export type SettingsBillingQuery = { readonly __typename?: 'Query', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: Maybe<{ readonly __typename?: 'Billing__Customer', readonly id: string, readonly currency?: Maybe<Billing__Currency>, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> }> } };
 
 export type SettingsBillingSourceBuildMutationVariables = Exact<{
   source: Scalars['String'];
 }>;
 
 
-export type SettingsBillingSourceBuildMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'BuildBillingSourcePayload' }
-    & { readonly billing: (
-      { readonly __typename?: 'Billing' }
-      & Pick<Billing, 'id'>
-      & { readonly customer?: Maybe<(
-        { readonly __typename?: 'Billing__Customer' }
-        & Pick<Billing__Customer, 'id'>
-        & { readonly sources: ReadonlyArray<(
-          { readonly __typename?: 'Billing__Source' }
-          & Billing__SourceFragment
-        )> }
-      )> }
-    ) }
-  ) }
-);
+export type SettingsBillingSourceBuildMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'BuildBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: Maybe<{ readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> }> } } };
 
 export type SettingsBillingSourceDefaultMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type SettingsBillingSourceDefaultMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'DefaultBillingSourcePayload' }
-    & { readonly billing: (
-      { readonly __typename?: 'Billing' }
-      & Pick<Billing, 'id'>
-      & { readonly customer?: Maybe<(
-        { readonly __typename?: 'Billing__Customer' }
-        & Pick<Billing__Customer, 'id'>
-        & { readonly sources: ReadonlyArray<(
-          { readonly __typename?: 'Billing__Source' }
-          & Billing__SourceFragment
-        )> }
-      )> }
-    ) }
-  ) }
-);
+export type SettingsBillingSourceDefaultMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DefaultBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: Maybe<{ readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> }> } } };
 
 export type SettingsBillingSourceDestroyMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type SettingsBillingSourceDestroyMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'DestroyBillingSourcePayload' }
-    & { readonly billing: (
-      { readonly __typename?: 'Billing' }
-      & Pick<Billing, 'id'>
-      & { readonly customer?: Maybe<(
-        { readonly __typename?: 'Billing__Customer' }
-        & Pick<Billing__Customer, 'id'>
-        & { readonly sources: ReadonlyArray<(
-          { readonly __typename?: 'Billing__Source' }
-          & Billing__SourceFragment
-        )> }
-      )> }
-    ) }
-  ) }
-);
+export type SettingsBillingSourceDestroyMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: Maybe<{ readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> }> } } };
 
 export type SettingsPasswordMutationVariables = Exact<{
   password: PasswordInput;
 }>;
 
 
-export type SettingsPasswordMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'ChangePasswordPayload' }
-    & Pick<ChangePasswordPayload, 'status'>
-    & { readonly errors?: Maybe<(
-      { readonly __typename?: 'Errors' }
-      & Pick<Errors, 'messages'>
-    )> }
-  ) }
-);
+export type SettingsPasswordMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ChangePasswordPayload', readonly status: Status, readonly errors?: Maybe<{ readonly __typename?: 'Errors', readonly messages: any }> } };
 
 export type SettingsChangeProfileMutationVariables = Exact<{
   input: UserInput;
 }>;
 
 
-export type SettingsChangeProfileMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'ChangeProfilePayload' }
-    & Pick<ChangeProfilePayload, 'status'>
-    & { readonly errors?: Maybe<(
-      { readonly __typename?: 'Errors' }
-      & Pick<Errors, 'messages'>
-    )> }
-  ) }
-);
+export type SettingsChangeProfileMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ChangeProfilePayload', readonly status: Status, readonly errors?: Maybe<{ readonly __typename?: 'Errors', readonly messages: any }> } };
 
 export type SettingsProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsProfileQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly me?: Maybe<(
-    { readonly __typename?: 'User' }
-    & Pick<User, 'id' | 'name' | 'email'>
-  )> }
-);
+export type SettingsProfileQuery = { readonly __typename?: 'Query', readonly me?: Maybe<{ readonly __typename?: 'User', readonly id: string, readonly name: string, readonly email: string }> };
 
 export type SettingsSessionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsSessionsQuery = (
-  { readonly __typename?: 'Query' }
-  & { readonly sessions: ReadonlyArray<(
-    { readonly __typename?: 'Session' }
-    & SessionFragment
-  )> }
-);
+export type SettingsSessionsQuery = { readonly __typename?: 'Query', readonly sessions: ReadonlyArray<{ readonly __typename?: 'Session', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: SessionStatusEnum, readonly geography?: Maybe<{ readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number }> }> };
 
 export type SettingsSessionRevokeMutationVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type SettingsSessionRevokeMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly result: (
-    { readonly __typename?: 'DestroySessionPayload' }
-    & { readonly session: (
-      { readonly __typename?: 'Session' }
-      & Pick<Session, 'id' | 'deleted'>
-    ) }
-  ) }
-);
+export type SettingsSessionRevokeMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroySessionPayload', readonly session: { readonly __typename?: 'Session', readonly id: string, readonly deleted: boolean } } };
 
 export type SignupMutationVariables = Exact<{
   input: SignupInput;
 }>;
 
 
-export type SignupMutation = (
-  { readonly __typename?: 'Mutation' }
-  & { readonly signup: (
-    { readonly __typename?: 'SignupMutationPayload' }
-    & Pick<SignupMutationPayload, 'status'>
-    & { readonly session?: Maybe<(
-      { readonly __typename?: 'Session' }
-      & Pick<Session, 'id'>
-    )>, readonly errors?: Maybe<(
-      { readonly __typename?: 'Errors' }
-      & Pick<Errors, 'messages'>
-    )> }
-  ) }
-);
+export type SignupMutation = { readonly __typename?: 'Mutation', readonly signup: { readonly __typename?: 'SignupMutationPayload', readonly status: Status, readonly session?: Maybe<{ readonly __typename?: 'Session', readonly id: string }>, readonly errors?: Maybe<{ readonly __typename?: 'Errors', readonly messages: any }> } };
 
-export type AttachedFragment = (
-  { readonly __typename?: 'Attached' }
-  & Pick<Attached, 'id' | 'filename'>
-);
+export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly filename: string };
 
-export type Billing__SourceFragment = (
-  { readonly __typename?: 'Billing__Source' }
-  & Pick<Billing__Source, 'id' | 'number' | 'brand' | 'exp' | 'default'>
-);
+export type Billing__SourceFragment = { readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean };
 
-export type Feed__CommentFragment = (
-  { readonly __typename?: 'Feed__Comment' }
-  & Pick<Feed__Comment, 'id' | 'message' | 'sent'>
-  & { readonly user: (
-    { readonly __typename?: 'User' }
-    & UserFragment
-  ) }
-);
+export type Feed__CommentFragment = { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } };
 
-export type Feed__EntryFragment = (
-  { readonly __typename?: 'Feed__Entry' }
-  & Pick<Feed__Entry, 'id' | 'tags' | 'liked' | 'likes'>
-  & { readonly photos: ReadonlyArray<(
-    { readonly __typename?: 'Attached' }
-    & AttachedFragment
-  )>, readonly user: (
-    { readonly __typename?: 'User' }
-    & UserFragment
-  ) }
-);
+export type Feed__EntryFragment = { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> } };
 
-export type FollowFragment = (
-  { readonly __typename?: 'User' }
-  & Pick<User, 'following' | 'followed' | 'follower'>
-);
+export type FollowFragment = { readonly __typename?: 'User', readonly following: boolean, readonly followed: number, readonly follower: number };
 
-export type GeographyFragment = (
-  { readonly __typename?: 'Geography' }
-  & Pick<Geography, 'id' | 'city' | 'region' | 'country' | 'postal' | 'latitude' | 'longitude'>
-);
+export type GeographyFragment = { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number };
 
-export type NotificationFragment = (
-  { readonly __typename?: 'Notification' }
-  & Pick<Notification, 'id' | 'message' | 'deleted' | 'read' | 'sent'>
-);
+export type NotificationFragment = { readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string };
 
-export type SessionFragment = (
-  { readonly __typename?: 'Session' }
-  & Pick<Session, 'id' | 'ip' | 'deleted' | 'seen' | 'status'>
-  & { readonly geography?: Maybe<(
-    { readonly __typename?: 'Geography' }
-    & GeographyFragment
-  )> }
-);
+export type SessionFragment = { readonly __typename?: 'Session', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: SessionStatusEnum, readonly geography?: Maybe<{ readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number }> };
 
-export type UserFragment = (
-  { readonly __typename?: 'User' }
-  & Pick<User, 'id' | 'name'>
-  & { readonly avatar?: Maybe<(
-    { readonly __typename?: 'Attached' }
-    & AttachedFragment
-  )> }
-);
+export type UserFragment = { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: Maybe<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }> };
 
 export const Billing__SourceFragmentDoc = gql`
     fragment billing__source on Billing__Source {
