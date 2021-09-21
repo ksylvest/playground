@@ -20,7 +20,7 @@
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^6.1.4",
     "@rails/webpacker": "6.0.0-rc.5",
-    "@sentry/browser": "^6.13.0",
+    "@sentry/browser": "^6.13.2",
     "@types/loadjs": "^4.0.1",
     "@types/lodash": "^4.14.173",
     "@types/luxon": "^2.0.4",
