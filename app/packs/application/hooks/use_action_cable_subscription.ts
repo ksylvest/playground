@@ -9,7 +9,7 @@ export enum Status {
   Disconnected,
 }
 
-export const useActionCableSubscription = <T>(channel?: string, callback?: (data: T) => void): { status?: Status } => {
+export const useActionCableSubscription = <T>(channel: string, callback?: (data: T) => void): { status?: Status } => {
   const [status, setStatus] = useState<Status | undefined>(undefined);
   const ref = useRef(callback);
 

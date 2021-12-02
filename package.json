@@ -25,6 +25,8 @@
     "@types/lodash": "^4.14.176",
     "@types/luxon": "^2.0.7",
     "@types/node-fetch": "^3.0.3",
+    "@types/rails__actioncable": "^6.1.6",
+    "@types/rails__activestorage": "^6.0.1",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-fontawesome": "^1.6.5",
