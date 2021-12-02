@@ -1,13 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Loaders::Feed::LikedLoader do
+RSpec.describe Sources::Feed::Liked do
   describe '#load' do
     let(:user) { create(:user) }
     let!(:entry) { create(:feed_entry) }
 
     let(:liked) do
-      GraphQL::Batch.batch do
-        described_class.for(user).load(entry)
+      GraphQL::Dataloader.with_dataloading do |dataloader|
+        dataloader
+          .with(described_class, user)
+          .request(entry)
+          .load
       end
     end
 

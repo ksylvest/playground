@@ -8,9 +8,9 @@ module Types
 
     def variant(options:)
       service = Attachment::VariantService.new(object, **options.parameterize)
-      ::Loaders::CacheLoader.for.load(key: service.key, value: -> { service.data }).then do |data|
-        { data: data, type: service.type }
-      end
+      data = dataloader.with(Sources::Cache).load(key: service.key, value: -> { service.data })
+
+      { data: data, type: service.type }
     end
   end
 end

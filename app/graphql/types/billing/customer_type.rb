@@ -8,7 +8,7 @@ module Types
       field :sources, [SourceType], null: false
 
       def sources
-        Loaders::AssociationLoader.for(:sources).load(object)
+        dataloader.with(Sources::Records, ::Billing::Source, key: :customer_id).load(object.id)
       end
     end
   end

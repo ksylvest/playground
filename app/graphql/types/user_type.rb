@@ -10,9 +10,8 @@ module Types
     field :feed, FeedType, null: false
 
     def avatar
-      Loaders::ActiveStorageAttachmentLoader.for(:avatar, kind: :attachment).load(object).then do |avatar|
-        avatar if avatar.attached?
-      end
+      avatar = dataloader.with(Sources::ActiveStorageAttachment, :avatar, kind: :attachment).load(object)
+      avatar if avatar.attached?
     end
 
     def feed
@@ -24,11 +23,11 @@ module Types
     end
 
     def follower
-      ::Loaders::CounterLoader.for(::Follow, key: :follower_id).load(object.id)
+      dataloader.with(Sources::Counter, ::Follow, key: :follower_id).load(object.id)
     end
 
     def followed
-      ::Loaders::CounterLoader.for(::Follow, key: :followed_id).load(object.id)
+      dataloader.with(Sources::Counter, ::Follow, key: :followed_id).load(object.id)
     end
   end
 end
