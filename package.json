@@ -22,7 +22,7 @@
     "@rails/webpacker": "6.0.0-rc.6",
     "@sentry/browser": "^6.14.3",
     "@types/loadjs": "^4.0.1",
-    "@types/lodash": "^4.14.176",
+    "@types/lodash": "^4.14.177",
     "@types/luxon": "^2.0.7",
     "@types/node-fetch": "^3.0.3",
     "@types/rails__actioncable": "^6.1.6",
