@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import { DirectUpload } from "@rails/activestorage";
+
 const URL = "/rails/active_storage/direct_uploads";
 
 type Blob = {
@@ -7,11 +9,6 @@ type Blob = {
 };
 
 type Callback = (params: { blob?: Blob; error?: Error }) => void;
-
-declare class DirectUpload {
-  constructor();
-  create(callback: (error?: Error, blob?: Blob) => void): void;
-}
 
 export const useActiveStorageDirectUpload = (file?: File, callback?: Callback): { uploading: boolean } => {
   const [result, setResult] = useState<DirectUpload | undefined>(undefined);
@@ -22,8 +19,7 @@ export const useActiveStorageDirectUpload = (file?: File, callback?: Callback): 
       return;
     }
 
-    const { DirectUpload } = require("@rails/activestorage");
-    const uploader: DirectUpload = new DirectUpload(file, URL);
+    const uploader = new DirectUpload(file, URL);
     setResult(uploader);
 
     uploader.create((error?: Error, blob?: Blob) => {
