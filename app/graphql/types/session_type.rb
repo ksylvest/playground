@@ -9,7 +9,7 @@ module Types
     field :seen, DateTimeType, null: false, method: :seen_at
 
     def geography
-      Loaders::GeoIPLoader.load(object.ip)
+      dataloader.with(Sources::Record, ::GeoIP, key: :ip).load(object.ip)
     end
   end
 end

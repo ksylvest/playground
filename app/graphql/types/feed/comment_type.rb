@@ -9,7 +9,7 @@ module Types
       field :sent, DateTimeType, null: false, method: :sent_at
 
       def user
-        ::Loaders::AssociationLoader.for(:user).load(object)
+        dataloader.with(Sources::Record, ::User, key: :id).load(object.user_id)
       end
     end
   end

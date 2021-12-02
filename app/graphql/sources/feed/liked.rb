@@ -1,16 +1,14 @@
-module Loaders
+module Sources
   module Feed
-    class LikedLoader < GraphQL::Batch::Loader
+    class Liked < GraphQL::Dataloader::Source
       def initialize(user)
         super()
         @user = user
       end
 
-      def perform(entries)
+      def fetch(entries)
         entry_ids = Set.new(::Feed::Like.where(user: @user, entry: entries).pluck(:entry_id))
-        entries.each do |entry|
-          fulfill(entry, entry_ids.member?(entry.id))
-        end
+        entries.map { |entry| entry_ids.member?(entry.id) }
       end
     end
   end

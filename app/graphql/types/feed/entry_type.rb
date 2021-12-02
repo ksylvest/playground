@@ -12,23 +12,23 @@ module Types
       field :liked, Boolean, null: false
 
       def comments
-        ::Loaders::AssociationLoader.for(:comments).load(object)
+        dataloader.with(Sources::Records, ::Feed::Comment, key: :entry_id).load(object.id)
       end
 
       def photos
-        ::Loaders::ActiveStorageAttachmentLoader.for(:photos, kind: :attachments).load(object)
+        dataloader.with(Sources::ActiveStorageAttachment, :photos, kind: :attachments).load(object)
       end
 
       def user
-        ::Loaders::AssociationLoader.for(:user).load(object)
+        dataloader.with(Sources::Record, ::User, key: :id).load(object.user_id)
       end
 
       def likes
-        ::Loaders::CounterLoader.for(::Feed::Like, key: :entry_id).load(object.id)
+        dataloader.with(Sources::Counter, ::Feed::Like, key: :entry_id).load(object.id)
       end
 
       def liked
-        Current.authed? && ::Loaders::Feed::LikedLoader.for(Current.user).load(object)
+        Current.authed? && dataloader.with(Sources::Feed::Liked, Current.user).load(object)
       end
     end
   end
