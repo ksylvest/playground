@@ -1,22 +1,14 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 
-import {
-  SETTINGS_AVATAR_URL,
-  SETTINGS_BILLING_URL,
-  SETTINGS_PASSWORD_URL,
-  SETTINGS_PROFILE_URL,
-  SETTINGS_SESSIONS_URL,
-} from "@application/config/routes";
-
 import { Menu } from "tights";
 
 const LINKS = [
-  { text: "Avatar", to: SETTINGS_AVATAR_URL },
-  { text: "Billing", to: SETTINGS_BILLING_URL },
-  { text: "Password", to: SETTINGS_PASSWORD_URL },
-  { text: "Profile", to: SETTINGS_PROFILE_URL },
-  { text: "Sessions", to: SETTINGS_SESSIONS_URL },
+  { text: "Avatar", to: "avatar" },
+  { text: "Billing", to: "billing" },
+  { text: "Password", to: "password" },
+  { text: "Profile", to: "profile" },
+  { text: "Sessions", to: "sessions" },
 ];
 
 export const Sidebar: React.FC = () => (
@@ -25,7 +17,7 @@ export const Sidebar: React.FC = () => (
     <Menu.List>
       {LINKS.map(({ text, to }, key) => (
         <Menu.Item key={key}>
-          <NavLink to={to} activeClassName="is-active">
+          <NavLink to={to} className={({ isActive }) => (isActive ? "is-active" : "")}>
             {text}
           </NavLink>
         </Menu.Item>

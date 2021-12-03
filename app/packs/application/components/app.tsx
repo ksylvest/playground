@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { BrowserRouter, Route, StaticRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Config } from "./config";
 
@@ -15,41 +15,19 @@ import { Header } from "./app/header";
 
 import { Alerts } from "./alerts";
 import { Auth } from "./auth";
-import { Authenticator } from "./authenticator";
+import { Login } from "./login";
+import { Signup } from "./signup";
 import { Authorize } from "./authorize";
-import { Feed } from "./feed";
 import { Notifications } from "./notifications";
 import { Profile } from "./profile";
 import { Settings } from "./settings";
+import { Details } from "./feed/details";
+import { List } from "./feed/list";
 
-import { LOGIN_URL, NOTIFICATIONS_URL, PROFILE_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
+declare const SESSION: { id: string } | undefined;
 
 const STATS_CHANNEL = "StatsChannel";
 const PRESENCE_CHANNEL = "PresenceChannel";
-
-const Router: React.FC<{
-  location?: string;
-}> = ({ location, children }) => {
-  return typeof window !== "undefined" ? (
-    <BrowserRouter children={children} />
-  ) : (
-    <StaticRouter children={children} location={location} />
-  );
-};
-
-const Routes: React.FC = () => (
-  <Switch>
-    <Route exact path="/" component={Feed} />
-    <Route path="/feed" component={Feed} />
-    <Route exact path={PROFILE_URL({ id: ":id" })} component={Profile} />
-    <Route exact path={LOGIN_URL} component={Authenticator} />
-    <Route exact path={SIGNUP_URL} component={Authenticator} />
-    <Authorize>
-      <Route exact path={NOTIFICATIONS_URL} component={Notifications} />
-      <Route path={SETTINGS_URL} component={Settings} />
-    </Authorize>
-  </Switch>
-);
 
 const Layout: React.FC = () => (
   <>
@@ -57,7 +35,29 @@ const Layout: React.FC = () => (
     <Container>
       <Section>
         <Alerts />
-        <Routes />
+        <Routes>
+          <Route index element={<List />} />
+          <Route path="feed/entries/:id" element={<Details />} />
+          <Route path="profile/:id" element={<Profile />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route
+            path="notifications"
+            element={
+              <Authorize>
+                <Notifications />
+              </Authorize>
+            }
+          />
+          <Route
+            path="settings/*"
+            element={
+              <Authorize>
+                <Settings />
+              </Authorize>
+            }
+          />
+        </Routes>
       </Section>
     </Container>
     <Footer />
@@ -65,12 +65,9 @@ const Layout: React.FC = () => (
   </>
 );
 
-export const App: React.FC<{
-  location?: string;
-  session?: { id: string };
-}> = (props) => {
+export const App: React.FC = () => {
   const [flash, notify] = useState<Flash | undefined>(undefined);
-  const [session, auth] = useState<{ id: string } | undefined>(props.session);
+  const [session, auth] = useState<{ id: string } | undefined>(SESSION);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = (): void => auth(undefined);
 
@@ -78,10 +75,10 @@ export const App: React.FC<{
   useActionCableSubscription(PRESENCE_CHANNEL);
 
   return (
-    <Router location={props.location}>
+    <BrowserRouter>
       <Config flash={flash} notify={notify} session={session} auth={auth} deauth={deauth} stats={stats}>
         <Layout />
       </Config>
-    </Router>
+    </BrowserRouter>
   );
 };

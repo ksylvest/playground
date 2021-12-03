@@ -17,7 +17,11 @@ import { Actions } from "./entry/actions";
 import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
 export const Details: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
+  if (!id) {
+    throw new Error('missing required "id"');
+  }
+
   const { data } = useFeedEntryQuery({ variables: { id } });
   const entry = data?.feed?.entry;
 

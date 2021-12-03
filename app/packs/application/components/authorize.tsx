@@ -1,11 +1,9 @@
 import * as React from "react";
 import { useContext } from "react";
 import { useLocation } from "react-router";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { Flash } from "@application/types";
-
-import { LOGIN_URL } from "@application/config/routes";
 
 import { World } from "@application/contexts";
 
@@ -19,7 +17,7 @@ export const Authorize: React.FC = ({ children }) => {
   const { session } = useContext(World);
   if (!session) {
     const state = { flash: AUTHORIZE_FLASH, back: location };
-    return <Redirect to={{ pathname: LOGIN_URL, state }} />;
+    return <Navigate to="/login" state={state} />;
   }
   return <>{children}</>;
 };
