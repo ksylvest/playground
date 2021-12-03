@@ -8,30 +8,30 @@ import { World } from "@application/contexts";
 
 import { Logout } from "@application/components/logout";
 
-import { LOGIN_URL, NOTIFICATIONS_URL, ROOT_URL, SETTINGS_URL, SIGNUP_URL } from "@application/config/routes";
+import { NOTIFICATIONS_URL } from "@application/config/routes";
 
 const DEFAULT_ACTIVE = false;
 
-const NavbarLink: React.FC<{ exact?: boolean; to: string }> = ({ exact, to, children }) => (
-  <NavLink exact={exact} className="navbar-item" to={to} activeClassName="is-active">
+const NavbarLink: React.FC<{ end?: boolean; to: string }> = ({ end, to, children }) => (
+  <NavLink end={end} to={to} className={({ isActive }) => (isActive ? "navbar-item is-active" : "navbar-item")}>
     {children}
   </NavLink>
 );
 
 const HomeNavbarLink: React.FC = () => (
-  <NavbarLink exact to={ROOT_URL}>
+  <NavbarLink end to="/">
     Playground
   </NavbarLink>
 );
 
 const LoginNavbarLink: React.FC = () => (
-  <NavbarLink exact to={LOGIN_URL}>
+  <NavbarLink end to="/login">
     Login
   </NavbarLink>
 );
 
 const SignupNavbarLink: React.FC = () => (
-  <NavbarLink exact to={SIGNUP_URL}>
+  <NavbarLink end to="/signup">
     Signup
   </NavbarLink>
 );
@@ -47,13 +47,13 @@ const NotificationsNavbarLink: React.FC = () => {
   const { stats } = useContext(World);
   const count = stats?.notifications;
   return (
-    <NavbarLink exact to={NOTIFICATIONS_URL}>
+    <NavbarLink end to="/notifications">
       Notifications {!!count && `(${count})`}
     </NavbarLink>
   );
 };
 
-const SettingsNavbarLink: React.FC = () => <NavbarLink to={SETTINGS_URL}>Settings</NavbarLink>;
+const SettingsNavbarLink: React.FC = () => <NavbarLink to="/settings">Settings</NavbarLink>;
 
 const MainNavbarLinks: React.FC = () => (
   <>

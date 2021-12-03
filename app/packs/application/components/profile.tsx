@@ -12,7 +12,11 @@ import { Summary } from "./profile/summary";
 import { PROFILE_URL } from "@application/config/routes";
 
 export const Profile: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
+  if (!id) {
+    throw new Error('missing required "id"');
+  }
+
   const { data } = useProfileQuery({ variables: { id } });
   const user = data?.user;
   const entries = user?.feed.entries;
