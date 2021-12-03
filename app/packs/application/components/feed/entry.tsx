@@ -20,7 +20,7 @@ export const Entry: React.FC<{
   <Card>
     <Card.Image>
       <Link to={FEED_DETAILS_URL(entry)}>
-        <Attachment square attachment={head(entry.photos)} w={320} h={320} />
+        <Attachment square attachment={head(entry.photos)} w={320} h={320} alt={`Photos by ${entry.user.name}`} />
       </Link>
     </Card.Image>
     <Card.Content>
@@ -35,6 +35,7 @@ export const Entry: React.FC<{
               h={32}
               attachment={entry.user.avatar}
               placeholder={PLACEHOLDER}
+              alt={entry.user.name}
             />
           </Link>
         </Column>

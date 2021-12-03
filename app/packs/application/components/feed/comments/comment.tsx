@@ -11,12 +11,22 @@ import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 export const Comment: React.FC<{
   comment: Feed__CommentFragment;
 }> = ({ comment }) => {
-  const avatar = comment.user.avatar;
+  const user = comment.user;
+  const avatar = user.avatar;
 
   return (
     <Media>
       <Media.Left>
-        <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded square dimensions={48} w={48} h={48} />
+        <Attachment
+          attachment={avatar}
+          placeholder={PLACEHOLDER}
+          rounded
+          square
+          dimensions={48}
+          w={48}
+          h={48}
+          alt={user.name}
+        />
       </Media.Left>
       <Media.Content>
         <Content>

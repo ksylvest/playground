@@ -8,7 +8,7 @@ import { Pagination } from "tights";
 
 import { Attachment } from "@application/components/helpers";
 
-import { AttachedFragment } from "@root/app_schema";
+import { AttachedFragment, UserFragment } from "@root/app_schema";
 
 import { useKey } from "@application/hooks";
 
@@ -19,8 +19,9 @@ const PREV_KEY = "ArrowLeft";
 const CHAR_CODE_OFFSET = 65; // i.e. 'A', 'B', 'C', ...
 
 export const Carousel: React.FC<{
+  user: UserFragment;
   photos: readonly AttachedFragment[];
-}> = ({ photos }) => {
+}> = ({ user, photos }) => {
   const [index, setIndex] = useState<number>(DEFAULT_INDEX);
   const photo = photos[index];
   const total = photos.length;
@@ -35,9 +36,11 @@ export const Carousel: React.FC<{
   useKey(next, NEXT_KEY);
   useKey(prev, PREV_KEY);
 
+  const label = String.fromCharCode(index + CHAR_CODE_OFFSET);
+
   return (
     <>
-      <Attachment attachment={photo} square w={640} h={640} />
+      <Attachment attachment={photo} square w={640} h={640} alt={`Photo '${label}' of ${total} by ${user.name}`} />
       <br />
       <Pagination rounded>
         <Pagination.Prev
