@@ -64,18 +64,19 @@ export const Carousel: React.FC<{
 
         <Pagination.List>
           {times(total, (page) => (
-            <Pagination.Link
-              key={page}
-              current={page === index}
-              href="#"
-              onClick={(event): void => {
-                event.preventDefault();
-                event.stopPropagation();
-                setIndex(page);
-              }}
-            >
-              {String.fromCharCode(page + CHAR_CODE_OFFSET)}
-            </Pagination.Link>
+            <Pagination.Item key={page}>
+              <Pagination.Link
+                current={page === index}
+                href="#"
+                onClick={(event): void => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setIndex(page);
+                }}
+              >
+                {String.fromCharCode(page + CHAR_CODE_OFFSET)}
+              </Pagination.Link>
+            </Pagination.Item>
           ))}
         </Pagination.List>
       </Pagination>
