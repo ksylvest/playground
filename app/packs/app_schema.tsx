@@ -545,7 +545,7 @@ export type SettingsAvatarDetachMutation = { readonly __typename?: 'Mutation', r
 export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null | undefined } | null | undefined };
+export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null | undefined } | null | undefined };
 
 export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1307,6 +1307,7 @@ export const SettingsAvatarDocument = gql`
     query SettingsAvatar {
   me {
     id
+    name
     avatar {
       id
     }

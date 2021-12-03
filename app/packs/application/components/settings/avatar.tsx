@@ -13,7 +13,7 @@ import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 
 export const Avatar: React.FC = () => {
   const { data, refetch } = useSettingsAvatarQuery();
-  const avatar = data?.me?.avatar;
+  const me = data?.me;
 
   return (
     <>
@@ -23,7 +23,15 @@ export const Avatar: React.FC = () => {
       <hr />
       <Columns>
         <Column size={3}>
-          <Attachment attachment={avatar} placeholder={PLACEHOLDER} rounded square w={320} h={320} />
+          <Attachment
+            attachment={me?.avatar}
+            placeholder={PLACEHOLDER}
+            rounded
+            square
+            w={320}
+            h={320}
+            alt={me?.name ?? "Me"}
+          />
         </Column>
         <Column size={9}>
           <Attach onSave={refetch} />

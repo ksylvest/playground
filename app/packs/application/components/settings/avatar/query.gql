@@ -1,6 +1,7 @@
 query SettingsAvatar {
   me {
     id
+    name
     avatar {
       id
     }

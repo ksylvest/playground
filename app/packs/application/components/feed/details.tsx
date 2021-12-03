@@ -37,13 +37,21 @@ export const Details: React.FC = () => {
       <Card>
         <Card.Content>
           <Columns>
-            <Column>{photos && <Carousel photos={photos} />}</Column>
+            <Column>{photos && user && <Carousel user={user} photos={photos} />}</Column>
             <Column>
               <Columns desktop tablet mobile vcentered gap={2}>
                 <Column narrow>
                   <Link to={profileURL}>
                     {user && (
-                      <Attachment attachment={avatar} rounded dimensions={64} w={64} h={64} placeholder={PLACEHOLDER} />
+                      <Attachment
+                        attachment={avatar}
+                        rounded
+                        dimensions={64}
+                        w={64}
+                        h={64}
+                        placeholder={PLACEHOLDER}
+                        alt={user.name}
+                      />
                     )}
                   </Link>
                 </Column>

@@ -13,15 +13,24 @@ import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
 export const Summary: React.FC<{
   profile?: FollowFragment & UserFragment;
 }> = ({ profile }) => {
-  const name = profile && profile.name;
-  const avatar = profile && profile.avatar;
+  const name = profile?.name;
+  const avatar = profile?.avatar;
 
   return (
     <>
       <Columns desktop tablet mobile vcentered gap={2}>
         <Column narrow>
           {profile && (
-            <Attachment square rounded dimensions={96} w={96} h={96} attachment={avatar} placeholder={PLACEHOLDER} />
+            <Attachment
+              square
+              rounded
+              dimensions={96}
+              w={96}
+              h={96}
+              attachment={avatar}
+              placeholder={PLACEHOLDER}
+              alt={name}
+            />
           )}
         </Column>
         <Column>
