@@ -16,7 +16,7 @@ module Types
       end
 
       def photos
-        dataloader.with(Sources::ActiveStorageAttachment, :photos, kind: :attachments).load(object)
+        dataloader.with(Sources::ActiveStorageHasManyAttached, :photos).load(object)
       end
 
       def user
