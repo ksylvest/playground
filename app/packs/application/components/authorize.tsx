@@ -14,8 +14,8 @@ const AUTHORIZE_FLASH: Flash = {
 
 export const Authorize: React.FC = ({ children }) => {
   const location = useLocation();
-  const { session } = useContext(World);
-  if (!session) {
+  const { authentication } = useContext(World);
+  if (!authentication) {
     const state = { flash: AUTHORIZE_FLASH, back: location };
     return <Navigate to="/login" state={state} />;
   }

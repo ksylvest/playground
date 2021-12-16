@@ -10,7 +10,7 @@ import { Flash } from "@application/types";
 
 export const Config: React.FC<{
   flash?: Flash;
-  session?: { id: string };
+  authentication?: { id: string };
   stats?: { notifications: number };
   notify(_: Flash): void;
   auth(_: { id: string }): void;

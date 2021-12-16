@@ -1,0 +1,8 @@
+mutation SettingsAuthenticationDestroy($id: String!) {
+  result: destroyAuthentication(id: $id) {
+    authentication {
+      id
+      deleted
+    }
+  }
+}

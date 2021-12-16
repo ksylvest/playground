@@ -1,17 +1,17 @@
 import * as React from "react";
 
-import { SessionFragment } from "@root/app_schema";
+import { AuthenticationFragment } from "@root/app_schema";
 
 import { Button, Content, Delete, Modal } from "tights";
 
 import { Geography } from "./geography";
 
 export const Dialog: React.FC<{
-  session: SessionFragment;
+  authentication: AuthenticationFragment;
   loading: boolean;
   onContinue(): void;
   onCancel(): void;
-}> = ({ session, loading, onContinue, onCancel }) => (
+}> = ({ authentication, loading, onContinue, onCancel }) => (
   <Modal>
     <Modal.Background onClick={onCancel} />
     <Modal.Content>
@@ -22,12 +22,12 @@ export const Dialog: React.FC<{
         </Modal.Card.Head>
         <Modal.Card.Body>
           <Content>
-            <p>Are you sure you want to revoke this session?</p>
-            <p>Devices using this session will be need to re-authenticate.</p>
+            <p>Are you sure you want to revoke this authentication?</p>
+            <p>Devices using this authentication will be need to re-authenticate.</p>
             <p>
-              <strong>{session.ip}</strong>
+              <strong>{authentication.ip}</strong>
             </p>
-            {session.geography && <Geography geography={session.geography} />}
+            {authentication.geography && <Geography geography={authentication.geography} />}
           </Content>
         </Modal.Card.Body>
         <Modal.Card.Foot>

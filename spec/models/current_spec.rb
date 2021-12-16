@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Current, type: :model do
-  let(:session) { create(:session, user: user) }
+  let(:authentication) { create(:authentication, user: user) }
   let(:user) { create(:user) }
 
   describe '.auth!' do
@@ -10,7 +10,7 @@ RSpec.describe Current, type: :model do
     end
 
     it 'generates a session' do
-      expect { auth! }.to change { Session.where(user: user).active.count }
+      expect { auth! }.to change { Authentication.where(user: user).active.count }
     end
   end
 
@@ -20,8 +20,8 @@ RSpec.describe Current, type: :model do
     end
 
     it 'clears a session' do
-      Current.session = session
-      expect { deauth! }.to change { Session.where(user: user).active.count }
+      Current.authentication = authentication
+      expect { deauth! }.to change { Authentication.where(user: user).active.count }
     end
   end
 end

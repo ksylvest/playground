@@ -1,4 +1,4 @@
-fragment session on Session {
+fragment authentication on Authentication {
   id
   ip
   deleted

@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class Authentication < ApplicationRecord
   enum status: { online: 'online', offline: 'offline' }
 
   include Activatable
@@ -22,13 +22,13 @@ class Session < ApplicationRecord
     self.seen_at = Time.current
     online!
     save!
-    SessionPublishJob.new(self).enqueue
+    AuthenticationPublishJob.new(self).enqueue
   end
 
   def disappear!
     self.seen_at = Time.current
     offline!
     save!
-    SessionPublishJob.new(self).enqueue
+    AuthenticationPublishJob.new(self).enqueue
   end
 end

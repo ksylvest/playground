@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'settings/sessions', type: :system do
   let(:user) { create(:user) }
   let!(:geo_ip) { create(:geo_ip, ip: '4.4.4.4') }
-  let!(:session) { create(:session, user: user, ip: '4.4.4.4') }
 
   it 'lets a user change their avatar' do
     visit settings_avatar_path

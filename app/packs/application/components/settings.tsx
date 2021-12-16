@@ -7,11 +7,11 @@ import { Title } from "@application/components/helpers";
 
 import { Sidebar } from "./settings/sidebar";
 
+import { Authentications } from "./settings/authentications";
 import { Avatar } from "./settings/avatar";
 import { Billing } from "./settings/billing";
 import { Password } from "./settings/password";
 import { Profile } from "./settings/profile";
-import { Sessions } from "./settings/sessions";
 
 export const Settings: React.FC = () => (
   <>
@@ -27,7 +27,7 @@ export const Settings: React.FC = () => (
           <Route path="billing" element={<Billing />} />
           <Route path="password" element={<Password />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="sessions" element={<Sessions />} />
+          <Route path="authentications" element={<Authentications />} />
           <Route index element={<Navigate to={"profile"} />} />
         </Routes>
       </Column>
