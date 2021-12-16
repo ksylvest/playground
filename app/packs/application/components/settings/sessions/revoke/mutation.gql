@@ -1,8 +1,0 @@
-mutation SettingsSessionRevoke($id: String!) {
-  result: destroySession(id: $id) {
-    session {
-      id
-      deleted
-    }
-  }
-}

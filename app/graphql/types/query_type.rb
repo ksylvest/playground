@@ -3,7 +3,7 @@ module Types
     field :billing, BillingType, null: false
     field :feed, FeedType, null: false
     field :notifications, [NotificationType], null: false
-    field :sessions, [SessionType], null: false
+    field :authentications, [AuthenticationType], null: false
     field :user, UserType, null: false do
       argument :id, ID, required: true
     end
@@ -21,8 +21,8 @@ module Types
       Current.user.notifications.active.chronological
     end
 
-    def sessions
-      Current.user.sessions.active.chronological
+    def authentications
+      Current.user.authentications.active.chronological
     end
 
     def user(id:)

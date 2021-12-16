@@ -29,9 +29,8 @@ module Attachment
     def variant
       @variant ||= @attachment.variant(
         "resize_to_#{@resize}": @size,
-        convert: @format,
-        quality: @quality,
-        **DEFAULTS
+        format: @format,
+        saver: DEFAULTS.merge({ quality: @quality })
       )
     end
 

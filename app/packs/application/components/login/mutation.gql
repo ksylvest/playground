@@ -1,7 +1,7 @@
 mutation Login($input: LoginInput!) {
   login(input: $input) {
     status
-    session {
+    authentication {
       id
     }
     errors {

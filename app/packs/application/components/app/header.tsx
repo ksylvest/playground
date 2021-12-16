@@ -82,7 +82,7 @@ const MeNavbarItem: React.FC = () => (
 );
 
 export const Header: React.FC = () => {
-  const { session } = useContext(World);
+  const { authentication } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
   const onToggle = (): void => setActive(!active);
 
@@ -94,8 +94,8 @@ export const Header: React.FC = () => {
           <Navbar.Burger active={active} onClick={onToggle} />
         </Navbar.Brand>
         <Navbar.Menu active={active}>
-          <Navbar.Start>{session && <MainNavbarLinks />}</Navbar.Start>
-          <Navbar.End>{session ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</Navbar.End>
+          <Navbar.Start>{authentication && <MainNavbarLinks />}</Navbar.Start>
+          <Navbar.End>{authentication ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</Navbar.End>
         </Navbar.Menu>
       </Navbar>
     </header>

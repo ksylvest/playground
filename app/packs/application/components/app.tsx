@@ -24,7 +24,7 @@ import { Settings } from "./settings";
 import { Details } from "./feed/details";
 import { List } from "./feed/list";
 
-declare const SESSION: { id: string } | undefined;
+declare const AUTHENTICATION: { id: string } | undefined;
 
 const STATS_CHANNEL = "StatsChannel";
 const PRESENCE_CHANNEL = "PresenceChannel";
@@ -67,7 +67,7 @@ const Layout: React.FC = () => (
 
 export const App: React.FC = () => {
   const [flash, notify] = useState<Flash | undefined>(undefined);
-  const [session, auth] = useState<{ id: string } | undefined>(SESSION);
+  const [authentication, auth] = useState<{ id: string } | undefined>(AUTHENTICATION);
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = (): void => auth(undefined);
 
@@ -76,7 +76,7 @@ export const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Config flash={flash} notify={notify} session={session} auth={auth} deauth={deauth} stats={stats}>
+      <Config flash={flash} notify={notify} authentication={authentication} auth={auth} deauth={deauth} stats={stats}>
         <Layout />
       </Config>
     </BrowserRouter>

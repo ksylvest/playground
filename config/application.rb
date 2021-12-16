@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Playground
   class Application < Rails::Application
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     config.skylight.probes += %w[graphql redis]
 

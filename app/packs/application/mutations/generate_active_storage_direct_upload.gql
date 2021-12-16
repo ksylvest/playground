@@ -1,0 +1,5 @@
+mutation GenerateActiveStorageDirectUpload($name: String!) {
+  result: generateActiveStorageDirectUpload(name: $name) {
+    token
+  }
+}

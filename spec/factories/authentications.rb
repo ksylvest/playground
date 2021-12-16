@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :session do
+  factory :authentication do
     user
     ip { '0.0.0.0' }
   end

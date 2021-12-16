@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_secure_password validations: false
 
-  has_many :sessions, dependent: :destroy
+  has_many :authentications, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   validates :name, presence: true

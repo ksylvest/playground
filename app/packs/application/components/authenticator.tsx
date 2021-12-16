@@ -13,10 +13,10 @@ import { Signup } from "./signup";
 import { ROOT_URL } from "@application/config/routes";
 
 export const Authenticator: React.FC = ({ children }) => {
-  const { session } = useContext(World);
+  const { authentication } = useContext(World);
   const location = useLocation();
   const { state } = location;
-  if (session) {
+  if (authentication) {
     return <Navigate to={state?.back ?? ROOT_URL} />;
   }
   return (

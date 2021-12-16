@@ -14,11 +14,11 @@ Rails.application.routes.draw do
       signup
       notifications
       settings
+      settings/authentications
       settings/avatar
       settings/billing
       settings/password
       settings/profile
-      settings/sessions
     ].each do |path|
       get path, to: 'main#index', as: path
     end

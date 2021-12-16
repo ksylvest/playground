@@ -21,7 +21,7 @@ html lang='en'
       MAPBOX_ACCESS_TOKEN = #{{JSON.generate(Rails.application.credentials.mapbox_access_token)}};
       SENTRY_DSN = #{{JSON.generate(Rails.application.credentials.sentry_dsn)}};
       STRIPE_PUBLISHABLE_KEY = #{{JSON.generate(Rails.application.credentials.stripe_publishable_key)}};
-      SESSION = #{{JSON.generate(Current.session ? { id: Current.session.id } : nil)}};
+      AUTHENTICATION = #{{JSON.generate(Current.authentication ? { id: Current.authentication.id } : nil)}};
 
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'

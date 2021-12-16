@@ -18,7 +18,7 @@ RSpec.describe Mutations::Avatar::AttachMutation do
     end
 
     let(:user) { create(:user) }
-    let(:session) { create(:session, user: user) }
+    let(:authentication) { create(:authentication, user: user) }
 
     it 'resolves "OK"' do
       expect(user.avatar).to receive(:attach)

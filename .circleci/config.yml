@@ -50,7 +50,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install imagemagick
+      - run: sudo apt-get install libvips
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - ruby/install-deps
