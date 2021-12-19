@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Sources::Counter do
+RSpec.describe Sources::ActiveRecordCount do
   describe '#fetch' do
     subject(:result) do
       GraphQL::Dataloader.with_dataloading do |dataloader|

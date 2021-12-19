@@ -12,7 +12,7 @@ module Types
       field :liked, Boolean, null: false
 
       def comments
-        dataloader.with(Sources::Records, ::Feed::Comment, key: :entry_id).load(object.id)
+        dataloader.with(Sources::ActiveRecordCollection, ::Feed::Comment, key: :entry_id).load(object.id)
       end
 
       def photos
@@ -20,11 +20,11 @@ module Types
       end
 
       def user
-        dataloader.with(Sources::Record, ::User, key: :id).load(object.user_id)
+        dataloader.with(Sources::ActiveRecordObject, ::User, key: :id).load(object.user_id)
       end
 
       def likes
-        dataloader.with(Sources::Counter, ::Feed::Like, key: :entry_id).load(object.id)
+        dataloader.with(Sources::ActiveRecordCount, ::Feed::Like, key: :entry_id).load(object.id)
       end
 
       def liked
