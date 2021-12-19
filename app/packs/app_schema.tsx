@@ -450,6 +450,24 @@ export enum Variant__Resize {
   Fit = 'FIT'
 }
 
+export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly filename: string };
+
+export type AuthenticationFragment = { readonly __typename?: 'Authentication', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: AuthenticationStatusEnum, readonly geography?: { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number } | null | undefined };
+
+export type Billing__SourceFragment = { readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean };
+
+export type Feed__CommentFragment = { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
+
+export type Feed__EntryFragment = { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
+
+export type FollowFragment = { readonly __typename?: 'User', readonly following: boolean, readonly followed: number, readonly follower: number };
+
+export type GeographyFragment = { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number };
+
+export type NotificationFragment = { readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string };
+
+export type UserFragment = { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined };
+
 export type BuildFeedCommentMutationVariables = Exact<{
   input: Feed__CommentInput;
 }>;
@@ -457,19 +475,33 @@ export type BuildFeedCommentMutationVariables = Exact<{
 
 export type BuildFeedCommentMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'BuildFeedCommentPayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null | undefined, readonly comment?: { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } } | null | undefined } };
 
-export type FeedCommentsQueryVariables = Exact<{
+export type SettingsBillingSourceDestroyMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type FeedCommentsQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly comments: ReadonlyArray<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> } } };
+export type SettingsBillingSourceDestroyMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: { readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> } | null | undefined } } };
 
-export type FeedEntryQueryVariables = Exact<{
+export type DestroyNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type FeedEntryQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } } } };
+export type DestroyNotificationMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyNotificationPayload', readonly notification: { readonly __typename?: 'Notification', readonly id: string, readonly deleted: boolean } } };
+
+export type FollowUserMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type FollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'FollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
+
+export type GenerateActiveStorageDirectUploadMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type GenerateActiveStorageDirectUploadMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'GenerateActiveStorageDirectUploadMutationPayload', readonly token: string } };
 
 export type LikeFeedEntryMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -477,18 +509,6 @@ export type LikeFeedEntryMutationVariables = Exact<{
 
 
 export type LikeFeedEntryMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'LikeFeedEntryPayload', readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly liked: boolean, readonly likes: number } } };
-
-export type UnlikeFeedEntryMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type UnlikeFeedEntryMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnlikeFeedEntryPayload', readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly liked: boolean, readonly likes: number } } };
-
-export type FeedQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type FeedQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> } };
 
 export type LoginMutationVariables = Exact<{
   input: LoginInput;
@@ -502,50 +522,12 @@ export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type LogoutMutation = { readonly __typename?: 'Mutation', readonly logout: { readonly __typename?: 'LogoutMutationPayload', readonly status: Status } };
 
-export type DestroyNotificationMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type DestroyNotificationMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyNotificationPayload', readonly notification: { readonly __typename?: 'Notification', readonly id: string, readonly deleted: boolean } } };
-
-export type NotificationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type NotificationsQuery = { readonly __typename?: 'Query', readonly notifications: ReadonlyArray<{ readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string }> };
-
 export type ReadNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
 export type ReadNotificationMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ReadNotificationPayload', readonly notification: { readonly __typename?: 'Notification', readonly id: string, readonly read: boolean } } };
-
-export type FollowUserMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type FollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'FollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
-
-export type ProfileQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type ProfileQuery = { readonly __typename?: 'Query', readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly following: boolean, readonly followed: number, readonly follower: number, readonly feed: { readonly __typename?: 'Feed', readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> }, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
-
-export type UnfollowUserMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type UnfollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnfollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
-
-export type SettingsAuthenticationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SettingsAuthenticationsQuery = { readonly __typename?: 'Query', readonly authentications: ReadonlyArray<{ readonly __typename?: 'Authentication', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: AuthenticationStatusEnum, readonly geography?: { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number } | null | undefined }> };
 
 export type SettingsAuthenticationDestroyMutationVariables = Exact<{
   id: Scalars['String'];
@@ -566,16 +548,6 @@ export type SettingsAvatarDetachMutationVariables = Exact<{ [key: string]: never
 
 export type SettingsAvatarDetachMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DetachAvatarPayload', readonly status: Status } };
 
-export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null | undefined } | null | undefined };
-
-export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SettingsBillingQuery = { readonly __typename?: 'Query', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: { readonly __typename?: 'Billing__Customer', readonly id: string, readonly currency?: Billing__Currency | null | undefined, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> } | null | undefined } };
-
 export type SettingsBillingSourceBuildMutationVariables = Exact<{
   source: Scalars['String'];
 }>;
@@ -590,12 +562,12 @@ export type SettingsBillingSourceDefaultMutationVariables = Exact<{
 
 export type SettingsBillingSourceDefaultMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DefaultBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: { readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> } | null | undefined } } };
 
-export type SettingsBillingSourceDestroyMutationVariables = Exact<{
-  id: Scalars['ID'];
+export type SettingsChangeProfileMutationVariables = Exact<{
+  input: UserInput;
 }>;
 
 
-export type SettingsBillingSourceDestroyMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'DestroyBillingSourcePayload', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: { readonly __typename?: 'Billing__Customer', readonly id: string, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> } | null | undefined } } };
+export type SettingsChangeProfileMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ChangeProfilePayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null | undefined } };
 
 export type SettingsPasswordMutationVariables = Exact<{
   password: PasswordInput;
@@ -604,18 +576,6 @@ export type SettingsPasswordMutationVariables = Exact<{
 
 export type SettingsPasswordMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ChangePasswordPayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null | undefined } };
 
-export type SettingsChangeProfileMutationVariables = Exact<{
-  input: UserInput;
-}>;
-
-
-export type SettingsChangeProfileMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'ChangeProfilePayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null | undefined } };
-
-export type SettingsProfileQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SettingsProfileQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly email: string } | null | undefined };
-
 export type SignupMutationVariables = Exact<{
   input: SignupInput;
 }>;
@@ -623,30 +583,70 @@ export type SignupMutationVariables = Exact<{
 
 export type SignupMutation = { readonly __typename?: 'Mutation', readonly signup: { readonly __typename?: 'SignupMutationPayload', readonly status: Status, readonly authentication?: { readonly __typename?: 'Authentication', readonly id: string } | null | undefined, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null | undefined } };
 
-export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly filename: string };
-
-export type AuthenticationFragment = { readonly __typename?: 'Authentication', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: AuthenticationStatusEnum, readonly geography?: { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number } | null | undefined };
-
-export type Billing__SourceFragment = { readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean };
-
-export type Feed__CommentFragment = { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
-
-export type Feed__EntryFragment = { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
-
-export type FollowFragment = { readonly __typename?: 'User', readonly following: boolean, readonly followed: number, readonly follower: number };
-
-export type GeographyFragment = { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number };
-
-export type NotificationFragment = { readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string };
-
-export type UserFragment = { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined };
-
-export type GenerateActiveStorageDirectUploadMutationVariables = Exact<{
-  name: Scalars['String'];
+export type UnfollowUserMutationVariables = Exact<{
+  id: Scalars['ID'];
 }>;
 
 
-export type GenerateActiveStorageDirectUploadMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'GenerateActiveStorageDirectUploadMutationPayload', readonly token: string } };
+export type UnfollowUserMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnfollowUserPayload', readonly user: { readonly __typename?: 'User', readonly id: string, readonly following: boolean, readonly followed: number, readonly follower: number } } };
+
+export type UnlikeFeedEntryMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type UnlikeFeedEntryMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'UnlikeFeedEntryPayload', readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly liked: boolean, readonly likes: number } } };
+
+export type FeedQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FeedQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> } };
+
+export type FeedCommentsQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type FeedCommentsQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly comments: ReadonlyArray<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> } } };
+
+export type FeedEntryQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type FeedEntryQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } } } };
+
+export type NotificationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NotificationsQuery = { readonly __typename?: 'Query', readonly notifications: ReadonlyArray<{ readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string }> };
+
+export type ProfileQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type ProfileQuery = { readonly __typename?: 'Query', readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly following: boolean, readonly followed: number, readonly follower: number, readonly feed: { readonly __typename?: 'Feed', readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } }> }, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null | undefined } };
+
+export type SettingsAuthenticationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SettingsAuthenticationsQuery = { readonly __typename?: 'Query', readonly authentications: ReadonlyArray<{ readonly __typename?: 'Authentication', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly seen: string, readonly status: AuthenticationStatusEnum, readonly geography?: { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number } | null | undefined }> };
+
+export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null | undefined } | null | undefined };
+
+export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SettingsBillingQuery = { readonly __typename?: 'Query', readonly billing: { readonly __typename?: 'Billing', readonly id: string, readonly customer?: { readonly __typename?: 'Billing__Customer', readonly id: string, readonly currency?: Billing__Currency | null | undefined, readonly sources: ReadonlyArray<{ readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Brand, readonly exp: string, readonly default: boolean }> } | null | undefined } };
+
+export type SettingsProfileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SettingsProfileQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly email: string } | null | undefined };
 
 export const GeographyFragmentDoc = gql`
     fragment geography on Geography {
@@ -775,85 +775,152 @@ export function useBuildFeedCommentMutation(baseOptions?: Apollo.MutationHookOpt
 export type BuildFeedCommentMutationHookResult = ReturnType<typeof useBuildFeedCommentMutation>;
 export type BuildFeedCommentMutationResult = Apollo.MutationResult<BuildFeedCommentMutation>;
 export type BuildFeedCommentMutationOptions = Apollo.BaseMutationOptions<BuildFeedCommentMutation, BuildFeedCommentMutationVariables>;
-export const FeedCommentsDocument = gql`
-    query FeedComments($id: ID!) {
-  feed {
-    id
-    entry(id: $id) {
+export const SettingsBillingSourceDestroyDocument = gql`
+    mutation SettingsBillingSourceDestroy($id: ID!) {
+  result: destroyBillingSource(id: $id) {
+    billing {
       id
-      comments {
-        ...feed__comment
+      customer {
+        id
+        sources {
+          ...billing__source
+        }
       }
     }
   }
 }
-    ${Feed__CommentFragmentDoc}`;
+    ${Billing__SourceFragmentDoc}`;
+export type SettingsBillingSourceDestroyMutationFn = Apollo.MutationFunction<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
 
 /**
- * __useFeedCommentsQuery__
+ * __useSettingsBillingSourceDestroyMutation__
  *
- * To run a query within a React component, call `useFeedCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useFeedCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useSettingsBillingSourceDestroyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingSourceDestroyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useFeedCommentsQuery({
+ * const [settingsBillingSourceDestroyMutation, { data, loading, error }] = useSettingsBillingSourceDestroyMutation({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useFeedCommentsQuery(baseOptions: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+export function useSettingsBillingSourceDestroyMutation(baseOptions?: Apollo.MutationHookOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
+        return Apollo.useMutation<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>(SettingsBillingSourceDestroyDocument, options);
       }
-export function useFeedCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
-        }
-export type FeedCommentsQueryHookResult = ReturnType<typeof useFeedCommentsQuery>;
-export type FeedCommentsLazyQueryHookResult = ReturnType<typeof useFeedCommentsLazyQuery>;
-export type FeedCommentsQueryResult = Apollo.QueryResult<FeedCommentsQuery, FeedCommentsQueryVariables>;
-export const FeedEntryDocument = gql`
-    query FeedEntry($id: ID!) {
-  feed {
-    id
-    entry(id: $id) {
-      ...feed__entry
+export type SettingsBillingSourceDestroyMutationHookResult = ReturnType<typeof useSettingsBillingSourceDestroyMutation>;
+export type SettingsBillingSourceDestroyMutationResult = Apollo.MutationResult<SettingsBillingSourceDestroyMutation>;
+export type SettingsBillingSourceDestroyMutationOptions = Apollo.BaseMutationOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
+export const DestroyNotificationDocument = gql`
+    mutation DestroyNotification($id: ID!) {
+  result: destroyNotification(id: $id) {
+    notification {
+      id
+      deleted
     }
   }
 }
-    ${Feed__EntryFragmentDoc}`;
+    `;
+export type DestroyNotificationMutationFn = Apollo.MutationFunction<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
 
 /**
- * __useFeedEntryQuery__
+ * __useDestroyNotificationMutation__
  *
- * To run a query within a React component, call `useFeedEntryQuery` and pass it any options that fit your needs.
- * When your component renders, `useFeedEntryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useDestroyNotificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDestroyNotificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useFeedEntryQuery({
+ * const [destroyNotificationMutation, { data, loading, error }] = useDestroyNotificationMutation({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useFeedEntryQuery(baseOptions: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+export function useDestroyNotificationMutation(baseOptions?: Apollo.MutationHookOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
+        return Apollo.useMutation<DestroyNotificationMutation, DestroyNotificationMutationVariables>(DestroyNotificationDocument, options);
       }
-export function useFeedEntryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
-        }
-export type FeedEntryQueryHookResult = ReturnType<typeof useFeedEntryQuery>;
-export type FeedEntryLazyQueryHookResult = ReturnType<typeof useFeedEntryLazyQuery>;
-export type FeedEntryQueryResult = Apollo.QueryResult<FeedEntryQuery, FeedEntryQueryVariables>;
+export type DestroyNotificationMutationHookResult = ReturnType<typeof useDestroyNotificationMutation>;
+export type DestroyNotificationMutationResult = Apollo.MutationResult<DestroyNotificationMutation>;
+export type DestroyNotificationMutationOptions = Apollo.BaseMutationOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
+export const FollowUserDocument = gql`
+    mutation FollowUser($id: ID!) {
+  result: followUser(id: $id) {
+    user {
+      id
+      ...follow
+    }
+  }
+}
+    ${FollowFragmentDoc}`;
+export type FollowUserMutationFn = Apollo.MutationFunction<FollowUserMutation, FollowUserMutationVariables>;
+
+/**
+ * __useFollowUserMutation__
+ *
+ * To run a mutation, you first call `useFollowUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useFollowUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [followUserMutation, { data, loading, error }] = useFollowUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFollowUserMutation(baseOptions?: Apollo.MutationHookOptions<FollowUserMutation, FollowUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<FollowUserMutation, FollowUserMutationVariables>(FollowUserDocument, options);
+      }
+export type FollowUserMutationHookResult = ReturnType<typeof useFollowUserMutation>;
+export type FollowUserMutationResult = Apollo.MutationResult<FollowUserMutation>;
+export type FollowUserMutationOptions = Apollo.BaseMutationOptions<FollowUserMutation, FollowUserMutationVariables>;
+export const GenerateActiveStorageDirectUploadDocument = gql`
+    mutation GenerateActiveStorageDirectUpload($name: String!) {
+  result: generateActiveStorageDirectUpload(name: $name) {
+    token
+  }
+}
+    `;
+export type GenerateActiveStorageDirectUploadMutationFn = Apollo.MutationFunction<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>;
+
+/**
+ * __useGenerateActiveStorageDirectUploadMutation__
+ *
+ * To run a mutation, you first call `useGenerateActiveStorageDirectUploadMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGenerateActiveStorageDirectUploadMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [generateActiveStorageDirectUploadMutation, { data, loading, error }] = useGenerateActiveStorageDirectUploadMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useGenerateActiveStorageDirectUploadMutation(baseOptions?: Apollo.MutationHookOptions<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>(GenerateActiveStorageDirectUploadDocument, options);
+      }
+export type GenerateActiveStorageDirectUploadMutationHookResult = ReturnType<typeof useGenerateActiveStorageDirectUploadMutation>;
+export type GenerateActiveStorageDirectUploadMutationResult = Apollo.MutationResult<GenerateActiveStorageDirectUploadMutation>;
+export type GenerateActiveStorageDirectUploadMutationOptions = Apollo.BaseMutationOptions<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>;
 export const LikeFeedEntryDocument = gql`
     mutation LikeFeedEntry($id: ID!) {
   result: likeFeedEntry(id: $id) {
@@ -891,80 +958,6 @@ export function useLikeFeedEntryMutation(baseOptions?: Apollo.MutationHookOption
 export type LikeFeedEntryMutationHookResult = ReturnType<typeof useLikeFeedEntryMutation>;
 export type LikeFeedEntryMutationResult = Apollo.MutationResult<LikeFeedEntryMutation>;
 export type LikeFeedEntryMutationOptions = Apollo.BaseMutationOptions<LikeFeedEntryMutation, LikeFeedEntryMutationVariables>;
-export const UnlikeFeedEntryDocument = gql`
-    mutation UnlikeFeedEntry($id: ID!) {
-  result: unlikeFeedEntry(id: $id) {
-    entry {
-      id
-      liked
-      likes
-    }
-  }
-}
-    `;
-export type UnlikeFeedEntryMutationFn = Apollo.MutationFunction<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
-
-/**
- * __useUnlikeFeedEntryMutation__
- *
- * To run a mutation, you first call `useUnlikeFeedEntryMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUnlikeFeedEntryMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [unlikeFeedEntryMutation, { data, loading, error }] = useUnlikeFeedEntryMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useUnlikeFeedEntryMutation(baseOptions?: Apollo.MutationHookOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>(UnlikeFeedEntryDocument, options);
-      }
-export type UnlikeFeedEntryMutationHookResult = ReturnType<typeof useUnlikeFeedEntryMutation>;
-export type UnlikeFeedEntryMutationResult = Apollo.MutationResult<UnlikeFeedEntryMutation>;
-export type UnlikeFeedEntryMutationOptions = Apollo.BaseMutationOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
-export const FeedDocument = gql`
-    query Feed {
-  feed {
-    id
-    entries {
-      ...feed__entry
-    }
-  }
-}
-    ${Feed__EntryFragmentDoc}`;
-
-/**
- * __useFeedQuery__
- *
- * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
- * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFeedQuery({
- *   variables: {
- *   },
- * });
- */
-export function useFeedQuery(baseOptions?: Apollo.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
-      }
-export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
-        }
-export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
-export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
-export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($input: LoginInput!) {
   login(input: $input) {
@@ -1036,76 +1029,6 @@ export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<Logou
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
-export const DestroyNotificationDocument = gql`
-    mutation DestroyNotification($id: ID!) {
-  result: destroyNotification(id: $id) {
-    notification {
-      id
-      deleted
-    }
-  }
-}
-    `;
-export type DestroyNotificationMutationFn = Apollo.MutationFunction<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
-
-/**
- * __useDestroyNotificationMutation__
- *
- * To run a mutation, you first call `useDestroyNotificationMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDestroyNotificationMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [destroyNotificationMutation, { data, loading, error }] = useDestroyNotificationMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDestroyNotificationMutation(baseOptions?: Apollo.MutationHookOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DestroyNotificationMutation, DestroyNotificationMutationVariables>(DestroyNotificationDocument, options);
-      }
-export type DestroyNotificationMutationHookResult = ReturnType<typeof useDestroyNotificationMutation>;
-export type DestroyNotificationMutationResult = Apollo.MutationResult<DestroyNotificationMutation>;
-export type DestroyNotificationMutationOptions = Apollo.BaseMutationOptions<DestroyNotificationMutation, DestroyNotificationMutationVariables>;
-export const NotificationsDocument = gql`
-    query Notifications {
-  notifications {
-    ...notification
-  }
-}
-    ${NotificationFragmentDoc}`;
-
-/**
- * __useNotificationsQuery__
- *
- * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useNotificationsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
-      }
-export function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
-        }
-export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
-export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
-export type NotificationsQueryResult = Apollo.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const ReadNotificationDocument = gql`
     mutation ReadNotification($id: ID!) {
   result: readNotification(id: $id) {
@@ -1142,155 +1065,6 @@ export function useReadNotificationMutation(baseOptions?: Apollo.MutationHookOpt
 export type ReadNotificationMutationHookResult = ReturnType<typeof useReadNotificationMutation>;
 export type ReadNotificationMutationResult = Apollo.MutationResult<ReadNotificationMutation>;
 export type ReadNotificationMutationOptions = Apollo.BaseMutationOptions<ReadNotificationMutation, ReadNotificationMutationVariables>;
-export const FollowUserDocument = gql`
-    mutation FollowUser($id: ID!) {
-  result: followUser(id: $id) {
-    user {
-      id
-      ...follow
-    }
-  }
-}
-    ${FollowFragmentDoc}`;
-export type FollowUserMutationFn = Apollo.MutationFunction<FollowUserMutation, FollowUserMutationVariables>;
-
-/**
- * __useFollowUserMutation__
- *
- * To run a mutation, you first call `useFollowUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useFollowUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [followUserMutation, { data, loading, error }] = useFollowUserMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useFollowUserMutation(baseOptions?: Apollo.MutationHookOptions<FollowUserMutation, FollowUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<FollowUserMutation, FollowUserMutationVariables>(FollowUserDocument, options);
-      }
-export type FollowUserMutationHookResult = ReturnType<typeof useFollowUserMutation>;
-export type FollowUserMutationResult = Apollo.MutationResult<FollowUserMutation>;
-export type FollowUserMutationOptions = Apollo.BaseMutationOptions<FollowUserMutation, FollowUserMutationVariables>;
-export const ProfileDocument = gql`
-    query Profile($id: ID!) {
-  user(id: $id) {
-    ...user
-    ...follow
-    feed {
-      entries {
-        ...feed__entry
-      }
-    }
-  }
-}
-    ${UserFragmentDoc}
-${FollowFragmentDoc}
-${Feed__EntryFragmentDoc}`;
-
-/**
- * __useProfileQuery__
- *
- * To run a query within a React component, call `useProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useProfileQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useProfileQuery(baseOptions: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
-      }
-export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
-        }
-export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
-export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
-export type ProfileQueryResult = Apollo.QueryResult<ProfileQuery, ProfileQueryVariables>;
-export const UnfollowUserDocument = gql`
-    mutation UnfollowUser($id: ID!) {
-  result: unfollowUser(id: $id) {
-    user {
-      id
-      ...follow
-    }
-  }
-}
-    ${FollowFragmentDoc}`;
-export type UnfollowUserMutationFn = Apollo.MutationFunction<UnfollowUserMutation, UnfollowUserMutationVariables>;
-
-/**
- * __useUnfollowUserMutation__
- *
- * To run a mutation, you first call `useUnfollowUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUnfollowUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [unfollowUserMutation, { data, loading, error }] = useUnfollowUserMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useUnfollowUserMutation(baseOptions?: Apollo.MutationHookOptions<UnfollowUserMutation, UnfollowUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UnfollowUserMutation, UnfollowUserMutationVariables>(UnfollowUserDocument, options);
-      }
-export type UnfollowUserMutationHookResult = ReturnType<typeof useUnfollowUserMutation>;
-export type UnfollowUserMutationResult = Apollo.MutationResult<UnfollowUserMutation>;
-export type UnfollowUserMutationOptions = Apollo.BaseMutationOptions<UnfollowUserMutation, UnfollowUserMutationVariables>;
-export const SettingsAuthenticationsDocument = gql`
-    query SettingsAuthentications {
-  authentications {
-    ...authentication
-  }
-}
-    ${AuthenticationFragmentDoc}`;
-
-/**
- * __useSettingsAuthenticationsQuery__
- *
- * To run a query within a React component, call `useSettingsAuthenticationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useSettingsAuthenticationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useSettingsAuthenticationsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useSettingsAuthenticationsQuery(baseOptions?: Apollo.QueryHookOptions<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
-      }
-export function useSettingsAuthenticationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
-        }
-export type SettingsAuthenticationsQueryHookResult = ReturnType<typeof useSettingsAuthenticationsQuery>;
-export type SettingsAuthenticationsLazyQueryHookResult = ReturnType<typeof useSettingsAuthenticationsLazyQuery>;
-export type SettingsAuthenticationsQueryResult = Apollo.QueryResult<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>;
 export const SettingsAuthenticationDestroyDocument = gql`
     mutation SettingsAuthenticationDestroy($id: String!) {
   result: destroyAuthentication(id: $id) {
@@ -1392,85 +1166,6 @@ export function useSettingsAvatarDetachMutation(baseOptions?: Apollo.MutationHoo
 export type SettingsAvatarDetachMutationHookResult = ReturnType<typeof useSettingsAvatarDetachMutation>;
 export type SettingsAvatarDetachMutationResult = Apollo.MutationResult<SettingsAvatarDetachMutation>;
 export type SettingsAvatarDetachMutationOptions = Apollo.BaseMutationOptions<SettingsAvatarDetachMutation, SettingsAvatarDetachMutationVariables>;
-export const SettingsAvatarDocument = gql`
-    query SettingsAvatar {
-  me {
-    id
-    name
-    avatar {
-      id
-    }
-  }
-}
-    `;
-
-/**
- * __useSettingsAvatarQuery__
- *
- * To run a query within a React component, call `useSettingsAvatarQuery` and pass it any options that fit your needs.
- * When your component renders, `useSettingsAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useSettingsAvatarQuery({
- *   variables: {
- *   },
- * });
- */
-export function useSettingsAvatarQuery(baseOptions?: Apollo.QueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
-      }
-export function useSettingsAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
-        }
-export type SettingsAvatarQueryHookResult = ReturnType<typeof useSettingsAvatarQuery>;
-export type SettingsAvatarLazyQueryHookResult = ReturnType<typeof useSettingsAvatarLazyQuery>;
-export type SettingsAvatarQueryResult = Apollo.QueryResult<SettingsAvatarQuery, SettingsAvatarQueryVariables>;
-export const SettingsBillingDocument = gql`
-    query SettingsBilling {
-  billing {
-    id
-    customer {
-      id
-      currency
-      sources {
-        ...billing__source
-      }
-    }
-  }
-}
-    ${Billing__SourceFragmentDoc}`;
-
-/**
- * __useSettingsBillingQuery__
- *
- * To run a query within a React component, call `useSettingsBillingQuery` and pass it any options that fit your needs.
- * When your component renders, `useSettingsBillingQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useSettingsBillingQuery({
- *   variables: {
- *   },
- * });
- */
-export function useSettingsBillingQuery(baseOptions?: Apollo.QueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
-      }
-export function useSettingsBillingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
-        }
-export type SettingsBillingQueryHookResult = ReturnType<typeof useSettingsBillingQuery>;
-export type SettingsBillingLazyQueryHookResult = ReturnType<typeof useSettingsBillingLazyQuery>;
-export type SettingsBillingQueryResult = Apollo.QueryResult<SettingsBillingQuery, SettingsBillingQueryVariables>;
 export const SettingsBillingSourceBuildDocument = gql`
     mutation SettingsBillingSourceBuild($source: String!) {
   result: buildBillingSource(source: $source) {
@@ -1553,83 +1248,6 @@ export function useSettingsBillingSourceDefaultMutation(baseOptions?: Apollo.Mut
 export type SettingsBillingSourceDefaultMutationHookResult = ReturnType<typeof useSettingsBillingSourceDefaultMutation>;
 export type SettingsBillingSourceDefaultMutationResult = Apollo.MutationResult<SettingsBillingSourceDefaultMutation>;
 export type SettingsBillingSourceDefaultMutationOptions = Apollo.BaseMutationOptions<SettingsBillingSourceDefaultMutation, SettingsBillingSourceDefaultMutationVariables>;
-export const SettingsBillingSourceDestroyDocument = gql`
-    mutation SettingsBillingSourceDestroy($id: ID!) {
-  result: destroyBillingSource(id: $id) {
-    billing {
-      id
-      customer {
-        id
-        sources {
-          ...billing__source
-        }
-      }
-    }
-  }
-}
-    ${Billing__SourceFragmentDoc}`;
-export type SettingsBillingSourceDestroyMutationFn = Apollo.MutationFunction<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
-
-/**
- * __useSettingsBillingSourceDestroyMutation__
- *
- * To run a mutation, you first call `useSettingsBillingSourceDestroyMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useSettingsBillingSourceDestroyMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [settingsBillingSourceDestroyMutation, { data, loading, error }] = useSettingsBillingSourceDestroyMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useSettingsBillingSourceDestroyMutation(baseOptions?: Apollo.MutationHookOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>(SettingsBillingSourceDestroyDocument, options);
-      }
-export type SettingsBillingSourceDestroyMutationHookResult = ReturnType<typeof useSettingsBillingSourceDestroyMutation>;
-export type SettingsBillingSourceDestroyMutationResult = Apollo.MutationResult<SettingsBillingSourceDestroyMutation>;
-export type SettingsBillingSourceDestroyMutationOptions = Apollo.BaseMutationOptions<SettingsBillingSourceDestroyMutation, SettingsBillingSourceDestroyMutationVariables>;
-export const SettingsPasswordDocument = gql`
-    mutation SettingsPassword($password: PasswordInput!) {
-  result: changePassword(password: $password) {
-    status
-    errors {
-      messages
-    }
-  }
-}
-    `;
-export type SettingsPasswordMutationFn = Apollo.MutationFunction<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
-
-/**
- * __useSettingsPasswordMutation__
- *
- * To run a mutation, you first call `useSettingsPasswordMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useSettingsPasswordMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [settingsPasswordMutation, { data, loading, error }] = useSettingsPasswordMutation({
- *   variables: {
- *      password: // value for 'password'
- *   },
- * });
- */
-export function useSettingsPasswordMutation(baseOptions?: Apollo.MutationHookOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<SettingsPasswordMutation, SettingsPasswordMutationVariables>(SettingsPasswordDocument, options);
-      }
-export type SettingsPasswordMutationHookResult = ReturnType<typeof useSettingsPasswordMutation>;
-export type SettingsPasswordMutationResult = Apollo.MutationResult<SettingsPasswordMutation>;
-export type SettingsPasswordMutationOptions = Apollo.BaseMutationOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
 export const SettingsChangeProfileDocument = gql`
     mutation SettingsChangeProfile($input: UserInput!) {
   result: changeProfile(input: $input) {
@@ -1666,42 +1284,42 @@ export function useSettingsChangeProfileMutation(baseOptions?: Apollo.MutationHo
 export type SettingsChangeProfileMutationHookResult = ReturnType<typeof useSettingsChangeProfileMutation>;
 export type SettingsChangeProfileMutationResult = Apollo.MutationResult<SettingsChangeProfileMutation>;
 export type SettingsChangeProfileMutationOptions = Apollo.BaseMutationOptions<SettingsChangeProfileMutation, SettingsChangeProfileMutationVariables>;
-export const SettingsProfileDocument = gql`
-    query SettingsProfile {
-  me {
-    id
-    name
-    email
+export const SettingsPasswordDocument = gql`
+    mutation SettingsPassword($password: PasswordInput!) {
+  result: changePassword(password: $password) {
+    status
+    errors {
+      messages
+    }
   }
 }
     `;
+export type SettingsPasswordMutationFn = Apollo.MutationFunction<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
 
 /**
- * __useSettingsProfileQuery__
+ * __useSettingsPasswordMutation__
  *
- * To run a query within a React component, call `useSettingsProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useSettingsProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useSettingsPasswordMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSettingsPasswordMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useSettingsProfileQuery({
+ * const [settingsPasswordMutation, { data, loading, error }] = useSettingsPasswordMutation({
  *   variables: {
+ *      password: // value for 'password'
  *   },
  * });
  */
-export function useSettingsProfileQuery(baseOptions?: Apollo.QueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+export function useSettingsPasswordMutation(baseOptions?: Apollo.MutationHookOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
+        return Apollo.useMutation<SettingsPasswordMutation, SettingsPasswordMutationVariables>(SettingsPasswordDocument, options);
       }
-export function useSettingsProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
-        }
-export type SettingsProfileQueryHookResult = ReturnType<typeof useSettingsProfileQuery>;
-export type SettingsProfileLazyQueryHookResult = ReturnType<typeof useSettingsProfileLazyQuery>;
-export type SettingsProfileQueryResult = Apollo.QueryResult<SettingsProfileQuery, SettingsProfileQueryVariables>;
+export type SettingsPasswordMutationHookResult = ReturnType<typeof useSettingsPasswordMutation>;
+export type SettingsPasswordMutationResult = Apollo.MutationResult<SettingsPasswordMutation>;
+export type SettingsPasswordMutationOptions = Apollo.BaseMutationOptions<SettingsPasswordMutation, SettingsPasswordMutationVariables>;
 export const SignupDocument = gql`
     mutation Signup($input: SignupInput!) {
   signup(input: $input) {
@@ -1741,36 +1359,418 @@ export function useSignupMutation(baseOptions?: Apollo.MutationHookOptions<Signu
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
 export type SignupMutationResult = Apollo.MutationResult<SignupMutation>;
 export type SignupMutationOptions = Apollo.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
-export const GenerateActiveStorageDirectUploadDocument = gql`
-    mutation GenerateActiveStorageDirectUpload($name: String!) {
-  result: generateActiveStorageDirectUpload(name: $name) {
-    token
+export const UnfollowUserDocument = gql`
+    mutation UnfollowUser($id: ID!) {
+  result: unfollowUser(id: $id) {
+    user {
+      id
+      ...follow
+    }
   }
 }
-    `;
-export type GenerateActiveStorageDirectUploadMutationFn = Apollo.MutationFunction<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>;
+    ${FollowFragmentDoc}`;
+export type UnfollowUserMutationFn = Apollo.MutationFunction<UnfollowUserMutation, UnfollowUserMutationVariables>;
 
 /**
- * __useGenerateActiveStorageDirectUploadMutation__
+ * __useUnfollowUserMutation__
  *
- * To run a mutation, you first call `useGenerateActiveStorageDirectUploadMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useGenerateActiveStorageDirectUploadMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useUnfollowUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnfollowUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [generateActiveStorageDirectUploadMutation, { data, loading, error }] = useGenerateActiveStorageDirectUploadMutation({
+ * const [unfollowUserMutation, { data, loading, error }] = useUnfollowUserMutation({
  *   variables: {
- *      name: // value for 'name'
+ *      id: // value for 'id'
  *   },
  * });
  */
-export function useGenerateActiveStorageDirectUploadMutation(baseOptions?: Apollo.MutationHookOptions<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>) {
+export function useUnfollowUserMutation(baseOptions?: Apollo.MutationHookOptions<UnfollowUserMutation, UnfollowUserMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>(GenerateActiveStorageDirectUploadDocument, options);
+        return Apollo.useMutation<UnfollowUserMutation, UnfollowUserMutationVariables>(UnfollowUserDocument, options);
       }
-export type GenerateActiveStorageDirectUploadMutationHookResult = ReturnType<typeof useGenerateActiveStorageDirectUploadMutation>;
-export type GenerateActiveStorageDirectUploadMutationResult = Apollo.MutationResult<GenerateActiveStorageDirectUploadMutation>;
-export type GenerateActiveStorageDirectUploadMutationOptions = Apollo.BaseMutationOptions<GenerateActiveStorageDirectUploadMutation, GenerateActiveStorageDirectUploadMutationVariables>;
+export type UnfollowUserMutationHookResult = ReturnType<typeof useUnfollowUserMutation>;
+export type UnfollowUserMutationResult = Apollo.MutationResult<UnfollowUserMutation>;
+export type UnfollowUserMutationOptions = Apollo.BaseMutationOptions<UnfollowUserMutation, UnfollowUserMutationVariables>;
+export const UnlikeFeedEntryDocument = gql`
+    mutation UnlikeFeedEntry($id: ID!) {
+  result: unlikeFeedEntry(id: $id) {
+    entry {
+      id
+      liked
+      likes
+    }
+  }
+}
+    `;
+export type UnlikeFeedEntryMutationFn = Apollo.MutationFunction<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
+
+/**
+ * __useUnlikeFeedEntryMutation__
+ *
+ * To run a mutation, you first call `useUnlikeFeedEntryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnlikeFeedEntryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [unlikeFeedEntryMutation, { data, loading, error }] = useUnlikeFeedEntryMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUnlikeFeedEntryMutation(baseOptions?: Apollo.MutationHookOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>(UnlikeFeedEntryDocument, options);
+      }
+export type UnlikeFeedEntryMutationHookResult = ReturnType<typeof useUnlikeFeedEntryMutation>;
+export type UnlikeFeedEntryMutationResult = Apollo.MutationResult<UnlikeFeedEntryMutation>;
+export type UnlikeFeedEntryMutationOptions = Apollo.BaseMutationOptions<UnlikeFeedEntryMutation, UnlikeFeedEntryMutationVariables>;
+export const FeedDocument = gql`
+    query Feed {
+  feed {
+    id
+    entries {
+      ...feed__entry
+    }
+  }
+}
+    ${Feed__EntryFragmentDoc}`;
+
+/**
+ * __useFeedQuery__
+ *
+ * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFeedQuery(baseOptions?: Apollo.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
+      }
+export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
+        }
+export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
+export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
+export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
+export const FeedCommentsDocument = gql`
+    query FeedComments($id: ID!) {
+  feed {
+    id
+    entry(id: $id) {
+      id
+      comments {
+        ...feed__comment
+      }
+    }
+  }
+}
+    ${Feed__CommentFragmentDoc}`;
+
+/**
+ * __useFeedCommentsQuery__
+ *
+ * To run a query within a React component, call `useFeedCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedCommentsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFeedCommentsQuery(baseOptions: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
+      }
+export function useFeedCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
+        }
+export type FeedCommentsQueryHookResult = ReturnType<typeof useFeedCommentsQuery>;
+export type FeedCommentsLazyQueryHookResult = ReturnType<typeof useFeedCommentsLazyQuery>;
+export type FeedCommentsQueryResult = Apollo.QueryResult<FeedCommentsQuery, FeedCommentsQueryVariables>;
+export const FeedEntryDocument = gql`
+    query FeedEntry($id: ID!) {
+  feed {
+    id
+    entry(id: $id) {
+      ...feed__entry
+    }
+  }
+}
+    ${Feed__EntryFragmentDoc}`;
+
+/**
+ * __useFeedEntryQuery__
+ *
+ * To run a query within a React component, call `useFeedEntryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedEntryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedEntryQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFeedEntryQuery(baseOptions: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
+      }
+export function useFeedEntryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
+        }
+export type FeedEntryQueryHookResult = ReturnType<typeof useFeedEntryQuery>;
+export type FeedEntryLazyQueryHookResult = ReturnType<typeof useFeedEntryLazyQuery>;
+export type FeedEntryQueryResult = Apollo.QueryResult<FeedEntryQuery, FeedEntryQueryVariables>;
+export const NotificationsDocument = gql`
+    query Notifications {
+  notifications {
+    ...notification
+  }
+}
+    ${NotificationFragmentDoc}`;
+
+/**
+ * __useNotificationsQuery__
+ *
+ * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
+      }
+export function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
+        }
+export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
+export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
+export type NotificationsQueryResult = Apollo.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
+export const ProfileDocument = gql`
+    query Profile($id: ID!) {
+  user(id: $id) {
+    ...user
+    ...follow
+    feed {
+      entries {
+        ...feed__entry
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}
+${FollowFragmentDoc}
+${Feed__EntryFragmentDoc}`;
+
+/**
+ * __useProfileQuery__
+ *
+ * To run a query within a React component, call `useProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProfileQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useProfileQuery(baseOptions: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
+      }
+export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
+        }
+export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
+export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
+export type ProfileQueryResult = Apollo.QueryResult<ProfileQuery, ProfileQueryVariables>;
+export const SettingsAuthenticationsDocument = gql`
+    query SettingsAuthentications {
+  authentications {
+    ...authentication
+  }
+}
+    ${AuthenticationFragmentDoc}`;
+
+/**
+ * __useSettingsAuthenticationsQuery__
+ *
+ * To run a query within a React component, call `useSettingsAuthenticationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsAuthenticationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsAuthenticationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsAuthenticationsQuery(baseOptions?: Apollo.QueryHookOptions<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
+      }
+export function useSettingsAuthenticationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
+        }
+export type SettingsAuthenticationsQueryHookResult = ReturnType<typeof useSettingsAuthenticationsQuery>;
+export type SettingsAuthenticationsLazyQueryHookResult = ReturnType<typeof useSettingsAuthenticationsLazyQuery>;
+export type SettingsAuthenticationsQueryResult = Apollo.QueryResult<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>;
+export const SettingsAvatarDocument = gql`
+    query SettingsAvatar {
+  me {
+    id
+    name
+    avatar {
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useSettingsAvatarQuery__
+ *
+ * To run a query within a React component, call `useSettingsAvatarQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsAvatarQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsAvatarQuery(baseOptions?: Apollo.QueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
+      }
+export function useSettingsAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
+        }
+export type SettingsAvatarQueryHookResult = ReturnType<typeof useSettingsAvatarQuery>;
+export type SettingsAvatarLazyQueryHookResult = ReturnType<typeof useSettingsAvatarLazyQuery>;
+export type SettingsAvatarQueryResult = Apollo.QueryResult<SettingsAvatarQuery, SettingsAvatarQueryVariables>;
+export const SettingsBillingDocument = gql`
+    query SettingsBilling {
+  billing {
+    id
+    customer {
+      id
+      currency
+      sources {
+        ...billing__source
+      }
+    }
+  }
+}
+    ${Billing__SourceFragmentDoc}`;
+
+/**
+ * __useSettingsBillingQuery__
+ *
+ * To run a query within a React component, call `useSettingsBillingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsBillingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsBillingQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsBillingQuery(baseOptions?: Apollo.QueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
+      }
+export function useSettingsBillingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
+        }
+export type SettingsBillingQueryHookResult = ReturnType<typeof useSettingsBillingQuery>;
+export type SettingsBillingLazyQueryHookResult = ReturnType<typeof useSettingsBillingLazyQuery>;
+export type SettingsBillingQueryResult = Apollo.QueryResult<SettingsBillingQuery, SettingsBillingQueryVariables>;
+export const SettingsProfileDocument = gql`
+    query SettingsProfile {
+  me {
+    id
+    name
+    email
+  }
+}
+    `;
+
+/**
+ * __useSettingsProfileQuery__
+ *
+ * To run a query within a React component, call `useSettingsProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSettingsProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSettingsProfileQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSettingsProfileQuery(baseOptions?: Apollo.QueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
+      }
+export function useSettingsProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
+        }
+export type SettingsProfileQueryHookResult = ReturnType<typeof useSettingsProfileQuery>;
+export type SettingsProfileLazyQueryHookResult = ReturnType<typeof useSettingsProfileLazyQuery>;
+export type SettingsProfileQueryResult = Apollo.QueryResult<SettingsProfileQuery, SettingsProfileQueryVariables>;
