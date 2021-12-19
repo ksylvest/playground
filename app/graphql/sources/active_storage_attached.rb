@@ -15,6 +15,7 @@ module Sources
         .preload(:blob)
         .where(record: records)
         .where(name: @name)
+        .order(:id)
     end
   end
 end
