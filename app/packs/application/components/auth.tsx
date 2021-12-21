@@ -6,8 +6,8 @@ import { Dialog } from "./auth/dialog";
 export const Auth: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { state } = location;
-  if (!state || !state.auth) {
+  const state = location.state as undefined | { auth?: boolean };
+  if (!state?.auth) {
     return null;
   }
 
