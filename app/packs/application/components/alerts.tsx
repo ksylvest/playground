@@ -16,10 +16,11 @@ const COLORS: { [key: string]: "info" | "warning" } = {
 export const Alerts: React.FC = () => {
   const { flash, notify } = useContext(World);
   const location = useLocation();
+  const state = location.state as { flash?: Flash } | undefined;
 
   useEffect((): void => {
-    notify(location.state ? location.state.flash : undefined);
-  }, [location, notify]);
+    notify(state?.flash ? state.flash : undefined);
+  }, [state, notify]);
 
   if (!flash) {
     return null;

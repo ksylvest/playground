@@ -15,7 +15,7 @@ import { ROOT_URL } from "@application/config/routes";
 export const Authenticator: React.FC = ({ children }) => {
   const { authentication } = useContext(World);
   const location = useLocation();
-  const { state } = location;
+  const state = location.state as { back?: string } | undefined;
   if (authentication) {
     return <Navigate to={state?.back ?? ROOT_URL} />;
   }

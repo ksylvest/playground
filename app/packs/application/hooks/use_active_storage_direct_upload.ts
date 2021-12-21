@@ -28,7 +28,7 @@ export const useActiveStorageDirectUpload = (file?: File, callback?: Callback): 
       const token = data?.result.token;
       if (!token) return;
 
-      const uploader = new (DirectUpload as any)(file, URL, token, NAME);
+      const uploader = new DirectUpload(file, URL, token, NAME);
       setResult(uploader);
 
       uploader.create((error?: Error, blob?: Blob) => {
