@@ -70,7 +70,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1",
-    "webpack-dev-server": "^4.7.1"
+    "webpack-dev-server": "^4.7.2"
   },
   "babel": {
     "presets": [
