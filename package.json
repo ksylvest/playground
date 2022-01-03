@@ -40,7 +40,7 @@
     "graphql-tag": "^2.12.6",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.21",
-    "luxon": "^2.2.0",
+    "luxon": "^2.3.0",
     "mini-css-extract-plugin": "^2.4.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
