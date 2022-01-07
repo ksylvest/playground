@@ -6,7 +6,7 @@ module Mutations
       field :notification, ::Types::NotificationType, null: false
 
       def resolve(id:)
-        notification = Current.user.notifications.find_by!(id: id)
+        notification = Current.user.notifications.find(id)
         notification.read!
 
         { notification: notification }
