@@ -20,7 +20,7 @@ Changes to the GraphQL schema (`app/graphql`) require:
 
 ```
 rake graphql:schema:generate
-yarn run graphql:codegen
+yarn run codegen
 ```
 
 ## Status

@@ -8,22 +8,23 @@ gem 'pg'
 gem 'puma'
 
 gem 'bcrypt'
-gem 'byebug'
 gem 'concurrent-ruby'
 gem 'connection_pool'
+gem 'debug'
 gem 'graphql'
 gem 'http'
 gem 'kaminari'
 gem 'redis'
 gem 'skylight'
 gem 'stripe'
-gem 'webpacker', '6.0.0.rc.6'
 
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 
+gem 'jsbundling-rails'
 gem 'sentry-rails'
 gem 'slim-rails'
+gem 'sprockets-rails'
 
 gem 'bootsnap', require: false
 

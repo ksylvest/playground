@@ -6,7 +6,7 @@ import { Feed__CommentFragment } from "@root/app_schema";
 
 import { Age, Attachment } from "@application/components/helpers";
 
-import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
+const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Comment: React.FC<{
   comment: Feed__CommentFragment;

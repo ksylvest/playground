@@ -1,4 +1,4 @@
-import * as loadjs from "loadjs";
+import loadjs from "loadjs";
 
 declare const MAPBOX_ACCESS_TOKEN: string | null;
 

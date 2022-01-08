@@ -14,7 +14,7 @@ import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 
 import { Actions } from "./entry/actions";
 
-import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
+const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Details: React.FC = () => {
   const { id } = useParams();

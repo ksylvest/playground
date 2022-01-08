@@ -10,6 +10,8 @@ import { Container, Section } from "tights";
 
 import { Flash } from "@application/types";
 
+import { Styles } from "./styles";
+
 import { Footer } from "./app/footer";
 import { Header } from "./app/header";
 
@@ -31,6 +33,7 @@ const PRESENCE_CHANNEL = "PresenceChannel";
 
 const Layout: React.FC = () => (
   <>
+    <Styles />
     <Header />
     <Container>
       <Section>

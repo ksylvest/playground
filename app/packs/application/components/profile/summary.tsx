@@ -8,7 +8,7 @@ import { Attachment } from "@application/components/helpers";
 
 import { Actions } from "./actions";
 
-import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
+const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Summary: React.FC<{
   profile?: FollowFragment & UserFragment;
