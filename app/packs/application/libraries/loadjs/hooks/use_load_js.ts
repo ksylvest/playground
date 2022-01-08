@@ -1,4 +1,4 @@
-import * as loadjs from "loadjs";
+import loadjs from "loadjs";
 import { useEffect, useState } from "react";
 
 export const useLoadJS = (id: string): boolean => {

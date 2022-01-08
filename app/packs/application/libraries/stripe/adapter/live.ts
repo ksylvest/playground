@@ -1,4 +1,4 @@
-import * as loadjs from "loadjs";
+import loadjs from "loadjs";
 
 import { Base } from "./base";
 

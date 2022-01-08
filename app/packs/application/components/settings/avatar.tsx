@@ -9,7 +9,7 @@ import { Detach } from "./avatar/detach";
 
 import { Attachment, Title } from "@application/components/helpers";
 
-import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
+const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Avatar: React.FC = () => {
   const { data, refetch } = useSettingsAvatarQuery();

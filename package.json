@@ -2,15 +2,12 @@
   "name": "playground",
   "private": true,
   "scripts": {
-    "graphql:codegen": "graphql-codegen --config .codegen.yml"
+    "build": "esbuild app/packs/entrypoints/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "codegen": "graphql-codegen --config .codegen.yml",
+    "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
-    "@babel/core": "^7.16.7",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
-    "@emotion/babel-plugin": "^11.7.2",
-    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -19,7 +16,6 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@rails/actioncable": "^7.0.1",
     "@rails/activestorage": "^7.0.1",
-    "@rails/webpacker": "6.0.0-rc.6",
     "@sentry/browser": "^6.16.1",
     "@types/loadjs": "^4.0.1",
     "@types/lodash": "^4.14.178",
@@ -32,29 +28,19 @@
     "@types/webfontloader": "^1.6.34",
     "bulma": "^0.9.3",
     "classnames": "^2.3.1",
-    "core-js": "^3.20.2",
-    "css-loader": "^6.5.1",
-    "css-minimizer-webpack-plugin": "^3.3.1",
-    "fork-ts-checker-webpack-plugin": "^6.4.0",
+    "emotion": "^11.0.0",
+    "esbuild": "^0.14.10",
     "graphql": "^16.2.0",
     "graphql-tag": "^2.12.6",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.21",
     "luxon": "^2.3.0",
-    "mini-css-extract-plugin": "^2.4.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
-    "regenerator-runtime": "^0.13.9",
-    "sass": "^1.46.0",
-    "sass-loader": "^12.4.0",
     "tights": "^1.6.0",
-    "typescript": "^4.5.4",
-    "unfetch": "^4.2.0",
-    "webfontloader": "^1.6.28",
-    "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "typescript": "^4.5.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.3.1",
@@ -64,20 +50,10 @@
     "@graphql-codegen/typescript-react-apollo": "^3.2.3",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
-    "@webpack-cli/serve": "^1.5.2",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.5.1",
-    "webpack-dev-server": "^4.7.2"
-  },
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
-  },
-  "browserslist": [
-    "defaults"
-  ]
+    "prettier": "^2.5.1"
+  }
 }

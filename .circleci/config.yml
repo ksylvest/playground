@@ -26,7 +26,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - run: yarn run eslint ./app/packs --ext .js,.jsx,.ts,.tsx
+      - run: yarn lint
 
   rubocop:
     executor: default
@@ -58,6 +58,7 @@ jobs:
           pkg-manager: yarn
       - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
+      - run: ./bin/rails test:prepare
       - ruby/rspec-test
       - run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
@@ -73,23 +74,23 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run: bundle exec rake graphql:schema:generate
-      - run: yarn run graphql:codegen
+      - run: yarn run codegen
       - run: |
           if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
-            echo '`yarn run graphql:codegen`'
+            echo '`yarn run codegen`'
             git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
             exit 1
           fi
 
-  webpack:
+  assets:
     executor: default
     steps:
       - checkout
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-      - run: NODE_ENV=production RAILS_ENV=production RACK_ENV=production ./bin/webpack
+      - run: ./bin/rails assets:precompile
 
 workflows:
   version: 2.1
@@ -100,4 +101,4 @@ workflows:
       - rubocop
       - rspec
       - codegen
-      - webpack
+      - assets

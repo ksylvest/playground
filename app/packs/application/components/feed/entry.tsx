@@ -12,7 +12,7 @@ import { Attachment } from "@application/components/helpers";
 
 import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 
-import PLACEHOLDER from "@application/assets/avatar/placeholder.svg";
+const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Entry: React.FC<{
   entry: Feed__EntryFragment;
