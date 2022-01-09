@@ -5,9 +5,10 @@ import { Base } from "./base";
 declare const STRIPE_PUBLISHABLE_KEY: string;
 
 const STRIPE_URL = "https://js.stripe.com/v3/";
+loadjs(STRIPE_URL, "stripe");
+
 const STRIPE_PROMISE = async (): Promise<stripe.Stripe> => {
   const client = new Promise<stripe.Library>((resolve, reject) => {
-    loadjs(STRIPE_URL, "stripe");
     loadjs.ready("stripe", {
       error: () => {
         reject();
