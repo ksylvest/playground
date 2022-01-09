@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'settings/sessions', type: :system do
+RSpec.describe 'settings/avatar', type: :system do
   let(:user) { create(:user) }
   let!(:geo_ip) { create(:geo_ip, ip: '4.4.4.4') }
 
