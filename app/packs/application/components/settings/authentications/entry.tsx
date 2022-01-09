@@ -1,6 +1,5 @@
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DateTime } from "luxon";
 import * as React from "react";
 import { useContext } from "react";
 
@@ -10,7 +9,7 @@ import { AuthenticationFragment, AuthenticationStatusEnum } from "@root/app_sche
 
 import { World } from "@application/contexts";
 
-import { GeographySummary } from "@application/components/helpers";
+import { Age, GeographySummary } from "@application/components/helpers";
 
 const color = (status: AuthenticationStatusEnum): "info" | "light" => {
   switch (status) {
@@ -38,7 +37,9 @@ export const Entry: React.FC<{
             </Icon>
           </Column>
           <Column narrow>{authentication.ip}</Column>
-          <Column>{DateTime.fromISO(authentication.seen).toLocaleString(DateTime.DATETIME_MED)}</Column>
+          <Column>
+            <Age datetime={authentication.seen} />
+          </Column>
           <Column>{authentication.geography && <GeographySummary geography={authentication.geography} />}</Column>
           <Column narrow>
             {me ? (

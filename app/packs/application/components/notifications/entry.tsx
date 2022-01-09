@@ -1,6 +1,5 @@
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DateTime } from "luxon";
 import * as React from "react";
 
 import { Buttons, Column, Columns, Icon, Message } from "tights";
@@ -9,6 +8,7 @@ import { Notification } from "@root/app_schema";
 
 import { Destroy } from "./destroy";
 import { Read } from "./read";
+import { Age } from "../helpers";
 
 export const Entry: React.FC<{
   notification: Notification;
@@ -24,7 +24,9 @@ export const Entry: React.FC<{
             </Icon>
           </Column>
           <Column>
-            <small>{DateTime.fromISO(notification.sent).toLocaleString(DateTime.DATETIME_MED)}</small>
+            <small>
+              <Age datetime={notification.sent} />
+            </small>
             <p>{notification.message}</p>
           </Column>
           <Column narrow>
