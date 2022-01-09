@@ -23,4 +23,8 @@ class Billing::Source < ApplicationRecord
     self.exp_month = stripe.exp_month
     self.exp_year = stripe.exp_year
   end
+
+  def exp
+    format('%<year>.04d-%<month>.02d', year: exp_year, month: exp_month)
+  end
 end
