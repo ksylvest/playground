@@ -4,11 +4,11 @@ import { NavLink } from "react-router-dom";
 import { Menu } from "tights";
 
 const LINKS = [
+  { text: "Authentications", to: "authentications" },
   { text: "Avatar", to: "avatar" },
   { text: "Billing", to: "billing" },
   { text: "Password", to: "password" },
   { text: "Profile", to: "profile" },
-  { text: "Sessions", to: "sessions" },
 ];
 
 export const Sidebar: React.FC = () => (
