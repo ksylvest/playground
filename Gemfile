@@ -23,7 +23,6 @@ gem 'image_processing'
 
 gem 'jsbundling-rails'
 gem 'sentry-rails'
-gem 'slim-rails'
 gem 'sprockets-rails'
 
 gem 'bootsnap', require: false

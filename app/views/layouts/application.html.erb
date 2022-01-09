@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Playground</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= action_cable_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script>
+      CONFIG = <%=raw JSON.generate(config) %>;
+      ENVIRONMENT = <%=raw JSON.generate(Rails.env) %>;
+      RELEASE = <%=raw JSON.generate(release) %>;
+      MAPBOX_ACCESS_TOKEN = <%=raw JSON.generate(Rails.application.credentials.mapbox_access_token) %>;
+      SENTRY_DSN = <%=raw JSON.generate(Rails.application.credentials.sentry_dsn) %>;
+      STRIPE_PUBLISHABLE_KEY = <%=raw JSON.generate(Rails.application.credentials.stripe_publishable_key) %>;
+      AUTHENTICATION = <%=raw JSON.generate(Current.authentication ? { id: Current.authentication.id } : nil) %>;
+    </script>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
