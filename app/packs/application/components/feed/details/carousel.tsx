@@ -1,6 +1,6 @@
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { times } from "lodash";
+import times from "lodash/times";
 import * as React from "react";
 import { useState } from "react";
 
