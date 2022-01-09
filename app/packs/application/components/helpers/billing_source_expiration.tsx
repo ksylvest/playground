@@ -1,15 +1,20 @@
-import { DateTime } from "luxon";
 import * as React from "react";
 
 import { Billing__Source } from "@root/app_schema";
 
+const DATE_TIME_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "numeric",
+};
+
 export const BillingSourceExpiration: React.FC<{
   source: Billing__Source;
 }> = ({ source }) => {
-  const expiration = DateTime.fromISO(source.exp);
+  const expiration = new Date(source.exp);
+  const now = new Date();
   return (
     <>
-      {expiration > DateTime.local() ? "expires" : "expired"} {expiration.year}-{expiration.month}
+      {expiration > now ? "expires" : "expired"} {expiration.toLocaleString(undefined, DATE_TIME_FORMAT_OPTIONS)}
     </>
   );
 };

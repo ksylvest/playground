@@ -40,7 +40,7 @@ RSpec.describe 'settings/billing', type: :system do
     it 'saves a source with a valid number, expiration, and CVC' do
       allow(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: 'fake') { source }
       perform
-      expect(page).to have_text('•••• 4242 Visa expires 3000-12')
+      expect(page).to have_text('•••• 4242 Visa expires 12/3000')
     end
   end
 
@@ -54,14 +54,14 @@ RSpec.describe 'settings/billing', type: :system do
       login(user)
 
       within('.table') do
-        expect(page).to have_text('•••• 4242 Visa expires 3000-12')
+        expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         click_button('Remove')
       end
 
       within('.modal') do
         expect(page).to have_text('Remove This Card')
         expect(page).to have_text('Are you sure you want to remove this card?')
-        expect(page).to have_text('•••• 4242 Visa expires 3000-12')
+        expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         expect(page).to have_button('Confirm')
         expect(page).to have_button('Cancel')
         click_button('Confirm')
@@ -81,14 +81,14 @@ RSpec.describe 'settings/billing', type: :system do
       login(user)
 
       within('.table') do
-        expect(page).to have_text('•••• 4242 Visa expires 3000-12')
+        expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         click_button('Default')
       end
 
       within('.modal') do
         expect(page).to have_text('Change Default Card')
         expect(page).to have_text('Are you sure you want to make this your default card?')
-        expect(page).to have_text('•••• 4242 Visa expires 3000-12')
+        expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         expect(page).to have_button('Confirm')
         expect(page).to have_button('Cancel')
         click_button('Confirm')
