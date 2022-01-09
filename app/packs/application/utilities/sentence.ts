@@ -1,4 +1,6 @@
-import { capitalize, initial, last } from "lodash";
+import capitalize from "lodash/capitalize";
+import initial from "lodash/initial";
+import last from "lodash/last";
 
 const MULTI = ", ";
 const FINAL = " and ";

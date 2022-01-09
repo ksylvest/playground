@@ -1,4 +1,4 @@
-import { head } from "lodash";
+import head from "lodash/head";
 import * as React from "react";
 import { Link } from "react-router-dom";
 

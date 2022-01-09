@@ -2,6 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": "./app/packs",
+    "esModuleInterop": true,
     "paths": {
       "@root/*": ["*"],
       "@application/*": ["application/*"]
