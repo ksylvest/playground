@@ -92,6 +92,24 @@ jobs:
           pkg-manager: yarn
       - run: ./bin/rails assets:precompile
 
+  lighthouse:
+    executor: default
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install imagemagick
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: dockerize -wait tcp://localhost:6379 -timeout 2m # Redis
+      - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
+      - run: yarn build
+      - run: yarn run lhci autorun
+      - store_artifacts:
+          path: .lighthouseci
+
 workflows:
   version: 2.1
   build:
@@ -102,3 +120,4 @@ workflows:
       - rspec
       - codegen
       - assets
+      - lighthouse
