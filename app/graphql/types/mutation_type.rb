@@ -1,7 +1,5 @@
 module Types
   class MutationType < BaseObject
-    field :generate_active_storage_direct_upload, mutation: ::Mutations::GenerateActiveStorageDirectUploadMutation
-
     field :login, mutation: ::Mutations::LoginMutation
     field :logout, mutation: ::Mutations::LogoutMutation
     field :signup, mutation: ::Mutations::SignupMutation
