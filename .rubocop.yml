@@ -1,9 +1,10 @@
 require:
+  - rubocop-graphql
   - rubocop-rails
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.1.0
+  TargetRubyVersion: 3.1.1
   NewCops: enable
   Exclude:
     - config/environments/*
@@ -99,4 +100,31 @@ RSpec/ImplicitExpect:
   Enabled: false
 
 RSpec/MessageSpies:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+GraphQL/ArgumentDescription:
+  Enabled: false
+
+GraphQL/ArgumentName:
+  Enabled: false
+
+GraphQL/FieldDescription:
+  Enabled: false
+
+GraphQL/ObjectDescription:
+  Enabled: false
+
+GraphQL/OrderedArguments:
+  Enabled: false
+
+GraphQL/OrderedFields:
+  Enabled: false
+
+GraphQL/ExtractType:
+  Enabled: false
+
+GraphQL/ExtractInputType:
   Enabled: false

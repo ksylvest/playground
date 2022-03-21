@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.0'
+ruby '3.1.1'
 
 gem 'rails'
 
@@ -43,6 +43,7 @@ group :development do
   gem 'brakeman'
   gem 'listen'
   gem 'rubocop'
+  gem 'rubocop-graphql'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'web-console'
