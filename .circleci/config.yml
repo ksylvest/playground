@@ -132,6 +132,7 @@ workflows:
       - assets
       - lighthouse
       - heroku/deploy-via-git:
+          name: deploy
           filters:
             branches:
               only:
