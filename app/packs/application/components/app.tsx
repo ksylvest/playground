@@ -26,8 +26,6 @@ import { Settings } from "./settings";
 import { Details } from "./feed/details";
 import { List } from "./feed/list";
 
-declare const AUTHENTICATION: { id: string } | undefined;
-
 const STATS_CHANNEL = "StatsChannel";
 const PRESENCE_CHANNEL = "PresenceChannel";
 
@@ -70,7 +68,10 @@ const Layout: React.FC = () => (
 
 export const App: React.FC = () => {
   const [flash, notify] = useState<Flash | undefined>(undefined);
-  const [authentication, auth] = useState<{ id: string } | undefined>(AUTHENTICATION);
+  const [authentication, auth] = useState<{ id: string } | undefined>(() => {
+    const authenticationID = document.head.querySelector('meta[name="authentication-id"]').getAttribute("content");
+    return authenticationID ? { id: authenticationID } : undefined;
+  });
   const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
   const deauth = (): void => auth(undefined);
 

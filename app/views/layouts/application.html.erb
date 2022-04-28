@@ -11,10 +11,10 @@
 
     <script>
       CONFIG = <%=raw JSON.generate(config) %>;
-      AUTHENTICATION = <%=raw JSON.generate(Current.authentication ? { id: Current.authentication.id } : nil) %>;
     </script>
     <%= tag.meta name: "environment", content: Rails.env %>
     <%= tag.meta name: "release", content: release %>
+    <%= tag.meta name: "authentication-id", content: Current.authentication&.id %>
     <%= tag.meta name: "mapbox-access-token", content: Rails.application.credentials.mapbox_access_token %>
     <%= tag.meta name: "sentry-dsn", content: Rails.application.credentials.sentry_dsn %>
     <%= tag.meta name: "stripe-publishable-key", content: Rails.application.credentials.stripe_publishable_key %>
