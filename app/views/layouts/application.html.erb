@@ -13,11 +13,11 @@
       CONFIG = <%=raw JSON.generate(config) %>;
       ENVIRONMENT = <%=raw JSON.generate(Rails.env) %>;
       RELEASE = <%=raw JSON.generate(release) %>;
-      MAPBOX_ACCESS_TOKEN = <%=raw JSON.generate(Rails.application.credentials.mapbox_access_token) %>;
       SENTRY_DSN = <%=raw JSON.generate(Rails.application.credentials.sentry_dsn) %>;
       STRIPE_PUBLISHABLE_KEY = <%=raw JSON.generate(Rails.application.credentials.stripe_publishable_key) %>;
       AUTHENTICATION = <%=raw JSON.generate(Current.authentication ? { id: Current.authentication.id } : nil) %>;
     </script>
+    <%= tag.meta name: "mapbox-access-token", content: Rails.application.credentials.mapbox_access_token %>
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
