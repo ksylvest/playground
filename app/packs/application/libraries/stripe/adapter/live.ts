@@ -2,12 +2,13 @@ import loadjs from "loadjs";
 
 import { Base } from "./base";
 
-declare const STRIPE_PUBLISHABLE_KEY: string;
-
 const STRIPE_URL = "https://js.stripe.com/v3/";
 loadjs(STRIPE_URL, "stripe");
 
 const STRIPE_PROMISE = async (): Promise<stripe.Stripe> => {
+  const STRIPE_PUBLISHABLE_KEY = document.head
+    .querySelector('meta[name="stripe-publishable-key"]')
+    .getAttribute("content");
   const client = new Promise<stripe.Library>((resolve, reject) => {
     loadjs.ready("stripe", {
       error: () => {
