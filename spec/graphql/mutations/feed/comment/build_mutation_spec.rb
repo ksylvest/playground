@@ -67,7 +67,7 @@ RSpec.describe Mutations::Feed::Comment::BuildMutation do
       end
 
       it 'does not build a comment' do
-        expect { execute }.not_to change { Feed::Comment.count }
+        expect { execute }.not_to change(Feed::Comment, :count)
       end
     end
   end
