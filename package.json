@@ -17,6 +17,7 @@
     "@rails/actioncable": "^7.0.3",
     "@rails/activestorage": "^7.0.3",
     "@sentry/browser": "^6.19.7",
+    "@twilio/conversations": "^2.1.0",
     "@types/loadjs": "^4.0.1",
     "@types/lodash": "^4.14.182",
     "@types/rails__actioncable": "^6.1.6",
