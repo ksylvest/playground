@@ -7,7 +7,7 @@
     "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.6",
+    "@apollo/client": "^3.6.7",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
