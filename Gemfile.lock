@@ -175,7 +175,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    minitest (5.16.0)
+    minitest (5.16.1)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -275,7 +275,7 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-graphql (0.14.4)
       rubocop (>= 0.87, < 2)
-    rubocop-rails (2.15.0)
+    rubocop-rails (2.15.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
