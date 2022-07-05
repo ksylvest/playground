@@ -8,7 +8,7 @@ module Types
       field :sources, [SourceType], null: false
 
       def sources
-        dataloader.with(Sources::ActiveRecordCollection, ::Billing::Source, key: :customer_id).load(object.id)
+        dataloader.with(GraphQL::Sources::ActiveRecordCollection, ::Billing::Source, key: :customer_id).load(object.id)
       end
     end
   end

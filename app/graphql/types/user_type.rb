@@ -22,11 +22,11 @@ module Types
     end
 
     def follower
-      dataloader.with(Sources::ActiveRecordCount, ::Follow, key: :follower_id).load(object.id)
+      dataloader.with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :follower_id).load(object.id)
     end
 
     def followed
-      dataloader.with(Sources::ActiveRecordCount, ::Follow, key: :followed_id).load(object.id)
+      dataloader.with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :followed_id).load(object.id)
     end
   end
 end

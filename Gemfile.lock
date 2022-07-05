@@ -126,7 +126,10 @@ GEM
       rake
     globalid (1.0.0)
       activesupport (>= 5.0)
-    graphql (2.10.0)
+    graphql (2.0.11)
+    graphql-sources (0.3.0)
+      graphql
+      rails
     hashdiff (1.0.1)
     http (5.1.0)
       addressable (~> 2.8)
@@ -360,6 +363,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   graphql
+  graphql-sources
   http
   image_processing
   jsbundling-rails
