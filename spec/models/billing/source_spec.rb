@@ -20,7 +20,7 @@ RSpec.describe Billing::Source, type: :model do
       source = Billing::Source.new
       source.parse(stripe)
       expect(source.stripe_id).to eql(stripe.id)
-      expect(source.brand).to eql('Visa')
+      expect(source.brand).to eql('visa')
       expect(source.funding).to eql('credit')
       expect(source.number).to eql('0000')
       expect(source.exp_month).to eql(stripe.exp_month)

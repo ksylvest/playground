@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_12_19_204753) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_05_045659) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "billing_source_brand", ["American Express", "Diners Club", "Discover", "JCB", "MasterCard", "UnionPay", "Visa", "Unknown"]
 
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
@@ -72,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_12_19_204753) do
     t.string "stripe_id", null: false
     t.uuid "customer_id", null: false
     t.boolean "default", default: false, null: false
-    t.string "brand", null: false
+    t.enum "brand", null: false, enum_type: "billing_source_brand"
     t.string "funding", null: false
     t.string "number", null: false
     t.integer "exp_month", null: false
