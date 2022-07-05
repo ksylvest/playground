@@ -9,7 +9,9 @@ module Types
     field :seen, DateTimeType, null: false, method: :seen_at
 
     def geography
-      dataloader.with(GraphQL::Sources::ActiveRecordObject, ::GeoIP, key: :ip).load(object.ip)
+      dataloader
+        .with(GraphQL::Sources::ActiveRecordObject, ::GeoIP, key: :ip)
+        .load(object.ip)
     end
   end
 end
