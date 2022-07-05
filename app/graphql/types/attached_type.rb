@@ -8,7 +8,9 @@ module Types
 
     def variant(options:)
       service = Attachment::VariantService.new(object, **options.parameterize)
-      data = dataloader.with(GraphQL::Sources::RailsCache).load(key: service.key, fallback: -> { service.data })
+      data = dataloader
+        .with(GraphQL::Sources::RailsCache)
+        .load(key: service.key, fallback: -> { service.data })
 
       { data: data, type: service.type }
     end

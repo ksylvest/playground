@@ -10,7 +10,9 @@ module Types
     field :feed, FeedType, null: false
 
     def avatar
-      dataloader.with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar).load(object)
+      dataloader
+        .with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar)
+        .load(object)
     end
 
     def feed
@@ -22,11 +24,15 @@ module Types
     end
 
     def follower
-      dataloader.with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :follower_id).load(object.id)
+      dataloader
+        .with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :follower_id)
+        .load(object.id)
     end
 
     def followed
-      dataloader.with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :followed_id).load(object.id)
+      dataloader
+        .with(GraphQL::Sources::ActiveRecordCount, ::Follow, key: :followed_id)
+        .load(object.id)
     end
   end
 end
