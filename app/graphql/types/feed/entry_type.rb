@@ -16,7 +16,7 @@ module Types
       end
 
       def photos
-        dataloader.with(Sources::ActiveStorageHasManyAttached, :photos).load(object)
+        dataloader.with(GraphQL::Sources::ActiveStorageHasManyAttached, :photos).load(object)
       end
 
       def user

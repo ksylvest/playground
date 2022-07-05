@@ -10,7 +10,7 @@ module Types
     field :feed, FeedType, null: false
 
     def avatar
-      dataloader.with(Sources::ActiveStorageHasOneAttached, :avatar).load(object)
+      dataloader.with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar).load(object)
     end
 
     def feed
