@@ -5,7 +5,7 @@ module Types
 
       field :id, ID, null: false
       field :number, String, null: false
-      field :brand, BrandType, null: false
+      field :brand, Source::BrandEnum, null: false
       field :exp, String, null: false
       field :default, Boolean, null: false, method: :default?
     end
