@@ -10,6 +10,7 @@ const STYLE = "mapbox://styles/mapbox/streets-v11";
 export const Map: React.FC<{
   style?: React.CSSProperties;
   center?: mapboxgl.LngLat;
+  children?: React.ReactNode;
 }> = ({ center, children, style }) => {
   const [map, setMap] = useState<mapboxgl.Map | undefined>();
   const ref = useRef<HTMLDivElement>(null);

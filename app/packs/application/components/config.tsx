@@ -12,6 +12,7 @@ export const Config: React.FC<{
   flash?: Flash;
   authentication?: { id: string };
   stats?: { notifications: number };
+  children?: React.ReactNode;
   notify(_: Flash): void;
   auth(_: { id: string }): void;
   deauth(): void;
