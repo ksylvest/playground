@@ -3,9 +3,9 @@ import * as React from "react";
 import { Billing__Source } from "@root/app_schema";
 
 import {
-  BillingSourceBrand,
+  BillingSourceBrandName,
   BillingSourceExpiration,
-  BillingSourceIcon,
+  BillingSourceBrandIcon,
   BillingSourceNumber,
 } from "@application/components/helpers";
 
@@ -21,13 +21,13 @@ export const List: React.FC<{
       {sources.map((source) => (
         <tr key={source.id}>
           <td>
-            <BillingSourceIcon source={source} />
+            <BillingSourceBrandIcon source={source} />
           </td>
           <td>
             <BillingSourceNumber source={source} />
           </td>
           <td>
-            <BillingSourceBrand source={source} />
+            <BillingSourceBrandName source={source} />
           </td>
           <td>
             <BillingSourceExpiration source={source} />

@@ -31,17 +31,6 @@ type Billing {
   id: ID!
 }
 
-enum Billing__Brand {
-  AMERICAN_EXPRESS
-  DINERS_CLUB
-  DISCOVER
-  JCB
-  MASTERCARD
-  UNIONPAY
-  UNKNOWN
-  VISA
-}
-
 enum Billing__Currency {
   CAD
   EUR
@@ -55,11 +44,22 @@ type Billing__Customer {
 }
 
 type Billing__Source {
-  brand: Billing__Brand!
+  brand: Billing__Source__Brand!
   default: Boolean!
   exp: String!
   id: ID!
   number: String!
+}
+
+enum Billing__Source__Brand {
+  AMERICAN_EXPRESS
+  DINERS_CLUB
+  DISCOVER
+  JCB
+  MASTERCARD
+  UNIONPAY
+  UNKNOWN
+  VISA
 }
 
 """
