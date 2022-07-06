@@ -4266,10 +4266,10 @@ through@^2.3.6:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
-tights@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/tights/-/tights-1.6.0.tgz#2d722a3da987246b76baeafebc41e949ce86d111"
-  integrity sha512-26/ZmpHLcWVXCec8A6AyYMmI2EiRFBnb9SQC3XSqdMUcc83oB3lxEXaKhwbwZcNCgUYEnwVf0Eh7kDctJfWd0Q==
+tights@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/tights/-/tights-1.9.0.tgz#401bebf6eda7cbc5cdf265590351d14656786a48"
+  integrity sha512-HFZQ+Z39SWuNS5aYzaNwodpED0A55lWD5nBy8X0a7wtsFLCNnfmM12fgGmn8rXHpaPNIJCxadQ39mcBcDEGYYQ==
 
 title-case@^3.0.3:
   version "3.0.3"
