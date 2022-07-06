@@ -29,6 +29,14 @@ jobs:
           pkg-manager: yarn
       - run: yarn lint
 
+  tsc:
+    executor: default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn run tsc --pretty
+
   rubocop:
     executor: default
     steps:
@@ -101,6 +109,7 @@ workflows:
       - brakeman
       - rubocop
       - rspec
+      - tsc
       - codegen
       - assets
       - heroku/deploy-via-git:
