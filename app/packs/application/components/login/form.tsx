@@ -6,6 +6,7 @@ import { LoginInput, useLoginMutation } from "@root/app_schema";
 import { Context } from "./context";
 
 export const Form: React.FC<{
+  children?: React.ReactNode;
   onAuth(_: { id: string }): void;
 }> = ({ onAuth, children }) => {
   const [input, setInput] = useState<LoginInput>({

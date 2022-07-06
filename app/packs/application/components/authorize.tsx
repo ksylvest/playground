@@ -12,7 +12,9 @@ const AUTHORIZE_FLASH: Flash = {
   message: "You must be authenticated to access this.",
 };
 
-export const Authorize: React.FC = ({ children }) => {
+export const Authorize: React.FC<{
+  children?: React.ReactNode;
+}> = ({ children }) => {
   const location = useLocation();
   const { authentication } = useContext(World);
   if (!authentication) {

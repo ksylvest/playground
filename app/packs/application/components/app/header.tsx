@@ -12,7 +12,11 @@ import { NOTIFICATIONS_URL } from "@application/config/routes";
 
 const DEFAULT_ACTIVE = false;
 
-const NavbarLink: React.FC<{ end?: boolean; to: string }> = ({ end, to, children }) => (
+const NavbarLink: React.FC<{
+  end?: boolean;
+  to: string;
+  children?: React.ReactNode;
+}> = ({ end, to, children }) => (
   <NavLink end={end} to={to} className={({ isActive }) => (isActive ? "navbar-item is-active" : "navbar-item")}>
     {children}
   </NavLink>

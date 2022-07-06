@@ -12,7 +12,9 @@ import { Signup } from "./signup";
 
 import { ROOT_URL } from "@application/config/routes";
 
-export const Authenticator: React.FC = ({ children }) => {
+export const Authenticator: React.FC<{
+  children?: React.ReactNode;
+}> = ({ children }) => {
   const { authentication } = useContext(World);
   const location = useLocation();
   const state = location.state as { back?: string } | undefined;
