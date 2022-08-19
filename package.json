@@ -29,7 +29,7 @@
     "classnames": "^2.3.1",
     "emotion": "^11.0.0",
     "esbuild": "^0.15.5",
-    "graphql": "^16.5.0",
+    "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "loadjs": "^4.2.0",
     "lodash": "^4.17.21",
