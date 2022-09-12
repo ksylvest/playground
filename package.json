@@ -18,7 +18,7 @@
     "@rails/activestorage": "^7.0.3",
     "@sentry/browser": "^7.12.1",
     "@types/loadjs": "^4.0.1",
-    "@types/lodash": "^4.14.184",
+    "@types/lodash": "^4.14.185",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.18",
