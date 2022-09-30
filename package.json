@@ -24,7 +24,7 @@
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "@types/react-fontawesome": "^1.6.5",
-    "@types/webfontloader": "^1.6.34",
+    "@types/webfontloader": "^1.6.35",
     "bulma": "^0.9.4",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
@@ -38,7 +38,7 @@
     "react-router": "^6.2.1",
     "react-router-dom": "^6.4.1",
     "tights": "^1.9.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.13.1",
@@ -47,7 +47,7 @@
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
