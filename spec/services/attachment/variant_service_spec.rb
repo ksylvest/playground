@@ -39,7 +39,7 @@ RSpec.describe Attachment::VariantService, type: :service do
     subject(:variant) { service.variant }
 
     it 'generates a variant for an attachment' do
-      expect(service.variant).to be_kind_of(ActiveStorage::VariantWithRecord)
+      expect(service.variant).to be_a(ActiveStorage::VariantWithRecord)
     end
   end
 
@@ -47,7 +47,7 @@ RSpec.describe Attachment::VariantService, type: :service do
     subject(:data) { service.data }
 
     it 'generates data for an attachment' do
-      expect(service.data).to be_kind_of(String)
+      expect(service.data).to be_a(String)
     end
   end
 
@@ -55,7 +55,7 @@ RSpec.describe Attachment::VariantService, type: :service do
     subject(:type) { service.type }
 
     it 'uses the format to generate a type' do
-      expect(service.type).to be_kind_of(Mime::Type)
+      expect(service.type).to be_a(Mime::Type)
     end
   end
 end

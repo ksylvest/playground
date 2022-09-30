@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'initializes a system user otherwise' do
-      expect(User.system).to be_kind_of(User)
+      expect(User.system).to be_a(User)
     end
   end
 end

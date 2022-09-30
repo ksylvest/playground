@@ -6,7 +6,7 @@ FactoryBot.define do
 
     trait :with_avatar do
       after :build do |user|
-        io = File.open(Rails.root.join('spec/fixtures/files/photo.png'))
+        io = Rails.root.join('spec/fixtures/files/photo.png').open
         user.avatar.attach(io: io, filename: 'photo.svg', content_type: 'image/svg')
       end
     end
