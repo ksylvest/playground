@@ -5,7 +5,9 @@ RSpec.configure do |config|
 
   config.after(type: :system) do
     logs = page.driver.browser.logs.get(:browser)
-    errors = logs.select { |log| log.level.in?(%w[SEVERE WARNING]) }
+    errors = logs
+      .select { |log| log.level.in?(%w[SEVERE WARNING]) }
+      .reject { |log| log.message.include?('Stripe.js') }
     expect(errors).to(be_blank, errors.map(&:message).join("\n"))
   end
 end
