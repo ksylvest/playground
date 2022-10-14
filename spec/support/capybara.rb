@@ -4,7 +4,7 @@ RSpec.configure do |config|
   end
 
   config.after(type: :system) do
-    logs = page.driver.browser.manage.logs.get(:browser)
+    logs = page.driver.browser.logs.get(:browser)
     errors = logs
       .select { |log| log.level.in?(%w[SEVERE WARNING]) }
       .reject { |log| log.message.include?('SharedArrayBuffer will require cross-origin isolation') }
