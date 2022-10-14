@@ -1231,6 +1231,18 @@
     "@sentry/types" "7.21.1"
     tslib "^1.9.3"
 
+"@stripe/react-stripe-js@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-1.13.0.tgz#8e0bde2b116870d2aca52976f46a92d81983e235"
+  integrity sha512-6v2VVYorWalmlHF5DIlHp5xtFzX9rY36N4d7kyS8D/4jxvZYHOKJj96LCQfwuFi/o19/dCX8rxt/ct+pF9kI8A==
+  dependencies:
+    prop-types "^15.7.2"
+
+"@stripe/stripe-js@^1.41.0":
+  version "1.41.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.41.0.tgz#986f3f222ba4466301f7809934afafafde9b28fd"
+  integrity sha512-9cbv1CO/fF37qDiHFCxkRgSJjlIZLV0bl+m6zu4dUObRnfYq5bpczCByOvhiSWtbrKqNhYL1j+otPSogRfSqGw==
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
