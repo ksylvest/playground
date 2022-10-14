@@ -1,7 +1,7 @@
 module StripeHelper
   def fill_in_stripe(data)
     page.evaluate_script(<<~JS)
-      window.STRIPE_FAKE_TOKEN_RESPONSE = #{JSON.generate(data)};
+      window.STRIPE_FAKE_TOKEN_RESULT = #{JSON.generate(data)};
     JS
   end
 end

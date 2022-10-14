@@ -21,7 +21,11 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when building a source' do
-    subject(:perform) do
+    let(:source) { create(:billing_source, customer: customer) }
+
+    it 'saves a source with a valid number, expiration, and CVC' do
+      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: anything }) { source }
+
       visit settings_billing_path
       login(user)
 
@@ -33,13 +37,7 @@ RSpec.describe 'settings/billing' do
         fill_in_stripe(token: { id: 'fake' })
         click_button('Save')
       end
-    end
 
-    let(:source) { create(:billing_source, customer: customer) }
-
-    it 'saves a source with a valid number, expiration, and CVC' do
-      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: 'fake' }) { source }
-      perform
       expect(page).to have_text('•••• 4242 Visa expires 12/3000')
     end
   end
