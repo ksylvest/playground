@@ -7,7 +7,7 @@
     "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.0",
+    "@apollo/client": "^3.7.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -21,8 +21,8 @@
     "@types/lodash": "^4.14.186",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
     "@types/react-fontawesome": "^1.6.5",
     "@types/webfontloader": "^1.6.35",
     "bulma": "^0.9.4",

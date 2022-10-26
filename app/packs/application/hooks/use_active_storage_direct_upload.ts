@@ -19,8 +19,7 @@ export const useActiveStorageDirectUpload = (file?: File, callback?: Callback): 
       return;
     }
 
-    // NOTE: fixes a type issue w/ DirectUpload
-    const uploader = new (DirectUpload as any)(file, URL);
+    const uploader = new DirectUpload(file, URL);
     setResult(uploader);
 
     uploader.create((error?: Error, blob?: Blob) => {
