@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'notifications', type: :system do
+RSpec.describe 'notifications' do
   let(:user) { create(:user) }
   let!(:welcome_notification) { create(:notification, user: user, message: 'Welcome!') }
   let!(:goodbye_notification) { create(:notification, user: user, message: 'Goodbye!') }

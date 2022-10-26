@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Feed::Like, type: :model do
+RSpec.describe Feed::Like do
   subject { build(:feed_like) }
 
   it { should belong_to(:user) }

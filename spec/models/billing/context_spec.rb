@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Billing::Context, type: :model do
+RSpec.describe Billing::Context do
   subject(:context) { Billing::Context.new(user: user) }
 
   let(:user) { create(:user) }

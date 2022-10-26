@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'feed', type: :system do
+RSpec.describe 'feed' do
   let(:user) { create(:user, :with_avatar) }
   let!(:entry) { create(:feed_entry, :with_photos, user: user) }
 
@@ -21,7 +21,7 @@ RSpec.describe 'feed', type: :system do
     expect(page).to have_title('Feed | Playground')
 
     within('.card') do
-      find('button').click
+      click_button
     end
 
     within('.modal') do
@@ -29,12 +29,14 @@ RSpec.describe 'feed', type: :system do
     end
 
     within('.card') do
-      find('button').click
+      click_button
 
       within('[title="Unlike"]') do
         expect(page).to have_text('1')
       end
-      find('button').click
+
+      click_button
+
       within('[title="Like"]') do
         expect(page).to have_text('0')
       end

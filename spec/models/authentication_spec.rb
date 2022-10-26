@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Authentication, type: :model do
+RSpec.describe Authentication do
   it { should belong_to(:user) }
   it { should validate_presence_of(:ip) }
 

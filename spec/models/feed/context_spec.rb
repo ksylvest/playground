@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Feed::Context, type: :model do
+RSpec.describe Feed::Context do
   subject(:context) { Feed::Context.new }
 
   let!(:entry) { create(:feed_entry) }
