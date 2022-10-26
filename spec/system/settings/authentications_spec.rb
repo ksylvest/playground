@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'settings/authentications', type: :system do
+RSpec.describe 'settings/authentications' do
   let(:user) { create(:user) }
   let!(:geo_ip) { create(:geo_ip, ip: '4.4.4.4') }
   let!(:authentication) { create(:authentication, user: user, ip: '4.4.4.4') }

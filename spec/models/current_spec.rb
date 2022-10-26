@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Current, type: :model do
+RSpec.describe Current do
   let(:authentication) { create(:authentication, user: user) }
   let(:user) { create(:user) }
 

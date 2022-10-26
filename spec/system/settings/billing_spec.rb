@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'settings/billing', type: :system do
+RSpec.describe 'settings/billing' do
   let(:user) { create(:user) }
   let(:customer) { create(:billing_customer, user: user) }
 

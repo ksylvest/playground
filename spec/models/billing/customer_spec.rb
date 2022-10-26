@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Billing::Customer, type: :model do
+RSpec.describe Billing::Customer do
   subject { build(:billing_customer) }
 
   it { should belong_to(:user) }

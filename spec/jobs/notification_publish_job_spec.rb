@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe NotificationPublishJob, type: :job do
+RSpec.describe NotificationPublishJob do
   let(:user) { create(:user) }
   let(:notification) { create(:notification, user: user) }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Billing::Source, type: :model do
+RSpec.describe Billing::Source do
   subject { build(:billing_source) }
 
   it { should belong_to(:customer) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Feed::Comment, type: :model do
+RSpec.describe Feed::Comment do
   subject { build(:feed_comment) }
 
   it { should belong_to(:user) }

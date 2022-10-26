@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AuthenticationPublishJob, type: :job do
+RSpec.describe AuthenticationPublishJob do
   let(:user) { create(:user) }
   let(:authentication) { create(:authentication, user: user) }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GeoIPBuilderJob, type: :job do
+RSpec.describe GeoIPBuilderJob do
   let(:fake_access_key) { SecureRandom.alphanumeric }
   let(:ip) { '4.4.4.4' }
 
