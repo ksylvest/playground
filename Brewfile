@@ -1,8 +1,6 @@
 brew 'hub'
 brew 'git'
-brew 'memcached'
 brew 'rbenv'
-brew 'redis'
 brew 'postgres'
 brew 'pow'
 brew 'vips'
