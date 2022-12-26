@@ -4,7 +4,7 @@ RSpec.describe Mutations::Billing::Source::BuildMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      allow(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: source)
+      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: source })
       AppSchema.execute(gql, variables: { source: source })
     end
 

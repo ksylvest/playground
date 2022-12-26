@@ -4,7 +4,7 @@ RSpec.describe Mutations::Billing::Source::DestroyMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      allow(Billing::DestroySourceService).to receive(:perform!).with(user: user, id: id)
+      allow(Billing::DestroySourceService).to receive(:perform!).with({ user: user, id: id })
       AppSchema.execute(gql, variables: { id: id })
     end
 

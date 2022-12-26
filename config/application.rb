@@ -8,7 +8,7 @@ module Playground
   class Application < Rails::Application
     config.load_defaults 7.0
 
-    config.skylight.probes += %w[graphql redis]
+    config.skylight.probes += %w[graphql]
 
     config.generators do |g|
       g.helper false

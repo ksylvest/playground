@@ -27,8 +27,7 @@
     }
   },
   "addons": [
-    "heroku-postgresql",
-    { "plan": "heroku-redis", "as": "CACHE" }
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {

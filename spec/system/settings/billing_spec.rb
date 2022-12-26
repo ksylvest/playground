@@ -38,7 +38,7 @@ RSpec.describe 'settings/billing' do
     let(:source) { create(:billing_source, customer: customer) }
 
     it 'saves a source with a valid number, expiration, and CVC' do
-      allow(Billing::BuildSourceService).to receive(:perform!).with(user: user, source: 'fake') { source }
+      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: 'fake' }) { source }
       perform
       expect(page).to have_text('•••• 4242 Visa expires 12/3000')
     end

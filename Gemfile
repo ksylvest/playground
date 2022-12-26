@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.2'
+ruby '3.2.0'
 
 gem 'rails'
 
@@ -15,7 +15,6 @@ gem 'graphql'
 gem 'graphql-sources'
 gem 'http'
 gem 'kaminari'
-gem 'redis'
 gem 'skylight'
 gem 'stripe'
 
