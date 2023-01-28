@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_033502) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_014326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -141,6 +141,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_033502) do
     t.index ["ip"], name: "index_geo_ips_on_ip", unique: true
   end
 
+  create_table "hook_events", force: :cascade do |t|
+    t.bigint "provider_id", null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "processed_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_hook_events_on_provider_id"
+  end
+
+  create_table "hook_providers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.string "token_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.text "message", null: false
@@ -174,5 +191,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_033502) do
   add_foreign_key "feed_likes", "users"
   add_foreign_key "follows", "users", column: "followed_id"
   add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "hook_events", "hook_providers", column: "provider_id"
   add_foreign_key "notifications", "users"
 end

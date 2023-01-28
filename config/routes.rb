@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resource :sitemap, only: :show, defaults: { format: :xml }
   resources :attachments, only: :show
 
+  namespace :hook do
+    resources :providers, param: :slug do
+      resource :event
+    end
+  end
+
   constraints format: :html do
     %w[
       login
