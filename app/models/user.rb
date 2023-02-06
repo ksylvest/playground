@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Activatable
 
   has_one_attached :avatar
+  encrypts :email, deterministic: true
   has_secure_password validations: false
 
   has_many :authentications, dependent: :destroy
