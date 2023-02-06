@@ -7,7 +7,7 @@ module Types
     field :user, UserType, null: false do
       argument :id, ID, required: true
     end
-    field :me, UserType, null: true
+    field :me, MeType, null: true
 
     def billing
       ::Billing::Context.new(user: Current.user)

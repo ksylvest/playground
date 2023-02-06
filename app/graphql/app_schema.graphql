@@ -222,6 +222,17 @@ type LogoutMutationPayload {
   status: Status!
 }
 
+type Me {
+  avatar: Attached
+  email: String!
+  feed: Feed!
+  followed: Int!
+  follower: Int!
+  following: Boolean!
+  id: ID!
+  name: String!
+}
+
 type Mutation {
   attachAvatar(id: ID!): AttachAvatarPayload!
   buildBillingSource(source: String!): BuildBillingSourcePayload!
@@ -260,7 +271,7 @@ type Query {
   authentications: [Authentication!]!
   billing: Billing!
   feed: Feed!
-  me: User
+  me: Me
   notifications: [Notification!]!
   user(id: ID!): User!
 }
@@ -308,7 +319,6 @@ type UnlikeFeedEntryPayload {
 
 type User {
   avatar: Attached
-  email: String!
   feed: Feed!
   followed: Int!
   follower: Int!

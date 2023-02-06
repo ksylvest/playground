@@ -236,6 +236,18 @@ export type LogoutMutationPayload = {
   readonly status: Status;
 };
 
+export type Me = {
+  readonly __typename?: 'Me';
+  readonly avatar?: Maybe<Attached>;
+  readonly email: Scalars['String'];
+  readonly feed: Feed;
+  readonly followed: Scalars['Int'];
+  readonly follower: Scalars['Int'];
+  readonly following: Scalars['Boolean'];
+  readonly id: Scalars['ID'];
+  readonly name: Scalars['String'];
+};
+
 export type Mutation = {
   readonly __typename?: 'Mutation';
   readonly attachAvatar: AttachAvatarPayload;
@@ -357,7 +369,7 @@ export type Query = {
   readonly authentications: ReadonlyArray<Authentication>;
   readonly billing: Billing;
   readonly feed: Feed;
-  readonly me?: Maybe<User>;
+  readonly me?: Maybe<Me>;
   readonly notifications: ReadonlyArray<Notification>;
   readonly user: User;
 };
@@ -407,7 +419,6 @@ export type UnlikeFeedEntryPayload = {
 export type User = {
   readonly __typename?: 'User';
   readonly avatar?: Maybe<Attached>;
-  readonly email: Scalars['String'];
   readonly feed: Feed;
   readonly followed: Scalars['Int'];
   readonly follower: Scalars['Int'];
@@ -617,7 +628,7 @@ export type SettingsAuthenticationsQuery = { readonly __typename?: 'Query', read
 export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null } | null };
+export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'Me', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null } | null };
 
 export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -627,7 +638,7 @@ export type SettingsBillingQuery = { readonly __typename?: 'Query', readonly bil
 export type SettingsProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsProfileQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly email: string } | null };
+export type SettingsProfileQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'Me', readonly id: string, readonly name: string, readonly email: string } | null };
 
 export const GeographyFragmentDoc = gql`
     fragment geography on Geography {
