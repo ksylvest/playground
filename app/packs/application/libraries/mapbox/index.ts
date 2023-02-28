@@ -2,7 +2,7 @@ import loadjs from "loadjs";
 
 declare const MAPBOX_ACCESS_TOKEN: string | null;
 
-const VERSION = "v2.0.0";
+const VERSION = "v2.13.0";
 
 if (typeof window !== "undefined" && !!MAPBOX_ACCESS_TOKEN) {
   loadjs(
