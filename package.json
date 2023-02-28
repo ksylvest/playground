@@ -16,7 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@rails/actioncable": "^7.0.4",
     "@rails/activestorage": "^7.0.4",
-    "@sentry/browser": "^7.36.0",
+    "@sentry/browser": "^7.39.0",
     "@types/loadjs": "^4.0.1",
     "@types/lodash": "^4.14.191",
     "@types/rails__actioncable": "^6.1.6",
