@@ -6,6 +6,5 @@ export * from "./billing_source_expiration";
 export * from "./billing_source_number";
 export * from "./billing_source_summary";
 export * from "./breadcrumbs";
-export * from "./geography_map";
 export * from "./geography_summary";
 export * from "./title";
