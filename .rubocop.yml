@@ -128,3 +128,9 @@ GraphQL/ExtractType:
 
 GraphQL/ExtractInputType:
   Enabled: false
+
+GraphQL/MaxComplexitySchema:
+  Enabled: false
+
+GraphQL/MaxDepthSchema:
+  Enabled: false
