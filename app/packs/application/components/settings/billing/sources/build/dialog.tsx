@@ -25,6 +25,7 @@ const Fields: React.FC<{
     if (typeof STRIPE_FAKE_TOKEN_RESULT !== "undefined") return Promise.resolve(STRIPE_FAKE_TOKEN_RESULT);
     if (!stripe || !elements) return;
     const card = elements.getElement(CardElement);
+    if (!card) return;
     return stripe.createToken(card);
   };
 
@@ -42,9 +43,11 @@ const Fields: React.FC<{
             if (saving || !stripe || !elements) return;
 
             setTokenizing(true);
-            const { error, token } = await tokenize();
+            const tokenization = await tokenize();
             setTokenizing(false);
 
+            if (!tokenization) return;
+            const { error, token } = tokenization;
             if (error || !token) return;
 
             await submit({ variables: { source: token.id } });
