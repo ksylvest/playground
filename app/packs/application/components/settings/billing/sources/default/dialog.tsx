@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { Billing__Source } from "@root/app_schema";
+import { Billing__PaymentMethod } from "@root/app_schema";
 
 import { BillingSourceSummary } from "@application/components/helpers";
 
 import { Button, Content, Delete, Message, Modal } from "tights";
 
 export const Dialog: React.FC<{
-  source: Billing__Source;
+  source: Billing__PaymentMethod;
   loading: boolean;
   onContinue(): void;
   onCancel(): void;

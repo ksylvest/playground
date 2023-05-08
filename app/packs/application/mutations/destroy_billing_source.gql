@@ -1,11 +1,11 @@
-mutation SettingsBillingSourceDestroy($id: ID!) {
-  result: destroyBillingSource(id: $id) {
+mutation SettingsBillingPaymentMethodDestroy($id: ID!) {
+  result: destroyBillingPaymentMethod(id: $id) {
     billing {
       id
       customer {
         id
-        sources {
-          ...billing__source
+        sources: paymentMethods {
+          ...billing__payment_method
         }
       }
     }

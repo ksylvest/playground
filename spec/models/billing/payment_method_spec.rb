@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Billing::Source do
-  subject { build(:billing_source) }
+RSpec.describe Billing::PaymentMethod do
+  subject { build(:billing_payment_method) }
 
   it { should belong_to(:customer) }
 
@@ -17,7 +17,7 @@ RSpec.describe Billing::Source do
     let(:stripe) { build_stubbed(:stripe_source) }
 
     it 'parses stripe' do
-      source = Billing::Source.new
+      source = described_class.new
       source.parse(stripe)
       expect(source.stripe_id).to eql(stripe.id)
       expect(source.brand).to eql('visa')

@@ -1,0 +1,7 @@
+mutation BuildBillingStripeSetupIntent {
+  result: buildBillingStripeSetupIntent {
+    intent: stripeSetupIntent {
+      id
+    }
+  }
+}

@@ -1,11 +1,11 @@
-mutation SettingsBillingSourceDefault($id: ID!) {
-  result: defaultBillingSource(id: $id) {
+mutation SettingsBillingPaymentMethodDefault($id: ID!) {
+  result: defaultBillingPaymentMethod(id: $id) {
     billing {
       id
       customer {
         id
-        sources {
-          ...billing__source
+        sources: paymentMethods {
+          ...billing__payment_method
         }
       }
     }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Billing__Source } from "@root/app_schema";
+import { Billing__PaymentMethod } from "@root/app_schema";
 
 const DATE_TIME_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
   year: "numeric",
@@ -8,7 +8,7 @@ const DATE_TIME_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
 };
 
 export const BillingSourceExpiration: React.FC<{
-  source: Billing__Source;
+  source: Billing__PaymentMethod;
 }> = ({ source }) => {
   const [year, month] = source.exp.split("-").map(Number);
   const expiration = new Date(year, month);

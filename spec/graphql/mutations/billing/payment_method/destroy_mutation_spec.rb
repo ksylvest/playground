@@ -1,22 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::Billing::Source::DestroyMutation do
+RSpec.describe Mutations::Billing::PaymentMethod::DestroyMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      allow(Billing::DestroySourceService).to receive(:perform!).with({ user: user, id: id })
+      allow(Billing::DestroyPaymentMethodService).to receive(:perform!).with({ user: user, id: id })
       AppSchema.execute(gql, variables: { id: id })
     end
 
     let(:gql) do
       <<~GQL
-        mutation DestroyBillingSource($id: ID!) {
-          result: destroyBillingSource(id: $id) {
+        mutation DestroyBillingPaymentMethod($id: ID!) {
+          result: destroyBillingPaymentMethod(id: $id) {
             billing {
               id
               customer {
                 id
-                sources {
+                sources: paymentMethods {
                   id
                   number
                   brand

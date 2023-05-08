@@ -8,16 +8,16 @@ import { Default } from "./sources/default";
 import { Destroy } from "./sources/destroy";
 import { List } from "./sources/list";
 
-import { Billing__Source } from "@root/app_schema";
+import { Billing__PaymentMethod } from "@root/app_schema";
 
 const DEFAULT_BUILDING = false;
 
 export const Sources: React.FC<{
-  sources: readonly Billing__Source[];
+  sources: readonly Billing__PaymentMethod[];
 }> = ({ sources }) => {
   const [building, setBuilding] = useState<boolean>(DEFAULT_BUILDING);
-  const [destroying, setDestroying] = useState<Billing__Source | undefined>();
-  const [defaulting, setDefaulting] = useState<Billing__Source | undefined>();
+  const [destroying, setDestroying] = useState<Billing__PaymentMethod | undefined>();
+  const [defaulting, setDefaulting] = useState<Billing__PaymentMethod | undefined>();
 
   const onClose = (): void => {
     setBuilding(DEFAULT_BUILDING);

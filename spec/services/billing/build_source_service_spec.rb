@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Billing::BuildSourceService, type: :service do
+RSpec.describe Billing::BuildPaymentMethodService, type: :service do
   describe '.perform!' do
-    subject(:perform!) { Billing::BuildSourceService.perform!(user: user, source: 'fake_stripe') }
+    subject(:perform!) { Billing::BuildPaymentMethodService.perform!(user: user, source: 'fake_stripe') }
 
     let(:user) { create(:user) }
     let!(:customer) { create(:billing_customer, user: user) }

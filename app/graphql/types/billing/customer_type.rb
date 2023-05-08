@@ -5,11 +5,11 @@ module Types
 
       field :id, ID, null: false
       field :currency, CurrencyType, null: true
-      field :sources, [SourceType], null: false
+      field :payment_methods, [PaymentMethodType], null: false
 
-      def sources
+      def payment_methods
         dataloader
-          .with(GraphQL::Sources::ActiveRecordCollection, ::Billing::Source, key: :customer_id)
+          .with(GraphQL::Sources::ActiveRecordCollection, ::Billing::PaymentMethod, key: :customer_id)
           .load(object.id)
       end
     end

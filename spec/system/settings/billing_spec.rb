@@ -21,10 +21,10 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when building a source' do
-    let(:source) { create(:billing_source, customer: customer) }
+    let(:source) { create(:billing_payment_method, customer: customer) }
 
     it 'saves a source with a valid number, expiration, and CVC' do
-      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: anything }) { source }
+      allow(Billing::BuildPaymentMethodService).to receive(:perform!).with({ user: user, source: anything }) { source }
 
       visit settings_billing_path
       login(user)
@@ -43,10 +43,10 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when destroying a source' do
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:source) { create(:billing_payment_method, customer: customer) }
 
     it 'lets a user destroy a source' do
-      allow(Billing::DestroySourceService).to receive(:perform!) { source.destroy! }
+      allow(Billing::DestroyPaymentMethodService).to receive(:perform!) { source.destroy! }
 
       visit settings_billing_path
       login(user)
@@ -70,10 +70,10 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when changing the default a source' do
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:source) { create(:billing_payment_method, customer: customer) }
 
     it 'lets a user change the default source' do
-      allow(Billing::DefaultSourceService).to receive(:perform!) { source }
+      allow(Billing::DefaultPaymentMethodService).to receive(:perform!) { source }
 
       visit settings_billing_path
       login(user)

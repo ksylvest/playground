@@ -1,11 +1,11 @@
-mutation SettingsBillingSourceBuild($source: String!) {
-  result: buildBillingSource(source: $source) {
+mutation SettingsBillingPaymentMethodBuild($source: String!) {
+  result: buildBillingPaymentMethod(source: $source) {
     billing {
       id
       customer {
         id
-        sources {
-          ...billing__source
+        sources: paymentMethods {
+          ...billing__payment_method
         }
       }
     }

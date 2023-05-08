@@ -1,4 +1,4 @@
-class Billing::Source < ApplicationRecord
+class Billing::PaymentMethod < ApplicationRecord
   belongs_to :customer
 
   enum brand: {

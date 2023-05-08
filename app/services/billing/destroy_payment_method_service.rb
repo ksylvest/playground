@@ -1,5 +1,5 @@
 module Billing
-  class DestroySourceService
+  class DestroyPaymentMethodService
     def self.perform!(...)
       new(...).perform!
     end

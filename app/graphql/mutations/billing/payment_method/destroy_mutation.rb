@@ -1,14 +1,14 @@
 module Mutations
   module Billing
-    module Source
+    module PaymentMethod
       class DestroyMutation < BaseMutation
-        graphql_name 'DestroyBillingSource'
+        graphql_name 'DestroyBillingPaymentMethod'
         argument :id, ID, required: true
         field :billing, ::Types::BillingType, null: false
 
         def resolve(id:)
           user = Current.user
-          ::Billing::DestroySourceService.perform!(user: user, id: id)
+          ::Billing::DestroyPaymentMethodService.perform!(user: user, id: id)
 
           { billing: ::Billing::Context.new(user: user) }
         end

@@ -1,10 +1,10 @@
 module Types
   module Billing
-    module Source
+    module PaymentMethod
       class BrandEnum < BaseEnum
-        graphql_name 'Billing__Source__Brand'
+        graphql_name 'Billing__PaymentMethod__Brand'
 
-        ::Billing::Source.brands.each_key do |brand|
+        ::Billing::PaymentMethod.brands.each_key do |brand|
           value brand.upcase, value: brand
         end
       end

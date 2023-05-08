@@ -15,7 +15,7 @@ RSpec.describe Types::BillingType do
             customer {
               id
               currency
-              sources {
+              sources: paymentMethods {
                 id
                 number
                 brand
@@ -30,7 +30,7 @@ RSpec.describe Types::BillingType do
 
     let!(:user) { create(:user) }
     let!(:customer) { create(:billing_customer, user: user) }
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:payment_method) { create(:billing_payment_method, customer: customer) }
 
     it 'resolves' do
       expect(execute['errors']).to be_nil

@@ -4,8 +4,8 @@ query SettingsBilling {
     customer {
       id
       currency
-      sources {
-        ...billing__source
+      sources: paymentMethods {
+        ...billing__payment_method
       }
     }
   }

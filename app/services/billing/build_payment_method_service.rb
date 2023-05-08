@@ -1,5 +1,5 @@
 module Billing
-  class BuildSourceService
+  class BuildPaymentMethodService
     def self.perform!(...)
       new(...).perform!
     end

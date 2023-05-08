@@ -1,0 +1,7 @@
+fragment billing__payment_method on Billing__PaymentMethod {
+  id
+  number
+  brand
+  exp
+  default
+}

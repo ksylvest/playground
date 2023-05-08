@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
+import { useSettingsBillingPaymentMethodBuildMutation } from "@root/app_schema";
 
-import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
+import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe, TokenResult } from "@stripe/stripe-js";
 
 import { Button, Content, Delete, Form, Modal } from "tights";
@@ -18,15 +18,20 @@ const Fields: React.FC<{
   const stripe = useStripe();
   const elements = useElements();
 
-  const [submit, { loading }] = useSettingsBillingSourceBuildMutation();
+  const [submit, { loading }] = useSettingsBillingPaymentMethodBuildMutation();
   const [tokenizing, setTokenizing] = useState<boolean>(false);
 
-  const tokenize = () => {
+  const tokenize = async () => {
     if (typeof STRIPE_FAKE_TOKEN_RESULT !== "undefined") return Promise.resolve(STRIPE_FAKE_TOKEN_RESULT);
     if (!stripe || !elements) return;
-    const card = elements.getElement(CardElement);
-    if (!card) return;
-    return stripe.createToken(card);
+
+    const { error: submitError } = await elements.submit();
+    console.log({ submitError });
+
+    const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
+      elements,
+    });
+    console.log({ paymentMethod });
   };
 
   const ready = !!stripe && !!elements;
@@ -62,7 +67,7 @@ const Fields: React.FC<{
             </Modal.Card.Head>
             <Modal.Card.Body>
               <Content>
-                <CardElement />
+                <PaymentElement />
               </Content>
             </Modal.Card.Body>
             <Modal.Card.Foot>
@@ -87,7 +92,7 @@ export const Dialog: React.FC<{
   const [stripe] = useState(() => loadStripe(STRIPE_PUBLISHABLE_KEY));
 
   return (
-    <Elements stripe={stripe}>
+    <Elements stripe={stripe} options={{ mode: "setup", currency: "usd", paymentMethodCreation: "manual" }}>
       <Fields {...props} />
     </Elements>
   );

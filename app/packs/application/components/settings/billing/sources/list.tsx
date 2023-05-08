@@ -1,27 +1,27 @@
 import * as React from "react";
 
-import { Billing__Source } from "@root/app_schema";
+import { Billing__PaymentMethod } from "@root/app_schema";
 
 import {
   BillingSourceBrandName,
   BillingSourceExpiration,
-  BillingSourceBrandIcon,
+  BillingPaymentMethodBrandIcon,
   BillingSourceNumber,
 } from "@application/components/helpers";
 
 import { Button, Buttons, Table } from "tights";
 
 export const List: React.FC<{
-  sources: readonly Billing__Source[];
-  onDestroy(source: Billing__Source): void;
-  onDefault(source: Billing__Source): void;
+  sources: readonly Billing__PaymentMethod[];
+  onDestroy(source: Billing__PaymentMethod): void;
+  onDefault(source: Billing__PaymentMethod): void;
 }> = ({ sources, onDestroy, onDefault }) => (
   <Table fullwidth hoverable striped>
     <tbody>
       {sources.map((source) => (
         <tr key={source.id}>
           <td>
-            <BillingSourceBrandIcon source={source} />
+            <BillingPaymentMethodBrandIcon source={source} />
           </td>
           <td>
             <BillingSourceNumber source={source} />

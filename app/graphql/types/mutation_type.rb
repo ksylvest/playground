@@ -16,9 +16,10 @@ module Types
     field :attach_avatar, mutation: ::Mutations::Avatar::AttachMutation
     field :detach_avatar, mutation: ::Mutations::Avatar::DetachMutation
 
-    field :build_billing_source, mutation: ::Mutations::Billing::Source::BuildMutation
-    field :destroy_billing_source, mutation: ::Mutations::Billing::Source::DestroyMutation
-    field :default_billing_source, mutation: ::Mutations::Billing::Source::DefaultMutation
+    field :build_billing_payment_method, mutation: ::Mutations::Billing::PaymentMethod::BuildMutation
+    field :destroy_billing_payment_method, mutation: ::Mutations::Billing::PaymentMethod::DestroyMutation
+    field :default_billing_payment_method, mutation: ::Mutations::Billing::PaymentMethod::DefaultMutation
+    field :build_billing_stripe_setup_intent, mutation: ::Mutations::Billing::StripeSetupIntent::BuildMutation
 
     field :build_feed_comment, mutation: ::Mutations::Feed::Comment::BuildMutation
     field :like_feed_entry, mutation: ::Mutations::Feed::Entry::LikeMutation

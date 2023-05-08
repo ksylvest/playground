@@ -1,22 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::Billing::Source::DefaultMutation do
+RSpec.describe Mutations::Billing::PaymentMethod::BuildMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      allow(Billing::DefaultSourceService).to receive(:perform!).with({ user: user, id: id })
-      AppSchema.execute(gql, variables: { id: id })
+      allow(Billing::BuildPaymentMethodService).to receive(:perform!).with({ user: user, source: source })
+      AppSchema.execute(gql, variables: { source: source })
     end
 
     let(:gql) do
       <<~GQL
-        mutation DefaultBillingSource($id: ID!) {
-          result: defaultBillingSource(id: $id) {
+        mutation BuildBillingPaymentMethod($source: String!) {
+          result: buildBillingPaymentMethod(source: $source) {
             billing {
               id
               customer {
                 id
-                sources {
+                sources: paymentMethods {
                   id
                   number
                   brand
@@ -31,7 +31,7 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
     end
 
     let(:user) { create(:user) }
-    let(:id) { 'fake_id' }
+    let(:source) { 'fake_source' }
 
     it 'resolves without errors' do
       expect(execute['errors']).to be_nil
