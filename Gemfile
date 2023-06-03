@@ -15,6 +15,7 @@ gem 'graphql'
 gem 'graphql-sources'
 gem 'http'
 gem 'kaminari'
+gem 'propshaft'
 gem 'skylight'
 gem 'stripe'
 
@@ -23,7 +24,6 @@ gem 'image_processing'
 
 gem 'jsbundling-rails'
 gem 'sentry-rails'
-gem 'sprockets-rails'
 
 gem 'bootsnap', require: false
 
