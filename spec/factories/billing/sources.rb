@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :billing_source, class: 'Billing::Source' do
     sequence(:stripe_id) { |id| "fake_#{id}" }
-    association :customer, factory: :billing_customer
+    customer factory: :billing_customer
     brand { 'Visa' }
     funding { 'credit' }
     number { '4242' }
