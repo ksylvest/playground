@@ -16,7 +16,6 @@ gem 'graphql-sources'
 gem 'http'
 gem 'kaminari'
 gem 'propshaft'
-gem 'skylight'
 gem 'stripe'
 
 gem 'aws-sdk-s3', require: false
