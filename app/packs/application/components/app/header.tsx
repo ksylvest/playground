@@ -1,14 +1,23 @@
-import * as React from "react";
+import React from "react";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Button, Navbar } from "tights";
+import {
+  Button,
+  Navbar,
+  NavbarBrand,
+  NavbarBurger,
+  NavbarDivider,
+  NavbarDropdown,
+  NavbarEnd,
+  NavbarItem,
+  NavbarMenu,
+  NavbarStart,
+} from "tights";
 
 import { World } from "@application/contexts";
 
 import { Logout } from "@application/components/logout";
-
-import { NOTIFICATIONS_URL } from "@application/config/routes";
 
 const DEFAULT_ACTIVE = false;
 
@@ -67,22 +76,22 @@ const MainNavbarLinks: React.FC = () => (
 );
 
 const MeNavbarItem: React.FC = () => (
-  <Navbar.Item dropdown hoverable>
-    <Navbar.Link>Me</Navbar.Link>
-    <Navbar.Dropdown direction="right">
+  <NavbarItem dropdown hoverable>
+    <NavbarLink to={""}>Me</NavbarLink>
+    <NavbarDropdown direction="right">
       <MainNavbarLinks />
-      <Navbar.Divider />
+      <NavbarDivider />
       <Logout
         children={({ logout }): React.ReactElement => (
-          <Navbar.Item>
+          <NavbarItem>
             <Button type="button" onClick={logout}>
               Logout
             </Button>
-          </Navbar.Item>
+          </NavbarItem>
         )}
       />
-    </Navbar.Dropdown>
-  </Navbar.Item>
+    </NavbarDropdown>
+  </NavbarItem>
 );
 
 export const Header: React.FC = () => {
@@ -93,14 +102,14 @@ export const Header: React.FC = () => {
   return (
     <header>
       <Navbar color="light">
-        <Navbar.Brand>
+        <NavbarBrand>
           <HomeNavbarLink />
-          <Navbar.Burger active={active} onClick={onToggle} />
-        </Navbar.Brand>
-        <Navbar.Menu active={active}>
-          <Navbar.Start>{authentication && <MainNavbarLinks />}</Navbar.Start>
-          <Navbar.End>{authentication ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</Navbar.End>
-        </Navbar.Menu>
+          <NavbarBurger active={active} onClick={onToggle} />
+        </NavbarBrand>
+        <NavbarMenu active={active}>
+          <NavbarStart>{authentication && <MainNavbarLinks />}</NavbarStart>
+          <NavbarEnd>{authentication ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</NavbarEnd>
+        </NavbarMenu>
       </Navbar>
     </header>
   );

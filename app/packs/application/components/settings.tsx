@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Column, Columns } from "tights";

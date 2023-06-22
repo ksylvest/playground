@@ -1,9 +1,9 @@
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import React from "react";
 import { useContext } from "react";
 
-import { Button, Column, Columns, Icon, Message } from "tights";
+import { Button, Column, Columns, Icon, Message, MessageBody } from "tights";
 
 import { AuthenticationFragment, AuthenticationStatusEnum } from "@root/app_schema";
 
@@ -29,7 +29,7 @@ export const Entry: React.FC<{
 
   return (
     <Message color={(me && "info") || undefined}>
-      <Message.Body>
+      <MessageBody>
         <Columns mobile desktop vcentered>
           <Column narrow>
             <Icon color={color(authentication.status)}>
@@ -53,7 +53,7 @@ export const Entry: React.FC<{
             )}
           </Column>
         </Columns>
-      </Message.Body>
+      </MessageBody>
     </Message>
   );
 };

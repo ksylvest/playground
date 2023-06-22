@@ -1,7 +1,21 @@
-import * as React from "react";
+import React from "react";
 import { useContext, useState } from "react";
 
-import { Button, Delete, Modal, Tabs } from "tights";
+import {
+  Button,
+  Delete,
+  Modal,
+  ModalBackground,
+  ModalCard,
+  ModalCardBody,
+  ModalCardFoot,
+  ModalCardHead,
+  ModalCardTitle,
+  ModalContent,
+  Tabs,
+  TabsItem,
+  TabsList,
+} from "tights";
 
 import { Context as LoginContext } from "@application/components/login/context";
 import { Fields as LoginFields } from "@application/components/login/fields";
@@ -50,23 +64,23 @@ export const Dialog: React.FC<{
 
   return (
     <Modal>
-      <Modal.Background onClick={onCancel} />
-      <Modal.Content>
+      <ModalBackground onClick={onCancel} />
+      <ModalContent>
         <Auth.Form
           onAuth={(session): void => {
             auth(session);
             onAuth();
           }}
         >
-          <Modal.Card>
-            <Modal.Card.Head>
-              <Modal.Card.Title>{mode}</Modal.Card.Title>
+          <ModalCard>
+            <ModalCardHead>
+              <ModalCardTitle>{mode}</ModalCardTitle>
               <Delete onClick={onCancel} />
-            </Modal.Card.Head>
-            <Modal.Card.Body>
+            </ModalCardHead>
+            <ModalCardBody>
               <Tabs fullwidth>
-                <Tabs.List>
-                  <Tabs.Item active={mode === Mode.Login}>
+                <TabsList>
+                  <TabsItem active={mode === Mode.Login}>
                     <a
                       href="#"
                       onClick={(event): void => {
@@ -77,8 +91,8 @@ export const Dialog: React.FC<{
                     >
                       Login
                     </a>
-                  </Tabs.Item>
-                  <Tabs.Item active={mode === Mode.Signup}>
+                  </TabsItem>
+                  <TabsItem active={mode === Mode.Signup}>
                     <a
                       href="#"
                       onClick={(event): void => {
@@ -89,12 +103,12 @@ export const Dialog: React.FC<{
                     >
                       Signup
                     </a>
-                  </Tabs.Item>
-                </Tabs.List>
+                  </TabsItem>
+                </TabsList>
               </Tabs>
               <Auth.Fields />
-            </Modal.Card.Body>
-            <Modal.Card.Foot>
+            </ModalCardBody>
+            <ModalCardFoot>
               <Auth.Context.Consumer
                 children={({ loading }): React.ReactNode => (
                   <>
@@ -107,10 +121,10 @@ export const Dialog: React.FC<{
                   </>
                 )}
               />
-            </Modal.Card.Foot>
-          </Modal.Card>
+            </ModalCardFoot>
+          </ModalCard>
         </Auth.Form>
-      </Modal.Content>
+      </ModalContent>
     </Modal>
   );
 };

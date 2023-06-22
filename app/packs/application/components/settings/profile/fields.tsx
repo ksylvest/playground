@@ -1,12 +1,12 @@
 import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
-import * as React from "react";
+import React from "react";
 import { useEffect, useState } from "react";
 
 import { Errors } from "@root/app_schema";
 
-import { Button, Form } from "tights";
+import { Button, Control, Field } from "tights";
 
-import { Field } from "@application/components/field";
+import { InputField } from "@root/application/components/input_field";
 import { Flashes } from "@application/components/flashes";
 
 export const Fields: React.FC<{
@@ -40,10 +40,10 @@ export const Fields: React.FC<{
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
       <Flashes errors={errors} />
 
-      <Field
+      <InputField
         icon={faInfo}
         type="text"
         name="name"
@@ -54,7 +54,7 @@ export const Fields: React.FC<{
         onValue={setName}
       />
 
-      <Field
+      <InputField
         icon={faEnvelope}
         type="email"
         name="email"
@@ -65,13 +65,13 @@ export const Fields: React.FC<{
         onValue={setEmail}
       />
 
-      <Form.Field>
-        <Form.Control>
+      <Field>
+        <Control>
           <Button type="submit" disabled={loading} loading={loading} color="primary">
             Save
           </Button>
-        </Form.Control>
-      </Form.Field>
-    </Form>
+        </Control>
+      </Field>
+    </form>
   );
 };

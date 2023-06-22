@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { Menu } from "tights";
+import { Menu, MenuItem, MenuLabel, MenuList } from "tights";
 
 const LINKS = [
   { text: "Authentications", to: "authentications" },
@@ -13,15 +13,15 @@ const LINKS = [
 
 export const Sidebar: React.FC = () => (
   <Menu>
-    <Menu.Label>Personal</Menu.Label>
-    <Menu.List>
+    <MenuLabel>Personal</MenuLabel>
+    <MenuList>
       {LINKS.map(({ text, to }, key) => (
-        <Menu.Item key={key}>
+        <MenuItem key={key}>
           <NavLink to={to} className={({ isActive }) => (isActive ? "is-active" : "")}>
             {text}
           </NavLink>
-        </Menu.Item>
+        </MenuItem>
       ))}
-    </Menu.List>
+    </MenuList>
   </Menu>
 );

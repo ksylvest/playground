@@ -1,9 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faInfo, faLock } from "@fortawesome/free-solid-svg-icons";
-import * as React from "react";
+import React from "react";
 import { useContext } from "react";
 
-import { Field } from "@application/components/field";
+import { InputField } from "@root/application/components/input_field";
 import { Flashes } from "@application/components/flashes";
 
 import { Context } from "./context";
@@ -41,7 +41,7 @@ export const Fields: React.FC = () => {
       <Flashes errors={errors} />
 
       {FIELDS.map((field, key) => (
-        <Field
+        <InputField
           key={key}
           {...field}
           errors={errors}

@@ -1,8 +1,8 @@
 import head from "lodash/head";
-import * as React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { Card, Column, Columns } from "tights";
+import { Card, CardContent, CardImage, Column, Columns } from "tights";
 
 import { Feed__EntryFragment } from "@root/app_schema";
 
@@ -18,12 +18,12 @@ export const Entry: React.FC<{
   entry: Feed__EntryFragment;
 }> = ({ entry }) => (
   <Card>
-    <Card.Image>
+    <CardImage>
       <Link to={FEED_DETAILS_URL(entry)}>
         <Attachment square attachment={head(entry.photos)} w={320} h={320} alt={`Photos by ${entry.user.name}`} />
       </Link>
-    </Card.Image>
-    <Card.Content>
+    </CardImage>
+    <CardContent>
       <Columns desktop tablet mobile vcentered gap={2}>
         <Column narrow>
           <Link to={PROFILE_URL(entry.user)}>
@@ -46,6 +46,6 @@ export const Entry: React.FC<{
           <Actions entry={entry} />
         </Column>
       </Columns>
-    </Card.Content>
+    </CardContent>
   </Card>
 );

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { Billing__Source__Brand, Billing__Source } from "@root/app_schema";
 

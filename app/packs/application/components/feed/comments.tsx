@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 
-import { Button, Form } from "tights";
+import { Button, Control, Field, Textarea } from "tights";
 
 import { useAuthentication } from "@application/hooks";
 
@@ -44,24 +44,24 @@ export const Comments: React.FC<{
       {comments?.map((comment) => (
         <Comment key={comment.id} comment={comment} />
       ))}
-      <Form onSubmit={onSubmit}>
-        <Form.Field>
-          <Form.Control>
-            <Form.Textarea
+      <form onSubmit={onSubmit}>
+        <Field>
+          <Control>
+            <Textarea
               value={message}
               onChange={(event): void => setMessage(event.target.value)}
               placeholder="Add a comment..."
             />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field>
-          <Form.Control>
+          </Control>
+        </Field>
+        <Field>
+          <Control>
             <Button loading={loading} disabled={!valid}>
               Comment
             </Button>
-          </Form.Control>
-        </Form.Field>
-      </Form>
+          </Control>
+        </Field>
+      </form>
     </>
   );
 };

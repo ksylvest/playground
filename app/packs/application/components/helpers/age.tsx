@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 const DATE_TIME_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
   year: "numeric",
