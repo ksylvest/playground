@@ -1,10 +1,10 @@
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import times from "lodash/times";
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 
-import { Pagination } from "tights";
+import { Pagination, PaginationItem, PaginationLink, PaginationList, PaginationNext, PaginationPrev } from "tights";
 
 import { Attachment } from "@application/components/helpers";
 
@@ -43,7 +43,7 @@ export const Carousel: React.FC<{
       <Attachment attachment={photo} square w={640} h={640} alt={`Photo '${label}' of ${total} by ${user.name}`} />
       <br />
       <Pagination rounded>
-        <Pagination.Prev
+        <PaginationPrev
           onClick={(event): void => {
             event.preventDefault();
             event.stopPropagation();
@@ -51,8 +51,8 @@ export const Carousel: React.FC<{
           }}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
-        </Pagination.Prev>
-        <Pagination.Next
+        </PaginationPrev>
+        <PaginationNext
           onClick={(event): void => {
             event.preventDefault();
             event.stopPropagation();
@@ -60,12 +60,12 @@ export const Carousel: React.FC<{
           }}
         >
           <FontAwesomeIcon icon={faChevronRight} />
-        </Pagination.Next>
+        </PaginationNext>
 
-        <Pagination.List>
+        <PaginationList>
           {times(total, (page) => (
-            <Pagination.Item key={page}>
-              <Pagination.Link
+            <PaginationItem key={page}>
+              <PaginationLink
                 current={page === index}
                 href="#"
                 onClick={(event): void => {
@@ -75,10 +75,10 @@ export const Carousel: React.FC<{
                 }}
               >
                 {String.fromCharCode(page + CHAR_CODE_OFFSET)}
-              </Pagination.Link>
-            </Pagination.Item>
+              </PaginationLink>
+            </PaginationItem>
           ))}
-        </Pagination.List>
+        </PaginationList>
       </Pagination>
     </>
   );

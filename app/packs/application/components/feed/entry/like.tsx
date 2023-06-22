@@ -1,6 +1,6 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import React from "react";
 
 import { Button, Icon } from "tights";
 

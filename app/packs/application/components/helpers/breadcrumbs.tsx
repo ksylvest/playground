@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
-import { Breadcrumb } from "tights";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "tights";
 
 import { ROOT_URL } from "@application/config/routes";
 
@@ -17,13 +17,13 @@ export const Breadcrumbs: React.FC<{
   const location = useLocation();
   return (
     <Breadcrumb>
-      <Breadcrumb.List>
+      <BreadcrumbList>
         {[HOME_LINK, ...links].map((link, index) => (
-          <Breadcrumb.Item key={index} active={link.to === location.pathname}>
+          <BreadcrumbItem key={index} active={link.to === location.pathname}>
             <Link to={link.to}>{link.name}</Link>
-          </Breadcrumb.Item>
+          </BreadcrumbItem>
         ))}
-      </Breadcrumb.List>
+      </BreadcrumbList>
     </Breadcrumb>
   );
 };

@@ -1,12 +1,12 @@
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 
 import { Errors } from "@root/app_schema";
 
-import { Button, Form } from "tights";
+import { Button, Control, Field } from "tights";
 
-import { Field } from "@application/components/field";
+import { InputField } from "@root/application/components/input_field";
 import { Flashes } from "@application/components/flashes";
 
 export const Fields: React.FC<{
@@ -28,10 +28,10 @@ export const Fields: React.FC<{
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
       <Flashes errors={errors} />
 
-      <Field
+      <InputField
         icon={faLock}
         type="password"
         name="current"
@@ -42,7 +42,7 @@ export const Fields: React.FC<{
         onValue={setCurrent}
       />
 
-      <Field
+      <InputField
         icon={faLock}
         type="password"
         name="replacement"
@@ -53,13 +53,13 @@ export const Fields: React.FC<{
         onValue={setReplacement}
       />
 
-      <Form.Field>
-        <Form.Control>
+      <Field>
+        <Control>
           <Button type="submit" disabled={loading} loading={loading} color="primary">
             Change
           </Button>
-        </Form.Control>
-      </Form.Field>
-    </Form>
+        </Control>
+      </Field>
+    </form>
   );
 };

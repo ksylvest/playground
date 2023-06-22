@@ -2,13 +2,13 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import React from "react";
 
 import { sentence } from "@application/utilities";
 
-import { Form, Icon } from "tights";
+import { Control, Field, Help, Icon, Input, Label } from "tights";
 
-export const Field: React.FC<{
+export const InputField: React.FC<{
   icon: IconProp;
   type: string;
   name: string;
@@ -32,10 +32,10 @@ export const Field: React.FC<{
   };
 
   return (
-    <Form.Field>
-      <Form.Label>{label}</Form.Label>
-      <Form.Control icons="both">
-        <Form.Input
+    <Field>
+      <Label>{label}</Label>
+      <Control icons="both">
+        <Input
           color={errors ? (!messages ? "success" : "danger") : undefined}
           type={type}
           value={value}
@@ -49,8 +49,8 @@ export const Field: React.FC<{
           {valid && <FontAwesomeIcon icon={faCheckSquare} />}
           {invalid && <FontAwesomeIcon icon={faExclamationCircle} />}
         </Icon>
-        {help && <Form.Help color="danger">{help}</Form.Help>}
-      </Form.Control>
-    </Form.Field>
+        {help && <Help color="danger">{help}</Help>}
+      </Control>
+    </Field>
   );
 };

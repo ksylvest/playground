@@ -1,6 +1,6 @@
 import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import React from "react";
 
 import { Notification, useReadNotificationMutation } from "@root/app_schema";
 

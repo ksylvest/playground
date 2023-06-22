@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 
 import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
@@ -6,7 +6,19 @@ import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
 import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe, TokenResult } from "@stripe/stripe-js";
 
-import { Button, Content, Delete, Form, Modal } from "tights";
+import {
+  Button,
+  Content,
+  Delete,
+  Modal,
+  ModalBackground,
+  ModalCard,
+  ModalCardBody,
+  ModalCardFoot,
+  ModalCardHead,
+  ModalCardTitle,
+  ModalContent,
+} from "tights";
 
 declare const STRIPE_PUBLISHABLE_KEY: string;
 declare const STRIPE_FAKE_TOKEN_RESULT: TokenResult | undefined;
@@ -34,9 +46,9 @@ const Fields: React.FC<{
 
   return (
     <Modal>
-      <Modal.Background onClick={onCancel} />
-      <Modal.Content>
-        <Form
+      <ModalBackground onClick={onCancel} />
+      <ModalContent>
+        <form
           onSubmit={async (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -55,27 +67,27 @@ const Fields: React.FC<{
             onSave();
           }}
         >
-          <Modal.Card>
-            <Modal.Card.Head>
-              <Modal.Card.Title>Add a Card</Modal.Card.Title>
+          <ModalCard>
+            <ModalCardHead>
+              <ModalCardTitle>Add a Card</ModalCardTitle>
               <Delete onClick={onCancel} />
-            </Modal.Card.Head>
-            <Modal.Card.Body>
+            </ModalCardHead>
+            <ModalCardBody>
               <Content>
                 <CardElement />
               </Content>
-            </Modal.Card.Body>
-            <Modal.Card.Foot>
+            </ModalCardBody>
+            <ModalCardFoot>
               <Button type="submit" disabled={!ready || saving} loading={saving} color="info">
                 Save
               </Button>
               <Button type="button" disabled={!ready || saving} onClick={onCancel}>
                 Cancel
               </Button>
-            </Modal.Card.Foot>
-          </Modal.Card>
-        </Form>
-      </Modal.Content>
+            </ModalCardFoot>
+          </ModalCard>
+        </form>
+      </ModalContent>
     </Modal>
   );
 };

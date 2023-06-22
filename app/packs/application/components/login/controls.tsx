@@ -1,13 +1,13 @@
-import * as React from "react";
+import React from "react";
 
-import { Form } from "tights";
+import { Field, Control } from "tights";
 
 import { Submit } from "./submit";
 
 export const Controls: React.FC = () => (
-  <Form.Field>
-    <Form.Control>
+  <Field>
+    <Control>
       <Submit />
-    </Form.Control>
-  </Form.Field>
+    </Control>
+  </Field>
 );

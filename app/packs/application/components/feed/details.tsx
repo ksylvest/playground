@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Card, Column, Columns } from "tights";
+import { Card, CardContent, Column, Columns } from "tights";
 
 import { useFeedEntryQuery } from "@root/app_schema";
 
@@ -35,7 +35,7 @@ export const Details: React.FC = () => {
       <Title>Feed - Details | Playground</Title>
       <Breadcrumbs links={[{ name: "Details", to: FEED_DETAILS_URL({ id }) }]} />
       <Card>
-        <Card.Content>
+        <CardContent>
           <Columns>
             <Column>{photos && user && <Carousel user={user} photos={photos} />}</Column>
             <Column>
@@ -65,7 +65,7 @@ export const Details: React.FC = () => {
               <Comments entryID={id} />
             </Column>
           </Columns>
-        </Card.Content>
+        </CardContent>
       </Card>
     </>
   );

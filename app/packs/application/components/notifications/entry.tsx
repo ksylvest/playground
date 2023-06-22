@@ -1,8 +1,8 @@
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import React from "react";
 
-import { Buttons, Column, Columns, Icon, Message } from "tights";
+import { Buttons, Column, Columns, Icon, Message, MessageBody } from "tights";
 
 import { Notification } from "@root/app_schema";
 
@@ -16,7 +16,7 @@ export const Entry: React.FC<{
   const color = notification.read ? "light" : "info";
   return (
     <Message color={color}>
-      <Message.Body>
+      <MessageBody>
         <Columns mobile desktop vcentered>
           <Column narrow>
             <Icon color={color}>
@@ -36,7 +36,7 @@ export const Entry: React.FC<{
             </Buttons>
           </Column>
         </Columns>
-      </Message.Body>
+      </MessageBody>
     </Message>
   );
 };

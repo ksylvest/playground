@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 
-import { Content, Media } from "tights";
+import { Content, Media, MediaContent, MediaLeft } from "tights";
 
 import { Feed__CommentFragment } from "@root/app_schema";
 
@@ -16,7 +16,7 @@ export const Comment: React.FC<{
 
   return (
     <Media>
-      <Media.Left>
+      <MediaLeft>
         <Attachment
           attachment={avatar}
           placeholder={PLACEHOLDER}
@@ -27,8 +27,8 @@ export const Comment: React.FC<{
           h={48}
           alt={user.name}
         />
-      </Media.Left>
-      <Media.Content>
+      </MediaLeft>
+      <MediaContent>
         <Content>
           <p>
             <strong>{comment.user.name}</strong>{" "}
@@ -39,7 +39,7 @@ export const Comment: React.FC<{
             {comment.message}
           </p>
         </Content>
-      </Media.Content>
+      </MediaContent>
     </Media>
   );
 };

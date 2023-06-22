@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Image } from "tights";
 
 import { ATTACHMENT_URL } from "@application/config/routes";

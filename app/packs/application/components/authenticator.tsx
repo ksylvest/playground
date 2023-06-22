@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 import { useContext } from "react";
 import { useLocation } from "react-router";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 
 import { World } from "@application/contexts";
 
-import { Tabs } from "tights";
+import { Tabs, TabsItem, TabsList } from "tights";
 
 import { Login } from "./login";
 import { Signup } from "./signup";
@@ -24,18 +24,18 @@ export const Authenticator: React.FC<{
   return (
     <>
       <Tabs>
-        <Tabs.List>
-          <Tabs.Item active={location.pathname === "/login"}>
+        <TabsList>
+          <TabsItem active={location.pathname === "/login"}>
             <Link to="/login" state={location.state}>
               Login
             </Link>
-          </Tabs.Item>
-          <Tabs.Item active={location.pathname === "/signup"}>
+          </TabsItem>
+          <TabsItem active={location.pathname === "/signup"}>
             <Link to="/signup" state={location.state}>
               Signup
             </Link>
-          </Tabs.Item>
-        </Tabs.List>
+          </TabsItem>
+        </TabsList>
       </Tabs>
       {children}
     </>
