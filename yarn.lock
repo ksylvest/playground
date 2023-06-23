@@ -2081,6 +2081,11 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
+clsx@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -3837,10 +3842,12 @@ through@^2.3.6, through@^2.3.8:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
-tights@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/tights/-/tights-3.2.0.tgz#abc92fbce58825e47d808b7523a96a5b5b4bd5bf"
-  integrity sha512-hih4C3iHtvejpepgQ3HGh0jiT72EZ5NVQu9PQUh8Agf4jIOtxrMFQ2lwvPFpTX/Ayqz/foKGVF6AED2gmKhixg==
+tights@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/tights/-/tights-3.5.0.tgz#589b15ea193c3cae6f0210e00df8e7db7e706647"
+  integrity sha512-95ysrHoVh4p/UvCnrZpvqxVLY2ZsgRZg2QKvYaogV/jYWNPTgOq8UCCqYLJZPDUmK5ICHGh/Q9Om8MNvsvDLfQ==
+  dependencies:
+    clsx "^1.2.1"
 
 title-case@^3.0.3:
   version "3.0.3"
