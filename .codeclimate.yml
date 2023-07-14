@@ -5,4 +5,4 @@ exclude_patterns:
   - "log/**/*"
   - "spec/**/*"
   - "app/graphql/app_schema.graphql"
-  - "app/packs/app_schema.tsx"
+  - "app/packs/app_schema.ts"

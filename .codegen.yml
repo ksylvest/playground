@@ -1,6 +1,6 @@
 schema: "./app/graphql/app_schema.graphql"
 generates:
-  "app/packs/app_schema.tsx":
+  "app/packs/app_schema.ts":
     documents:
       - "app/packs/application/**/*.gql"
     plugins:
