@@ -33,7 +33,14 @@ jobs:
     steps:
       - checkout
       - setup_node
-      - run: yarn lint
+      - run: yarn eslint app/packs
+
+  prettier:
+    executor: default
+    steps:
+      - checkout
+      - setup_node
+      - run: yarn prettier --check app/packs
 
   tsc:
     executor: default
@@ -87,10 +94,10 @@ jobs:
       - run: bundle exec rake graphql:schema:generate
       - run: yarn run codegen
       - run: |
-          if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx) ]]; then
+          if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
             echo '`yarn run codegen`'
-            git diff app/graphql/app_schema.graphql app/webpack/app_schema.tsx
+            git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts
             exit 1
           fi
 
@@ -107,6 +114,7 @@ workflows:
   build:
     jobs:
       - eslint
+      - prettier
       - brakeman
       - rubocop
       - rspec

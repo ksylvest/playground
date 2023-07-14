@@ -9,5 +9,5 @@ export const ATTACHMENT_URL = (
   w: number,
   h: number,
   resize: "fit" | "fill",
-  format: "jpeg" | "webp" = "jpeg"
+  format: "jpeg" | "webp" = "jpeg",
 ): string => `/attachments/${id}.${format}?resize=${resize}&w=${w}&h=${h}`;

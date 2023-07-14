@@ -11,8 +11,6 @@ export const List: React.FC<{
   <>
     {authentications
       ?.filter(({ deleted }) => !deleted)
-      .map((authentication) => (
-        <Entry key={authentication.id} authentication={authentication} onRevoke={onRevoke} />
-      ))}
+      .map((authentication) => <Entry key={authentication.id} authentication={authentication} onRevoke={onRevoke} />)}
   </>
 );
