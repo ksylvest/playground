@@ -3821,10 +3821,10 @@ through@^2.3.6, through@^2.3.8:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
-tights@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/tights/-/tights-4.0.1.tgz#968b3398964118a5ccc06b5303d3065d2d9cd905"
-  integrity sha512-RLX1UP/NZDTYcMW/0BMH1Xrr2qB34Kbmb7wHgPxnSGbRkZDIsSWBOBP6zb6HoCZiA1e5KEJu4NlIt8MdX244tg==
+tights@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/tights/-/tights-4.0.2.tgz#438c88c365058711b339e3abeff57565cfdab38b"
+  integrity sha512-jTfE8A3CSTGcX7qmxdOa08AAAYnd14eFY8JuWmxH1QwwyAxGfZTucoR/bauJMGwUwonBp5IxD0D4b/Lf3ox7Ww==
   dependencies:
     clsx "^2.0.0"
 
