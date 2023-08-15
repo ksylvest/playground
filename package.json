@@ -18,7 +18,7 @@
     "@rails/activestorage": "^7.0.7",
     "@sentry/browser": "^7.64.0",
     "@stripe/react-stripe-js": "^2.1.2",
-    "@stripe/stripe-js": "^2.0.0",
+    "@stripe/stripe-js": "^2.1.0",
     "@types/lodash": "^4.14.197",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
