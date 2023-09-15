@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.5
+  docker: circleci/docker@2.2.0
   node: circleci/node@5.1.0
   ruby: circleci/ruby@2.1.0
 
@@ -113,6 +114,14 @@ workflows:
   version: 2.1
   build:
     jobs:
+      - docker/hadolint
+      - docker/publish:
+          cache_from: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:latest
+          executor:
+            name: docker/machine
+            image: ubuntu-2204:2023.02.1
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          tag: << pipeline.git.revision >>`if [ '<< pipeline.git.branch >>' == 'main' ]; then echo ",latest"; fi`
       - eslint
       - prettier
       - brakeman
