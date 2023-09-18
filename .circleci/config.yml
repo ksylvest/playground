@@ -16,7 +16,6 @@ executors:
           POSTGRES_HOST_AUTH_METHOD: trust
     environment:
       RAILS_ENV: test
-      RACK_ENV: test
       PGHOST: localhost
 
 commands:
