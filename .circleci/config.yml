@@ -121,11 +121,27 @@ workflows:
             image: ubuntu-2204:2023.02.1
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           tag: << pipeline.git.revision >>`if [ '<< pipeline.git.branch >>' == 'main' ]; then echo ",latest"; fi`
-      - eslint
-      - prettier
-      - brakeman
-      - rubocop
-      - rspec
-      - tsc
-      - codegen
-      - assets
+      - eslint:
+          requires:
+            - docker/publish
+      - prettier:
+          requires:
+            - docker/publish
+      - brakeman:
+          requires:
+            - docker/publish
+      - rubocop:
+          requires:
+            - docker/publish
+      - rspec:
+          requires:
+            - docker/publish
+      - tsc:
+          requires:
+            - docker/publish
+      - codegen:
+          requires:
+            - docker/publish
+      - assets:
+          requires:
+            - docker/publish
