@@ -8,7 +8,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.2.2-browsers
+      - image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:<< pipeline.git.revision >>
       - image: cimg/postgres:15.2
         environment:
           POSTGRES_USER: circleci
