@@ -1,4 +1,6 @@
 require:
+  - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-graphql
   - rubocop-rails
   - rubocop-rspec
@@ -14,6 +16,9 @@ AllCops:
     - vendor/**/*
     - node_modules/**/*
     - spec/spec_helper.rb
+
+FactoryBot/IdSequence:
+  Enabled: false
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
