@@ -42,6 +42,8 @@ group :development do
   gem 'brakeman'
   gem 'listen'
   gem 'rubocop'
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
   gem 'rubocop-graphql'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
