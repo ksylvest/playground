@@ -1519,10 +1519,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-fontawesome@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/@types/react-fontawesome/-/react-fontawesome-1.6.5.tgz#a5102b086613cf6d6c9ce944e9fb1eee604635b6"
-  integrity sha512-O75ViR81klU7TfVt4TAdEOWzzEf58RM8PVQHUmKsHjhDt/WLMcb+h/k5XxHUv9iYAKI5u81IoMJ20wC+QLe3Dw==
+"@types/react-fontawesome@^1.6.6":
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/@types/react-fontawesome/-/react-fontawesome-1.6.6.tgz#e1841c1173af33500d18bfa118eee3330ecdc7e5"
+  integrity sha512-fnUwKJsgz7wcAbxFqauJ5t3ePfTBP6uut9BF8BCej/55bvY2e8BAQpwvnyKlzqpP3NGrYK4bQyjQ2XFoXEFTbw==
   dependencies:
     "@types/react" "*"
 
