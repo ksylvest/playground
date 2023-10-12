@@ -15,8 +15,6 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  /** Represents a formatted data URI. */
-  DataURI: { input: any; output: any; }
   /** An ISO 8601-encoded datetime */
   DateTime: { input: string; output: string; }
   /** Represents untyped JSON */
@@ -33,12 +31,6 @@ export type Attached = {
   readonly __typename?: 'Attached';
   readonly filename: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
-  readonly variant?: Maybe<Scalars['DataURI']['output']>;
-};
-
-
-export type AttachedVariantArgs = {
-  options: VariantInput;
 };
 
 export type Authentication = {
@@ -422,23 +414,6 @@ export type UserInput = {
   readonly email: Scalars['String']['input'];
   readonly name: Scalars['String']['input'];
 };
-
-export type VariantInput = {
-  readonly format: Variant__Format;
-  readonly h: Scalars['Int']['input'];
-  readonly resize: Variant__Resize;
-  readonly w: Scalars['Int']['input'];
-};
-
-export enum Variant__Format {
-  Jpeg = 'JPEG',
-  Webp = 'WEBP'
-}
-
-export enum Variant__Resize {
-  Fill = 'FILL',
-  Fit = 'FIT'
-}
 
 export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly filename: string };
 
