@@ -14,7 +14,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@rails/actioncable": "^7.1.0",
+    "@rails/actioncable": "^7.1.1",
     "@rails/activestorage": "^7.1.1",
     "@sentry/browser": "^7.73.0",
     "@stripe/react-stripe-js": "^2.3.1",
