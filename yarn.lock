@@ -1617,10 +1617,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-fontawesome@^1.6.6":
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/@types/react-fontawesome/-/react-fontawesome-1.6.6.tgz#e1841c1173af33500d18bfa118eee3330ecdc7e5"
-  integrity sha512-fnUwKJsgz7wcAbxFqauJ5t3ePfTBP6uut9BF8BCej/55bvY2e8BAQpwvnyKlzqpP3NGrYK4bQyjQ2XFoXEFTbw==
+"@types/react-fontawesome@^1.6.7":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@types/react-fontawesome/-/react-fontawesome-1.6.7.tgz#c94551434de3942f40ec9cfb54ecb610b3a08c25"
+  integrity sha512-8fcGQeVAaugj9OlwytQx8jBuiIdE/q9LE+yqrzDndt7Aeq3feuey1T9wLS68f3P37h/nOnDRslMrmGA0UJsSMg==
   dependencies:
     "@types/react" "*"
 
