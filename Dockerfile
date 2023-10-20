@@ -16,6 +16,7 @@ RUN \
 
 COPY Gemfile .
 COPY Gemfile.lock .
+COPY .ruby-version .
 RUN bundle install
 
 COPY package.json .
