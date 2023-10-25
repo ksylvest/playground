@@ -16,7 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@rails/actioncable": "^7.1.1",
     "@rails/activestorage": "^7.1.1",
-    "@sentry/browser": "^7.75.0",
+    "@sentry/browser": "^7.75.1",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
     "@types/lodash": "^4.14.200",
