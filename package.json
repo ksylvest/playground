@@ -21,7 +21,7 @@
     "@stripe/stripe-js": "^2.1.11",
     "@types/lodash": "^4.14.200",
     "@types/rails__actioncable": "^6.1.9",
-    "@types/rails__activestorage": "^7.1.0",
+    "@types/rails__activestorage": "^7.1.1",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@types/react-fontawesome": "^1.6.8",
