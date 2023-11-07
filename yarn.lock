@@ -1602,10 +1602,10 @@
   resolved "https://registry.yarnpkg.com/@types/rails__actioncable/-/rails__actioncable-6.1.9.tgz#42cba0ef6095e724968d0a5b4c307a90aed142c6"
   integrity sha512-jgRBhXIt551LydwnT0t0NngV96hBsqF8lR1y37DtPzewlPUZCgDvv3NyZjj3gI3KpILC7i2/T/42h4mzNv52Lw==
 
-"@types/rails__activestorage@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@types/rails__activestorage/-/rails__activestorage-7.1.0.tgz#c6afdede85c908277b86ea9ec119cbedc80f0257"
-  integrity sha512-yCVZseGfFFEYOfK9dOeu2CZ/f9KeXbb7eUoeaAZDaLnTkhygILrBrJT5uYk2QPM4S8rBcgU0qMpuWFlbwIDeiA==
+"@types/rails__activestorage@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@types/rails__activestorage/-/rails__activestorage-7.1.1.tgz#e24d57b4cfe76e74c000ee4178326c59fc5a6357"
+  integrity sha512-raNFQ08xlqHvSYkoJ1T8pPPeARj5EzV28L4zFNj09jVz0HprVAhLknl0a51lhXDeb6va2jAFXpwOeYSY6TAjUg==
 
 "@types/react-dom@^18.2.14":
   version "18.2.14"
