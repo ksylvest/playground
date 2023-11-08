@@ -25,7 +25,7 @@
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.15",
     "@types/react-fontawesome": "^1.6.8",
-    "@types/webfontloader": "^1.6.36",
+    "@types/webfontloader": "^1.6.37",
     "bulma": "^0.9.4",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
