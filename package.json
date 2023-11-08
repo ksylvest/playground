@@ -22,7 +22,7 @@
     "@types/lodash": "^4.14.201",
     "@types/rails__actioncable": "^6.1.9",
     "@types/rails__activestorage": "^7.1.1",
-    "@types/react": "^18.2.36",
+    "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@types/react-fontawesome": "^1.6.8",
     "@types/webfontloader": "^1.6.37",
