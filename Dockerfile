@@ -20,8 +20,8 @@ COPY .ruby-version .
 RUN bundle install
 
 COPY package.json .
-COPY yarn.lock .
-RUN npm install -g yarn && yarn install
+COPY package-lock.json .
+RUN npm install
 
 COPY . .
 

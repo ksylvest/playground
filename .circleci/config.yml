@@ -24,8 +24,7 @@ commands:
       - ruby/install-deps
   setup_node:
     steps:
-      - node/install-packages:
-          pkg-manager: yarn
+      - node/install-packages
 
 jobs:
   eslint:
@@ -33,21 +32,21 @@ jobs:
     steps:
       - checkout
       - setup_node
-      - run: yarn eslint app/packs
+      - run: npx eslint app/packs
 
   prettier:
     executor: default
     steps:
       - checkout
       - setup_node
-      - run: yarn prettier --check app/packs
+      - run: npx prettier --check app/packs
 
   tsc:
     executor: default
     steps:
       - checkout
       - setup_node
-      - run: yarn run tsc --pretty --strict --noemit --skiplibcheck
+      - run: npx tsc --pretty --strict --noemit --skiplibcheck
 
   rubocop:
     executor: default
@@ -92,11 +91,11 @@ jobs:
       - setup_ruby
       - setup_node
       - run: bundle exec rake graphql:schema:generate
-      - run: yarn run codegen
+      - run: npm run codegen
       - run: |
           if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
-            echo '`yarn run codegen`'
+            echo '`npm run codegen`'
             git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts
             exit 1
           fi
