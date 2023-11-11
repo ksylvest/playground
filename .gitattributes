@@ -1,2 +1,3 @@
 app/graphql/app_schema.graphql linguist-generated=true
 app/packs/app_schema.ts linguist-generated=true
+*.lockb diff=loc

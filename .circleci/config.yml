@@ -1,8 +1,7 @@
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.4.5
-  docker: circleci/docker@2.2.0
-  node: circleci/node@5.1.0
+  browser-tools: circleci/browser-tools@1.4.6
+  docker: circleci/docker@2.4.0
   ruby: circleci/ruby@2.1.0
 
 executors:
@@ -19,48 +18,49 @@ executors:
       PGHOST: localhost
 
 commands:
-  setup_ruby:
+  setup:
     steps:
       - ruby/install-deps
-  setup_node:
-    steps:
-      - node/install-packages:
-          pkg-manager: yarn
+      - run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo 'export BUN_INSTALL="$HOME/.bun"' >> "$BASH_ENV"
+          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> "$BASH_ENV"
+      - run: bun install
 
 jobs:
   eslint:
     executor: default
     steps:
       - checkout
-      - setup_node
-      - run: yarn eslint app/packs
+      - setup
+      - run: bun run eslint app/packs
 
   prettier:
     executor: default
     steps:
       - checkout
-      - setup_node
-      - run: yarn prettier --check app/packs
+      - setup
+      - run: bun run prettier --check app/packs
 
   tsc:
     executor: default
     steps:
       - checkout
-      - setup_node
-      - run: yarn run tsc --pretty --strict --noemit --skiplibcheck
+      - setup
+      - run: bun run tsc --pretty --strict --noemit --skiplibcheck
 
   rubocop:
     executor: default
     steps:
       - checkout
-      - setup_ruby
+      - setup
       - ruby/rubocop-check
 
   brakeman:
     executor: default
     steps:
       - checkout
-      - setup_ruby
+      - setup
       - run: bundle exec brakeman -z --format html --output tmp/brakeman.html
       - store_artifacts:
           path: tmp/brakeman.html
@@ -74,8 +74,7 @@ jobs:
       - run: sudo apt-get install libvips
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - setup_ruby
-      - setup_node
+      - setup
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
       - run: ./bin/rails test:prepare
       - ruby/rspec-test
@@ -89,38 +88,47 @@ jobs:
     executor: default
     steps:
       - checkout
-      - setup_ruby
-      - setup_node
+      - setup
       - run: bundle exec rake graphql:schema:generate
-      - run: yarn run codegen
+      - run: bun run codegen
       - run: |
           if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
-            echo '`yarn run codegen`'
+            echo '`bun run codegen`'
             git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts
             exit 1
           fi
 
-  assets:
-    executor: default
+  containerize:
+    executor:
+      name: docker/machine
+      dlc: true
+    parameters:
+      image:
+        type: string
+        default: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+      tag:
+        type: string
+        default: << pipeline.git.revision >>`if [ '<< pipeline.git.branch >>' == 'main' ]; then echo ",latest"; fi`
     steps:
       - checkout
-      - setup_ruby
-      - setup_node
-      - run: ./bin/rails assets:precompile
+      - docker/check
+      - docker/build:
+          image: << parameters.image >>
+          tag: << parameters.tag >>
+      - docker/push:
+          image: << parameters.image >>
+          tag: << parameters.tag >>
+      - when:
+          condition:
+            equal: [main, << pipeline.git.branch >>]
+          steps:
+            - run: curl $DEPLOY_URL
 
 workflows:
   version: 2.1
   build:
     jobs:
-      - docker/hadolint
-      - docker/publish:
-          cache_from: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:latest
-          executor:
-            name: docker/machine
-            image: ubuntu-2204:2023.02.1
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-          tag: << pipeline.git.revision >>`if [ '<< pipeline.git.branch >>' == 'main' ]; then echo ",latest"; fi`
       - eslint
       - prettier
       - brakeman
@@ -128,4 +136,4 @@ workflows:
       - rspec
       - tsc
       - codegen
-      - assets
+      - containerize

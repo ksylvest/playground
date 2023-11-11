@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby file: '.ruby-version'
+ruby '3.2.2'
 
 gem 'rails'
 
@@ -21,6 +21,7 @@ gem 'stripe'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 
+gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'sentry-rails'
 
