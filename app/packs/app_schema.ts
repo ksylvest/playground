@@ -1391,8 +1391,13 @@ export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQ
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
         }
+export function useFeedSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<FeedQuery, FeedQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options);
+        }
 export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
+export type FeedSuspenseQueryHookResult = ReturnType<typeof useFeedSuspenseQuery>;
 export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
 export const FeedCommentsDocument = gql`
     query FeedComments($id: ID!) {
@@ -1432,8 +1437,13 @@ export function useFeedCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
         }
+export function useFeedCommentsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
+        }
 export type FeedCommentsQueryHookResult = ReturnType<typeof useFeedCommentsQuery>;
 export type FeedCommentsLazyQueryHookResult = ReturnType<typeof useFeedCommentsLazyQuery>;
+export type FeedCommentsSuspenseQueryHookResult = ReturnType<typeof useFeedCommentsSuspenseQuery>;
 export type FeedCommentsQueryResult = Apollo.QueryResult<FeedCommentsQuery, FeedCommentsQueryVariables>;
 export const FeedEntryDocument = gql`
     query FeedEntry($id: ID!) {
@@ -1470,8 +1480,13 @@ export function useFeedEntryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
         }
+export function useFeedEntrySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
+        }
 export type FeedEntryQueryHookResult = ReturnType<typeof useFeedEntryQuery>;
 export type FeedEntryLazyQueryHookResult = ReturnType<typeof useFeedEntryLazyQuery>;
+export type FeedEntrySuspenseQueryHookResult = ReturnType<typeof useFeedEntrySuspenseQuery>;
 export type FeedEntryQueryResult = Apollo.QueryResult<FeedEntryQuery, FeedEntryQueryVariables>;
 export const NotificationsDocument = gql`
     query Notifications {
@@ -1504,8 +1519,13 @@ export function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
         }
+export function useNotificationsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, options);
+        }
 export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
 export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
+export type NotificationsSuspenseQueryHookResult = ReturnType<typeof useNotificationsSuspenseQuery>;
 export type NotificationsQueryResult = Apollo.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const ProfileDocument = gql`
     query Profile($id: ID!) {
@@ -1547,8 +1567,13 @@ export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Pr
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
         }
+export function useProfileSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
+        }
 export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
 export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
+export type ProfileSuspenseQueryHookResult = ReturnType<typeof useProfileSuspenseQuery>;
 export type ProfileQueryResult = Apollo.QueryResult<ProfileQuery, ProfileQueryVariables>;
 export const SettingsAuthenticationsDocument = gql`
     query SettingsAuthentications {
@@ -1581,8 +1606,13 @@ export function useSettingsAuthenticationsLazyQuery(baseOptions?: Apollo.LazyQue
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
         }
+export function useSettingsAuthenticationsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>(SettingsAuthenticationsDocument, options);
+        }
 export type SettingsAuthenticationsQueryHookResult = ReturnType<typeof useSettingsAuthenticationsQuery>;
 export type SettingsAuthenticationsLazyQueryHookResult = ReturnType<typeof useSettingsAuthenticationsLazyQuery>;
+export type SettingsAuthenticationsSuspenseQueryHookResult = ReturnType<typeof useSettingsAuthenticationsSuspenseQuery>;
 export type SettingsAuthenticationsQueryResult = Apollo.QueryResult<SettingsAuthenticationsQuery, SettingsAuthenticationsQueryVariables>;
 export const SettingsAvatarDocument = gql`
     query SettingsAvatar {
@@ -1619,8 +1649,13 @@ export function useSettingsAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
         }
+export function useSettingsAvatarSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SettingsAvatarQuery, SettingsAvatarQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SettingsAvatarQuery, SettingsAvatarQueryVariables>(SettingsAvatarDocument, options);
+        }
 export type SettingsAvatarQueryHookResult = ReturnType<typeof useSettingsAvatarQuery>;
 export type SettingsAvatarLazyQueryHookResult = ReturnType<typeof useSettingsAvatarLazyQuery>;
+export type SettingsAvatarSuspenseQueryHookResult = ReturnType<typeof useSettingsAvatarSuspenseQuery>;
 export type SettingsAvatarQueryResult = Apollo.QueryResult<SettingsAvatarQuery, SettingsAvatarQueryVariables>;
 export const SettingsBillingDocument = gql`
     query SettingsBilling {
@@ -1660,8 +1695,13 @@ export function useSettingsBillingLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
         }
+export function useSettingsBillingSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SettingsBillingQuery, SettingsBillingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SettingsBillingQuery, SettingsBillingQueryVariables>(SettingsBillingDocument, options);
+        }
 export type SettingsBillingQueryHookResult = ReturnType<typeof useSettingsBillingQuery>;
 export type SettingsBillingLazyQueryHookResult = ReturnType<typeof useSettingsBillingLazyQuery>;
+export type SettingsBillingSuspenseQueryHookResult = ReturnType<typeof useSettingsBillingSuspenseQuery>;
 export type SettingsBillingQueryResult = Apollo.QueryResult<SettingsBillingQuery, SettingsBillingQueryVariables>;
 export const SettingsProfileDocument = gql`
     query SettingsProfile {
@@ -1696,6 +1736,11 @@ export function useSettingsProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
         }
+export function useSettingsProfileSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SettingsProfileQuery, SettingsProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SettingsProfileQuery, SettingsProfileQueryVariables>(SettingsProfileDocument, options);
+        }
 export type SettingsProfileQueryHookResult = ReturnType<typeof useSettingsProfileQuery>;
 export type SettingsProfileLazyQueryHookResult = ReturnType<typeof useSettingsProfileLazyQuery>;
+export type SettingsProfileSuspenseQueryHookResult = ReturnType<typeof useSettingsProfileSuspenseQuery>;
 export type SettingsProfileQueryResult = Apollo.QueryResult<SettingsProfileQuery, SettingsProfileQueryVariables>;
