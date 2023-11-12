@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
+  get 'up', to: 'rails/health#show'
+
   root to: 'main#index'
   post '/graphql', to: 'graphql#execute', as: :graphql
 
