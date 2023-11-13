@@ -47,6 +47,10 @@ COPY --from=build /rails/public/assets /rails/public/assets
 
 RUN bundle exec bootsnap precompile --gemfile /app /lib
 
+RUN useradd rails -m -s /bin/bash && \
+  chown -R rails:rails log storage tmp
+USER rails:rails
+
 ENTRYPOINT ["/rails/bin/entrypoint"]
 
 EXPOSE $PORT
