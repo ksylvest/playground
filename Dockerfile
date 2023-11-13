@@ -17,17 +17,15 @@ FROM base AS build
 
 RUN \
   apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential libpq-dev npm curl unzip && \
+  apt-get install --no-install-recommends -y build-essential curl libpq-dev npm zip unzip && \
   curl -fsSL https://bun.sh/install | bash && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
-COPY Gemfile .
-COPY Gemfile.lock .
-COPY .ruby-version .
-RUN bundle install
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+  rm -rf "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-COPY package.json .
-COPY bun.lockb .
+COPY package.json bun.lockb ./
 RUN bun install
 
 COPY . .
@@ -39,13 +37,18 @@ FROM base
 RUN \
   apt-get update -qq && \
   apt-get install --no-install-recommends -y libpq-dev libvips && \
-  rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
+  rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY . .
 COPY --from=build /usr/local/bundle /usr/local/bundle
+COPY --from=build /rails/app/assets /rails/app/assets
 COPY --from=build /rails/public/assets /rails/public/assets
 
 RUN bundle exec bootsnap precompile --gemfile /app /lib
+
+RUN useradd rails -m -s /bin/bash && \
+  chown -R rails:rails log storage tmp
+USER rails:rails
 
 ENTRYPOINT ["/rails/bin/entrypoint"]
 
