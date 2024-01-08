@@ -8,7 +8,8 @@ module Mutations
 
     def resolve(input:)
       auth = Auth.new(input.to_h)
-      user = auth.authenticate
+      user = auth.user
+
       if user
         authentication = Current.auth!(user)
         { status: :ok, authentication: authentication }
