@@ -8,8 +8,8 @@ RSpec.describe IPStack do
     subject :fetch! do
       allow(IPStack.config).to receive(:access_key) { fake_access_key }
       stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
-        .to_return(status: status, body: body)
-      IPStack.fetch!(ip: ip)
+        .to_return(status:, body:)
+      IPStack.fetch!(ip:)
     end
 
     context 'with a result' do

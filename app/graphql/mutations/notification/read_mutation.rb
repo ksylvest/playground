@@ -9,7 +9,7 @@ module Mutations
         notification = Current.user.notifications.find(id)
         notification.read!
 
-        { notification: notification }
+        { notification: }
       end
     end
   end

@@ -31,7 +31,7 @@ RSpec.describe Mutations::User::FollowMutation do
     end
 
     it 'builds a follow' do
-      expect { execute }.to change { Follow.where(follower: user, followed: followed).count }.by(+1)
+      expect { execute }.to change { Follow.where(follower: user, followed:).count }.by(+1)
     end
   end
 end

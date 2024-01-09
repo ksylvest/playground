@@ -21,7 +21,7 @@ RSpec.describe Mutations::Authentication::DestroyMutation do
     end
 
     let(:user) { create(:user) }
-    let!(:authentication) { create(:authentication, user: user) }
+    let!(:authentication) { create(:authentication, user:) }
 
     it 'resolves "OK"' do
       expect(execute['errors']).to be_nil

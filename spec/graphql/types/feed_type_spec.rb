@@ -44,8 +44,8 @@ RSpec.describe Types::FeedType do
 
     let(:user) { create(:user, :with_avatar) }
     let!(:entry) { create(:feed_entry, :with_photos) }
-    let!(:comment) { create(:feed_comment, entry: entry) }
-    let!(:like) { create(:feed_like, entry: entry) }
+    let!(:comment) { create(:feed_comment, entry:) }
+    let!(:like) { create(:feed_like, entry:) }
 
     it 'resolves a feed' do
       expect(execute['errors']).to be_nil

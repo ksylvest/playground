@@ -6,10 +6,10 @@ module Mutations
       field :authentication, ::Types::AuthenticationType, null: false
 
       def resolve(id:)
-        authentication = Current.user.authentications.find_by(id: id)
+        authentication = Current.user.authentications.find_by(id:)
         authentication.clear!
 
-        { authentication: authentication }
+        { authentication: }
       end
     end
   end

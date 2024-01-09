@@ -9,7 +9,7 @@ module Mutations
         user = ::User.find(id)
         Follow.find_or_initialize_by(follower: Current.user, followed: user).save!
 
-        { user: user }
+        { user: }
       end
     end
   end

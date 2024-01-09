@@ -22,7 +22,7 @@ RSpec.describe Mutations::User::UnfollowMutation do
 
     let(:user) { create(:user) }
     let(:followed) { create(:user) }
-    let!(:follow) { create(:follow, follower: user, followed: followed) }
+    let!(:follow) { create(:follow, follower: user, followed:) }
 
     it 'resolves' do
       expect(execute['errors']).to be_nil
@@ -32,7 +32,7 @@ RSpec.describe Mutations::User::UnfollowMutation do
     end
 
     it 'builds a like' do
-      expect { execute }.to change { Follow.where(follower: user, followed: followed).count }.by(-1)
+      expect { execute }.to change { Follow.where(follower: user, followed:).count }.by(-1)
     end
   end
 end

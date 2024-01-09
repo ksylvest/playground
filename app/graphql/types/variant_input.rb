@@ -7,8 +7,8 @@ module Types
 
     def parameterize
       {
-        format: format,
-        resize: resize,
+        format:,
+        resize:,
         size: [
           w,
           h,

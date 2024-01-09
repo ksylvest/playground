@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::SignupMutation do
   describe '#resolve' do
     subject(:execute) do
-      AppSchema.execute(gql, variables: { input: input })
+      AppSchema.execute(gql, variables: { input: })
     end
 
     let(:gql) do

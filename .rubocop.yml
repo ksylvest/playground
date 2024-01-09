@@ -71,9 +71,6 @@ Style/EmptyCaseCondition:
 Style/ExpandPathArguments:
   Enabled: false
 
-Style/HashSyntax:
-  EnforcedShorthandSyntax: never
-
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
 

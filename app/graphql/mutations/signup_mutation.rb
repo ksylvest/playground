@@ -10,7 +10,7 @@ module Mutations
       user = ::User.new(input.to_h)
       if user.save
         authentication = Current.auth!(user)
-        { status: :ok, authentication: authentication }
+        { status: :ok, authentication: }
       else
         { status: :unprocessable, errors: user.errors }
       end

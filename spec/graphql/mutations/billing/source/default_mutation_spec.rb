@@ -4,8 +4,8 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      allow(Billing::DefaultSourceService).to receive(:perform!).with({ user: user, id: id })
-      AppSchema.execute(gql, variables: { id: id })
+      allow(Billing::DefaultSourceService).to receive(:perform!).with({ user:, id: })
+      AppSchema.execute(gql, variables: { id: })
     end
 
     let(:gql) do

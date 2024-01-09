@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'notifications' do
   let(:user) { create(:user) }
-  let!(:welcome_notification) { create(:notification, user: user, message: 'Welcome!') }
-  let!(:goodbye_notification) { create(:notification, user: user, message: 'Goodbye!') }
+  let!(:welcome_notification) { create(:notification, user:, message: 'Welcome!') }
+  let!(:goodbye_notification) { create(:notification, user:, message: 'Goodbye!') }
 
   it 'lets a user manage their notifications' do
     visit notifications_path

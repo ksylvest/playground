@@ -12,7 +12,7 @@ module Mutations
 
       if user
         authentication = Current.auth!(user)
-        { status: :ok, authentication: authentication }
+        { status: :ok, authentication: }
       else
         { status: :unprocessable, errors: auth.errors }
       end

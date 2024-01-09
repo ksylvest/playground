@@ -7,6 +7,6 @@ module IPStack
   end
 
   def self.fetch!(ip:)
-    IPStack::API.new(config: config).fetch!(ip: ip)
+    IPStack::API.new(config:).fetch!(ip:)
   end
 end

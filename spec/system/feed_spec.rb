@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'feed' do
   let(:user) { create(:user, :with_avatar) }
-  let!(:entry) { create(:feed_entry, :with_photos, user: user) }
+  let!(:entry) { create(:feed_entry, :with_photos, user:) }
 
   it 'lists feed entries' do
     visit root_path

@@ -29,8 +29,8 @@ RSpec.describe Types::BillingType do
     end
 
     let!(:user) { create(:user) }
-    let!(:customer) { create(:billing_customer, user: user) }
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:customer) { create(:billing_customer, user:) }
+    let!(:source) { create(:billing_source, customer:) }
 
     it 'resolves' do
       expect(execute['errors']).to be_nil

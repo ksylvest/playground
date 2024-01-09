@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe NotificationPublishJob do
   let(:user) { create(:user) }
-  let(:notification) { create(:notification, user: user) }
+  let(:notification) { create(:notification, user:) }
 
   describe '#perform' do
     subject(:perform) { described_class.new.perform(notification) }

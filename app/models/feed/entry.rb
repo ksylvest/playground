@@ -4,5 +4,5 @@ class Feed::Entry < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many_attached :photos
 
-  scope :for, ->(user:) { where(user: user) if user }
+  scope :for, ->(user:) { where(user:) if user }
 end
