@@ -9,7 +9,7 @@ module Mutations
         user = ::User.find(id)
         Follow.destroy_by(follower: Current.user, followed: user)
 
-        { user: user }
+        { user: }
       end
     end
   end

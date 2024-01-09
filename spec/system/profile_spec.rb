@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'feed' do
   let(:user) { create(:user, :with_avatar) }
-  let!(:entry) { create(:feed_entry, :with_photos, user: user) }
+  let!(:entry) { create(:feed_entry, :with_photos, user:) }
 
   it 'lets a user follow and unfollow a profile' do
     visit profile_path(user)

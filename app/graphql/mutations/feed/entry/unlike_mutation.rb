@@ -8,9 +8,9 @@ module Mutations
 
         def resolve(id:)
           entry = ::Feed::Entry.find(id)
-          like = ::Feed::Like.find_by(user: Current.user, entry: entry)
+          like = ::Feed::Like.find_by(user: Current.user, entry:)
           like&.destroy
-          { entry: entry }
+          { entry: }
         end
       end
     end

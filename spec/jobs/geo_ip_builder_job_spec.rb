@@ -8,7 +8,7 @@ RSpec.describe GeoIPBuilderJob do
     subject :perform do
       allow(IPStack.config).to receive(:access_key) { fake_access_key }
       stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
-        .to_return(status: status, body: body)
+        .to_return(status:, body:)
       described_class.new.perform(ip)
     end
 
@@ -34,7 +34,7 @@ RSpec.describe GeoIPBuilderJob do
 
     it 'builds a geo IP entry' do
       expect { perform }
-        .to change { GeoIP.where(ip: ip, latitude: 43.2, longitude: -73.8, postal: '12000').count }
+        .to change { GeoIP.where(ip:, latitude: 43.2, longitude: -73.8, postal: '12000').count }
     end
   end
 end

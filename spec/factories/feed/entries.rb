@@ -5,7 +5,7 @@ FactoryBot.define do
     trait :with_photos do
       after :build do |entry|
         io = Rails.root.join('spec/fixtures/files/photo.png').open
-        entry.photos.attach(io: io, filename: 'photo.svg', content_type: 'image/svg')
+        entry.photos.attach(io:, filename: 'photo.svg', content_type: 'image/svg')
       end
     end
   end

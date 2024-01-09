@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'settings/billing' do
   let(:user) { create(:user) }
-  let(:customer) { create(:billing_customer, user: user) }
+  let(:customer) { create(:billing_customer, user:) }
 
   it 'prompts for authentication' do
     visit settings_billing_path
@@ -21,10 +21,10 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when building a source' do
-    let(:source) { create(:billing_source, customer: customer) }
+    let(:source) { create(:billing_source, customer:) }
 
     it 'saves a source with a valid number, expiration, and CVC' do
-      allow(Billing::BuildSourceService).to receive(:perform!).with({ user: user, source: anything }) { source }
+      allow(Billing::BuildSourceService).to receive(:perform!).with({ user:, source: anything }) { source }
 
       visit settings_billing_path
       login(user)
@@ -43,7 +43,7 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when destroying a source' do
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:source) { create(:billing_source, customer:) }
 
     it 'lets a user destroy a source' do
       allow(Billing::DestroySourceService).to receive(:perform!) { source.destroy! }
@@ -70,7 +70,7 @@ RSpec.describe 'settings/billing' do
   end
 
   context 'when changing the default a source' do
-    let!(:source) { create(:billing_source, customer: customer) }
+    let!(:source) { create(:billing_source, customer:) }
 
     it 'lets a user change the default source' do
       allow(Billing::DefaultSourceService).to receive(:perform!) { source }

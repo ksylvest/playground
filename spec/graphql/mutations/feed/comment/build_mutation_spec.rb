@@ -4,7 +4,7 @@ RSpec.describe Mutations::Feed::Comment::BuildMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      AppSchema.execute(gql, variables: { input: input })
+      AppSchema.execute(gql, variables: { input: })
     end
 
     let(:gql) do
@@ -31,12 +31,12 @@ RSpec.describe Mutations::Feed::Comment::BuildMutation do
     let(:input) do
       {
         entryID: entry.id,
-        message: message,
+        message:,
       }
     end
 
     let(:user) { create(:user) }
-    let(:entry) { create(:feed_entry, user: user) }
+    let(:entry) { create(:feed_entry, user:) }
 
     context 'with valid input' do
       let(:message) { 'The quick brown fox jumped over the lazy dog.' }
@@ -52,7 +52,7 @@ RSpec.describe Mutations::Feed::Comment::BuildMutation do
       end
 
       it 'builds a comment' do
-        expect { execute }.to change { Feed::Comment.where(entry: entry).count }
+        expect { execute }.to change { Feed::Comment.where(entry:).count }
       end
     end
 

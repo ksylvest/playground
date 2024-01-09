@@ -14,7 +14,7 @@ module Mutations
           comment.sent_at = Time.current
 
           if comment.save
-            { status: :ok, comment: comment }
+            { status: :ok, comment: }
           else
             { status: :unprocessable, errors: comment.errors }
           end

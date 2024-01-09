@@ -4,16 +4,16 @@ class GeoIPBuilderJob < ApplicationJob
   def perform(ip)
     return if ip.eql?('0.0.0.0')
     return if IPAddr.new(ip).loopback?
-    return if GeoIP.exists?(ip: ip)
+    return if GeoIP.exists?(ip:)
 
-    geo_ip = parse(ip: ip, result: IPStack.fetch!(ip: ip))
+    geo_ip = parse(ip:, result: IPStack.fetch!(ip:))
     geo_ip.save!
   end
 
 private
 
   def parse(ip:, result:)
-    geo_ip = GeoIP.new(ip: ip)
+    geo_ip = GeoIP.new(ip:)
     geo_ip.attributes = {
       city: result.city,
       region: result.region.name,

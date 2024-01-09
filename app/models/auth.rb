@@ -10,7 +10,7 @@ class Auth
   def user
     return if invalid?
 
-    user = User.authenticate_by(email: email, password: password)
+    user = User.authenticate_by(email:, password:)
 
     errors.add(:base, 'the email and password entered did not match our records') if user.nil?
 

@@ -8,7 +8,7 @@ module Mutations
 
       def resolve(password:)
         user = Current.user
-        change = ::Password::Change.new(current: password[:current], replacement: password[:replacement], user: user)
+        change = ::Password::Change.new(current: password[:current], replacement: password[:replacement], user:)
 
         if change.save!
           { status: :ok }

@@ -15,7 +15,7 @@ class Current < ActiveSupport::CurrentAttributes
   end
 
   def auth!(user)
-    self.authentication = user.authentications.build(ip: ip)
+    self.authentication = user.authentications.build(ip:)
     authentication.save!
     cookies.permanent.encrypted[:authentication_id] = authentication.id if cookies
     authentication

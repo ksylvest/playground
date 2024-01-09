@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :stripe_source, class: 'Stripe::Source' do
-    initialize_with { Stripe::Source.new(id: id) }
+    initialize_with { Stripe::Source.new(id:) }
     transient do
       sequence(:id) { |id| "source_#{id}" }
     end

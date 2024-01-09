@@ -3,7 +3,7 @@ class Feed::Context
 
   def initialize(user: nil)
     @user = user
-    @entries = Feed::Entry.for(user: user)
+    @entries = Feed::Entry.for(user:)
   end
 
   def id

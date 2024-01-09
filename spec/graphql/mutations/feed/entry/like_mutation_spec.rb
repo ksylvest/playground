@@ -22,7 +22,7 @@ RSpec.describe Mutations::Feed::Entry::LikeMutation do
     end
 
     let(:user) { create(:user) }
-    let(:entry) { create(:feed_entry, user: user) }
+    let(:entry) { create(:feed_entry, user:) }
 
     it 'resolves' do
       expect(execute['errors']).to be_nil
@@ -33,7 +33,7 @@ RSpec.describe Mutations::Feed::Entry::LikeMutation do
     end
 
     it 'builds a like' do
-      expect { execute }.to change { Feed::Like.where(entry: entry).count }.by(+1)
+      expect { execute }.to change { Feed::Like.where(entry:).count }.by(+1)
     end
   end
 end

@@ -8,8 +8,8 @@ RSpec.describe Attachment::VariantService, type: :service do
   let(:service) do
     Attachment::VariantService.new(
       attachment,
-      format: format,
-      resize: resize,
+      format:,
+      resize:,
       size: [
         64,
         64,

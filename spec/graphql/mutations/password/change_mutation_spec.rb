@@ -4,7 +4,7 @@ RSpec.describe Mutations::Password::ChangeMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      AppSchema.execute(gql, variables: { password: password })
+      AppSchema.execute(gql, variables: { password: })
     end
 
     let(:gql) do

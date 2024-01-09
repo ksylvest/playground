@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AuthenticationPublishJob do
   let(:user) { create(:user) }
-  let(:authentication) { create(:authentication, user: user) }
+  let(:authentication) { create(:authentication, user:) }
 
   describe '#perform' do
     subject(:perform) { described_class.new.perform(authentication) }

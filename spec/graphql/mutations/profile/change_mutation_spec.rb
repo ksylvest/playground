@@ -4,7 +4,7 @@ RSpec.describe Mutations::Profile::ChangeMutation do
   describe '#resolve' do
     subject :execute do
       Current.auth!(user)
-      AppSchema.execute(gql, variables: { input: input })
+      AppSchema.execute(gql, variables: { input: })
     end
 
     let(:gql) do

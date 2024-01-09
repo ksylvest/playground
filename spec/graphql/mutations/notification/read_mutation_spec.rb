@@ -21,7 +21,7 @@ RSpec.describe Mutations::Notification::ReadMutation do
     end
 
     let(:user) { create(:user) }
-    let!(:notification) { create(:notification, user: user) }
+    let!(:notification) { create(:notification, user:) }
 
     it 'resolves' do
       expect(execute['errors']).to be_nil

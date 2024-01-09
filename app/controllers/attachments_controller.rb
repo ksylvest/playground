@@ -15,9 +15,9 @@ private
   def service
     Attachment::VariantService.new(
       attachment,
-      format: format,
-      resize: resize,
-      size: size
+      format:,
+      resize:,
+      size:
     )
   end
 

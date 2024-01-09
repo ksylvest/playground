@@ -8,9 +8,9 @@ module Mutations
 
         def resolve(id:)
           user = Current.user
-          ::Billing::DestroySourceService.perform!(user: user, id: id)
+          ::Billing::DestroySourceService.perform!(user:, id:)
 
-          { billing: ::Billing::Context.new(user: user) }
+          { billing: ::Billing::Context.new(user:) }
         end
       end
     end
