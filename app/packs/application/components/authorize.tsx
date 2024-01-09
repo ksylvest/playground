@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { useLocation } from "react-router";
 import { Navigate } from "react-router-dom";
 
-import { Flash } from "@application/types";
+import { Flash } from "@application/types/flash";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 const AUTHORIZE_FLASH: Flash = {
   kind: "alert",

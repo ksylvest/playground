@@ -26,7 +26,7 @@ import { Fields as SignupFields } from "@application/components/signup/fields";
 import { Form as SignupForm } from "@application/components/signup/form";
 import { Submit as SignupSubmit } from "@application/components/signup/submit";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 const Login = {
   Context: LoginContext,

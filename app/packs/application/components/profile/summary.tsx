@@ -4,7 +4,7 @@ import { Column, Columns, Title } from "tights";
 
 import { FollowFragment, UserFragment } from "@root/app_schema";
 
-import { Attachment } from "@application/components/helpers";
+import { Attachment } from "@application/components/helpers/attachment";
 
 import { Actions } from "./actions";
 

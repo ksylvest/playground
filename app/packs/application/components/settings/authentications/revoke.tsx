@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { AuthenticationFragment, useSettingsAuthenticationDestroyMutation } from "@root/app_schema";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Dialog } from "./revoke/dialog";
 
@@ -13,7 +13,9 @@ export const Revoke: React.FC<{
 }> = ({ authentication, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: authentication.id };
-  const [submit, { loading }] = useSettingsAuthenticationDestroyMutation({ variables });
+  const [submit, { loading }] = useSettingsAuthenticationDestroyMutation({
+    variables,
+  });
 
   const onContinue = async (): Promise<void> => {
     if (loading) {

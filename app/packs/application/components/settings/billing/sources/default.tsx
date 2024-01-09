@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { Billing__Source, useSettingsBillingSourceDefaultMutation } from "@root/app_schema";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Dialog } from "./default/dialog";
 
@@ -13,7 +13,9 @@ export const Default: React.FC<{
 }> = ({ source, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: source.id };
-  const [submit, { loading }] = useSettingsBillingSourceDefaultMutation({ variables });
+  const [submit, { loading }] = useSettingsBillingSourceDefaultMutation({
+    variables,
+  });
 
   const onContinue = async (): Promise<void> => {
     if (loading) {

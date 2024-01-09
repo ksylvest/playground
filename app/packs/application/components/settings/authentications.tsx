@@ -3,9 +3,9 @@ import { useState } from "react";
 
 import { AuthenticationFragment, useSettingsAuthenticationsQuery } from "@root/app_schema";
 
-import { Title } from "@application/components/helpers";
+import { Title } from "@application/components/helpers/title";
 
-import { useActionCableSubscription } from "@application/hooks";
+import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
 
 import { List } from "./authentications/list";
 import { Revoke } from "./authentications/revoke";

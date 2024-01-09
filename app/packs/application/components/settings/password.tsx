@@ -3,9 +3,9 @@ import { useContext } from "react";
 
 import { Status, useSettingsPasswordMutation } from "@root/app_schema";
 
-import { Title } from "@application/components/helpers";
+import { Title } from "@application/components/helpers/title";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Fields } from "./password/fields";
 

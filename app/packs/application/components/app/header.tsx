@@ -15,7 +15,7 @@ import {
   NavbarStart,
 } from "tights";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Logout } from "@application/components/logout";
 

@@ -6,11 +6,11 @@ import { useState } from "react";
 
 import { Pagination, PaginationItem, PaginationLink, PaginationList, PaginationNext, PaginationPrev } from "tights";
 
-import { Attachment } from "@application/components/helpers";
+import { Attachment } from "@application/components/helpers/attachment";
 
 import { AttachedFragment, UserFragment } from "@root/app_schema";
 
-import { useKey } from "@application/hooks";
+import { useKey } from "@application/hooks/use_key";
 
 const DEFAULT_INDEX = 0;
 const NEXT_KEY = "ArrowRight";

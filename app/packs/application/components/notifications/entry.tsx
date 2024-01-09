@@ -6,9 +6,10 @@ import { Buttons, Column, Columns, Icon, Message, MessageBody } from "tights";
 
 import { Notification } from "@root/app_schema";
 
+import { Age } from "@application/components/helpers/age";
+
 import { Destroy } from "./destroy";
 import { Read } from "./read";
-import { Age } from "../helpers";
 
 export const Entry: React.FC<{
   notification: Notification;

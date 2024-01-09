@@ -7,7 +7,8 @@ import { useSettingsAvatarQuery } from "@root/app_schema";
 import { Attach } from "./avatar/attach";
 import { Detach } from "./avatar/detach";
 
-import { Attachment, Title } from "@application/components/helpers";
+import { Attachment } from "@application/components/helpers/attachment";
+import { Title } from "@application/components/helpers/title";
 
 const PLACEHOLDER = "/avatar/placeholder.svg";
 

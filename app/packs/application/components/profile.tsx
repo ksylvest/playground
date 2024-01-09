@@ -3,8 +3,8 @@ import { useParams } from "react-router";
 
 import { useProfileQuery } from "@root/app_schema";
 
-import { Breadcrumbs } from "@application/components/helpers";
-import { Title } from "@application/components/helpers";
+import { Breadcrumbs } from "@application/components/helpers/breadcrumbs";
+import { Title } from "@application/components/helpers/title";
 
 import { Entries } from "./feed/entries";
 import { Summary } from "./profile/summary";

@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Column, Columns } from "tights";
 
-import { Title } from "@application/components/helpers";
+import { Title } from "@application/components/helpers/title";
 
 import { Sidebar } from "./settings/sidebar";
 

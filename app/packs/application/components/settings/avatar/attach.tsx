@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { useSettingsAvatarAttachMutation } from "@root/app_schema";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Uploader } from "@application/components/uploader";
 

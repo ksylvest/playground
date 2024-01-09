@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { Flash } from "@application/types";
+import { Flash } from "@application/types/flash";
 
 export const World = createContext<{
   authentication?: { id: string };
