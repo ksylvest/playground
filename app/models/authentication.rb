@@ -5,6 +5,8 @@ class Authentication < ApplicationRecord
 
   belongs_to :user
 
+  has_secure_token
+
   validates :ip, presence: true
 
   after_commit { GeoIPBuilderJob.new(String(ip)).enqueue }
