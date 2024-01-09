@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe Billing::Source do
   subject { build(:billing_source) }
 
-  it { should belong_to(:customer) }
+  it { is_expected.to belong_to(:customer) }
 
-  it { should validate_presence_of(:stripe_id) }
-  it { should validate_uniqueness_of(:stripe_id) }
-  it { should validate_presence_of(:brand) }
-  it { should validate_presence_of(:funding) }
-  it { should validate_presence_of(:number) }
-  it { should validate_presence_of(:exp_month) }
-  it { should validate_presence_of(:exp_year) }
+  it { is_expected.to validate_presence_of(:stripe_id) }
+  it { is_expected.to validate_uniqueness_of(:stripe_id) }
+  it { is_expected.to validate_presence_of(:brand) }
+  it { is_expected.to validate_presence_of(:funding) }
+  it { is_expected.to validate_presence_of(:number) }
+  it { is_expected.to validate_presence_of(:exp_month) }
+  it { is_expected.to validate_presence_of(:exp_year) }
 
   describe '#parse' do
     let(:stripe) { build_stubbed(:stripe_source) }

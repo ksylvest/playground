@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe User do
   subject { build(:user) }
 
-  it { should have_many(:authentications) }
-  it { should have_many(:notifications) }
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
-  it { should_not allow_value('kevin').for(:email) }
-  it { should_not allow_value('@host.com').for(:email) }
-  it { should allow_value('kevin@host.com').for(:email) }
+  it { is_expected.to have_many(:authentications) }
+  it { is_expected.to have_many(:notifications) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
+  it { is_expected.not_to allow_value('kevin').for(:email) }
+  it { is_expected.not_to allow_value('@host.com').for(:email) }
+  it { is_expected.to allow_value('kevin@host.com').for(:email) }
 
   describe '.system' do
     it 'finds a system user if exists' do

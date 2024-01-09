@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Auth do
   let(:user) { create(:user) }
 
-  it { should validate_presence_of(:email) }
-  it { should validate_presence_of(:password) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_presence_of(:password) }
 
   describe '#user' do
     it 'authenticates with valid credentials' do
