@@ -18,14 +18,14 @@ RSpec.describe 'settings/avatar' do
 
     expect(page).to have_text('Your avatar has been saved.')
 
-    click_button('Clear')
+    click_on('Clear')
 
     within('.modal') do
       expect(page).to have_text('Avatar')
       expect(page).to have_text('Are you sure you want to clear your avatar?')
       expect(page).to have_button('Continue')
       expect(page).to have_button('Cancel')
-      click_button('Continue')
+      click_on('Continue')
     end
 
     expect(page).to have_text('Your avatar has been reset.')

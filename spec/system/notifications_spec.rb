@@ -13,7 +13,7 @@ RSpec.describe 'notifications' do
     within('form') do
       fill_in('Email', with: user.email)
       fill_in('Password', with: user.password)
-      click_button('Login')
+      click_on('Login')
     end
 
     expect(page).to have_title('Notifications | Playground')
@@ -26,25 +26,25 @@ RSpec.describe 'notifications' do
       expect(page).to have_text('Welcome!')
 
       expect(page).to have_button('Read', disabled: false)
-      click_button('Read')
+      click_on('Read')
       expect(page).to have_button('Read', disabled: true)
 
-      click_button('Clear')
+      click_on('Clear')
     end
 
-    expect(page).not_to have_css('.message', text: 'Welcome!')
+    expect(page).to have_no_css('.message', text: 'Welcome!')
 
     within('.message', text: 'Goodbye!') do
       expect(page).to have_text('Goodbye!')
 
       expect(page).to have_button('Read', disabled: false)
-      click_button('Read')
+      click_on('Read')
       expect(page).to have_button('Read', disabled: true)
 
-      click_button('Clear')
+      click_on('Clear')
     end
 
-    expect(page).not_to have_css('.message', text: 'Goodbye!')
+    expect(page).to have_no_css('.message', text: 'Goodbye!')
 
     within('.hero') do
       expect(page).to have_text('Nothing to See')

@@ -29,13 +29,13 @@ RSpec.describe 'settings/billing' do
       visit settings_billing_path
       login(user)
 
-      click_button('Add a Card')
+      click_on('Add a Card')
       within('.modal') do
         expect(page).to have_text('Add a Card')
         expect(page).to have_button('Save')
         expect(page).to have_button('Cancel')
         fill_in_stripe(token: { id: 'fake' })
-        click_button('Save')
+        click_on('Save')
       end
 
       expect(page).to have_text('•••• 4242 Visa expires 12/3000')
@@ -53,7 +53,7 @@ RSpec.describe 'settings/billing' do
 
       within('.table') do
         expect(page).to have_text('•••• 4242 Visa expires 12/3000')
-        click_button('Remove')
+        click_on('Remove')
       end
 
       within('.modal') do
@@ -62,7 +62,7 @@ RSpec.describe 'settings/billing' do
         expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         expect(page).to have_button('Confirm')
         expect(page).to have_button('Cancel')
-        click_button('Confirm')
+        click_on('Confirm')
       end
 
       expect(page).to have_text('"•••• 4242" is removed.')
@@ -80,7 +80,7 @@ RSpec.describe 'settings/billing' do
 
       within('.table') do
         expect(page).to have_text('•••• 4242 Visa expires 12/3000')
-        click_button('Default')
+        click_on('Default')
       end
 
       within('.modal') do
@@ -89,7 +89,7 @@ RSpec.describe 'settings/billing' do
         expect(page).to have_text('•••• 4242 Visa expires 12/3000')
         expect(page).to have_button('Confirm')
         expect(page).to have_button('Cancel')
-        click_button('Confirm')
+        click_on('Confirm')
       end
 
       expect(page).to have_text('"•••• 4242" is default.')

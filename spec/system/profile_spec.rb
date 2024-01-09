@@ -9,15 +9,15 @@ RSpec.describe 'feed' do
     expect(page).to have_title('Profile | Playground')
     expect(page).to have_text(user.name)
 
-    click_button('Follow')
+    click_on('Follow')
 
     within('.modal') do
       login(user)
     end
 
-    click_button('Follow')
+    click_on('Follow')
     expect(page).to have_button('Following')
-    click_button('Following')
+    click_on('Following')
     expect(page).to have_button('Follow')
   end
 

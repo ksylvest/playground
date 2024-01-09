@@ -12,7 +12,7 @@ RSpec.describe 'signup' do
       fill_in('Name', with: user.name)
       fill_in('Email', with: user.email)
       fill_in('Password', with: user.password)
-      click_button('Signup')
+      click_on('Signup')
     end
 
     expect(page).to have_text('Me')
@@ -24,7 +24,7 @@ RSpec.describe 'signup' do
     expect(page).to have_title('Signup | Playground')
 
     within('form') do
-      click_button('Signup')
+      click_on('Signup')
 
       expect(page).to have_text("Name\nCan't be blank.")
       expect(page).to have_text("Email\nCan't be blank.")

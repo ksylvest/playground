@@ -3,7 +3,7 @@ module AuthHelper
     within('form') do
       fill_in('Email', with: user.email)
       fill_in('Password', with: user.password)
-      click_button('Login')
+      click_on('Login')
     end
   end
 
@@ -12,7 +12,7 @@ module AuthHelper
       fill_in('Name', with: user.email)
       fill_in('Email', with: user.email)
       fill_in('Password', with: user.password)
-      click_button('Login')
+      click_on('Login')
     end
   end
 end

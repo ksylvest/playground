@@ -21,7 +21,7 @@ RSpec.describe 'feed' do
     expect(page).to have_title('Feed | Playground')
 
     within('.card') do
-      click_button
+      click_on
     end
 
     within('.modal') do
@@ -29,13 +29,13 @@ RSpec.describe 'feed' do
     end
 
     within('.card') do
-      click_button
+      click_on
 
       within('[title="Unlike"]') do
         expect(page).to have_text('1')
       end
 
-      click_button
+      click_on
 
       within('[title="Like"]') do
         expect(page).to have_text('0')
@@ -58,13 +58,13 @@ RSpec.describe 'feed' do
 
     fill_in('Add a comment...', with: 'The quick brown fox jumped over the lazy dog.')
 
-    click_button('Comment')
+    click_on('Comment')
 
     within('.modal') do
       login(user)
     end
 
-    click_button('Comment')
+    click_on('Comment')
 
     within('.media') do
       expect(page).to have_text(user.name)

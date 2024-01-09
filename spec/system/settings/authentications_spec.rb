@@ -23,18 +23,18 @@ RSpec.describe 'settings/authentications' do
       expect(page).to have_text('New York')
       expect(page).to have_text('Saratoga Springs')
       expect(page).to have_text('United States')
-      click_button 'Revoke'
+      click_on 'Revoke'
     end
 
     within('.modal') do
       expect(page).to have_text('Are you sure you want to revoke this authentication?')
       expect(page).to have_text('4.4.4.4')
       expect(page).to have_text('Devices using this authentication will be need to re-authenticate.')
-      click_button 'Continue'
+      click_on 'Continue'
     end
 
     expect(page).to have_text('The authentication "4.4.4.4" is revoked.')
 
-    expect(page).not_to have_css('.message', text: '4.4.4.4')
+    expect(page).to have_no_css('.message', text: '4.4.4.4')
   end
 end

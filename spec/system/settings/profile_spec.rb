@@ -16,7 +16,7 @@ RSpec.describe 'settings/profile' do
     within('form') do
       fill_in('Email', with: user.email)
       fill_in('Name', with: user.name)
-      click_button 'Save'
+      click_on 'Save'
     end
 
     expect(page).to have_text('Your profile has been saved.')
