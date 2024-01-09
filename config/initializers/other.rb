@@ -1,8 +1,5 @@
-Rails.application.config.action_dispatch.cookies_serializer = :json
-Rails.application.config.filter_parameters += [:password]
-
-ActiveSupport.on_load(:action_controller) do
-  wrap_parameters format: [:json]
-end
+Rails.application.config.filter_parameters += %i[
+  passw secret token _key crypt salt certificate otp ssn
+]
 
 Mime::Type.register('image/webp', :webp)
