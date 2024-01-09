@@ -92,10 +92,10 @@ jobs:
       - run: bundle exec rake graphql:schema:generate
       - run: bun run codegen
       - run: |
-          if [[ $(git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts) ]]; then
+          if [[ $(git diff app/graphql/app_schema.graphql app/packs/app_schema.ts) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
             echo '`bun run codegen`'
-            git diff app/graphql/app_schema.graphql app/webpack/app_schema.ts
+            git diff app/graphql/app_schema.graphql app/packs/app_schema.ts
             exit 1
           fi
 
