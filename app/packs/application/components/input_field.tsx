@@ -4,7 +4,7 @@ import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-import { sentence } from "@application/utilities";
+import { sentence } from "@application/utilities/sentence";
 
 import { Control, Field, Help, Icon, Input, Label } from "tights";
 

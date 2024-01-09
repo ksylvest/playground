@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useLocation } from "react-router";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Tabs, TabsItem, TabsList } from "tights";
 

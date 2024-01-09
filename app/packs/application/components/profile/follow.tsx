@@ -4,7 +4,7 @@ import { Button } from "tights";
 
 import { FollowFragment, useFollowUserMutation, UserFragment, useUnfollowUserMutation } from "@root/app_schema";
 
-import { useAuthentication } from "@application/hooks";
+import { useAuthentication } from "@application/hooks/use_authentication";
 
 export const Follow: React.FC<{
   profile?: FollowFragment & UserFragment;

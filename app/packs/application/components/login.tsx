@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 
-import { World } from "@application/contexts";
-import { Title } from "./helpers";
+import { World } from "@application/contexts/world";
+import { Title } from "./helpers/title";
 
 import { Authenticator } from "./authenticator";
 

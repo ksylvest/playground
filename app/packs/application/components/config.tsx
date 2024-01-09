@@ -4,9 +4,9 @@ import { ApolloProvider } from "@apollo/client";
 
 import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
-import { Flash } from "@application/types";
+import { Flash } from "@application/types/flash";
 
 export const Config: React.FC<{
   flash?: Flash;

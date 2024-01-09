@@ -8,7 +8,7 @@ import { Feed__EntryFragment } from "@root/app_schema";
 
 import { Actions } from "./entry/actions";
 
-import { Attachment } from "@application/components/helpers";
+import { Attachment } from "@application/components/helpers/attachment";
 
 import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 

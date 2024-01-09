@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { useLogoutMutation } from "@root/app_schema";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 export const Logout: React.FC<{
   children(props: { loading: boolean; logout(): void }): React.ReactElement;

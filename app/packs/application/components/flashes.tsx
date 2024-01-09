@@ -2,7 +2,7 @@ import React from "react";
 
 import { Notification } from "tights";
 
-import { sentence } from "@application/utilities";
+import { sentence } from "@application/utilities/sentence";
 
 export const Flashes: React.FC<{
   errors?: {

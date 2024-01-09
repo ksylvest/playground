@@ -4,7 +4,8 @@ import React from "react";
 
 import { File, FileCTA, FileIcon, FileInput, FileLabel, FileName } from "tights";
 
-import { useActiveStorageDirectUpload, useFiles } from "@application/hooks";
+import { useActiveStorageDirectUpload } from "@application/hooks/use_active_storage_direct_upload";
+import { useFiles } from "@application/hooks/use_files";
 
 export const Uploader: React.FC<{
   accept?: string;

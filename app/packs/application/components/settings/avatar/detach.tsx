@@ -5,7 +5,7 @@ import { useSettingsAvatarDetachMutation } from "@root/app_schema";
 
 import { Button } from "tights";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Dialog } from "./detach/dialog";
 

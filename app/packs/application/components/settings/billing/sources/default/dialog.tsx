@@ -2,7 +2,7 @@ import React from "react";
 
 import { Billing__Source } from "@root/app_schema";
 
-import { BillingSourceSummary } from "@application/components/helpers";
+import { BillingSourceSummary } from "@application/components/helpers/billing_source_summary";
 
 import {
   Button,

@@ -4,11 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Config } from "./config";
 
-import { useActionCableSubscription } from "@application/hooks";
+import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
 
 import { Container, Section } from "tights";
 
-import { Flash } from "@application/types";
+import { Flash } from "@application/types/flash";
 
 import { Styles } from "./styles";
 

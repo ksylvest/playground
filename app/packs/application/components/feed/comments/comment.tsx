@@ -4,7 +4,8 @@ import { Content, Media, MediaContent, MediaLeft } from "tights";
 
 import { Feed__CommentFragment } from "@root/app_schema";
 
-import { Age, Attachment } from "@application/components/helpers";
+import { Age } from "@application/components/helpers/age";
+import { Attachment } from "@application/components/helpers/attachment";
 
 const PLACEHOLDER = "/avatar/placeholder.svg";
 

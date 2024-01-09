@@ -7,9 +7,10 @@ import { Button, Column, Columns, Icon, Message, MessageBody } from "tights";
 
 import { AuthenticationFragment, AuthenticationStatusEnum } from "@root/app_schema";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
-import { Age, GeographySummary } from "@application/components/helpers";
+import { Age } from "@application/components/helpers/age";
+import { GeographySummary } from "@application/components/helpers/geography_summary";
 
 const color = (status: AuthenticationStatusEnum): "info" | "light" => {
   switch (status) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 
-import { World } from "@application/contexts";
+import { World } from "@application/contexts/world";
 
 import { Dialog } from "./build/dialog";
 

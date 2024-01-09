@@ -2,12 +2,10 @@ import React from "react";
 
 import { Billing__Source } from "@root/app_schema";
 
-import {
-  BillingSourceBrandName,
-  BillingSourceExpiration,
-  BillingSourceBrandIcon,
-  BillingSourceNumber,
-} from "@application/components/helpers";
+import { BillingSourceBrandIcon } from "@application/components/helpers/billing_source_brand_icon";
+import { BillingSourceBrandName } from "@application/components/helpers/billing_source_brand_name";
+import { BillingSourceExpiration } from "@application/components/helpers/billing_source_expiration";
+import { BillingSourceNumber } from "@application/components/helpers/billing_source_number";
 
 import { Button, Buttons, Table } from "tights";
 

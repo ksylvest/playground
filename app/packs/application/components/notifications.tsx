@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNotificationsQuery } from "@root/app_schema";
 
-import { Title } from "@application/components/helpers";
+import { Title } from "@application/components/helpers/title";
 
 import { List } from "./notifications/list";
 

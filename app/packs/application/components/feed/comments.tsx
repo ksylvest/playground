@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Button, Control, Field, Textarea } from "tights";
 
-import { useAuthentication } from "@application/hooks";
+import { useAuthentication } from "@application/hooks/use_authentication";
 
 import { Comment } from "./comments/comment";
 

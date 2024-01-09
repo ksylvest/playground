@@ -6,7 +6,7 @@ import { Button, Icon } from "tights";
 
 import { Feed__EntryFragment, useLikeFeedEntryMutation, useUnlikeFeedEntryMutation } from "@root/app_schema";
 
-import { useAuthentication } from "@application/hooks";
+import { useAuthentication } from "@application/hooks/use_authentication";
 
 const ON_COLOR = "hsl(348, 100%, 61%)";
 const OFF_COLOR = "hsl(0, 0%, 48%)";
