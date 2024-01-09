@@ -98,9 +98,6 @@ RSpec/LetSetup:
 RSpec/DescribedClass:
   Enabled: false
 
-RSpec/ImplicitExpect:
-  Enabled: false
-
 RSpec/MessageSpies:
   Enabled: false
 

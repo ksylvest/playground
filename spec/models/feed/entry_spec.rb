@@ -3,5 +3,5 @@ require 'rails_helper'
 RSpec.describe Feed::Entry do
   subject { build(:feed_entry) }
 
-  it { should belong_to(:user) }
+  it { is_expected.to belong_to(:user) }
 end

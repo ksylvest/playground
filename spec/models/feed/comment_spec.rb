@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Feed::Comment do
   subject { build(:feed_comment) }
 
-  it { should belong_to(:user) }
-  it { should belong_to(:entry) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:entry) }
 
-  it { should validate_presence_of(:message) }
+  it { is_expected.to validate_presence_of(:message) }
 end

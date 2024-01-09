@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Authentication do
-  it { should belong_to(:user) }
-  it { should validate_presence_of(:ip) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:ip) }
 
   describe '#appear!' do
     subject(:appear!) { authentication.appear! }
