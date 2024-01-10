@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 
 import { LoginInput, useLoginMutation } from "@root/app_schema";
 
 import { Context } from "./context";
 
+import { World } from "@root/application/contexts/world";
+
 export const Form: React.FC<{
   children?: React.ReactNode;
-  onAuth(_: { id: string }): void;
+  onAuth?(): void;
 }> = ({ onAuth, children }) => {
+  const { auth } = useContext(World);
+
   const [input, setInput] = useState<LoginInput>({
     email: "",
     password: "",
@@ -20,9 +24,10 @@ export const Form: React.FC<{
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });
-    const authentication = result.data?.login?.authentication;
-    if (authentication) {
-      onAuth(authentication);
+    const token = result.data?.login?.token;
+    if (token) {
+      auth(token);
+      if (onAuth) onAuth();
     }
   };
 

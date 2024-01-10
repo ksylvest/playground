@@ -15,12 +15,12 @@ import { ROOT_URL } from "@application/config/routes";
 export const Authenticator: React.FC<{
   children?: React.ReactNode;
 }> = ({ children }) => {
-  const { authentication } = useContext(World);
+  const { token } = useContext(World);
   const location = useLocation();
   const state = location.state as { back?: string } | undefined;
-  if (authentication) {
-    return <Navigate to={state?.back ?? ROOT_URL} />;
-  }
+
+  if (token) return <Navigate to={state?.back ?? ROOT_URL} />;
+
   return (
     <>
       <Tabs>

@@ -2,6 +2,7 @@ fragment authentication on Authentication {
   id
   ip
   deleted
+  me
   seen
   status
   geography {

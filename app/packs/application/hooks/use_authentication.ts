@@ -4,12 +4,12 @@ import { useNavigate, useLocation } from "react-router";
 import { World } from "@application/contexts/world";
 
 export const useAuthentication = ({ action }: { action(): void }): (() => void) => {
-  const { authentication } = useContext(World);
+  const { token } = useContext(World);
   const location = useLocation();
   const navigate = useNavigate();
 
   return (): void => {
-    if (!authentication) {
+    if (!token) {
       navigate(location.pathname, { state: { auth: !!action } });
       return;
     }

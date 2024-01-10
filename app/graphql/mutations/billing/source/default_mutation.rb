@@ -7,7 +7,7 @@ module Mutations
         field :billing, ::Types::BillingType, null: false
 
         def resolve(id:)
-          user = Current.user
+          user = context.user!
           ::Billing::DefaultSourceService.perform!(user:, id:)
 
           { billing: ::Billing::Context.new(user:) }

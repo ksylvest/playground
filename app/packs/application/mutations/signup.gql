@@ -1,9 +1,7 @@
 mutation Signup($input: SignupInput!) {
   signup(input: $input) {
     status
-    authentication {
-      id
-    }
+    token
     errors {
       messages
     }

@@ -15,7 +15,6 @@
       RELEASE = <%=raw JSON.generate(release) %>;
       SENTRY_DSN = <%=raw JSON.generate(Rails.application.credentials.sentry_dsn) %>;
       STRIPE_PUBLISHABLE_KEY = <%=raw JSON.generate(Rails.application.credentials.stripe_publishable_key) %>;
-      AUTHENTICATION = <%=raw JSON.generate(Current.authentication ? { id: Current.authentication.id } : nil) %>;
     </script>
 
     <%= stylesheet_link_tag "application" %>

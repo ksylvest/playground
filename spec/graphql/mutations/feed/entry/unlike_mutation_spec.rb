@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Feed::Entry::UnlikeMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql, variables: { id: entry.id })
+      AppSchema.execute(gql, variables: { id: entry.id }, context: { authentication: })
     end
 
     let(:gql) do
@@ -21,6 +20,7 @@ RSpec.describe Mutations::Feed::Entry::UnlikeMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
     let(:entry) { create(:feed_entry, user:) }
     let!(:like) { create(:feed_like, entry:, user:) }

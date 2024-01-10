@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Profile::ChangeMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql, variables: { input: })
+      AppSchema.execute(gql, variables: { input: }, context: { authentication: })
     end
 
     let(:gql) do
@@ -17,6 +16,7 @@ RSpec.describe Mutations::Profile::ChangeMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
 
     context 'with valid input' do

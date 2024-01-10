@@ -7,7 +7,7 @@ module Mutations
 
       def resolve(id:)
         user = ::User.find(id)
-        Follow.destroy_by(follower: Current.user, followed: user)
+        Follow.destroy_by(follower: context.user!, followed: user)
 
         { user: }
       end

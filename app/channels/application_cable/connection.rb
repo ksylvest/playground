@@ -1,11 +1,11 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :session
+    identified_by :authentication
 
     def connect
-      Current.cookies = cookies
-      self.session = Current.session
-      reject_unauthorized_connection unless session
+      token = request.params[:token]
+      self.authentication = token && Authentication.find_by(token:)
+      reject_unauthorized_connection unless authentication
     end
   end
 end

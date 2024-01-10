@@ -95,7 +95,7 @@ const MeNavbarItem: React.FC = () => (
 );
 
 export const Header: React.FC = () => {
-  const { authentication } = useContext(World);
+  const { token } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
   const onToggle = (): void => setActive(!active);
 
@@ -107,8 +107,8 @@ export const Header: React.FC = () => {
           <NavbarBurger active={active} onClick={onToggle} />
         </NavbarBrand>
         <NavbarMenu active={active}>
-          <NavbarStart>{authentication && <MainNavbarLinks />}</NavbarStart>
-          <NavbarEnd>{authentication ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</NavbarEnd>
+          <NavbarStart>{token && <MainNavbarLinks />}</NavbarStart>
+          <NavbarEnd>{token ? <MeNavbarItem /> : <AuthenticateNavbarLinks />}</NavbarEnd>
         </NavbarMenu>
       </Navbar>
     </header>

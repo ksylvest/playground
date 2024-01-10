@@ -7,7 +7,7 @@ module Mutations
 
       def resolve(id:)
         user = ::User.find(id)
-        Follow.find_or_initialize_by(follower: Current.user, followed: user).save!
+        Follow.find_or_initialize_by(follower: context.user!, followed: user).save!
 
         { user: }
       end

@@ -8,7 +8,7 @@ module Mutations
 
         def resolve(id:)
           entry = ::Feed::Entry.find(id)
-          like = ::Feed::Like.find_or_initialize_by(user: Current.user, entry:)
+          like = ::Feed::Like.find_or_initialize_by(user: context.user!, entry:)
           like.save!
           { entry: }
         end

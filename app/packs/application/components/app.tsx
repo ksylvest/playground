@@ -5,10 +5,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Config } from "./config";
 
 import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
+import { useLocalStorage } from "@application/hooks/use_local_storage";
 
 import { Container, Section } from "tights";
 
 import { Flash } from "@application/types/flash";
+import { Stats } from "@application/types/stats";
 
 import { Styles } from "./styles";
 
@@ -25,8 +27,6 @@ import { Profile } from "./profile";
 import { Settings } from "./settings";
 import { Details } from "./feed/details";
 import { List } from "./feed/list";
-
-declare const AUTHENTICATION: { id: string } | undefined;
 
 const STATS_CHANNEL = "StatsChannel";
 const PRESENCE_CHANNEL = "PresenceChannel";
@@ -69,17 +69,25 @@ const Layout: React.FC = () => (
 );
 
 export const App: React.FC = () => {
-  const [flash, notify] = useState<Flash | undefined>(undefined);
-  const [authentication, auth] = useState<{ id: string } | undefined>(AUTHENTICATION);
-  const [stats, setStats] = useState<undefined | { notifications: number }>(undefined);
-  const deauth = (): void => auth(undefined);
+  const [flash, notify] = useState<Flash | undefined>();
+  const [stats, setStats] = useState<Stats | undefined>();
+
+  const [token, setToken] = useLocalStorage("token");
 
   useActionCableSubscription(STATS_CHANNEL, setStats);
   useActionCableSubscription(PRESENCE_CHANNEL);
 
+  const auth = (token: string): void => {
+    setToken(token);
+  };
+
+  const deauth = (): void => {
+    setToken(undefined);
+  };
+
   return (
     <BrowserRouter>
-      <Config flash={flash} notify={notify} authentication={authentication} auth={auth} deauth={deauth} stats={stats}>
+      <Config flash={flash} notify={notify} token={token} auth={auth} deauth={deauth} stats={stats}>
         <Layout />
       </Config>
     </BrowserRouter>

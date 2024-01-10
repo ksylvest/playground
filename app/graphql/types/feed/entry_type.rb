@@ -36,7 +36,7 @@ module Types
       end
 
       def liked
-        Current.authed? && dataloader.with(Sources::Feed::Liked, Current.user).load(object)
+        context.authed? && dataloader.with(Sources::Feed::Liked, context.user!).load(object)
       end
     end
   end

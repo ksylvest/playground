@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Avatar::DetachMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql)
+      AppSchema.execute(gql, context: { authentication: })
     end
 
     let(:gql) do
@@ -17,6 +16,7 @@ RSpec.describe Mutations::Avatar::DetachMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
 
     it 'resolves "OK"' do

@@ -7,15 +7,16 @@ import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 import { World } from "@application/contexts/world";
 
 import { Flash } from "@application/types/flash";
+import { Stats } from "@application/types/stats";
 
 export const Config: React.FC<{
+  token?: string;
   flash?: Flash;
-  authentication?: { id: string };
-  stats?: { notifications: number };
-  children?: React.ReactNode;
+  stats?: Stats;
   notify(_: Flash): void;
-  auth(_: { id: string }): void;
+  auth(_: string): void;
   deauth(): void;
+  children?: React.ReactNode;
 }> = ({ children, ...props }) => (
   <World.Provider value={props}>
     <ApolloProvider client={APOLLO_CLIENT} children={children} />

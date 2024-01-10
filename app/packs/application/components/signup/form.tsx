@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 
 import { SignupInput, useSignupMutation } from "@root/app_schema";
+
+import { World } from "@root/application/contexts/world";
 
 import { Context } from "./context";
 
 export const Form: React.FC<{
   children?: React.ReactNode;
-  onAuth(_: { id: string }): void;
+  onAuth?(): void;
 }> = ({ onAuth, children }) => {
+  const { auth } = useContext(World);
+
   const [input, setInput] = useState<SignupInput>({
     email: "",
     name: "",
@@ -21,9 +25,10 @@ export const Form: React.FC<{
     event.preventDefault();
     event.stopPropagation();
     const result = await submit({ variables: { input } });
-    const authentication = result.data?.signup?.authentication;
-    if (authentication) {
-      onAuth(authentication);
+    const token = result.data?.signup?.token;
+    if (token) {
+      auth(token);
+      if (onAuth) onAuth();
     }
   };
 

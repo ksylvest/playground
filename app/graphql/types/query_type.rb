@@ -10,7 +10,7 @@ module Types
     field :me, UserType, null: true
 
     def billing
-      ::Billing::Context.new(user: Current.user)
+      ::Billing::Context.new(user: context.user!)
     end
 
     def feed
@@ -18,11 +18,11 @@ module Types
     end
 
     def notifications
-      Current.user.notifications.active.chronological
+      context.user!.notifications.active.chronological
     end
 
     def authentications
-      Current.user.authentications.active.chronological
+      context.user!.authentications.active.chronological
     end
 
     def user(id:)
@@ -30,7 +30,7 @@ module Types
     end
 
     def me
-      Current.user
+      context.user
     end
   end
 end

@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::User::FollowMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql, variables: { id: followed.id })
+      AppSchema.execute(gql, variables: { id: followed.id }, context: { authentication: })
     end
 
     let(:gql) do
@@ -20,6 +19,7 @@ RSpec.describe Mutations::User::FollowMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
     let(:followed) { create(:user) }
 
