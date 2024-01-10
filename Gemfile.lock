@@ -141,7 +141,7 @@ GEM
       rake
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.2.4)
+    graphql (2.2.5)
       racc (~> 1.4)
     graphql-sources (1.2.0)
       graphql
