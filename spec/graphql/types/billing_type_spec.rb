@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Types::BillingType do
   describe '#resolve' do
     subject(:execute) do
-      Current.auth!(user)
-      AppSchema.execute(gql)
+      AppSchema.execute(gql, context: { authentication: })
     end
 
     let(:gql) do
@@ -28,6 +27,7 @@ RSpec.describe Types::BillingType do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let!(:user) { create(:user) }
     let!(:customer) { create(:billing_customer, user:) }
     let!(:source) { create(:billing_source, customer:) }

@@ -3,7 +3,8 @@ module Mutations
     field :status, ::Types::StatusType, null: false
 
     def resolve
-      Current.deauth!
+      context.authentication&.clear!
+
       { status: :ok }
     end
   end

@@ -7,7 +7,7 @@ module Mutations
       field :errors, ::Types::ErrorsType, null: true
 
       def resolve(password:)
-        user = Current.user
+        user = context.user!
         change = ::Password::Change.new(current: password[:current], replacement: password[:replacement], user:)
 
         if change.save!

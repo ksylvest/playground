@@ -7,7 +7,7 @@ module Mutations
       field :errors, ::Types::ErrorsType, null: true
 
       def resolve(input:)
-        user = Current.user
+        user = context.user!
         user.attributes = input.to_h
 
         if user.save

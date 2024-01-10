@@ -1,10 +1,10 @@
 class PresenceChannel < ApplicationCable::Channel
   def subscribed
-    stream_for(session.user)
-    session.appear!
+    stream_for(authentication.user)
+    authentication.appear!
   end
 
   def unsubscribed
-    session.disappear!
+    authentication.disappear!
   end
 end

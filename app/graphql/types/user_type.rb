@@ -20,7 +20,7 @@ module Types
     end
 
     def following
-      Current.authed? && Follow.exists?(follower: Current.user, followed: object)
+      context.authed? && Follow.exists?(follower: context.user!, followed: object)
     end
 
     def follower

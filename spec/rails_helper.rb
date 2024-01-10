@@ -24,13 +24,6 @@ ActiveRecord::Migration.maintain_test_schema!
 ActiveJob::Base.queue_adapter = :test
 
 RSpec.configure do |config|
-  config.around do |example|
-    Current.ip = '0.0.0.0'
-    example.run
-  ensure
-    Current.reset
-  end
-
   config.fixture_path = Rails.root.join('spec/fixtures')
 
   config.use_transactional_fixtures = true

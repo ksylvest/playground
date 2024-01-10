@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe Mutations::Billing::Source::DefaultMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
       allow(Billing::DefaultSourceService).to receive(:perform!).with({ user:, id: })
-      AppSchema.execute(gql, variables: { id: })
+      AppSchema.execute(gql, variables: { id: }, context: { authentication: })
     end
 
     let(:gql) do
@@ -30,6 +29,7 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
     let(:id) { 'fake_id' }
 

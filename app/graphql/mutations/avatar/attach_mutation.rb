@@ -6,7 +6,7 @@ module Mutations
       field :status, ::Types::StatusType, null: false
 
       def resolve(id:)
-        Current.user.avatar.attach(id)
+        context.user!.avatar.attach(id)
 
         { status: :ok }
       end

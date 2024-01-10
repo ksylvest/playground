@@ -58,7 +58,6 @@ export const Dialog: React.FC<{
   onCancel(): void;
   onAuth(): void;
 }> = ({ onCancel, onAuth }) => {
-  const { auth } = useContext(World);
   const [mode, setMode] = useState<Mode>(DEFAULT_MODE);
   const Auth = AUTHS[mode];
 
@@ -66,12 +65,7 @@ export const Dialog: React.FC<{
     <Modal>
       <ModalBackground onClick={onCancel} />
       <ModalContent>
-        <Auth.Form
-          onAuth={(session): void => {
-            auth(session);
-            onAuth();
-          }}
-        >
+        <Auth.Form onAuth={onAuth}>
           <ModalCard>
             <ModalCardHead>
               <ModalCardTitle>{mode}</ModalCardTitle>

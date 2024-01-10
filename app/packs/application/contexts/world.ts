@@ -1,16 +1,17 @@
 import { createContext } from "react";
 
 import { Flash } from "@application/types/flash";
+import { Stats } from "@application/types/stats";
 
 export const World = createContext<{
-  authentication?: { id: string };
+  token?: string;
   flash?: Flash;
-  stats?: { notifications: number };
-  auth(_: { id: string }): void;
+  stats?: Stats;
+  auth(token: string): void;
   deauth(): void;
   notify(flash?: Flash): void;
 }>({
-  auth: (_: { id: string }) => {
+  auth: (token: string) => {
     /* noop */
   },
   deauth: () => {

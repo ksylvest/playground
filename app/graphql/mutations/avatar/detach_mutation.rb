@@ -5,7 +5,7 @@ module Mutations
       field :status, ::Types::StatusType, null: false
 
       def resolve
-        Current.user.avatar.detach
+        context.user!.avatar.detach
 
         { status: :ok }
       end

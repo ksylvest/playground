@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Notification::DestroyMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql, variables: { id: notification.id })
+      AppSchema.execute(gql, variables: { id: notification.id }, context: { authentication: })
     end
 
     let(:gql) do
@@ -20,6 +19,7 @@ RSpec.describe Mutations::Notification::DestroyMutation do
       GQL
     end
 
+    let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
     let!(:notification) { create(:notification, user:) }
 

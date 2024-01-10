@@ -10,7 +10,7 @@ module Mutations
 
         def resolve(input:)
           comment = ::Feed::Comment.new(input.to_h)
-          comment.user = Current.user
+          comment.user = context.user!
           comment.sent_at = Time.current
 
           if comment.save

@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Mutations::Authentication::DestroyMutation do
   describe '#resolve' do
     subject :execute do
-      Current.auth!(user)
-      AppSchema.execute(gql, variables: { id: authentication.id })
+      AppSchema.execute(gql, variables: { id: authentication.id }, context: { authentication: })
     end
 
     let(:gql) do
@@ -20,8 +19,8 @@ RSpec.describe Mutations::Authentication::DestroyMutation do
       GQL
     end
 
-    let(:user) { create(:user) }
     let!(:authentication) { create(:authentication, user:) }
+    let(:user) { create(:user) }
 
     it 'resolves "OK"' do
       expect(execute['errors']).to be_nil
