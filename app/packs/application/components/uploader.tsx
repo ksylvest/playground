@@ -1,10 +1,11 @@
-import { faSpinner, faUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useActiveStorage } from "react-activestorage";
 
 import { File, FileCTA, FileIcon, FileInput, FileLabel, FileName } from "tights";
 
-import { useActiveStorage } from "react-activestorage";
+import { faSpinner, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useFiles } from "@application/hooks/use_files";
 
 export const Uploader: React.FC<{

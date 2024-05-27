@@ -5,15 +5,14 @@ import { Card, CardContent, Column, Columns } from "tights";
 
 import { useFeedEntryQuery } from "@root/app_schema";
 
+import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
+
 import { Attachment } from "@application/components/helpers/attachment";
 import { Breadcrumbs } from "@application/components/helpers/breadcrumbs";
 import { Title } from "@application/components/helpers/title";
 
 import { Comments } from "./comments";
 import { Carousel } from "./details/carousel";
-
-import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
-
 import { Actions } from "./entry/actions";
 
 const PLACEHOLDER = "/avatar/placeholder.svg";

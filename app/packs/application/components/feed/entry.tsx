@@ -1,16 +1,17 @@
-import head from "lodash/head";
 import React from "react";
 import { Link } from "react-router-dom";
+
+import head from "lodash/head";
 
 import { Card, CardContent, CardImage, Column, Columns } from "tights";
 
 import { Feed__EntryFragment } from "@root/app_schema";
 
-import { Actions } from "./entry/actions";
+import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 
 import { Attachment } from "@application/components/helpers/attachment";
 
-import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
+import { Actions } from "./entry/actions";
 
 const PLACEHOLDER = "/avatar/placeholder.svg";
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "tights";
 
-import { FollowFragment, useFollowUserMutation, UserFragment, useUnfollowUserMutation } from "@root/app_schema";
+import { FollowFragment, UserFragment, useFollowUserMutation, useUnfollowUserMutation } from "@root/app_schema";
 
 import { useAuthentication } from "@application/hooks/use_authentication";
 

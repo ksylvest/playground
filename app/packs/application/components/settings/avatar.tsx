@@ -4,11 +4,11 @@ import { Column, Columns } from "tights";
 
 import { useSettingsAvatarQuery } from "@root/app_schema";
 
-import { Attach } from "./avatar/attach";
-import { Detach } from "./avatar/detach";
-
 import { Attachment } from "@application/components/helpers/attachment";
 import { Title } from "@application/components/helpers/title";
+
+import { Attach } from "./avatar/attach";
+import { Detach } from "./avatar/detach";
 
 const PLACEHOLDER = "/avatar/placeholder.svg";
 

@@ -1,9 +1,7 @@
 import React from "react";
 
-import { Title } from "./helpers/title";
-
 import { Authenticator } from "./authenticator";
-
+import { Title } from "./helpers/title";
 import { Controls } from "./signup/controls";
 import { Fields } from "./signup/fields";
 import { Form } from "./signup/form";

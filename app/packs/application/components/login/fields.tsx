@@ -1,9 +1,11 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useContext } from "react";
 
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+
 import { InputField } from "@root/application/components/input_field";
+
 import { Flashes } from "@application/components/flashes";
 
 import { Context } from "./context";

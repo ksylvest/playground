@@ -4,9 +4,9 @@ import { useLocation } from "react-router";
 
 import { Notification } from "tights";
 
-import { World } from "@application/contexts/world";
-
 import { Flash } from "@application/types/flash";
+
+import { World } from "@application/contexts/world";
 
 const COLORS: { [key: string]: "info" | "warning" } = {
   alert: "warning",

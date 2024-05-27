@@ -1,10 +1,11 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-import { Notification, useDestroyNotificationMutation } from "@root/app_schema";
-
 import { Button, Icon } from "tights";
+
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { Notification, useDestroyNotificationMutation } from "@root/app_schema";
 
 export const Destroy: React.FC<{
   notification: Notification;

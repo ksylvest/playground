@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Billing__Source__Brand, Billing__Source } from "@root/app_schema";
+import { Billing__Source, Billing__Source__Brand } from "@root/app_schema";
 
 const BILLING_SOURCE_BRAND_NAMES: Record<Billing__Source__Brand, string> = {
   [Billing__Source__Brand.AmericanExpress]: "American Express",

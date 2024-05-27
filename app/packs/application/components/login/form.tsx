@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import { useState } from "react";
 
 import { LoginInput, useLoginMutation } from "@root/app_schema";
+import { World } from "@root/application/contexts/world";
 
 import { Context } from "./context";
-
-import { World } from "@root/application/contexts/world";
 
 export const Form: React.FC<{
   children?: React.ReactNode;

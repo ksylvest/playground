@@ -1,7 +1,5 @@
 import React from "react";
 
-import { AuthenticationFragment } from "@root/app_schema";
-
 import {
   Button,
   Content,
@@ -15,6 +13,8 @@ import {
   ModalCardTitle,
   ModalContent,
 } from "tights";
+
+import { AuthenticationFragment } from "@root/app_schema";
 
 import { Geography } from "./geography";
 

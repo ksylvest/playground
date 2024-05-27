@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useState } from "react";
 
 import { SignupInput, useSignupMutation } from "@root/app_schema";
-
 import { World } from "@root/application/contexts/world";
 
 import { Context } from "./context";
