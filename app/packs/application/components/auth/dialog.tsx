@@ -17,6 +17,8 @@ import {
   TabsList,
 } from "tights";
 
+import { World } from "@application/contexts/world";
+
 import { Context as LoginContext } from "@application/components/login/context";
 import { Fields as LoginFields } from "@application/components/login/fields";
 import { Form as LoginForm } from "@application/components/login/form";
@@ -25,8 +27,6 @@ import { Context as SignupContext } from "@application/components/signup/context
 import { Fields as SignupFields } from "@application/components/signup/fields";
 import { Form as SignupForm } from "@application/components/signup/form";
 import { Submit as SignupSubmit } from "@application/components/signup/submit";
-
-import { World } from "@application/contexts/world";
 
 const Login = {
   Context: LoginContext,

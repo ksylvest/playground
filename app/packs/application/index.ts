@@ -1,2 +1,2 @@
-import "./initializers";
 import "./components";
+import "./initializers";

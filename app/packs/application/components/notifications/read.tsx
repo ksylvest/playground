@@ -1,10 +1,11 @@
-import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-import { Notification, useReadNotificationMutation } from "@root/app_schema";
-
 import { Button, Icon } from "tights";
+
+import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { Notification, useReadNotificationMutation } from "@root/app_schema";
 
 export const Read: React.FC<{
   notification: Notification;

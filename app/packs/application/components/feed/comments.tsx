@@ -3,11 +3,11 @@ import { useState } from "react";
 
 import { Button, Control, Field, Textarea } from "tights";
 
+import { Status, useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
+
 import { useAuthentication } from "@application/hooks/use_authentication";
 
 import { Comment } from "./comments/comment";
-
-import { Status, useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
 
 export const Comments: React.FC<{
   entryID: string;

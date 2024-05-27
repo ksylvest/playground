@@ -2,31 +2,28 @@ import React from "react";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Config } from "./config";
-
-import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
-import { useLocalStorage } from "@application/hooks/use_local_storage";
-
 import { Container, Section } from "tights";
 
 import { Flash } from "@application/types/flash";
 import { Stats } from "@application/types/stats";
 
-import { Styles } from "./styles";
-
-import { Footer } from "./app/footer";
-import { Header } from "./app/header";
+import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
+import { useLocalStorage } from "@application/hooks/use_local_storage";
 
 import { Alerts } from "./alerts";
+import { Footer } from "./app/footer";
+import { Header } from "./app/header";
 import { Auth } from "./auth";
-import { Login } from "./login";
-import { Signup } from "./signup";
 import { Authorize } from "./authorize";
+import { Config } from "./config";
+import { Details } from "./feed/details";
+import { List } from "./feed/list";
+import { Login } from "./login";
 import { Notifications } from "./notifications";
 import { Profile } from "./profile";
 import { Settings } from "./settings";
-import { Details } from "./feed/details";
-import { List } from "./feed/list";
+import { Signup } from "./signup";
+import { Styles } from "./styles";
 
 const STATS_CHANNEL = "StatsChannel";
 const PRESENCE_CHANNEL = "PresenceChannel";

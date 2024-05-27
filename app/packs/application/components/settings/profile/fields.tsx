@@ -1,12 +1,13 @@
-import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useEffect, useState } from "react";
 
-import { Errors } from "@root/app_schema";
-
 import { Button, Control, Field } from "tights";
 
+import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
+
+import { Errors } from "@root/app_schema";
 import { InputField } from "@root/application/components/input_field";
+
 import { Flashes } from "@application/components/flashes";
 
 export const Fields: React.FC<{

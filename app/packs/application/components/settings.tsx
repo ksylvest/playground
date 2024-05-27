@@ -5,13 +5,12 @@ import { Column, Columns } from "tights";
 
 import { Title } from "@application/components/helpers/title";
 
-import { Sidebar } from "./settings/sidebar";
-
 import { Authentications } from "./settings/authentications";
 import { Avatar } from "./settings/avatar";
 import { Billing } from "./settings/billing";
 import { Password } from "./settings/password";
 import { Profile } from "./settings/profile";
+import { Sidebar } from "./settings/sidebar";
 
 export const Settings: React.FC = () => (
   <>

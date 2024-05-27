@@ -1,9 +1,5 @@
 import React from "react";
 
-import { Billing__Source } from "@root/app_schema";
-
-import { BillingSourceSummary } from "@application/components/helpers/billing_source_summary";
-
 import {
   Button,
   Content,
@@ -19,6 +15,10 @@ import {
   ModalCardTitle,
   ModalContent,
 } from "tights";
+
+import { Billing__Source } from "@root/app_schema";
+
+import { BillingSourceSummary } from "@application/components/helpers/billing_source_summary";
 
 export const Dialog: React.FC<{
   source: Billing__Source;

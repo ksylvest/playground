@@ -2,12 +2,12 @@ import React from "react";
 
 import { ApolloProvider } from "@apollo/client";
 
+import { Flash } from "@application/types/flash";
+import { Stats } from "@application/types/stats";
+
 import { CLIENT as APOLLO_CLIENT } from "@application/config/apollo";
 
 import { World } from "@application/contexts/world";
-
-import { Flash } from "@application/types/flash";
-import { Stats } from "@application/types/stats";
 
 export const Config: React.FC<{
   token?: string;

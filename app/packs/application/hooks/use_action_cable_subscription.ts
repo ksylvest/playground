@@ -1,5 +1,6 @@
-import * as ActionCable from "@rails/actioncable";
 import { useEffect, useRef, useState } from "react";
+
+import * as ActionCable from "@rails/actioncable";
 
 import { useLocalStorage } from "./use_local_storage";
 

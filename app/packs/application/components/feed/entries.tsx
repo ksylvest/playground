@@ -2,9 +2,9 @@ import React from "react";
 
 import { Column, Columns } from "tights";
 
-import { Entry } from "./entry";
-
 import { Feed__EntryFragment } from "@root/app_schema";
+
+import { Entry } from "./entry";
 
 export const Entries: React.FC<{
   entries: readonly Feed__EntryFragment[];

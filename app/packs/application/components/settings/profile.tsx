@@ -3,9 +3,9 @@ import { useContext } from "react";
 
 import { Status, useSettingsChangeProfileMutation, useSettingsProfileQuery } from "@root/app_schema";
 
-import { Title } from "@application/components/helpers/title";
-
 import { World } from "@application/contexts/world";
+
+import { Title } from "@application/components/helpers/title";
 
 import { Fields } from "./profile/fields";
 

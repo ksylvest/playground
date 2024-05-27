@@ -1,16 +1,18 @@
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import times from "lodash/times";
 import React from "react";
 import { useState } from "react";
 
+import times from "lodash/times";
+
 import { Pagination, PaginationItem, PaginationLink, PaginationList, PaginationNext, PaginationPrev } from "tights";
 
-import { Attachment } from "@application/components/helpers/attachment";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { AttachedFragment, UserFragment } from "@root/app_schema";
 
 import { useKey } from "@application/hooks/use_key";
+
+import { Attachment } from "@application/components/helpers/attachment";
 
 const DEFAULT_INDEX = 0;
 const NEXT_KEY = "ArrowRight";

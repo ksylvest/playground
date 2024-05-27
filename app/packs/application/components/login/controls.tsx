@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Field, Control } from "tights";
+import { Control, Field } from "tights";
 
 import { Submit } from "./submit";
 

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
   faCcAmex,
@@ -9,7 +11,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 
 import { Billing__Source, Billing__Source__Brand } from "@root/app_schema";
 

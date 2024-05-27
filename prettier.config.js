@@ -1,3 +1,23 @@
 module.exports = {
+  plugins: ["@trivago/prettier-plugin-sort-imports"],
   printWidth: 120,
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrder: [
+    "^react(.*)$",
+    "^lodash(.*)$",
+    "^tights(.*)$",
+    "^@apollo/(.*)$",
+    "^@emotion/(.*)$",
+    "^@fortawesome/(.*)$",
+    "^@rails/(.*)$",
+    "^@root/(.*)$",
+    "^@application/types/(.*)$",
+    "^@application/config/(.*)$",
+    "^@application/contexts/(.*)$",
+    "^@application/hooks/(.*)$",
+    "^@application/utilities/(.*)$",
+    "^@application/components/(.*)$",
+    "^(.*$)",
+  ],
 };

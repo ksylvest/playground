@@ -1,11 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
-
-import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
-import { loadStripe, TokenResult } from "@stripe/stripe-js";
-
 import {
   Button,
   Content,
@@ -19,6 +14,11 @@ import {
   ModalCardTitle,
   ModalContent,
 } from "tights";
+
+import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
+
+import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
+import { TokenResult, loadStripe } from "@stripe/stripe-js";
 
 declare const STRIPE_PUBLISHABLE_KEY: string;
 declare const STRIPE_FAKE_TOKEN_RESULT: TokenResult | undefined;

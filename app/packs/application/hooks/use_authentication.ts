@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 import { World } from "@application/contexts/world";
 
