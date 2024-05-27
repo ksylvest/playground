@@ -4,7 +4,7 @@ import React from "react";
 
 import { File, FileCTA, FileIcon, FileInput, FileLabel, FileName } from "tights";
 
-import { useActiveStorageDirectUpload } from "@application/hooks/use_active_storage_direct_upload";
+import { useActiveStorage } from "react-activestorage";
 import { useFiles } from "@application/hooks/use_files";
 
 export const Uploader: React.FC<{
@@ -14,7 +14,7 @@ export const Uploader: React.FC<{
 }> = ({ accept, name, onSelect }) => {
   const { files, onChange, onReset } = useFiles();
   const [file] = files;
-  const { uploading } = useActiveStorageDirectUpload(file, ({ blob }) => {
+  const { uploading } = useActiveStorage(file, ({ blob }) => {
     if (blob) {
       onReset();
       onSelect(blob.signed_id);
