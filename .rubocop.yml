@@ -137,3 +137,6 @@ GraphQL/MaxComplexitySchema:
 
 GraphQL/MaxDepthSchema:
   Enabled: false
+
+Capybara/ClickLinkOrButtonStyle:
+  Enabled: false
