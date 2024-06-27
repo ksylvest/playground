@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+rails graphql:schema:generate
+bun run codegen
