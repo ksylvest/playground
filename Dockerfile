@@ -9,6 +9,7 @@ ENV \
   BUNDLE_PATH="/usr/local/bundle" \
   BUNDLE_WITHOUT="development:test" \
   RAILS_ENV="production" \
+  NODE_ENV="production" \
   PATH="/root/.bun/bin:$PATH"
 
 WORKDIR /rails
