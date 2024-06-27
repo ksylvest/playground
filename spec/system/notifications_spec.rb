@@ -32,7 +32,7 @@ RSpec.describe 'notifications' do
       click_button('Clear')
     end
 
-    expect(page).not_to have_css('.message', text: 'Welcome!')
+    expect(page).to have_no_css('.message', text: 'Welcome!')
 
     within('.message', text: 'Goodbye!') do
       expect(page).to have_text('Goodbye!')
@@ -44,7 +44,7 @@ RSpec.describe 'notifications' do
       click_button('Clear')
     end
 
-    expect(page).not_to have_css('.message', text: 'Goodbye!')
+    expect(page).to have_no_css('.message', text: 'Goodbye!')
 
     within('.hero') do
       expect(page).to have_text('Nothing to See')

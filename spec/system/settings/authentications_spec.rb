@@ -35,6 +35,6 @@ RSpec.describe 'settings/authentications' do
 
     expect(page).to have_text('The authentication "4.4.4.4" is revoked.')
 
-    expect(page).not_to have_css('.message', text: '4.4.4.4')
+    expect(page).to have_no_css('.message', text: '4.4.4.4')
   end
 end

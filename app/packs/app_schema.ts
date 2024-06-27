@@ -1427,7 +1427,7 @@ export const FeedCommentsDocument = gql`
  *   },
  * });
  */
-export function useFeedCommentsQuery(baseOptions: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables>) {
+export function useFeedCommentsQuery(baseOptions: Apollo.QueryHookOptions<FeedCommentsQuery, FeedCommentsQueryVariables> & ({ variables: FeedCommentsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<FeedCommentsQuery, FeedCommentsQueryVariables>(FeedCommentsDocument, options);
       }
@@ -1470,7 +1470,7 @@ export const FeedEntryDocument = gql`
  *   },
  * });
  */
-export function useFeedEntryQuery(baseOptions: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables>) {
+export function useFeedEntryQuery(baseOptions: Apollo.QueryHookOptions<FeedEntryQuery, FeedEntryQueryVariables> & ({ variables: FeedEntryQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<FeedEntryQuery, FeedEntryQueryVariables>(FeedEntryDocument, options);
       }
@@ -1557,7 +1557,7 @@ ${Feed__EntryFragmentDoc}`;
  *   },
  * });
  */
-export function useProfileQuery(baseOptions: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+export function useProfileQuery(baseOptions: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables> & ({ variables: ProfileQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
       }
