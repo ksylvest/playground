@@ -4,6 +4,7 @@ require:
   - rubocop-graphql
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   TargetRubyVersion: 3.3.3
@@ -16,6 +17,9 @@ AllCops:
     - vendor/**/*
     - node_modules/**/*
     - spec/spec_helper.rb
+
+Capybara/ClickLinkOrButtonStyle:
+  Enabled: false
 
 FactoryBot/IdSequence:
   Enabled: false
