@@ -8,9 +8,9 @@ ENV \
   BUNDLE_DEPLOYMENT="1" \
   BUNDLE_PATH="/usr/local/bundle" \
   BUNDLE_WITHOUT="development:test" \
+  NODE_ENV="production" \
   RAILS_ENV="production" \
-  RUBY_YJIT_ENABLE="1" \
-  PATH="/root/.bun/bin:$PATH"
+  RUBY_YJIT_ENABLE="1"
 
 WORKDIR /rails
 
