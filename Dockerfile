@@ -18,7 +18,7 @@ FROM base AS build
 
 RUN \
   apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential libpq-dev npm curl unzip && \
+  apt-get install --no-install-recommends -y build-essential libjemalloc2 libpq-dev npm curl unzip && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
 COPY Gemfile Gemfile.lock ./
@@ -35,7 +35,7 @@ FROM base
 
 RUN \
   apt-get update -qq && \
-  apt-get install --no-install-recommends -y libpq-dev libvips && \
+  apt-get install --no-install-recommends -y libjemalloc2 libpq-dev libvips && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
 COPY . .
