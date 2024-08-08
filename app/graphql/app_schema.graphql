@@ -8,6 +8,7 @@ type AttachAvatarPayload {
 type Attached {
   filename: String!
   id: String!
+  key: String!
 }
 
 type Authentication {

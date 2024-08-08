@@ -1,4 +1,5 @@
 fragment attached on Attached {
   id
+  key
   filename
 }

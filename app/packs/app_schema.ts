@@ -31,6 +31,7 @@ export type Attached = {
   readonly __typename?: 'Attached';
   readonly filename: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
+  readonly key: Scalars['String']['output'];
 };
 
 export type Authentication = {
@@ -416,15 +417,15 @@ export type UserInput = {
   readonly name: Scalars['String']['input'];
 };
 
-export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly filename: string };
+export type AttachedFragment = { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string };
 
 export type AuthenticationFragment = { readonly __typename?: 'Authentication', readonly id: string, readonly ip: string, readonly deleted: boolean, readonly me: boolean, readonly seen: string, readonly status: AuthenticationStatusEnum, readonly geography?: { readonly __typename?: 'Geography', readonly id: string, readonly city: string, readonly region: string, readonly country: string, readonly postal: string, readonly latitude: number, readonly longitude: number } | null };
 
 export type Billing__SourceFragment = { readonly __typename?: 'Billing__Source', readonly id: string, readonly number: string, readonly brand: Billing__Source__Brand, readonly exp: string, readonly default: boolean };
 
-export type Feed__CommentFragment = { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } };
+export type Feed__CommentFragment = { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } };
 
-export type Feed__EntryFragment = { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } };
+export type Feed__EntryFragment = { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } };
 
 export type FollowFragment = { readonly __typename?: 'User', readonly following: boolean, readonly followed: number, readonly follower: number };
 
@@ -432,14 +433,14 @@ export type GeographyFragment = { readonly __typename?: 'Geography', readonly id
 
 export type NotificationFragment = { readonly __typename?: 'Notification', readonly id: string, readonly message: string, readonly deleted: boolean, readonly read: boolean, readonly sent: string };
 
-export type UserFragment = { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null };
+export type UserFragment = { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null };
 
 export type BuildFeedCommentMutationVariables = Exact<{
   input: Feed__CommentInput;
 }>;
 
 
-export type BuildFeedCommentMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'BuildFeedCommentPayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null, readonly comment?: { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } } | null } };
+export type BuildFeedCommentMutation = { readonly __typename?: 'Mutation', readonly result: { readonly __typename?: 'BuildFeedCommentPayload', readonly status: Status, readonly errors?: { readonly __typename?: 'Errors', readonly messages: any } | null, readonly comment?: { readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } } | null } };
 
 export type SettingsBillingSourceDestroyMutationVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -559,21 +560,21 @@ export type UnlikeFeedEntryMutation = { readonly __typename?: 'Mutation', readon
 export type FeedQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FeedQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } }> } };
+export type FeedQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } }> } };
 
 export type FeedCommentsQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type FeedCommentsQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly comments: ReadonlyArray<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } }> } } };
+export type FeedCommentsQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly comments: ReadonlyArray<{ readonly __typename?: 'Feed__Comment', readonly id: string, readonly message: string, readonly sent: string, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } }> } } };
 
 export type FeedEntryQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type FeedEntryQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } } } };
+export type FeedEntryQuery = { readonly __typename?: 'Query', readonly feed: { readonly __typename?: 'Feed', readonly id: string, readonly entry: { readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } } } };
 
 export type NotificationsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -585,7 +586,7 @@ export type ProfileQueryVariables = Exact<{
 }>;
 
 
-export type ProfileQuery = { readonly __typename?: 'Query', readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly following: boolean, readonly followed: number, readonly follower: number, readonly feed: { readonly __typename?: 'Feed', readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } }> }, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly filename: string } | null } };
+export type ProfileQuery = { readonly __typename?: 'Query', readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly following: boolean, readonly followed: number, readonly follower: number, readonly feed: { readonly __typename?: 'Feed', readonly entries: ReadonlyArray<{ readonly __typename?: 'Feed__Entry', readonly id: string, readonly tags: ReadonlyArray<string>, readonly liked: boolean, readonly likes: number, readonly photos: ReadonlyArray<{ readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string }>, readonly user: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } }> }, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } };
 
 export type SettingsAuthenticationsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -643,6 +644,7 @@ export const Billing__SourceFragmentDoc = gql`
 export const AttachedFragmentDoc = gql`
     fragment attached on Attached {
   id
+  key
   filename
 }
     `;
