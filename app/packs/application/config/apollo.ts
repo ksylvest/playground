@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, from } from "@apollo/client";
-import { ErrorLink, onError } from "@apollo/client/link/error";
+import { ErrorLink } from "@apollo/client/link/error";
 
 export const CLIENT = new ApolloClient({
   cache: new InMemoryCache({}),

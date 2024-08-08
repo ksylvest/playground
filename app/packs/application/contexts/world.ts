@@ -11,13 +11,13 @@ export const World = createContext<{
   deauth(): void;
   notify(flash?: Flash): void;
 }>({
-  auth: (token: string) => {
+  auth: () => {
     /* noop */
   },
   deauth: () => {
     /* noop */
   },
-  notify: (_: Flash) => {
+  notify: () => {
     /* noop */
   },
 });
