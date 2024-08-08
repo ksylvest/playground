@@ -8,7 +8,7 @@ export const Footer: React.FC = () => (
       <Content>
         <p className="has-text-centered">
           <span>by</span>{" "}
-          <a href="https://kvn.app" target="_blank" rel="noopener">
+          <a href="https://ksylvest.com" target="_blank" rel="noopener">
             Kevin Sylvestre
           </a>
         </p>
