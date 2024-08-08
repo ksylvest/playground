@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   faCcAmex,
   faCcDinersClub,

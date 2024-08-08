@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import {
   Button,
@@ -16,8 +16,6 @@ import {
   TabsItem,
   TabsList,
 } from "tights";
-
-import { World } from "@application/contexts/world";
 
 import { Context as LoginContext } from "@application/components/login/context";
 import { Fields as LoginFields } from "@application/components/login/fields";

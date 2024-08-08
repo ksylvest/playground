@@ -33,14 +33,14 @@ jobs:
     steps:
       - checkout
       - setup
-      - run: bun run eslint app/packs
+      - run: npx eslint
 
   prettier:
     executor: default
     steps:
       - checkout
       - setup
-      - run: bun run prettier --check app/packs
+      - run: npx prettier --check app/packs
 
   tsc:
     executor: default

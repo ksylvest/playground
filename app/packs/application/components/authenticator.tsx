@@ -1,16 +1,13 @@
 import React from "react";
 import { useContext } from "react";
 import { useLocation } from "react-router";
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { Tabs, TabsItem, TabsList } from "tights";
 
 import { ROOT_URL } from "@application/config/routes";
 
 import { World } from "@application/contexts/world";
-
-import { Login } from "./login";
-import { Signup } from "./signup";
 
 export const Authenticator: React.FC<{
   children?: React.ReactNode;
