@@ -9,4 +9,3 @@ const fetchMetaAttributeByName = (name: string): string | null => {
 
 export const ACTION_CABLE_URL = fetchMetaAttributeByName("action-cable-url");
 export const CSRF_TOKEN = fetchMetaAttributeByName("csrf-token");
-export const IMGIX_HOST = fetchMetaAttributeByName("imgix-host");

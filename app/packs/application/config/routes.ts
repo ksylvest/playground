@@ -1,6 +1,6 @@
 import { type Attached } from "@root/app_schema";
 
-import { IMGIX_HOST } from "./constants";
+declare const IMGIX_HOST: string | null;
 
 type Format = "avif" | "jpeg" | "webp";
 type Attachment = Pick<Attached, "id" | "key">;
