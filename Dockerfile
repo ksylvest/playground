@@ -19,17 +19,13 @@ FROM base AS build
 RUN \
   apt-get update -qq && \
   apt-get install --no-install-recommends -y build-essential libpq-dev npm curl unzip && \
-  curl -fsSL https://bun.sh/install | bash && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
-COPY Gemfile .
-COPY Gemfile.lock .
-COPY .ruby-version .
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY package.json .
-COPY bun.lockb .
-RUN bun install
+COPY package.json package-lock.json ./
+RUN npm install
 
 COPY . .
 
