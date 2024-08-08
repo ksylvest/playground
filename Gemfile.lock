@@ -141,10 +141,12 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.3.10)
+    graphql (2.3.12)
       base64
+      fiber-storage
     graphql-sources (1.2.0)
       graphql
       rails
