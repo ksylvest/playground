@@ -3,7 +3,7 @@ query SettingsAvatar {
     id
     name
     avatar {
-      id
+      ...attached
     }
   }
 }

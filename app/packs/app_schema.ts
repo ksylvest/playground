@@ -596,7 +596,7 @@ export type SettingsAuthenticationsQuery = { readonly __typename?: 'Query', read
 export type SettingsAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string } | null } | null };
+export type SettingsAvatarQuery = { readonly __typename?: 'Query', readonly me?: { readonly __typename?: 'User', readonly id: string, readonly name: string, readonly avatar?: { readonly __typename?: 'Attached', readonly id: string, readonly key: string, readonly filename: string } | null } | null };
 
 export type SettingsBillingQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1620,11 +1620,11 @@ export const SettingsAvatarDocument = gql`
     id
     name
     avatar {
-      id
+      ...attached
     }
   }
 }
-    `;
+    ${AttachedFragmentDoc}`;
 
 /**
  * __useSettingsAvatarQuery__

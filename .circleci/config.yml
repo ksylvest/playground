@@ -47,7 +47,7 @@ jobs:
     steps:
       - checkout
       - setup
-      - run: bun run tsc --pretty --strict --noemit --skiplibcheck
+      - run: npx tsc --pretty --strict --noemit --skiplibcheck
 
   rubocop:
     executor: default
@@ -90,11 +90,11 @@ jobs:
       - checkout
       - setup
       - run: bundle exec rake graphql:schema:generate
-      - run: bun run codegen
+      - run: npm run codegen
       - run: |
           if [[ $(git diff app/graphql/app_schema.graphql app/packs/app_schema.ts) ]]; then
             echo '`bundle exec rake graphql:schema:generate`'
-            echo '`bun run codegen`'
+            echo '`npm run codegen`'
             git diff app/graphql/app_schema.graphql app/packs/app_schema.ts
             exit 1
           fi
