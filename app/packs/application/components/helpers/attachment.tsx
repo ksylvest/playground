@@ -5,10 +5,10 @@ import { Image } from "tights";
 import { ATTACHMENT_URL } from "@application/config/routes";
 
 type Resize = "fit" | "fill";
-type Format = "jpeg" | "webp";
+type Format = "avif" | "jpeg" | "webp";
 
 const SIZES = [2, 3];
-const FORMATS: Format[] = ["webp", "jpeg"];
+const FORMATS: Format[] = ["avif", "webp", "jpeg"];
 
 const SRC_SET_URLS = (id: string, w: number, h: number, resize: Resize, format: Format): string =>
   SIZES.map((s) => `${ATTACHMENT_URL(id, w * s, h * s, resize, format)} ${s}x`).join(", ");

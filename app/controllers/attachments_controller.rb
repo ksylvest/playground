@@ -1,38 +1,20 @@
 class AttachmentsController < ApplicationController
   # GET /attached/:id.(jpg|webp)?l=:l&w=:w&resize=(fit|fill)
   def show
-    http_cache_forever(public: !params[:fresh]) do
-      send_data(service.data, type: Mime::Type.lookup_by_extension(format), disposition: 'inline')
-    end
+    redirect_to rails_representation_url(variant.processed, host: request.host_with_port)
   end
 
 private
 
-  def attachment
-    ActiveStorage::Attachment.find(params[:id])
-  end
-
-  def service
-    Attachment::VariantService.new(
-      attachment,
-      format:,
-      resize:,
-      size:
+  def variant
+    Attachment::VariantService.variant(
+      ActiveStorage::Attachment.find(params[:id]),
+      format: params[:format],
+      resize: params[:resize],
+      size: [
+        Integer(params[:w]),
+        Integer(params[:h]),
+      ]
     )
-  end
-
-  def size
-    [
-      Integer(params.fetch(:w)),
-      Integer(params.fetch(:h)),
-    ]
-  end
-
-  def format
-    params.fetch(:format)
-  end
-
-  def resize
-    params.fetch(:resize)
   end
 end

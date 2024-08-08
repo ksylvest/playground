@@ -11,7 +11,7 @@ RSpec.describe AttachmentsController, type: :request do
 
     it 'responds with the variant' do
       get attachment_path(user.avatar.id), params: { w:, h:, format:, resize: }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
   end
 end

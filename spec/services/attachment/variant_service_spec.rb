@@ -4,9 +4,10 @@ RSpec.describe Attachment::VariantService, type: :service do
   let(:user) { create(:user, :with_avatar) }
   let(:attachment) { user.avatar }
   let(:resize) { 'fill' }
-  let(:format) { 'webp' }
-  let(:service) do
-    Attachment::VariantService.new(
+  let(:format) { 'jpeg' }
+
+  let(:variant) do
+    Attachment::VariantService.variant(
       attachment,
       format:,
       resize:,
@@ -17,12 +18,14 @@ RSpec.describe Attachment::VariantService, type: :service do
     )
   end
 
-  describe '#initialize' do
+  describe '.variant' do
+    it { expect(variant).to be_a(ActiveStorage::VariantWithRecord) }
+
     context 'when "resize" is "other"' do
       let(:resize) { 'other' }
 
       it 'raises an "ArgumentError"' do
-        expect { service }.to raise_error(ArgumentError, 'invalid option for resize: "other"')
+        expect { variant }.to raise_error(ArgumentError, 'invalid option for resize: "other"')
       end
     end
 
@@ -30,32 +33,8 @@ RSpec.describe Attachment::VariantService, type: :service do
       let(:format) { 'gif' }
 
       it 'raises an "ArgumentError"' do
-        expect { service }.to raise_error(ArgumentError, 'invalid option for format: "gif"')
+        expect { variant }.to raise_error(ArgumentError, 'invalid option for format: "gif"')
       end
-    end
-  end
-
-  describe '#variant' do
-    subject(:variant) { service.variant }
-
-    it 'generates a variant for an attachment' do
-      expect(service.variant).to be_a(ActiveStorage::VariantWithRecord)
-    end
-  end
-
-  describe '#data' do
-    subject(:data) { service.data }
-
-    it 'generates data for an attachment' do
-      expect(service.data).to be_a(String)
-    end
-  end
-
-  describe '#type' do
-    subject(:type) { service.type }
-
-    it 'uses the format to generate a type' do
-      expect(service.type).to be_a(Mime::Type)
     end
   end
 end
