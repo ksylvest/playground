@@ -12,7 +12,7 @@ export const PROFILE_URL = ({ id }: { id: string }): string => `/profile/${id}`;
 export const FEED_DETAILS_URL = ({ id }: { id: string }): string => `/feed/entries/${id}`;
 
 const IMGIX_URL = (attachment: Attachment, w: number, h: number, format: Format): string =>
-  `${IMGIX_HOST}/${attachment.key}?fit=fill&w=${w}&h=${h}&fm=${format}`;
+  `${IMGIX_HOST}/${attachment.key}?fit=crop&w=${w}&h=${h}&fm=${format}`;
 
 const DEFAULT_URL = (attachment: Attachment, w: number, h: number, format: Format): string =>
   `/attachments/${attachment.id}.${format}?resize=fill&w=${w}&h=${h}`;
