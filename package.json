@@ -2,8 +2,8 @@
   "name": "playground",
   "private": true,
   "scripts": {
-    "build": "bun build app/packs/entrypoints/application.ts --outdir=app/assets/builds --minify --sourcemap=external",
-    "build:css": "bun run sass ./app/packs/entrypoints/application.bulma.scss:./app/assets/builds/application.css --load-path=node_modules",
+    "build": "esbuild app/packs/entrypoints/application.ts --bundle --sourcemap --format=esm --minify --outdir=app/assets/builds",
+    "build:css": "sass ./app/packs/entrypoints/application.bulma.scss:./app/assets/builds/application.css --load-path=node_modules",
     "codegen": "graphql-codegen --config .codegen.yml",
     "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
@@ -29,6 +29,7 @@
     "bulma": "^1.0.0",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
+    "esbuild": "^0.23.0",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "lodash": "^4.17.21",
