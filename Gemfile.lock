@@ -140,7 +140,7 @@ GEM
     fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.3.13)
+    graphql (2.3.14)
       base64
       fiber-storage
     graphql-sources (1.4.0)
