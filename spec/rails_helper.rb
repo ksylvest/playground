@@ -17,7 +17,7 @@ WebMock.disable_net_connect!(
   ]
 )
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+Rails.root.glob('spec/support/**/*.rb').each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 
