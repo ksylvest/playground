@@ -1,7 +1,7 @@
 class Billing::Source < ApplicationRecord
   belongs_to :customer
 
-  enum brand: {
+  enum :brand, {
     american_express: 'American Express',
     diners_club: 'Diners Club',
     discover: 'Discover',
@@ -10,14 +10,14 @@ class Billing::Source < ApplicationRecord
     unionpay: 'UnionPay',
     visa: 'Visa',
     unknown: 'Unknown',
-  }, _prefix: :brand
+  }, prefix: :brand
 
-  enum funding: {
+  enum :funding, {
     credit: 'credit',
     debit: 'debit',
     prepaid: 'prepaid',
     unknown: 'unknown',
-  }, _prefix: :funding
+  }, prefix: :funding
 
   validates :stripe_id, presence: true, uniqueness: true
   validates :brand, presence: true

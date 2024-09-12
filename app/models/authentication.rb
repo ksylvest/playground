@@ -1,5 +1,8 @@
 class Authentication < ApplicationRecord
-  enum status: { online: 'online', offline: 'offline' }
+  enum :status, {
+    online: 'online',
+    offline: 'offline',
+  }
 
   include Activatable
 

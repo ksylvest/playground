@@ -2,7 +2,7 @@ class Billing::Customer < ApplicationRecord
   belongs_to :user
   has_many :sources, dependent: :destroy
 
-  enum currency: {
+  enum :currency, {
     cad: 'cad',
     usd: 'usd',
   }
