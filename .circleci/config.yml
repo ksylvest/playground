@@ -3,6 +3,7 @@ orbs:
   browser-tools: circleci/browser-tools@1.4.6
   docker: circleci/docker@2.4.0
   ruby: circleci/ruby@2.1.0
+  node: circleci/node@6.1.0
 
 executors:
   default:
@@ -21,11 +22,7 @@ commands:
   setup:
     steps:
       - ruby/install-deps
-      - run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo 'export BUN_INSTALL="$HOME/.bun"' >> "$BASH_ENV"
-          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> "$BASH_ENV"
-      - run: bun install
+      - node/install-packages
 
 jobs:
   eslint:
