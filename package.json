@@ -22,7 +22,7 @@
     "@stripe/stripe-js": "^4.3.0",
     "@types/lodash": "^4.17.7",
     "@types/rails__actioncable": "^6.1.11",
-    "@types/react": "^18.3.6",
+    "@types/react": "^18.3.7",
     "@types/react-dom": "^18.2.15",
     "@types/react-fontawesome": "^1.6.8",
     "@types/webfontloader": "^1.6.37",
