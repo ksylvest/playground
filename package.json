@@ -38,7 +38,7 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.26.2",
     "react-router-dom": "^6.26.1",
-    "sass": "^1.79.3",
+    "sass": "^1.79.4",
     "tights": "^4.0.2"
   },
   "devDependencies": {
