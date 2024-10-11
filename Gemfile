@@ -26,6 +26,7 @@ gem 'jsbundling-rails'
 gem 'sentry-rails'
 
 gem 'bootsnap', require: false
+gem 'thruster', require: false
 
 group :test do
   gem 'capybara'
