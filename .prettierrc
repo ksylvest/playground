@@ -18,6 +18,7 @@
     "^@application/hooks/(.*)$",
     "^@application/utilities/(.*)$",
     "^@application/components/(.*)$",
+    "^@application/loaders/(.*)$",
     "^(.*$)"
   ]
 }
