@@ -2,7 +2,7 @@ import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, from } from "@apollo
 import { ErrorLink } from "@apollo/client/link/error";
 
 export const CLIENT = new ApolloClient({
-  cache: new InMemoryCache({}),
+  cache: new InMemoryCache(),
   link: from([
     new ApolloLink((operation, forward) => {
       const token = localStorage.getItem("token");

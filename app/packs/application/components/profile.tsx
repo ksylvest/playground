@@ -12,9 +12,7 @@ import { Summary } from "./profile/summary";
 
 export const Profile: React.FC = () => {
   const { id } = useParams();
-  if (!id) {
-    throw new Error('missing required "id"');
-  }
+  if (!id) throw new Error('missing required "id"');
 
   const { data } = useProfileQuery({ variables: { id } });
   const user = data?.user;

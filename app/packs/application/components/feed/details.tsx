@@ -18,9 +18,7 @@ const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Details: React.FC = () => {
   const { id } = useParams();
-  if (!id) {
-    throw new Error('missing required "id"');
-  }
+  if (!id) throw new Error('missing required "id"');
 
   const { data } = useFeedEntryQuery({ variables: { id } });
   const entry = data?.feed?.entry;
