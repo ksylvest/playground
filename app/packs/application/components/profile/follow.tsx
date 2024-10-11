@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button } from "tights";
 
 import { FollowFragment, UserFragment, useFollowUserMutation, useUnfollowUserMutation } from "@root/app_schema";

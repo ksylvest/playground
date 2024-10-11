@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Control, Field } from "tights";
 
 import { Submit } from "./submit";

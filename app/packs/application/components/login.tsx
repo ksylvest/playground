@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Authenticator } from "./authenticator";
 import { Title } from "./helpers/title";
 import { Controls } from "./login/controls";

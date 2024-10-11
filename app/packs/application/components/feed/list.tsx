@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useFeedQuery } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers/title";

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Buttons, Column, Columns, Icon, Message, MessageBody } from "tights";
 
 import { faCircle } from "@fortawesome/free-solid-svg-icons";

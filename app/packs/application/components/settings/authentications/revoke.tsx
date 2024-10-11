@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 
 import { AuthenticationFragment, useSettingsAuthenticationDestroyMutation } from "@root/app_schema";

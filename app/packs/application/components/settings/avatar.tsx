@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Column, Columns } from "tights";
 
 import { useSettingsAvatarQuery } from "@root/app_schema";

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button, Icon } from "tights";
 
 import { faTimes } from "@fortawesome/free-solid-svg-icons";

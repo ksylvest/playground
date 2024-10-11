@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Content, Media, MediaContent, MediaLeft } from "tights";
 
 import { Feed__CommentFragment } from "@root/app_schema";

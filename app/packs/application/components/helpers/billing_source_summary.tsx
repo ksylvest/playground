@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Billing__Source } from "@root/app_schema";
 
 import { BillingSourceBrandName } from "./billing_source_brand_name";

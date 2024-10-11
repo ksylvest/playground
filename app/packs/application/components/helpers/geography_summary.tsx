@@ -1,5 +1,3 @@
-import React from "react";
-
 import { GeographyFragment } from "@root/app_schema";
 
 export const GeographySummary: React.FC<{

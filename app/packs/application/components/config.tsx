@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ApolloProvider } from "@apollo/client";
 
 import { Flash } from "@application/types/flash";

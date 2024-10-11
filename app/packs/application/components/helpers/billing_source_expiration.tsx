@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Billing__Source } from "@root/app_schema";
 
 export const BillingSourceExpiration: React.FC<{

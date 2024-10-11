@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 
 import { Billing__Source, useSettingsBillingSourceDefaultMutation } from "@root/app_schema";

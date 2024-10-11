@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Buttons } from "tights";
 
 import { Feed__EntryFragment } from "@root/app_schema";

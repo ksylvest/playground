@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Billing__Source, Billing__Source__Brand } from "@root/app_schema";
 
 const BILLING_SOURCE_BRAND_NAMES: Record<Billing__Source__Brand, string> = {
