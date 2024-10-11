@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Control, Field, Help, Icon, Input, Label } from "tights";
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

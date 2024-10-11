@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Image } from "tights";
 
 import { type Attached } from "@root/app_schema";

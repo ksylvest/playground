@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Notification } from "@root/app_schema";
 
 import { Empty } from "./empty";

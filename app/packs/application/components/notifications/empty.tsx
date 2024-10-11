@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Hero, HeroBody, Subtitle, Title } from "tights";
 
 export const Empty: React.FC = () => (

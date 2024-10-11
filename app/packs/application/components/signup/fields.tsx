@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

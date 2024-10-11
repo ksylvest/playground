@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button, Buttons, Table } from "tights";
 
 import { Billing__Source } from "@root/app_schema";

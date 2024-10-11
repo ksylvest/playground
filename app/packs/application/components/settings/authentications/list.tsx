@@ -1,5 +1,3 @@
-import React from "react";
-
 import { AuthenticationFragment } from "@root/app_schema";
 
 import { Entry } from "./entry";

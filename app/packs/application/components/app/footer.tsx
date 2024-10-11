@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Container, Content } from "tights";
 
 export const Footer: React.FC = () => (

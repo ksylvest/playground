@@ -1,4 +1,3 @@
-import React from "react";
 import { useActiveStorage } from "react-activestorage";
 
 import { File, FileCTA, FileIcon, FileInput, FileLabel, FileName } from "tights";

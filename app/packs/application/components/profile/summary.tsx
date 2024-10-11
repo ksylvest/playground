@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Column, Columns, Title } from "tights";
 
 import { FollowFragment, UserFragment } from "@root/app_schema";

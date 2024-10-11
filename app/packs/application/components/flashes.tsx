@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Notification } from "tights";
 
 import { sentence } from "@application/utilities/sentence";
