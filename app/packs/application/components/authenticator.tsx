@@ -13,9 +13,11 @@ export const Authenticator: React.FC<{
 }> = ({ children }) => {
   const { token } = useContext(World);
   const location = useLocation();
-  const state = location.state as { back?: string } | undefined;
 
-  if (token) return <Navigate to={state?.back ?? ROOT_URL} />;
+  if (token) {
+    const params = new URLSearchParams(location.search);
+    return <Navigate to={params.get("back") ?? ROOT_URL} />;
+  }
 
   return (
     <>

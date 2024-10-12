@@ -8,7 +8,7 @@ RSpec.describe 'notifications' do
   it 'lets a user manage their notifications' do
     visit notifications_path
 
-    expect(page).to have_text('You must be authenticated to access this.')
+    expect(page).to have_title('Login | Playground')
 
     within('form') do
       fill_in('Email', with: user.email)

@@ -6,7 +6,7 @@ RSpec.describe 'settings/billing' do
 
   it 'prompts for authentication' do
     visit settings_billing_path
-    expect(page).to have_text('You must be authenticated to access this.')
+    expect(page).to have_title('Login | Playground')
   end
 
   it 'displays for an authorized user' do
