@@ -2,6 +2,7 @@ import { type RouteObject } from "react-router";
 
 import { FEED_ENTRY_QUERY_LOADER } from "@application/loaders/feed_entry_query_loader";
 import { FEED_QUERY_LOADER } from "@application/loaders/feed_query_loader";
+import { NOTIFICATIONS_QUERY_LOADER } from "@application/loaders/notifications_query_loader";
 import { PROFILE_QUERY_LOADER } from "@application/loaders/profile_query_loader";
 
 import { Layout } from "./Layout";
@@ -44,6 +45,7 @@ export const ROUTES: RouteObject[] = [
       {
         path: "notifications",
         element: <Notifications />,
+        loader: NOTIFICATIONS_QUERY_LOADER,
       },
       {
         path: "settings",
