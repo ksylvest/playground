@@ -10,7 +10,7 @@ import { CLIENT } from "@application/config/apollo";
 
 import { AUTH_LOADER } from "./auth_loader";
 
-export const SETTINGS_PROFILE_QUERY_LOADER: LoaderFunction = async (args) => {
+export const SETTINGS_PROFILE_LOADER: LoaderFunction = async (args) => {
   const response = await AUTH_LOADER(args);
   if (response) return response;
 

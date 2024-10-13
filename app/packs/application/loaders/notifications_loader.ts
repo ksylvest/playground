@@ -6,7 +6,7 @@ import { CLIENT } from "@application/config/apollo";
 
 import { AUTH_LOADER } from "./auth_loader";
 
-export const NOTIFICATIONS_QUERY_LOADER: LoaderFunction = async (args) => {
+export const NOTIFICATIONS_LOADER: LoaderFunction = async (args) => {
   const response = await AUTH_LOADER(args);
   if (response) return response;
 

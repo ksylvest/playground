@@ -4,7 +4,7 @@ import { FeedEntryDocument, type FeedEntryQuery, type FeedEntryQueryVariables } 
 
 import { CLIENT } from "@application/config/apollo";
 
-export const FEED_ENTRY_QUERY_LOADER: LoaderFunction = async (props) => {
+export const FEED_ENTRY_LOADER: LoaderFunction = async (props) => {
   const { data } = await CLIENT.query<FeedEntryQuery, FeedEntryQueryVariables>({
     query: FeedEntryDocument,
     variables: { id: props.params.id! },

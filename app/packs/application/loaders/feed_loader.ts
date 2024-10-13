@@ -4,7 +4,7 @@ import { FeedDocument, type FeedQuery, type FeedQueryVariables } from "@root/app
 
 import { CLIENT } from "@application/config/apollo";
 
-export const FEED_QUERY_LOADER: LoaderFunction = async () => {
+export const FEED_LOADER: LoaderFunction = async () => {
   const { data } = await CLIENT.query<FeedQuery, FeedQueryVariables>({
     query: FeedDocument,
   });
