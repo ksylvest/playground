@@ -4,7 +4,7 @@ import { ProfileDocument, type ProfileQuery, type ProfileQueryVariables } from "
 
 import { CLIENT } from "@application/config/apollo";
 
-export const PROFILE_QUERY_LOADER = async (props: LoaderFunctionArgs) => {
+export const PROFILE_LOADER = async (props: LoaderFunctionArgs) => {
   const { data } = await CLIENT.query<ProfileQuery, ProfileQueryVariables>({
     query: ProfileDocument,
     variables: { id: props.params.id! },

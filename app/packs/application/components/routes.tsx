@@ -1,9 +1,9 @@
 import { type RouteObject } from "react-router";
 
-import { FEED_ENTRY_QUERY_LOADER } from "@application/loaders/feed_entry_query_loader";
-import { FEED_QUERY_LOADER } from "@application/loaders/feed_query_loader";
-import { NOTIFICATIONS_QUERY_LOADER } from "@application/loaders/notifications_query_loader";
-import { PROFILE_QUERY_LOADER } from "@application/loaders/profile_query_loader";
+import { FEED_ENTRY_LOADER } from "@application/loaders/feed_entry_loader";
+import { FEED_LOADER } from "@application/loaders/feed_loader";
+import { NOTIFICATIONS_LOADER } from "@application/loaders/notifications_loader";
+import { PROFILE_LOADER } from "@application/loaders/profile_loader";
 
 import { Layout } from "./Layout";
 import { Details } from "./feed/details";
@@ -22,17 +22,17 @@ export const ROUTES: RouteObject[] = [
       {
         index: true,
         element: <List />,
-        loader: FEED_QUERY_LOADER,
+        loader: FEED_LOADER,
       },
       {
         path: "feed/entries/:id",
         element: <Details />,
-        loader: FEED_ENTRY_QUERY_LOADER,
+        loader: FEED_ENTRY_LOADER,
       },
       {
         path: "profile/:id",
         element: <Profile />,
-        loader: PROFILE_QUERY_LOADER,
+        loader: PROFILE_LOADER,
       },
       {
         path: "login",
@@ -45,7 +45,7 @@ export const ROUTES: RouteObject[] = [
       {
         path: "notifications",
         element: <Notifications />,
-        loader: NOTIFICATIONS_QUERY_LOADER,
+        loader: NOTIFICATIONS_LOADER,
       },
       {
         path: "settings",

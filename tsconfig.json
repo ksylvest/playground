@@ -19,8 +19,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@root/*": ["*"],
-      "@application/*": ["application/*"]
+      "@application/*": ["application/*"],
+      "@root/*": ["*"]
     }
   }
 }
