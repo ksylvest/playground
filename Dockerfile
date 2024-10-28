@@ -47,4 +47,4 @@ RUN bundle exec bootsnap precompile --gemfile /app /lib
 ENTRYPOINT ["/rails/bin/entrypoint"]
 
 EXPOSE $PORT
-CMD ["./bin/thrust", "./bin/rails", "server"]
+CMD ["./bin/rails", "server"]
