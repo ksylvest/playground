@@ -20,6 +20,7 @@ gem 'propshaft'
 gem 'stripe'
 
 gem 'aws-sdk-s3', require: false
+gem 'cloudflare-ips'
 gem 'image_processing'
 
 gem 'cssbundling-rails'
