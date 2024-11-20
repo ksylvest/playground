@@ -18,7 +18,7 @@
     "@parcel/watcher": "^2.5.0",
     "@rails/actioncable": "^8.0.0",
     "@sentry/browser": "^8.38.0",
-    "@stripe/react-stripe-js": "^2.9.0",
+    "@stripe/react-stripe-js": "^3.0.0",
     "@stripe/stripe-js": "^4.9.0",
     "@types/lodash": "^4.17.13",
     "@types/rails__actioncable": "^6.1.11",
