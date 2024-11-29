@@ -1,13 +1,11 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  faCcAmex,
-  faCcDinersClub,
-  faCcDiscover,
-  faCcJcb,
-  faCcMastercard,
-  faCcVisa,
-} from "@fortawesome/free-brands-svg-icons";
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faCcAmex } from "@fortawesome/free-brands-svg-icons/faCcAmex";
+import { faCcDinersClub } from "@fortawesome/free-brands-svg-icons/faCcDinersClub";
+import { faCcDiscover } from "@fortawesome/free-brands-svg-icons/faCcDiscover";
+import { faCcJcb } from "@fortawesome/free-brands-svg-icons/faCcJcb";
+import { faCcMastercard } from "@fortawesome/free-brands-svg-icons/faCcMastercard";
+import { faCcVisa } from "@fortawesome/free-brands-svg-icons/faCcVisa";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons/faCreditCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Billing__Source, Billing__Source__Brand } from "@root/app_schema";

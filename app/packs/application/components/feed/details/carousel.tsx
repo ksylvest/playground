@@ -4,7 +4,8 @@ import times from "lodash/times";
 
 import { Pagination, PaginationItem, PaginationLink, PaginationList, PaginationNext, PaginationPrev } from "tights";
 
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { AttachedFragment, UserFragment } from "@root/app_schema";

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Button, Control, Field } from "tights";
 
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 
 import { Errors } from "@root/app_schema";
 import { InputField } from "@root/application/components/input_field";
