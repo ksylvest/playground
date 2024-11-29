@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Playground
   class Application < Rails::Application
-    config.load_defaults 8.0
+    config.load_defaults Float("#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}")
 
     config.autoload_lib(ignore: %w[assets tasks])
 
