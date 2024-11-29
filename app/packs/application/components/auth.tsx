@@ -10,7 +10,7 @@ export const Auth: React.FC = () => {
     return null;
   }
 
-  const onChange = (): void => navigate(location.pathname, { replace: true });
+  const onChange = () => navigate(location.pathname, { replace: true });
 
   return <Dialog onCancel={onChange} onAuth={onChange} />;
 };
