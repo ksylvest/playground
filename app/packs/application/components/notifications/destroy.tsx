@@ -1,6 +1,6 @@
 import { Button, Icon } from "tights";
 
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Notification, useDestroyNotificationMutation } from "@root/app_schema";

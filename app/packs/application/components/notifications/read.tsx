@@ -1,6 +1,7 @@
 import { Button, Icon } from "tights";
 
-import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Notification, useReadNotificationMutation } from "@root/app_schema";

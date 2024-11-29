@@ -1,8 +1,8 @@
 import { Control, Field, Help, Icon, Input, Label } from "tights";
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { type IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons/faCheckSquare";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { sentence } from "@application/utilities/sentence";

@@ -1,6 +1,6 @@
 import { Button, Icon } from "tights";
 
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Feed__EntryFragment, useLikeFeedEntryMutation, useUnlikeFeedEntryMutation } from "@root/app_schema";

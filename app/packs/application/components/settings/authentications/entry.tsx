@@ -1,6 +1,6 @@
 import { Button, Column, Columns, Icon, Message, MessageBody } from "tights";
 
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { AuthenticationFragment, AuthenticationStatusEnum } from "@root/app_schema";

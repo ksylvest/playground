@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import { Button, Control, Field } from "tights";
 
-import { faEnvelope, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
+import { faInfo } from "@fortawesome/free-solid-svg-icons/faInfo";
 
 import { Errors } from "@root/app_schema";
 import { InputField } from "@root/application/components/input_field";
