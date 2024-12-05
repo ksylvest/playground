@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { StrictMode, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { ApolloProvider } from "@apollo/client";
@@ -38,10 +38,12 @@ export const App: React.FC = () => {
   };
 
   return (
-    <World.Provider value={{ flash, notify, token, auth, deauth, stats }}>
-      <ApolloProvider client={CLIENT}>
-        <RouterProvider router={ROUTER} />
-      </ApolloProvider>
-    </World.Provider>
+    <StrictMode>
+      <World.Provider value={{ flash, notify, token, auth, deauth, stats }}>
+        <ApolloProvider client={CLIENT}>
+          <RouterProvider router={ROUTER} />
+        </ApolloProvider>
+      </World.Provider>
+    </StrictMode>
   );
 };
