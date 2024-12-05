@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const reset = (form: React.RefObject<HTMLFormElement>): void => {
+const reset = (form: React.RefObject<HTMLFormElement | null>): void => {
   if (form.current !== null) {
     form.current.reset();
   }
