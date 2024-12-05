@@ -8,7 +8,7 @@
     "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@apollo/client": "^3.12.1",
+    "@apollo/client": "^3.12.2",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
@@ -20,12 +20,6 @@
     "@sentry/browser": "^8.42.0",
     "@stripe/react-stripe-js": "^3.0.0",
     "@stripe/stripe-js": "^5.2.0",
-    "@types/lodash": "^4.17.13",
-    "@types/rails__actioncable": "^6.1.11",
-    "@types/react": "^18.3.13",
-    "@types/react-dom": "^18.3.1",
-    "@types/react-fontawesome": "^1.6.8",
-    "@types/webfontloader": "^1.6.37",
     "bulma": "^1.0.2",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
@@ -33,9 +27,9 @@
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-activestorage": "^1.0.7",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-activestorage": "^1.1.0",
+    "react-dom": "^19.0.0",
     "react-router": "^7.0.1",
     "react-router-dom": "^7.0.2",
     "sass": "^1.82.0",
@@ -48,6 +42,12 @@
     "@graphql-codegen/typescript-operations": "^4.4.0",
     "@graphql-codegen/typescript-react-apollo": "^4.1.0",
     "@trivago/prettier-plugin-sort-imports": "^5.0.1",
+    "@types/lodash": "^4.17.13",
+    "@types/rails__actioncable": "^6.1.11",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/react-fontawesome": "^1.6.8",
+    "@types/webfontloader": "^1.6.37",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^9.16.0",
@@ -55,5 +55,11 @@
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.2",
     "typescript-eslint": "^8.17.0"
+  },
+  "overrides": {
+    "@stripe/react-stripe-js": {
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
+    }
   }
 }
