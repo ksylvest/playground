@@ -54,4 +54,4 @@ export const ROUTES: RouteObject[] = [
       },
     ],
   },
-];
+] satisfies RouteConfig;
