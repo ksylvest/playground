@@ -128,16 +128,20 @@ GEM
     docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.1)
-    erubi (1.13.0)
+    erubi (1.13.1)
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -158,7 +162,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
-    http-cookie (1.0.7)
+    http-cookie (1.0.8)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     i18n (1.14.6)
@@ -194,7 +198,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.6.4)
-    loofah (2.23.1)
+    loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -208,7 +212,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
-    net-imap (0.5.2)
+    net-imap (0.5.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -216,15 +220,22 @@ GEM
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
-      net-protocol
     nio4r (2.7.4)
-    nokogiri (1.17.2-aarch64-linux)
+    nokogiri (1.18.1-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.17.2-arm64-darwin)
+    nokogiri (1.18.1-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-darwin)
+    nokogiri (1.18.1-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-linux)
+    nokogiri (1.18.1-arm-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.1-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.1-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.1-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.1-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.26.3)
     parser (3.3.6.0)
@@ -244,9 +255,10 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
-    rack-session (2.0.0)
+    rack-session (2.1.0)
+      base64 (>= 0.1.0)
       rack (>= 3.0.0)
-    rack-test (2.1.0)
+    rack-test (2.2.0)
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
@@ -288,12 +300,12 @@ GEM
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.2)
+    redis-client (0.23.0)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rspec-core (3.13.2)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -310,7 +322,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.1)
+    rspec-support (3.13.2)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (1.69.2)
@@ -345,7 +357,7 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
-    rubyzip (2.3.2)
+    rubyzip (2.4.1)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
@@ -370,6 +382,7 @@ GEM
     stringio (3.1.2)
     stripe (13.3.0)
     thor (1.3.2)
+    thruster (0.1.10)
     thruster (0.1.10-aarch64-linux)
     thruster (0.1.10-arm64-darwin)
     thruster (0.1.10-x86_64-darwin)
@@ -377,7 +390,7 @@ GEM
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.1.2)
+    unicode-display_width (3.1.3)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.2)
@@ -392,7 +405,8 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.11)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
@@ -401,9 +415,15 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
   arm64-darwin
   x86_64-darwin
   x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   aws-sdk-s3
@@ -448,7 +468,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 3.3.6p108
+   ruby 3.4.1p0
 
 BUNDLED WITH
-   2.5.22
+   2.6.2
