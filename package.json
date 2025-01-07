@@ -48,7 +48,7 @@
     "@types/react-dom": "^19.0.2",
     "@types/react-fontawesome": "^1.6.8",
     "@types/webfontloader": "^1.6.37",
-    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.0",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
