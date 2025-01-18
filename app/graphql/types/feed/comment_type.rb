@@ -1,7 +1,7 @@
 module Types
   module Feed
     class CommentType < BaseObject
-      graphql_name 'Feed__Comment'
+      graphql_name "Feed__Comment"
 
       field :id, ID, null: false
       field :message, String, null: false

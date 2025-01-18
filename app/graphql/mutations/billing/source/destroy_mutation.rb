@@ -2,7 +2,7 @@ module Mutations
   module Billing
     module Source
       class DestroyMutation < BaseMutation
-        graphql_name 'DestroyBillingSource'
+        graphql_name "DestroyBillingSource"
         argument :id, ID, required: true
         field :billing, ::Types::BillingType, null: false
 

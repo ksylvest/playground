@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :notification do
     user
-    message { 'Welcome!' }
+    message { "Welcome!" }
   end
 end

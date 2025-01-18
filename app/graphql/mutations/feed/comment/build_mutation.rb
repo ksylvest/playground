@@ -2,7 +2,7 @@ module Mutations
   module Feed
     module Comment
       class BuildMutation < BaseMutation
-        graphql_name 'BuildFeedComment'
+        graphql_name "BuildFeedComment"
         argument :input, Types::Feed::CommentInput, required: true
         field :status, ::Types::StatusType, null: false
         field :errors, ::Types::ErrorsType, null: true

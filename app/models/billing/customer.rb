@@ -3,8 +3,8 @@ class Billing::Customer < ApplicationRecord
   has_many :sources, dependent: :destroy
 
   enum :currency, {
-    cad: 'cad',
-    usd: 'usd',
+    cad: "cad",
+    usd: "usd",
   }
 
   validates :stripe_id, presence: true, uniqueness: true

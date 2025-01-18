@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe GeoIP do
   subject { build(:geo_ip) }

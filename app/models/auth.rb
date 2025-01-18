@@ -1,7 +1,12 @@
 class Auth
   include ActiveModel::Model
 
+  # @!attribute email [rw]
+  #   @return [String]
   attr_accessor :email
+
+  # @!attribute password [rw]
+  #   @return [String]
   attr_accessor :password
 
   validates :email, presence: true
@@ -12,7 +17,7 @@ class Auth
 
     user = User.authenticate_by(email:, password:)
 
-    errors.add(:base, 'the email and password entered did not match our records') if user.nil?
+    errors.add(:base, "the email and password entered did not match our records") if user.nil?
 
     user
   end

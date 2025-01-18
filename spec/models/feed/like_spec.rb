@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Feed::Like do
   subject { build(:feed_like) }

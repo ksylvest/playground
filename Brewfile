@@ -1,3 +1,3 @@
-brew 'git'
-brew 'rbenv'
-brew 'vips'
+brew "git"
+brew "rbenv"
+brew "vips"

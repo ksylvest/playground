@@ -1,5 +1,5 @@
 class RobotsController < ApplicationController
-  layout 'robots'
+  layout "robots"
 
   def show
     expires_in 5.minutes

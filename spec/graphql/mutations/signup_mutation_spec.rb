@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Mutations::SignupMutation do
-  describe '#resolve' do
+  describe "#resolve" do
     subject(:execute) do
       AppSchema.execute(gql, variables: { input: })
     end
@@ -16,32 +16,32 @@ RSpec.describe Mutations::SignupMutation do
       GQL
     end
 
-    context 'with valid input' do
+    context "with valid input" do
       let(:input) do
         {
-          name: 'George Harrison',
-          email: 'george.harrison@beatles.com',
-          password: 'password',
+          name: "George Harrison",
+          email: "george.harrison@beatles.com",
+          password: "password",
         }
       end
 
       it 'resolves "OK"' do
-        expect(execute['errors']).to be_nil
-        expect(execute['data']['signup']['status']).to eql('OK')
+        expect(execute["errors"]).to be_nil
+        expect(execute["data"]["signup"]["status"]).to eql("OK")
       end
     end
 
-    context 'with invalid input' do
+    context "with invalid input" do
       let(:input) do
         {
-          name: '',
-          email: '',
-          password: '',
+          name: "",
+          email: "",
+          password: "",
         }
       end
 
       it 'resolves "UNPROCESSABLE"' do
-        expect(execute['data']['signup']['status']).to eql('UNPROCESSABLE')
+        expect(execute["data"]["signup"]["status"]).to eql("UNPROCESSABLE")
       end
     end
   end

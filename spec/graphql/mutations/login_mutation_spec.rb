@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Mutations::LoginMutation do
-  describe '#resolve' do
+  describe "#resolve" do
     subject :execute do
       AppSchema.execute(gql, variables: { input: })
     end
@@ -20,8 +20,8 @@ RSpec.describe Mutations::LoginMutation do
     let(:input) { user.slice(:email, :password) }
 
     it 'resolves "OK"' do
-      expect(execute['errors']).to be_nil
-      expect(execute['data']['login']['status']).to eql('OK')
+      expect(execute["errors"]).to be_nil
+      expect(execute["data"]["login"]["status"]).to eql("OK")
     end
   end
 end

@@ -1,7 +1,7 @@
 module Mutations
   module Authentication
     class DestroyMutation < BaseMutation
-      graphql_name 'DestroyAuthentication'
+      graphql_name "DestroyAuthentication"
       argument :id, ::String, required: true
       field :authentication, ::Types::AuthenticationType, null: false
 

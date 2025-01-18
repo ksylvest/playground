@@ -1,7 +1,7 @@
 class Authentication < ApplicationRecord
   enum :status, {
-    online: 'online',
-    offline: 'offline',
+    online: "online",
+    offline: "offline",
   }
 
   include Activatable
@@ -13,7 +13,7 @@ class Authentication < ApplicationRecord
   validates :ip, presence: true
 
   after_commit { GeoIPBuilderJob.new(String(ip)).enqueue }
-  after_initialize { self.ip ||= Current.ip || '0.0.0.0' }
+  after_initialize { self.ip ||= Current.ip || "0.0.0.0" }
   after_initialize { self.seen_at ||= Time.current }
 
   scope :chronological, -> { order(seen_at: :desc) }

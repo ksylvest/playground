@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Types::FeedType do
-  describe '#resolve' do
+  describe "#resolve" do
     subject(:execute) do
       AppSchema.execute(gql)
     end
@@ -47,10 +47,10 @@ RSpec.describe Types::FeedType do
     let!(:comment) { create(:feed_comment, entry:) }
     let!(:like) { create(:feed_like, entry:) }
 
-    it 'resolves a feed' do
-      expect(execute['errors']).to be_nil
-      expect(execute['data']['feed']).to be_present
-      expect(execute['data']['feed']['entries']).to be_present
+    it "resolves a feed" do
+      expect(execute["errors"]).to be_nil
+      expect(execute["data"]["feed"]).to be_present
+      expect(execute["data"]["feed"]["entries"]).to be_present
     end
   end
 end

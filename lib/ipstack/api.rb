@@ -3,7 +3,7 @@ module IPStack
   Response = Struct.new(:ip, :city, :postal, :latitude, :longitude, :continent, :country, :region)
 
   class API
-    HOST = 'http://api.ipstack.com'.freeze
+    HOST = "http://api.ipstack.com".freeze
     TIMEOUT = 5 # seconds
     private_constant :HOST
     private_constant :TIMEOUT
@@ -21,7 +21,7 @@ module IPStack
       raise NetworkError, response unless response.status.success?
 
       data = JSON.parse(response)
-      raise RequestError, data['error']['info'] if data['error']
+      raise RequestError, data["error"]["info"] if data["error"]
 
       parse(data)
     end
@@ -34,14 +34,14 @@ module IPStack
 
     def parse(data)
       Response.new(
-        data['ip'],
-        data['city'],
-        data['zip'],
-        data['latitude'],
-        data['longitude'],
-        Location.new(data['continent_code'], data['continent_name']),
-        Location.new(data['country_code'], data['country_name']),
-        Location.new(data['region_code'], data['region_name'])
+        data["ip"],
+        data["city"],
+        data["zip"],
+        data["latitude"],
+        data["longitude"],
+        Location.new(data["continent_code"], data["continent_name"]),
+        Location.new(data["country_code"], data["country_name"]),
+        Location.new(data["region_code"], data["region_name"])
       )
     end
   end

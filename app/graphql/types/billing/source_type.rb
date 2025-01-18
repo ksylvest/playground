@@ -1,7 +1,7 @@
 module Types
   module Billing
     class SourceType < BaseObject
-      graphql_name 'Billing__Source'
+      graphql_name "Billing__Source"
 
       field :id, ID, null: false
       field :number, String, null: false
