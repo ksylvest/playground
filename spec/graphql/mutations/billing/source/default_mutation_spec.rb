@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Mutations::Billing::Source::DefaultMutation do
-  describe '#resolve' do
+  describe "#resolve" do
     subject :execute do
       allow(Billing::DefaultSourceService).to receive(:perform!).with({ user:, id: })
       AppSchema.execute(gql, variables: { id: }, context: { authentication: })
@@ -31,11 +31,11 @@ RSpec.describe Mutations::Billing::Source::DefaultMutation do
 
     let(:authentication) { create(:authentication, user:) }
     let(:user) { create(:user) }
-    let(:id) { 'fake_id' }
+    let(:id) { "fake_id" }
 
-    it 'resolves without errors' do
-      expect(execute['errors']).to be_nil
-      expect(execute['data']['result']['billing']).to be_present
+    it "resolves without errors" do
+      expect(execute["errors"]).to be_nil
+      expect(execute["data"]["result"]["billing"]).to be_present
     end
   end
 end

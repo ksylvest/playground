@@ -7,6 +7,6 @@ class Feed::Context
   end
 
   def id
-    @user ? @user.id : 'default'
+    @user ? @user.id : "default"
   end
 end

@@ -1,3 +1,6 @@
+inherit_gem:
+  rubocop-basic: rubocop.yml
+
 require:
   - rubocop-capybara
   - rubocop-factory_bot
@@ -18,94 +21,10 @@ AllCops:
     - node_modules/**/*
     - spec/spec_helper.rb
 
+Capybara/ClickLinkOrButtonStyle:
+  Enabled: false
+
 FactoryBot/IdSequence:
-  Enabled: false
-
-Layout/AccessModifierIndentation:
-  EnforcedStyle: outdent
-
-Layout/ParameterAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-
-Layout/LineLength:
-  Max: 120
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
-Style/AccessorGrouping:
-  EnforcedStyle: separated
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/Lambda:
-  Enabled: false
-
-Style/BlockDelimiters:
-  Enabled: false
-
-Style/RegexpLiteral:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Style/EmptyCaseCondition:
-  Enabled: false
-
-Style/ExpandPathArguments:
-  Enabled: false
-
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Security/YAMLLoad:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-RSpec/LetSetup:
-  Enabled: false
-
-RSpec/DescribedClass:
-  Enabled: false
-
-RSpec/MessageSpies:
-  Enabled: false
-
-Rails/I18nLocaleTexts:
   Enabled: false
 
 GraphQL/ArgumentDescription:
@@ -129,14 +48,44 @@ GraphQL/OrderedFields:
 GraphQL/ExtractType:
   Enabled: false
 
-GraphQL/ExtractInputType:
-  Enabled: false
-
 GraphQL/MaxComplexitySchema:
   Enabled: false
 
 GraphQL/MaxDepthSchema:
   Enabled: false
 
-Capybara/ClickLinkOrButtonStyle:
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false

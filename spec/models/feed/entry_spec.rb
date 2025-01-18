@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Feed::Entry do
   subject { build(:feed_entry) }

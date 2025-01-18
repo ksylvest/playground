@@ -16,7 +16,7 @@ module Attachment
     # @param resize [String] 'fit' / 'fill'
     # @param quality [Integer] a numeric quality option ranging from 0 to 100
     # @param size [Array] a w / h tuple
-    def initialize(attachment, size:, format: 'jpeg', quality: 80, resize: 'fill')
+    def initialize(attachment, size:, format: "jpeg", quality: 80, resize: "fill")
       raise ArgumentError, "invalid option for format: #{format.inspect}" if FORMATS.none?(format)
       raise ArgumentError, "invalid option for resize: #{resize.inspect}" if RESIZES.none?(resize)
 

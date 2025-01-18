@@ -2,7 +2,7 @@ module Mutations
   module Billing
     module Source
       class DefaultMutation < BaseMutation
-        graphql_name 'DefaultBillingSource'
+        graphql_name "DefaultBillingSource"
         argument :id, ID, required: true
         field :billing, ::Types::BillingType, null: false
 

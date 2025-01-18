@@ -1,7 +1,7 @@
 module Mutations
   module Password
     class ChangeMutation < BaseMutation
-      graphql_name 'ChangePassword'
+      graphql_name "ChangePassword"
       argument :password, ::Types::PasswordInput, required: true
       field :status, ::Types::StatusType, null: false
       field :errors, ::Types::ErrorsType, null: true

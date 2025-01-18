@@ -2,12 +2,17 @@ module Password
   class Change
     include ActiveModel::Model
 
-    INVALID_CURRENT = 'the current password entered does not match our records'.freeze
-    INVALID_REPLACEMENT = 'the replacement password entered is not suitable'.freeze
+    INVALID_CURRENT = "the current password entered does not match our records".freeze
+    INVALID_REPLACEMENT = "the replacement password entered is not suitable".freeze
     private_constant :INVALID_CURRENT
     private_constant :INVALID_REPLACEMENT
 
+    # @!attribute current [rw]
+    #   @return [String]
     attr_accessor :current
+
+    # @!attribute replacement [rw]
+    #   @return [String]
     attr_accessor :replacement
 
     validate do

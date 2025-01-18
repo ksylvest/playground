@@ -1,6 +1,6 @@
 module Types
   class DataURIType < BaseScalar
-    description 'Represents a formatted data URI.'
+    description "Represents a formatted data URI."
 
     DATA_URI_REGEX = /\Adata:(?<type>.*);base64,(?<data>.*)\Z/
 

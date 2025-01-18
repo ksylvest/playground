@@ -12,6 +12,6 @@ class AppContext < GraphQL::Query::Context
   end
 
   def user!
-    user || raise(GraphQL::ExecutionError.new('Unauthorized', extensions: { code: 'UNAUTHORIZED' }))
+    user || raise(GraphQL::ExecutionError.new("Unauthorized", extensions: { code: "UNAUTHORIZED" }))
   end
 end

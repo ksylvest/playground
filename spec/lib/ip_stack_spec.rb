@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe IPStack do
   let(:fake_access_key) { SecureRandom.alphanumeric }
-  let(:ip) { '0.0.0.0' }
+  let(:ip) { "0.0.0.0" }
 
-  describe '.fetch!' do
+  describe ".fetch!" do
     subject :fetch! do
       allow(IPStack.config).to receive(:access_key) { fake_access_key }
       stub_request(:get, "http://api.ipstack.com/#{ip}?access_key=#{fake_access_key}")
@@ -12,7 +12,7 @@ RSpec.describe IPStack do
       IPStack.fetch!(ip:)
     end
 
-    context 'with a result' do
+    context "with a result" do
       let(:status) { 200 }
       let(:body) do
         <<~JSON
@@ -33,22 +33,22 @@ RSpec.describe IPStack do
         JSON
       end
 
-      it 'fetches from the ipstack API' do
+      it "fetches from the ipstack API" do
         expect(fetch!.ip).to eql(ip)
-        expect(fetch!.city).to eql('Saratoga Springs')
-        expect(fetch!.postal).to eql('12000')
-        expect(fetch!.region.code).to eql('NY')
-        expect(fetch!.region.name).to eql('New York')
-        expect(fetch!.country.code).to eql('US')
-        expect(fetch!.country.name).to eql('United States')
-        expect(fetch!.continent.code).to eql('NA')
-        expect(fetch!.continent.name).to eql('North America')
+        expect(fetch!.city).to eql("Saratoga Springs")
+        expect(fetch!.postal).to eql("12000")
+        expect(fetch!.region.code).to eql("NY")
+        expect(fetch!.region.name).to eql("New York")
+        expect(fetch!.country.code).to eql("US")
+        expect(fetch!.country.name).to eql("United States")
+        expect(fetch!.continent.code).to eql("NA")
+        expect(fetch!.continent.name).to eql("North America")
         expect(fetch!.latitude).to be(43.2)
         expect(fetch!.longitude).to be(-73.8)
       end
     end
 
-    context 'with a request error' do
+    context "with a request error" do
       let(:status) { 200 }
       let(:body) do
         <<~JSON
@@ -62,17 +62,17 @@ RSpec.describe IPStack do
         JSON
       end
 
-      it 'raises a request error' do
+      it "raises a request error" do
         expect { fetch! }
           .to raise_error(IPStack::API::RequestError)
       end
     end
 
-    context 'with a network error' do
+    context "with a network error" do
       let(:status) { 500 }
-      let(:body) { '' }
+      let(:body) { "" }
 
-      it 'raises a network error' do
+      it "raises a network error" do
         expect { fetch! }
           .to raise_error(IPStack::API::NetworkError)
       end

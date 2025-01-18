@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe AppSchema do
-  let(:schema) { Rails.root.join('app/graphql/app_schema.graphql').read }
+  let(:schema) { Rails.root.join("app/graphql/app_schema.graphql").read }
 
   it 'requires a "rake graphql:schema:generate" be run for changes' do
     expect(GraphQL::Schema::Printer.print_schema(AppSchema))

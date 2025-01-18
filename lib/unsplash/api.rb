@@ -27,7 +27,7 @@ module Unsplash
     def client
       HTTP
         .auth("Client-ID #{@config.access_key}")
-        .persistent('https://api.unsplash.com')
+        .persistent("https://api.unsplash.com")
     end
   end
 end

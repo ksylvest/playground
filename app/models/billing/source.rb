@@ -2,21 +2,21 @@ class Billing::Source < ApplicationRecord
   belongs_to :customer
 
   enum :brand, {
-    american_express: 'American Express',
-    diners_club: 'Diners Club',
-    discover: 'Discover',
-    jcb: 'JCB',
-    mastercard: 'MasterCard',
-    unionpay: 'UnionPay',
-    visa: 'Visa',
-    unknown: 'Unknown',
+    american_express: "American Express",
+    diners_club: "Diners Club",
+    discover: "Discover",
+    jcb: "JCB",
+    mastercard: "MasterCard",
+    unionpay: "UnionPay",
+    visa: "Visa",
+    unknown: "Unknown",
   }, prefix: :brand
 
   enum :funding, {
-    credit: 'credit',
-    debit: 'debit',
-    prepaid: 'prepaid',
-    unknown: 'unknown',
+    credit: "credit",
+    debit: "debit",
+    prepaid: "prepaid",
+    unknown: "unknown",
   }, prefix: :funding
 
   validates :stripe_id, presence: true, uniqueness: true
@@ -36,6 +36,6 @@ class Billing::Source < ApplicationRecord
   end
 
   def exp
-    format('%<year>.04d-%<month>.02d', year: exp_year, month: exp_month)
+    format("%<year>.04d-%<month>.02d", year: exp_year, month: exp_month)
   end
 end

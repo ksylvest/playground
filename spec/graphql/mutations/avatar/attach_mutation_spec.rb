@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Mutations::Avatar::AttachMutation do
-  describe '#resolve' do
+  describe "#resolve" do
     subject :execute do
       AppSchema.execute(gql, variables: { id: SecureRandom.uuid }, context: { authentication: })
     end
@@ -21,8 +21,8 @@ RSpec.describe Mutations::Avatar::AttachMutation do
 
     it 'resolves "OK"' do
       expect(user.avatar).to receive(:attach)
-      expect(execute['errors']).to be_nil
-      expect(execute['data']['attachAvatar']['status']).to eql('OK')
+      expect(execute["errors"]).to be_nil
+      expect(execute["data"]["attachAvatar"]["status"]).to eql("OK")
     end
   end
 end

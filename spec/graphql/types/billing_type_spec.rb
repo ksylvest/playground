@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Types::BillingType do
-  describe '#resolve' do
+  describe "#resolve" do
     subject(:execute) do
       AppSchema.execute(gql, context: { authentication: })
     end
@@ -32,11 +32,11 @@ RSpec.describe Types::BillingType do
     let!(:customer) { create(:billing_customer, user:) }
     let!(:source) { create(:billing_source, customer:) }
 
-    it 'resolves' do
-      expect(execute['errors']).to be_nil
-      expect(execute['data']['billing']).to be_present
-      expect(execute['data']['billing']['customer']).to be_present
-      expect(execute['data']['billing']['customer']['sources']).to be_present
+    it "resolves" do
+      expect(execute["errors"]).to be_nil
+      expect(execute["data"]["billing"]).to be_present
+      expect(execute["data"]["billing"]["customer"]).to be_present
+      expect(execute["data"]["billing"]["customer"]["sources"]).to be_present
     end
   end
 end

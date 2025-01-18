@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 Bundler.require(*Rails.groups)
 
@@ -15,7 +15,7 @@ module Playground
       g.stylesheets false
       g.javascripts false
       g.test_framework :rspec, fixture: true, views: false
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
   end
 end

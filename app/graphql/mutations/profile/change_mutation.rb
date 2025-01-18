@@ -1,7 +1,7 @@
 module Mutations
   module Profile
     class ChangeMutation < BaseMutation
-      graphql_name 'ChangeProfile'
+      graphql_name "ChangeProfile"
       argument :input, ::Types::UserInput, required: true
       field :status, ::Types::StatusType, null: false
       field :errors, ::Types::ErrorsType, null: true

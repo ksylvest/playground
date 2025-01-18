@@ -1,7 +1,7 @@
 module Types
   module Billing
     class CustomerType < BaseObject
-      graphql_name 'Billing__Customer'
+      graphql_name "Billing__Customer"
 
       field :id, ID, null: false
       field :currency, CurrencyType, null: true
