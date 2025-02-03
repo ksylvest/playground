@@ -31,7 +31,7 @@
     "react-activestorage": "^1.1.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.0.1",
-    "react-router-dom": "^7.1.4",
+    "react-router-dom": "^7.1.5",
     "sass": "^1.83.4",
     "tights": "^4.0.2"
   },
