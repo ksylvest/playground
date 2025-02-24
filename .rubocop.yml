@@ -10,7 +10,7 @@ require:
   - rubocop-rspec_rails
 
 AllCops:
-  TargetRubyVersion: 3.4.1
+  TargetRubyVersion: 3.4.2
   NewCops: enable
   Exclude:
     - config/environments/*
