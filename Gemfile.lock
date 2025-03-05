@@ -355,7 +355,7 @@ GEM
       rubocop (~> 1.61)
     rubocop-graphql (1.5.4)
       rubocop (>= 1.50, < 2)
-    rubocop-rails (2.30.2)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
