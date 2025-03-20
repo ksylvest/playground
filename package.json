@@ -18,7 +18,7 @@
     "@parcel/watcher": "^2.5.1",
     "@rails/actioncable": "^8.0.200",
     "@sentry/browser": "^9.6.1",
-    "@stripe/react-stripe-js": "^3.5.0",
+    "@stripe/react-stripe-js": "^3.5.1",
     "@stripe/stripe-js": "^6.1.0",
     "bulma": "^1.0.3",
     "classnames": "^2.3.2",
