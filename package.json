@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@parcel/watcher": "^2.5.1",
     "@rails/actioncable": "^8.0.200",
-    "@sentry/browser": "^9.9.0",
+    "@sentry/browser": "^9.10.1",
     "@stripe/react-stripe-js": "^3.5.1",
     "@stripe/stripe-js": "^6.1.0",
     "bulma": "^1.0.3",
