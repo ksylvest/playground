@@ -5,9 +5,9 @@ import { FEED_LOADER } from "@application/loaders/feed_loader";
 import { NOTIFICATIONS_LOADER } from "@application/loaders/notifications_loader";
 import { PROFILE_LOADER } from "@application/loaders/profile_loader";
 
-import { Layout } from "./Layout";
 import { Details } from "./feed/details";
 import { List } from "./feed/list";
+import { Layout } from "./layout";
 import { Login } from "./login";
 import { Notifications } from "./notifications";
 import { Profile } from "./profile";
