@@ -6,6 +6,7 @@ gem "rails"
 
 gem "pg"
 gem "puma"
+gem "redis"
 gem "redis-client"
 
 gem "bcrypt"
