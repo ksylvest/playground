@@ -309,6 +309,8 @@ GEM
       ffi (~> 1.0)
     rdoc (6.12.0)
       psych (>= 4.0.0)
+    redis (5.4.0)
+      redis-client (>= 0.22.0)
     redis-client (0.23.2)
       connection_pool
     regexp_parser (2.10.0)
@@ -466,6 +468,7 @@ DEPENDENCIES
   propshaft
   puma
   rails
+  redis
   redis-client
   rspec-rails
   rspec_junit_formatter
