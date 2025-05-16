@@ -150,7 +150,7 @@ GEM
     fiber-storage (1.0.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.5.6)
+    graphql (2.5.7)
       base64
       fiber-storage
       logger
