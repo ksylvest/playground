@@ -40,7 +40,7 @@
     "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-operations": "^4.6.1",
-    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash": "^4.17.17",
     "@types/rails__actioncable": "^6.1.11",
