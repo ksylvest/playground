@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
     "@parcel/watcher": "^2.5.1",
-    "@rails/actioncable": "^8.0.200",
+    "@rails/actioncable": "^8.0.201",
     "@sentry/browser": "^10.5.0",
     "@stripe/react-stripe-js": "^3.9.0",
     "@stripe/stripe-js": "^7.8.0",
