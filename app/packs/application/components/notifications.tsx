@@ -1,4 +1,6 @@
-import { useNotificationsQuery } from "@root/app_schema";
+import { useQuery } from "@apollo/client/react";
+
+import { NotificationsDocument } from "@root/app_schema";
 
 import { Title } from "@application/components/helpers/title";
 
@@ -6,7 +8,7 @@ import { Authorize } from "./authorize";
 import { List } from "./notifications/list";
 
 export const Notifications: React.FC = () => {
-  const { data } = useNotificationsQuery();
+  const { data } = useQuery(NotificationsDocument);
 
   return (
     <Authorize>

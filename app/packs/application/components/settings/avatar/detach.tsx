@@ -2,7 +2,9 @@ import { useContext, useState } from "react";
 
 import { Button } from "tights";
 
-import { useSettingsAvatarDetachMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { SettingsAvatarDetachDocument } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -15,7 +17,7 @@ export const Detach: React.FC<{
 }> = ({ onSave }) => {
   const { notify } = useContext(World);
   const [active, setActive] = useState<boolean>(DEFAULT_ACTIVE);
-  const [submit, { loading }] = useSettingsAvatarDetachMutation();
+  const [submit, { loading }] = useMutation(SettingsAvatarDetachDocument);
 
   const open = (): void => setActive(true);
   const close = (): void => setActive(false);

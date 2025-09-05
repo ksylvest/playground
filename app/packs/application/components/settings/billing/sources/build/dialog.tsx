@@ -14,7 +14,9 @@ import {
   ModalContent,
 } from "tights";
 
-import { useSettingsBillingSourceBuildMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { SettingsBillingSourceBuildDocument } from "@root/app_schema";
 
 import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
 import { TokenResult, loadStripe } from "@stripe/stripe-js";
@@ -29,7 +31,7 @@ const Fields: React.FC<{
   const stripe = useStripe();
   const elements = useElements();
 
-  const [submit, { loading }] = useSettingsBillingSourceBuildMutation();
+  const [submit, { loading }] = useMutation(SettingsBillingSourceBuildDocument);
   const [tokenizing, setTokenizing] = useState<boolean>(false);
 
   const tokenize = () => {

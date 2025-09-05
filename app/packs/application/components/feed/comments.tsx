@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import { Button, Control, Field, Textarea } from "tights";
 
-import { Status, useBuildFeedCommentMutation, useFeedCommentsQuery } from "@root/app_schema";
+import { useMutation, useQuery } from "@apollo/client/react";
+
+import { BuildFeedCommentDocument, FeedCommentsDocument, Status } from "@root/app_schema";
 
 import { useAuthentication } from "@application/hooks/use_authentication";
 
@@ -12,10 +14,10 @@ export const Comments: React.FC<{
   entryID: string;
 }> = ({ entryID }) => {
   const [message, setMessage] = useState<string>("");
-  const { data, refetch } = useFeedCommentsQuery({
+  const { data, refetch } = useQuery(FeedCommentsDocument, {
     variables: { id: entryID },
   });
-  const [execute, { loading }] = useBuildFeedCommentMutation({
+  const [execute, { loading }] = useMutation(BuildFeedCommentDocument, {
     onCompleted: ({ result }) => {
       if (result?.status === Status.Ok) {
         refetch();

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import { Status, useSettingsPasswordMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { SettingsPasswordDocument, Status } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -10,7 +12,7 @@ import { Fields } from "./password/fields";
 
 export const Password: React.FC = () => {
   const { notify } = useContext(World);
-  const [submit, { loading, data }] = useSettingsPasswordMutation({
+  const [submit, { loading, data }] = useMutation(SettingsPasswordDocument, {
     onCompleted: ({ result }) => {
       if (result && result.status === Status.Ok) {
         notify({

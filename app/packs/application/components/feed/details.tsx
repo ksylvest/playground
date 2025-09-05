@@ -2,7 +2,9 @@ import { Link, useParams } from "react-router-dom";
 
 import { Card, CardContent, Column, Columns } from "tights";
 
-import { useFeedEntryQuery } from "@root/app_schema";
+import { useQuery } from "@apollo/client/react";
+
+import { FeedEntryDocument } from "@root/app_schema";
 
 import { FEED_DETAILS_URL, PROFILE_URL } from "@application/config/routes";
 
@@ -20,7 +22,7 @@ export const Details: React.FC = () => {
   const { id } = useParams();
   if (!id) throw new Error('missing required "id"');
 
-  const { data } = useFeedEntryQuery({ variables: { id } });
+  const { data } = useQuery(FeedEntryDocument, { variables: { id } });
   const entry = data?.feed?.entry;
 
   const photos = entry?.photos;
