@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import { AuthenticationFragment, useSettingsAuthenticationDestroyMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { AuthenticationFragment, SettingsAuthenticationDestroyDocument } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -12,7 +14,7 @@ export const Revoke: React.FC<{
 }> = ({ authentication, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: authentication.id };
-  const [submit, { loading }] = useSettingsAuthenticationDestroyMutation({
+  const [submit, { loading }] = useMutation(SettingsAuthenticationDestroyDocument, {
     variables,
   });
 

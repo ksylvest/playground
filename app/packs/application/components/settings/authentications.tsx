@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-import { AuthenticationFragment, useSettingsAuthenticationsQuery } from "@root/app_schema";
+import { useQuery } from "@apollo/client/react";
+
+import { AuthenticationFragment, SettingsAuthenticationsDocument } from "@root/app_schema";
 
 import { useActionCableSubscription } from "@application/hooks/use_action_cable_subscription";
 
@@ -11,7 +13,7 @@ import { Revoke } from "./authentications/revoke";
 
 export const Authentications: React.FC = () => {
   const [revoking, setRevoking] = useState<AuthenticationFragment | undefined>();
-  const { data, refetch } = useSettingsAuthenticationsQuery();
+  const { data, refetch } = useQuery(SettingsAuthenticationsDocument);
   const authentications = data?.authentications;
 
   useActionCableSubscription("PresenceChannel", refetch);

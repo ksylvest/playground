@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import { Status, useSettingsChangeProfileMutation, useSettingsProfileQuery } from "@root/app_schema";
+import { useMutation, useQuery } from "@apollo/client/react";
+
+import { SettingsChangeProfileDocument, SettingsProfileDocument, Status } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -10,8 +12,8 @@ import { Fields } from "./profile/fields";
 
 export const Profile: React.FC = () => {
   const { notify } = useContext(World);
-  const { data: defaults, loading: querying } = useSettingsProfileQuery();
-  const [submit, { data, loading: mutating }] = useSettingsChangeProfileMutation({
+  const { data: defaults, loading: querying } = useQuery(SettingsProfileDocument);
+  const [submit, { data, loading: mutating }] = useMutation(SettingsChangeProfileDocument, {
     onCompleted: ({ result }) => {
       if (result && result.status === Status.Ok) {
         notify({
