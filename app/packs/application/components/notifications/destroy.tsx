@@ -1,15 +1,17 @@
 import { Button, Icon } from "tights";
 
+import { useMutation } from "@apollo/client/react";
+
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Notification, useDestroyNotificationMutation } from "@root/app_schema";
+import { DestroyNotificationDocument, Notification } from "@root/app_schema";
 
 export const Destroy: React.FC<{
   notification: Notification;
 }> = ({ notification }) => {
   const variables = { id: notification.id };
-  const [submit, { loading }] = useDestroyNotificationMutation({ variables });
+  const [submit, { loading }] = useMutation(DestroyNotificationDocument, { variables });
 
   const onClick = async (): Promise<void> => {
     if (loading) {

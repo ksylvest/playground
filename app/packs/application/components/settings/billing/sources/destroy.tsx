@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import { Billing__Source, useSettingsBillingSourceDestroyMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { Billing__Source, SettingsBillingSourceDestroyDocument } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -12,7 +14,7 @@ export const Destroy: React.FC<{
 }> = ({ source, onClose }) => {
   const { notify } = useContext(World);
   const variables = { id: source.id };
-  const [submit, { loading }] = useSettingsBillingSourceDestroyMutation({
+  const [submit, { loading }] = useMutation(SettingsBillingSourceDestroyDocument, {
     variables,
   });
 

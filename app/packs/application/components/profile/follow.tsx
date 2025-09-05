@@ -1,6 +1,8 @@
 import { Button } from "tights";
 
-import { FollowFragment, UserFragment, useFollowUserMutation, useUnfollowUserMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { FollowFragment, FollowUserDocument, UnfollowUserDocument, UserFragment } from "@root/app_schema";
 
 import { useAuthentication } from "@application/hooks/use_authentication";
 
@@ -10,8 +12,8 @@ export const Follow: React.FC<{
   const following = profile && profile.following;
   const id = profile?.id;
 
-  const [follow, { loading: saving }] = useFollowUserMutation();
-  const [unfollow, { loading: unsaving }] = useUnfollowUserMutation();
+  const [follow, { loading: saving }] = useMutation(FollowUserDocument);
+  const [unfollow, { loading: unsaving }] = useMutation(UnfollowUserDocument);
 
   const loading = saving || unsaving;
   const execute = (): void => {

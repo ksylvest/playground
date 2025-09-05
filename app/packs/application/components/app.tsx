@@ -1,7 +1,7 @@
 import { StrictMode, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
 
 import { Flash } from "@application/types/flash";
 import { Stats } from "@application/types/stats";

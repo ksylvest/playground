@@ -1,6 +1,8 @@
 import { Column, Columns } from "tights";
 
-import { useSettingsAvatarQuery } from "@root/app_schema";
+import { useQuery } from "@apollo/client/react";
+
+import { SettingsAvatarDocument } from "@root/app_schema";
 
 import { Attachment } from "@application/components/helpers/attachment";
 import { Title } from "@application/components/helpers/title";
@@ -11,7 +13,7 @@ import { Detach } from "./avatar/detach";
 const PLACEHOLDER = "/avatar/placeholder.svg";
 
 export const Avatar: React.FC = () => {
-  const { data, refetch } = useSettingsAvatarQuery();
+  const { data, refetch } = useQuery(SettingsAvatarDocument);
   const me = data?.me;
 
   return (

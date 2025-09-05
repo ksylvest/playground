@@ -11,6 +11,7 @@
     "baseUrl": "./app/packs",
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,

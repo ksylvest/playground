@@ -4,11 +4,11 @@
   "scripts": {
     "build": "esbuild app/packs/entrypoints/application.ts --bundle --sourcemap --format=esm --minify --outdir=app/assets/builds",
     "build:css": "sass ./app/packs/entrypoints/application.bulma.scss:./app/assets/builds/application.css --load-path=node_modules",
-    "codegen": "graphql-codegen --config .codegen.yml",
+    "codegen": "graphql-codegen",
     "lint": "eslint app/packs --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@apollo/client": "^3.14.0",
+    "@apollo/client": "^4.0.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
@@ -32,6 +32,7 @@
     "react-dom": "^19.1.1",
     "react-router": "^7.0.1",
     "react-router-dom": "^7.8.2",
+    "rxjs": "^7.8.2",
     "sass": "^1.92.0",
     "tights": "^4.2.0"
   },
@@ -40,7 +41,7 @@
     "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-operations": "^4.6.1",
-    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash": "^4.17.20",
     "@types/rails__actioncable": "^6.1.11",

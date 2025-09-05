@@ -1,9 +1,11 @@
 import { Button, Icon } from "tights";
 
+import { useMutation } from "@apollo/client/react";
+
 import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Feed__EntryFragment, useLikeFeedEntryMutation, useUnlikeFeedEntryMutation } from "@root/app_schema";
+import { Feed__EntryFragment, LikeFeedEntryDocument, UnlikeFeedEntryDocument } from "@root/app_schema";
 
 import { useAuthentication } from "@application/hooks/use_authentication";
 
@@ -17,8 +19,8 @@ export const Like: React.FC<{
   const likes = entry?.likes;
   const id = entry?.id;
 
-  const [like, { loading: liking }] = useLikeFeedEntryMutation();
-  const [unlike, { loading: unliking }] = useUnlikeFeedEntryMutation();
+  const [like, { loading: liking }] = useMutation(LikeFeedEntryDocument);
+  const [unlike, { loading: unliking }] = useMutation(UnlikeFeedEntryDocument);
 
   const loading = liking || unliking;
   const execute = (): void => {

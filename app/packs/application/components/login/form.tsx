@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 
-import { LoginInput, useLoginMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { LoginDocument, LoginInput } from "@root/app_schema";
 import { World } from "@root/application/contexts/world";
 
 import { Context } from "./context";
@@ -16,7 +18,7 @@ export const Form: React.FC<{
     email: "",
     password: "",
   });
-  const [submit, { loading, data }] = useLoginMutation();
+  const [submit, { loading, data }] = useMutation(LoginDocument);
   const errors = data?.login.errors || undefined;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {

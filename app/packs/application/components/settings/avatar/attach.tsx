@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import { useSettingsAvatarAttachMutation } from "@root/app_schema";
+import { useMutation } from "@apollo/client/react";
+
+import { SettingsAvatarAttachDocument } from "@root/app_schema";
 
 import { World } from "@application/contexts/world";
 
@@ -10,7 +12,7 @@ export const Attach: React.FC<{
   onSave(): void;
 }> = ({ onSave }) => {
   const { notify } = useContext(World);
-  const [submit, { loading }] = useSettingsAvatarAttachMutation();
+  const [submit, { loading }] = useMutation(SettingsAvatarAttachDocument);
 
   const onSelect = async (id: string): Promise<void> => {
     if (loading) {
