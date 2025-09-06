@@ -60,6 +60,9 @@ Lint/AmbiguousBlockAssociation:
 Metrics/MethodLength:
   Enabled: false
 
+Naming/PredicateMethod:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
 
