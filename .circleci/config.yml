@@ -30,21 +30,21 @@ jobs:
     steps:
       - checkout
       - setup
-      - run: npx eslint
+      - run: npm exec eslint
 
   prettier:
     executor: default
     steps:
       - checkout
       - setup
-      - run: npx prettier --check app/packs
+      - run: npm exec prettier --check app/packs
 
   tsc:
     executor: default
     steps:
       - checkout
       - setup
-      - run: npx tsc --pretty --strict --noemit --skiplibcheck
+      - run: npm exec tsc -- --pretty
 
   rubocop:
     executor: default
