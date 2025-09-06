@@ -4,7 +4,9 @@ class Billing::Context
   end
 
   def customer
-    @customer ||= Billing::Customer.find_by(user: @user)
+    return @customer if defined?(@customer)
+
+    @customer = Billing::Customer.find_by(user: @user)
   end
 
   delegate :id, to: :@user
