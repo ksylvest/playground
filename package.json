@@ -34,7 +34,7 @@
     "react-router-dom": "^7.9.2",
     "rxjs": "^7.8.2",
     "sass": "^1.93.2",
-    "tights": "^4.2.0"
+    "tights": "^5.0.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.0.0",
