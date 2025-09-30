@@ -18,8 +18,10 @@
       IMGIX_HOST = <%=raw JSON.generate(ENV['IMGIX_HOST']) %>;
     </script>
 
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application", type: "module" %>
+    <%= vite_client_tag %>
+    <%= vite_react_refresh_tag %>
+    <%= vite_stylesheet_tag "application.scss" %>
+    <%= vite_typescript_tag "application" %>
   </head>
 
   <body>

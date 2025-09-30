@@ -1,4 +1,3 @@
 web: bin/rails server -p 3000
-js: npm run build -- --watch
-css: npm run build:css -- --watch
 codegen: npm run codegen -- --watch
+vite: bin/vite dev

@@ -20,6 +20,7 @@
     "@sentry/browser": "^10.17.0",
     "@stripe/react-stripe-js": "^4.0.2",
     "@stripe/stripe-js": "^7.9.0",
+    "@vitejs/plugin-react": "^5.0.4",
     "bulma": "^1.0.4",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
@@ -55,6 +56,8 @@
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.4.0",
-    "typescript-eslint": "^8.45.0"
+    "typescript-eslint": "^8.45.0",
+    "vite": "^5.4.20",
+    "vite-plugin-ruby": "^5.1.1"
   }
 }

@@ -16,8 +16,7 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
-/public/assets/*
-!/public/assets/.keep
+/public/vite*
 
 /config/master.key
 
