@@ -15,16 +15,14 @@ gem "graphql"
 gem "graphql-sources"
 gem "http"
 gem "kaminari"
-gem "propshaft"
 gem "stripe"
 
 gem "aws-sdk-s3", require: false
 gem "cloudflare-ips"
 gem "image_processing"
 
-gem "cssbundling-rails"
-gem "jsbundling-rails"
 gem "sentry-rails"
+gem "vite_rails"
 
 gem "bootsnap", require: false
 gem "thruster", require: false

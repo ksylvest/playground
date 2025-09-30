@@ -121,8 +121,6 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.4.3)
-      railties (>= 6.0.0)
     date (3.4.1)
     debug (1.11.0)
       irb (~> 1.10)
@@ -131,6 +129,7 @@ GEM
     docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.3)
+    dry-cli (1.3.0)
     erb (5.0.2)
     erubi (1.13.1)
     factory_bot (6.5.5)
@@ -180,8 +179,6 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    jsbundling-rails (1.3.1)
-      railties (>= 6.0.0)
     json (2.15.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -219,6 +216,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
+    mutex_m (0.3.0)
     net-imap (0.5.10)
       date
       net-protocol
@@ -260,10 +258,6 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.5.1)
-    propshaft (1.3.1)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
     psych (5.2.6)
       date
       stringio
@@ -272,6 +266,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.1)
+    rack-proxy (0.7.7)
+      rack
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -420,6 +416,15 @@ GEM
     unicode-emoji (4.1.0)
     uri (1.0.3)
     useragent (0.16.11)
+    vite_rails (3.0.19)
+      railties (>= 5.1, < 9)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.9.2)
+      dry-cli (>= 0.7, < 2)
+      logger (~> 1.6)
+      mutex_m
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -459,18 +464,15 @@ DEPENDENCIES
   cloudflare-ips
   concurrent-ruby
   connection_pool
-  cssbundling-rails
   debug
   factory_bot_rails
   graphql
   graphql-sources
   http
   image_processing
-  jsbundling-rails
   kaminari
   listen
   pg
-  propshaft
   puma
   rails
   rspec-rails
@@ -489,6 +491,7 @@ DEPENDENCIES
   simplecov
   stripe
   thruster
+  vite_rails
   web-console
   webmock
 
