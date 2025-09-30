@@ -46,8 +46,7 @@ FROM base
 
 COPY . .
 COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails/app/assets /rails/app/assets
-COPY --from=build /rails/public/assets /rails/public/assets
+COPY --from=build /rails/public /rails/public
 
 RUN bundle exec bootsnap precompile --gemfile /app /lib
 
