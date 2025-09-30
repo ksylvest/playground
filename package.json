@@ -24,7 +24,6 @@
     "bulma": "^1.0.4",
     "classnames": "^2.3.2",
     "emotion": "^11.0.0",
-    "esbuild": "^0.25.10",
     "graphql": "^16.11.0",
     "graphql-tag": "^2.12.6",
     "lodash": "^4.17.21",
