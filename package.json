@@ -46,7 +46,7 @@
     "@types/lodash": "^4.17.20",
     "@types/rails__actioncable": "^6.1.11",
     "@types/react": "^19.1.16",
-    "@types/react-dom": "^19.2.0",
+    "@types/react-dom": "^19.2.2",
     "@types/react-fontawesome": "^1.6.8",
     "@types/webfontloader": "^1.6.37",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
