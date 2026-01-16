@@ -68,7 +68,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install -y libheif-dev libheif-examples libvips-dev
+      - run: sudo apt-get install -y libaom-dev libavif-dev libvips-dev libvips-tools
       - browser-tools/install_chrome
       - browser-tools/install_chromedriver
       - setup
