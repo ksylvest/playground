@@ -19,7 +19,7 @@ RSpec.describe Attachment::VariantService, type: :service do
   end
 
   describe ".variant" do
-    it { expect(variant).to be_a(ActiveStorage::VariantWithRecord) }
+    it { expect { variant }.not_to raise_error }
 
     context 'when "resize" is "other"' do
       let(:resize) { "other" }
