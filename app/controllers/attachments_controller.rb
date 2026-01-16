@@ -1,7 +1,7 @@
 class AttachmentsController < ApplicationController
   # GET /attached/:id.(jpg|webp)?l=:l&w=:w&resize=(fit|fill)
   def show
-    redirect_to rails_representation_url(variant.processed, host: request.host_with_port)
+    redirect_to rails_representation_url(variant, host: request.host_with_port)
   end
 
 private

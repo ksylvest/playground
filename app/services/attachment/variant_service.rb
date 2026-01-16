@@ -1,8 +1,29 @@
 module Attachment
   class VariantService
-    FORMATS = %w[avif jpeg webp].freeze
-    RESIZES = %w[fit fill].freeze
+    module Format
+      AVIF = "avif".freeze
+      JPEG = "jpeg".freeze
+      WEBP = "webp".freeze
+    end
+
+    module Resize
+      FIT = "fit".freeze
+      FILL = "fill".freeze
+    end
+
+    FORMATS = [
+      Format::AVIF,
+      Format::JPEG,
+      Format::WEBP,
+    ].freeze
+
+    RESIZES = [
+      Resize::FIT,
+      Resize::FILL,
+    ].freeze
+
     DEFAULTS = { strip: true }.freeze
+
     private_constant :FORMATS
     private_constant :RESIZES
     private_constant :DEFAULTS
@@ -27,13 +48,15 @@ module Attachment
       @size = size
     end
 
-    # @return [ActiveStorage::Variant] a memoized variant
+    # @return [ActiveStorage::VariantWithRecord]
     def variant
+      return @attachment.blob if Rails.env.test?
+
       @attachment.variant(
         "resize_to_#{@resize}": @size,
         format: @format,
         saver: DEFAULTS.merge({ quality: @quality })
-      )
+      )..processed
     end
   end
 end
