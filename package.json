@@ -43,7 +43,7 @@
     "@graphql-codegen/typescript-operations": "^5.0.4",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
-    "@types/lodash": "^4.17.20",
+    "@types/lodash": "^4.17.23",
     "@types/rails__actioncable": "^8.0.3",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
