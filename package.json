@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
-    "@fortawesome/react-fontawesome": "^3.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
     "@parcel/watcher": "^2.5.1",
     "@rails/actioncable": "^8.1.100",
     "@sentry/browser": "^10.37.0",
