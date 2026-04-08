@@ -19,7 +19,7 @@
     "@rails/actioncable": "^8.1.200",
     "@sentry/browser": "^10.39.0",
     "@stripe/react-stripe-js": "^4.0.2",
-    "@stripe/stripe-js": "^7.9.0",
+    "@stripe/stripe-js": "^8.8.0",
     "@vitejs/plugin-react": "^5.1.4",
     "bulma": "^1.0.4",
     "classnames": "^2.3.2",
