@@ -211,7 +211,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.2)
+    minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.0)
@@ -360,7 +360,7 @@ GEM
     rubocop-graphql (1.6.0)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2)
-    rubocop-rails (2.34.3)
+    rubocop-rails (2.35.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
