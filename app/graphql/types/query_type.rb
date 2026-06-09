@@ -2,8 +2,8 @@ module Types
   class QueryType < BaseObject
     field :billing, BillingType, null: false
     field :feed, FeedType, null: false
-    field :notifications, [NotificationType], null: false
-    field :authentications, [AuthenticationType], null: false
+    field :notifications, [NotificationType], null: false, pundit_policy_scope: true, pundit_authorize: :view
+    field :authentications, [AuthenticationType], null: false, pundit_policy_scope: true, pundit_authorize: :view
     field :user, UserType, null: false do
       argument :id, ID, required: true
     end
@@ -18,11 +18,11 @@ module Types
     end
 
     def notifications
-      context.user!.notifications.active.chronological
+      Notification.active.chronological
     end
 
     def authentications
-      context.user!.authentications.active.chronological
+      Authentication.active.chronological
     end
 
     def user(id:)

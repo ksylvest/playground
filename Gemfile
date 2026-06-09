@@ -15,6 +15,7 @@ gem "graphql"
 gem "graphql-sources"
 gem "http"
 gem "kaminari"
+gem "pundit"
 gem "stripe"
 
 gem "aws-sdk-s3", require: false
