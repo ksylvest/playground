@@ -21,9 +21,6 @@ AllCops:
     - node_modules/**/*
     - spec/spec_helper.rb
 
-Capybara/ClickLinkOrButtonStyle:
-  Enabled: false
-
 FactoryBot/IdSequence:
   Enabled: false
 

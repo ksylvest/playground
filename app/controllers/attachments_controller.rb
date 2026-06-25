@@ -8,7 +8,7 @@ private
 
   def variant
     Attachment::VariantService.variant(
-      ActiveStorage::Attachment.find(params[:id]),
+      ActiveStorage::Attachment.find(params.expect(:id)),
       format: params[:format],
       resize: params[:resize],
       size: [
