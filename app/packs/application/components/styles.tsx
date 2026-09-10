@@ -1,6 +1,6 @@
 import { Global, css } from "@emotion/react";
 
-export const STYLES = css`
+const STYLES = css`
   .StripeElement {
     border-radius: 4px;
     border-style: solid;

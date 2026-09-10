@@ -8,7 +8,6 @@
     /* Bundling */
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "baseUrl": "./app/packs",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noEmit": true,
@@ -20,8 +19,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@application/*": ["application/*"],
-      "@root/*": ["*"]
+      "@application/*": ["./app/packs/application/*"],
+      "@root/*": ["./app/packs/*"]
     }
   }
 }
