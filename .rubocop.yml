@@ -10,7 +10,7 @@ plugins:
   - rubocop-rspec_rails
 
 AllCops:
-  TargetRubyVersion: 4.0.1
+  TargetRubyVersion: 4.0.6
   NewCops: enable
   Exclude:
     - config/environments/*
@@ -20,9 +20,6 @@ AllCops:
     - vendor/**/*
     - node_modules/**/*
     - spec/spec_helper.rb
-
-Capybara/ClickLinkOrButtonStyle:
-  Enabled: false
 
 FactoryBot/IdSequence:
   Enabled: false
