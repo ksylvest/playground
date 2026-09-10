@@ -25,26 +25,33 @@ commands:
       - node/install-packages
 
 jobs:
-  eslint:
+  oxlint:
     executor: default
     steps:
       - checkout
-      - setup
-      - run: npm exec eslint
+      - node/install-packages
+      - run: npm run lint
 
-  prettier:
+  oxfmt:
     executor: default
     steps:
       - checkout
-      - setup
-      - run: npm exec prettier --check app/packs
+      - node/install-packages
+      - run: npm run fmt
+
+  knip:
+    executor: default
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run knip
 
   tsc:
     executor: default
     steps:
       - checkout
       - setup
-      - run: npm exec tsc -- --pretty
+      - run: npm run typecheck
 
   rubocop:
     executor: default
@@ -120,8 +127,9 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - eslint
-      - prettier
+      - oxlint
+      - oxfmt
+      - knip
       - brakeman
       - rubocop
       - rspec

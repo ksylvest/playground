@@ -6,7 +6,6 @@ type Format = "avif" | "jpeg" | "webp";
 type Attachment = Pick<Attached, "id" | "key">;
 
 export const ROOT_URL = "/";
-export const NOTIFICATIONS_URL = "/notifications";
 
 export const PROFILE_URL = ({ id }: { id: string }): string => `/profile/${id}`;
 export const FEED_DETAILS_URL = ({ id }: { id: string }): string => `/feed/entries/${id}`;

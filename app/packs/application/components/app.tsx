@@ -1,5 +1,5 @@
 import { StrictMode, useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router";
 
 import { ApolloProvider } from "@apollo/client/react";
 

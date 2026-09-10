@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration } from "react-router";
 
 import { Container, Section } from "tights";
 

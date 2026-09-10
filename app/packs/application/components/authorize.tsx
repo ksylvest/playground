@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { useLocation } from "react-router";
-import { Navigate } from "react-router-dom";
+import { useLocation, Navigate } from "react-router";
 
 import { Flash } from "@application/types/flash";
 

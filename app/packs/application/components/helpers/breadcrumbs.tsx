@@ -1,5 +1,4 @@
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router";
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "tights";
 

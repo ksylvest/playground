@@ -20,6 +20,7 @@ gem "stripe"
 gem "aws-sdk-s3", require: false
 gem "cloudflare-ips"
 gem "image_processing"
+gem "ruby-vips"
 
 gem "sentry-rails"
 gem "vite_rails"
