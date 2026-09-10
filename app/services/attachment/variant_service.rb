@@ -56,7 +56,7 @@ module Attachment
         "resize_to_#{@resize}": @size,
         format: @format,
         saver: DEFAULTS.merge({ quality: @quality })
-      )..processed
+      ).processed
     end
   end
 end
