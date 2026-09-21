@@ -48,6 +48,6 @@
     "sass": "^1.104.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
-    "vite-plugin-ruby": "^5.2.3"
+    "vite-plugin-ruby": "^5.2.4"
   }
 }
