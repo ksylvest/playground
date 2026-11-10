@@ -36,7 +36,7 @@
     "@graphql-codegen/cli": "^7.4.1",
     "@graphql-codegen/typed-document-node": "^7.1.0",
     "@graphql-codegen/typescript": "^5.0.8",
-    "@graphql-codegen/typescript-operations": "^5.0.8",
+    "@graphql-codegen/typescript-operations": "^6.1.6",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@types/lodash": "^4.17.25",
     "@types/rails__actioncable": "^8.0.3",
