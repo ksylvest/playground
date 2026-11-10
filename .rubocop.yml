@@ -10,7 +10,7 @@ plugins:
   - rubocop-rspec_rails
 
 AllCops:
-  TargetRubyVersion: 4.0.6
+  TargetRubyVersion: 4.0.9
   NewCops: enable
   Exclude:
     - config/environments/*

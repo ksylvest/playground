@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
 
   return (
     <header>
-      <Navbar color="light">
+      <Navbar>
         <NavbarBrand>
           <HomeNavbarLink />
           <NavbarBurger active={active} onClick={onToggle} />
